@@ -11,7 +11,7 @@ const NewQuest = () => {
   const authenticated = useSelector((state) => state.authenticated);
   const date = new Date();
   const currentTime = date.getHours();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const logout = async () => {
     try {
@@ -33,16 +33,17 @@ const NewQuest = () => {
   }
   const submitQuest = async (e) => {
     try {
-      const response = await axios.post("/quests", {
-        title: e.target.title.value,
-        description: e.target.description.value,
-      },
-      { headers: createHeaders()
-      });
-      debugger
-      setMessage(response.message)
+      const response = await axios.post(
+        "http//localhost:3001/api/quests",
+        {
+          title: e.target.title.value,
+          description: e.target.description.value,
+        },
+        { headers: createHeaders() }
+      );
+      setMessage(response.data.message);
     } catch (error) {
-      setMessage(error)
+      setMessage(error);
     }
   };
 
@@ -88,7 +89,7 @@ const NewQuest = () => {
         <br />
         <input id="submit" type="submit" value="Submit" />
       </Form>
-      <p id='message'>{message}</p> 
+      <p id="message">{message}</p>
     </>
   );
 };

@@ -23,7 +23,7 @@ describe("User can log in to post new reQuest", () => {
       });
       cy.route({
         method: "POST",
-        url: "**/quests/*",
+        url: "http//localhost:3001/api/quests",
         response: "fixture:post_new_quest.json",
         headers: {
           uid: "user@mail.com",
@@ -46,17 +46,8 @@ describe("User can log in to post new reQuest", () => {
       });
     });
 
-    xit("and is directed to main page", () => {
-      cy.get("#").should("contain", "");
-    });
-
-    it("with valid credentials", () => {
-      cy.get("div#login").within(() => {
-        cy.get("p").should("contain", "user@mail.com");
-      });
-    });
-
     it("can post new reQuest", () => {
+      cy.get("p").should("contain", "user@mail.com");
       cy.get("#title").type("Fix my bike")
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!")
       cy.get("#submit").contains("Submit").click();
@@ -74,7 +65,7 @@ describe("User can log in to post new reQuest", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
-        url: "http://localhost:3000/api/auth/*",
+        url: "**/auth/*",
         response: "fixture:unsuccessful_login.json",
         headers: {
           uid: "user@mail.com",

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Button, Form, Input } from "semantic-ui-react";
 import { auth } from "../modules/auth";
-import NewQuest from './NewQuest'
-// import { useHistory } from "react-router-dom";
-// import "../css/index.css";
-// import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const authenticated = useSelector((state) => state.authenticated);
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
+  // const authenticated = useSelector((state) => state.authenticated);
+  const history = useHistory();
 
   const login = async (e) => {
     try {
@@ -25,17 +23,17 @@ const LoginForm = () => {
             authenticated: response.success,
             uid: response.data.uid,
           },
-        })
+        });
+        history.push("/newquests");
       }
     } catch (error) {
+      debugger;
       setErrorMessage(error.response.data.errors[0]);
     }
   };
 
   return (
     <>
-    {authenticated ? (
-    <NewQuest/>) : (
       <Grid className="login-container" verticalAlign="middle">
         <Grid.Column align="center">
           <h3 style={{ color: "black" }} id="error-message">
@@ -51,7 +49,7 @@ const LoginForm = () => {
             <Button id="submit">{"Submit"}</Button>
           </Form>
         </Grid.Column>
-      </Grid>)}
+      </Grid>
     </>
   );
 };
