@@ -4,7 +4,12 @@ describe("Visitor can view all listed quests", () => {
   });
   it("Quests are shown", () => {
     cy.visit("/");
-    cy.get("#quest-1").should("contain", "Change to winter tires");
-    cy.get("#quest-2").should("contain", "Paint fences around backyard");
+    cy.get("#quest-1").within(() => {
+      cy.get(".header").should("contain", "Change to winter tires");
+    });
+
+    cy.get("#quest-2").within(() => {
+      cy.get(".header").should("contain", "Paint fences in backyard");
+    });
   });
 });

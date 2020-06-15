@@ -4,7 +4,7 @@ import { Card } from "semantic-ui-react";
 const QuestCard = (props) => {
   return (
     <>
-      <Card>
+      <Card id={"quest-" + props.quest.id}>
         <Card.Content>
           <Card.Header>{props.quest.title}</Card.Header>
           <Card.Meta>{props.quest.kpoints} KP</Card.Meta>

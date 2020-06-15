@@ -2,7 +2,7 @@
   "quests": [
     {
       "id": 1,
-      "title": "Change winter tires",
+      "title": "Change to winter tires",
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "heavy", "car"],
       "kpoints": 90
