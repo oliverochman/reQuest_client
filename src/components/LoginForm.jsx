@@ -7,7 +7,6 @@ import { connect, useDispatch, useSelector } from "react-redux";
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
-  // const authenticated = useSelector((state) => state.authenticated);
   const history = useHistory();
 
   const login = async (e) => {
@@ -27,7 +26,6 @@ const LoginForm = () => {
         history.push("/newquests");
       }
     } catch (error) {
-      debugger;
       setErrorMessage(error.response.data.errors[0]);
     }
   };

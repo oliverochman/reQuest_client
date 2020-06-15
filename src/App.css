@@ -1,1 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
+body {
+  background-color: #BAC1BF;
+}
+
+h1 {
+  font-family: 'Lora', serif;
+  color: #E8B704;
+}
+
+#re {
+  color: #88A65E;
+}
+
+#submit, #login, #logout {
+  background-color:  #E8B704;
+  color: white;
+  font-family: 'Lora', serif;
+  border-color: #E8B704;
+  border-radius: 20px;
+}
+
+.login-container {
+  
+  background-color: #88A65E; 
+  width: 40vw;
+  border-radius: 5%;
+  color: #E8B704;
+  text-align: center;
+}

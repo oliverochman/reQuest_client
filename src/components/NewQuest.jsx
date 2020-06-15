@@ -18,20 +18,15 @@ const NewQuest = () => {
       await auth.signOut();
       dispatch({ type: "LOGOUT" });
     } catch (error) {
-      console.log(error);
+      setMessage(error);
     }
   };
 
-  let time;
+  let time =
+    currentTime < 12 ? "Morning" : currentTime < 18 ? "Afternoon" : "Evening";
 
-  if (currentTime < 12) {
-    time = "Morning";
-  } else if (currentTime < 18) {
-    time = "Afternoon";
-  } else {
-    time = "Evening";
-  }
   const submitQuest = async (e) => {
+    console.log("authenticated: " + authenticated);
     try {
       const response = await axios.post(
         "http//localhost:3001/api/quests",
@@ -47,49 +42,54 @@ const NewQuest = () => {
     }
   };
 
+  const isLogin = !authenticated ? (
+    <div name="login">
+      <Button size="small" floated="right" basic inverted id="login">
+        Login
+      </Button>
+    </div>
+  ) : (
+    <div>
+      <p style={{ fontSize: "110%" }}>
+        Good {time} <br></br>
+        {uid}
+      </p>
+      <div name="Logout">
+        <Button
+          floated="right"
+          basic
+          inverted
+          size="small"
+          id="logout"
+          onClick={() => logout()}
+        >
+          Logout
+        </Button>
+      </div>
+    </div>
+  );
   return (
     <>
-      <div id="login">
-        {!authenticated ? (
-          <div name="Login">
-            <Button size="small" floated="right" basic inverted id="login">
-              Login
-            </Button>
-          </div>
-        ) : (
-          <>
-            <p style={{ fontSize: "110%" }}>
-              Good {time} <br></br>
-              {uid}
-            </p>
-            <div name="Logout">
-              <Button
-                floated="right"
-                basic
-                inverted
-                size="small"
-                id="logout"
-                onClick={() => logout()}
-              >
-                Logout
-              </Button>
-            </div>
-          </>
-        )}
+      <div className="login-container">
+        {isLogin}
+        <Form onSubmit={(e) => submitQuest(e)}>
+          <input
+            id="title"
+            name="Title"
+            type="text"
+            placeholder="Quest Title"
+          />
+          <br />
+          <textarea
+            id="description"
+            name="Description"
+            placeholder="Quest Description"
+          />
+          <br />
+          <input id="submit" type="submit" value="Submit" />
+        </Form>
+        <p id="message">{message}</p>
       </div>
-
-      <Form onSubmit={(e) => submitQuest(e)}>
-        <input id="title" name="Title" type="text" placeholder="Quest Title" />
-        <br />
-        <textarea
-          id="description"
-          name="Description"
-          placeholder="Quest Description"
-        />
-        <br />
-        <input id="submit" type="submit" value="Submit" />
-      </Form>
-      <p id="message">{message}</p>
     </>
   );
 };
