@@ -22,6 +22,14 @@ describe("User can log in to post new reQuest", () => {
         },
       });
       cy.route({
+        method: "POST",
+        url: "**/quests/*",
+        response: "fixture:post_new_quest.json",
+        headers: {
+          uid: "user@mail.com",
+        },
+      });
+      cy.route({
         method: "DELETE",
         url: "**/auth/*",
         response: "fixture:logout.json",
@@ -31,7 +39,6 @@ describe("User can log in to post new reQuest", () => {
       });
 
       cy.visit("/");
-      // cy.get("button#login").click();
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
@@ -49,11 +56,11 @@ describe("User can log in to post new reQuest", () => {
       });
     });
 
-    xit("can post new reQuest", () => {
-      cy.visit("");
-      cy.get("#").then((text) => {
-        text.length >= 300;
-      });
+    it("can post new reQuest", () => {
+      cy.get("#title").type("Fix my bike")
+      cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!")
+      cy.get("#submit").contains("Submit").click();
+      cy.get("#message").should("contain", "Your reQuest was successfully created!")
     });
 
     xit("clicking the Log out button", () => {

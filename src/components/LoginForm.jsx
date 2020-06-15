@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Grid, Button, Form, Input } from "semantic-ui-react";
 import { auth } from "../modules/auth";
+import NewQuest from './NewQuest'
 // import { useHistory } from "react-router-dom";
 // import "../css/index.css";
 // import { Link } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const authenticated = useSelector((state) => state.authenticated);
   const dispatch = useDispatch();
 
   const login = async (e) => {
@@ -24,7 +26,6 @@ const LoginForm = () => {
             uid: response.data.uid,
           },
         })
-      
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);
@@ -33,6 +34,8 @@ const LoginForm = () => {
 
   return (
     <>
+    {authenticated ? (
+    <NewQuest/>) : (
       <Grid className="login-container" verticalAlign="middle">
         <Grid.Column align="center">
           <h3 style={{ color: "black" }} id="error-message">
@@ -48,7 +51,7 @@ const LoginForm = () => {
             <Button id="submit">{"Submit"}</Button>
           </Form>
         </Grid.Column>
-      </Grid>
+      </Grid>)}
     </>
   );
 };
