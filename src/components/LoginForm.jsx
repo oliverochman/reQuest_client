@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Button, Form, Input } from "semantic-ui-react";
 import { auth } from "../modules/auth";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import "../css/index.css";
 // import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
 const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const signupMessage = useSelector((state) => state.messages.signupMessage);
-  const history = useHistory();
+  const dispatch = useDispatch();
 
   const login = async (e) => {
     try {
@@ -17,10 +16,15 @@ const LoginForm = () => {
         e.target.email.value,
         e.target.password.value
       );
-
       if (response.success) {
-        // Set authenticated
-        history.goBack();
+        dispatch({
+          type: "SET_AUTHENTICATED",
+          payload: {
+            authenticated: response.success,
+            uid: response.data.uid,
+          },
+        })
+      
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);
@@ -48,4 +52,4 @@ const LoginForm = () => {
     </>
   );
 };
-export default LoginForm;
+export default connect()(LoginForm);
