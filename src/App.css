@@ -1,1 +1,25 @@
+body,
+html {
+  background-color: #bac1bf !important;
+}
 
+#header {
+  width: 100%;
+  position: fixed;
+  background: #e6e6e6;
+  padding: 0;
+  top: 0;
+  height: 10vh;
+}
+
+#hfirst {
+  font-size: 56px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #88a65e;
+}
+
+#hsecond {
+  font-size: 56px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #e8b704;
+}
