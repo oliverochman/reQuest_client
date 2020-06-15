@@ -86,7 +86,14 @@ const NewQuest = () => {
             placeholder="Quest Description"
           />
           <br />
-          <input id="submit" type="submit" value="Submit" />
+          <input
+            id="submit"
+            type="submit"
+            value="Submit"
+            rows="5"
+            cols="40"
+            required
+          />
         </Form>
         <p id="message">{message}</p>
       </div>

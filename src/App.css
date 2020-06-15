@@ -18,14 +18,28 @@ h1 {
   color: white;
   font-family: 'Lora', serif;
   border-color: #E8B704;
-  border-radius: 20px;
+  border-radius: 5px;
+  margin: 2vw;
+}
+Input, input, textarea {
+  font-family: 'Lora', serif;
+  border-radius: 5px;
+  border-color: #88A65E;
+  background-color: #E6E6E6;
+  color: #88A65E;
 }
 
 .login-container {
-  
+  margin-left: auto;
+  margin-right: auto;
   background-color: #88A65E; 
-  width: 40vw;
+  width: 25vw;
   border-radius: 5%;
   color: #E8B704;
   text-align: center;
+  padding: 4vh 0;
+}
+
+#message {
+  color: white;
 }

@@ -34,7 +34,7 @@ const LoginForm = () => {
     <>
       <Grid className="login-container" verticalAlign="middle">
         <Grid.Column align="center">
-          <h3 style={{ color: "black" }} id="error-message">
+          <h3 style={{ color: "white" }} id="error-message">
             {errorMessage}
           </h3>
           <Form unstackable id="login-form" onSubmit={login}>
