@@ -1,68 +1,150 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# reQuest_client
+Final project of April 2020 Cohort
 
-## Available Scripts
+An app for people helping each other, paying with in-app currency (karma points). So in order to have people help you with stuff, you need to help others with stuff.
 
-In the project directory, you can run:
+User can post a request for a certain task to be done. User can respond to requests and say that they can do it. They both agree on the reward. When the task is done the user that requested it pays the user that performed the task with in-app currency (karma points). Afterwards they can rate each other, so that trust-worthy people will get higher rating. A user needs an account in order to post and respond to requests.
 
-### `yarn start`
+User can browse the feed of tasks in the local area, by newest or category or....
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+As a community of people in the local area
+In order to help each other within the area, making use of the skills and tools that exist in the area
+People can register for an account to connect *people in need of help* with *people who has the resources and ability to help with the specific task*.
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Features
+### MVP
+* Full-feature Desktop app
+	* Basic request/help flow
+		* Including automatic rewarding
+	* Geolocation (exclusively - you only see local stuff)
+	* rating (but not commenting)
+	* browsing (but not searching)
+	* profile page (but not public)
+* Partial-feature Native app
+	* Your active Quests and reQuests
+	* Requester/Helper interaction
+	* Your points
+* API app
 
-### `yarn test`
+* authorisation
+* geolocation
+* in-app-currency and transferring
+* messaging
+* websockets (for real-time-chat (and push notifications?))
+* push-notifications
+* well-implemented categories
+* rating
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Optional / extra
+* profile page ( show skills, tools, location... )
+* search functionality
+* add picture / video
+* UI translation
+* each post can have multiple tags
+* reviewing/commenting
+* bidding / auctioning
+* expiry date on tasks
+* collaboration with Ica or Biltema for users to be able to redeem points for rabattkuponger
+* collaboration with charity for earning points
+* ads - have users watch ads for points
+* Oauth - log in with Facebook / Google
+* Bonus points for completing parts of profile page
+	
+## Sprint planning
+	* Decide MVP desktop
+		* Basic request/help flow
+			* Including automatic rewarding
+		* Geolocation (exclusively - you only see local stuff)
+		* rating (but not commenting)
+		* browsing (but not searching)
+		* profile page (but not public)
+	* MVP mobile:
+		* THE THINGS THAT ON THE 'YOUR' PAGE
+	 	* Except Profile page - but the points always visible 
+		* User interaction
+		* 
+	* Complete Lo-fis and start adding stuff to the PT Board
+	   then:
+	* Decide which stories are most important
 
-### `yarn build`
+### Define epics:
+#### User can search for quests (browse and search)
+* MVP: by category (one per request)
+* MVP: recently posted (newest)
+* Extra: Sorting: popular (most people responded to), reward
+#### User can request help (create a request)
+#### Requester and Helper can interact
+#### Requester and Helper can communicate
+* Real-time chat
+* Helper can offer help, for either the reward that's been set, or lower (..or higher..)
+* Decide which one will help
+* Give the location
+* Agree on reward
+* Agree on time
+#### Reward system
+* Requester can reward helper
+* Helper can receive reward
+* The reward points are reserved when a request is created
+#### Only accepted Helper can see sensitive information
+* Larger area at first, then exact address
+* How do we show location? On a map? Just text?
+* Phone number
+#### Users are associated/connected with their local area
+* Are you strictly limited or can you e.g. browse the whole country? 
+* Some quests might be unrelated to location
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### discussion/extra features:
+* Rewards coming in to the system
+	* Helping charity
+	* Signup bonus
+	* Users watch ads
+* Give away points? To friends in desperate need. Limit amounts in that case.
+* Request help for others?
+* tools / requirements
+	* text analysis?
+* Sanitise requests through text and picture analysis
+* Include pictures?
+* chat based on contact list or on request?
+* comments is extra feature (we don't need public profile before we have comments)
+* private offers to your favourite helpers?
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## The flow
+#### post a request
+* what you need help with
+* where you need the help
+* when? expiry date? when in the day?
+	* options: before / after / between / at exactly - refactor to between
+* fixed reward, as it's own input (negotiable as later feature)
+* reward points are reserved - can't make another request unless you have more points for it
+* EXTRA: require picture of completed quest
+* main tag / category:  - choose from predefined tags
+* additional tags / category - choose from predefined tags, can choose multiple
+#### look for quests - browse and search
+* see the headline, reward and more?
+#### click on a specific quest to expand
+* see full information and contact button
+#### contact
+* get to send a message saying something, suggest a reward
+#### requester gets many responses
+* list/collection with pending helpers, below or close to the specific pending request
+* when clicked. opens chat window with that helper, option to accept or decline
+#### helper is happy with the quest and checks OK - I'm up for it
+#### requester is happy with the helper and checks OK - you're the one
+* helper gets notification
+#### quest is completed
+* both mark 'quest completed' when job is done. Rewarding is done automatically - should be visible
+* opportunity for rating after job is completed (inside of the chat window) (Comments as extra feature)
+	* should be visible in the request and the response (along with amount of ratings)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* what happens if you don't do the quest? - no points given, no work done. bad rating.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## The profile page
+* Not public, to begin with
+* Picture
+* Name
+* Address
+* Phone number
+* Skills & tools
