@@ -1,7 +1,17 @@
 import React from "react";
+import { Card } from "semantic-ui-react";
 
-const QuestCard = () => {
-  return <div></div>;
+const QuestCard = (props) => {
+  return (
+    <>
+      <Card>
+        <Card.Content>
+          <Card.Header>{props.quest.title}</Card.Header>
+          <Card.Meta>{props.quest.kpoints} KP</Card.Meta>
+        </Card.Content>
+      </Card>
+    </>
+  );
 };
 
 export default QuestCard;

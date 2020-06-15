@@ -55,6 +55,13 @@
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["carry", "heavy"],
       "kpoints": 120
+    },
+    {
+      "id": 9,
+      "title": "Move out help needed",
+      "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
+      "categories": ["carry", "heavy"],
+      "kpoints": 120
     }
   ]
 }

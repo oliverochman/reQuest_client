@@ -6,7 +6,7 @@ import AllQuests from "./components/AllQuests";
 function App() {
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
       <Switch>
         <Route exact path="/" component={AllQuests}></Route>
       </Switch>

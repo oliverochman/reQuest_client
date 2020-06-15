@@ -1,7 +1,7 @@
 import axios from "axios";
 const getQuests = async (dispatch) => {
   try {
-    const response = axios.get("/api/quests");
+    const response = await axios.get("/quests");
     dispatch({
       type: "GET_QUESTS",
       payload: {
