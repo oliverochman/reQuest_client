@@ -1,4 +1,6 @@
 const initialState = {
-  quests: [],
+  requests: [],
+  authenticated: false,
+  uid: "",
 };
 export default initialState;

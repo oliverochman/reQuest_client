@@ -1,15 +1,15 @@
 import initialState from "../store/initialState";
 
-const questReducer = (state = initialState, action) => {
+const requestReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_QUESTS":
+    case "GET_REQUESTS":
       return {
         ...state,
-        quests: action.payload.quests,
+        requests: action.payload.requests,
       };
     default:
       return state;
   }
 };
 
-export default questReducer;
+export default requestReducer;

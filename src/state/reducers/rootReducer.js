@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import questReducer from "./questReducer";
+import requestReducer from "./requestReducer";
+import authenticationReducer from "./authenticationReducer";
 
 const rootReducer = combineReducers({
-  quests: questReducer,
+  requests: requestReducer,
+  authentication: authenticationReducer,
 });
 
 export default rootReducer;
