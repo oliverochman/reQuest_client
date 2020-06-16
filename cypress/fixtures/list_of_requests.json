@@ -1,0 +1,67 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "title": "Change to winter tires",
+      "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
+      "categories": ["outdoors", "heavy", "car"],
+      "kpoints": 90
+    },
+    {
+      "id": 2,
+      "title": "Paint fences in backyard",
+      "location": { "area": "Yola", "long": 18.98, "lat": 58.18 },
+      "categories": ["outdoors", "heavy", "paint"],
+      "kpoints": 150
+    },
+    {
+      "id": 3,
+      "title": "Teach me French",
+      "location": { "area": "Buma", "long": 18.98, "lat": 58.18 },
+      "categories": ["language", "beginner"],
+      "kpoints": 200
+    },
+    {
+      "id": 4,
+      "title": "Want to learn piano",
+      "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
+      "categories": ["piano", "instrument", "beginner"],
+      "kpoints": 200
+    },
+    {
+      "id": 5,
+      "title": "Need someone for grocery shopping",
+      "location": { "area": "Aswa", "long": 18.98, "lat": 58.18 },
+      "categories": ["shopping", "carry"],
+      "kpoints": 35
+    },
+    {
+      "id": 6,
+      "title": "Need someone to fix the window",
+      "location": { "area": "Aler", "long": 18.98, "lat": 58.18 },
+      "categories": ["outdoors", "tools"],
+      "kpoints": 55
+    },
+    {
+      "id": 7,
+      "title": "Babysitter needed",
+      "location": { "area": "Paba", "long": 18.98, "lat": 58.18 },
+      "categories": ["children", "baby"],
+      "kpoints": 80
+    },
+    {
+      "id": 8,
+      "title": "Move out help needed",
+      "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
+      "categories": ["carry", "heavy"],
+      "kpoints": 120
+    },
+    {
+      "id": 9,
+      "title": "Move out help needed",
+      "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
+      "categories": ["carry", "heavy"],
+      "kpoints": 120
+    }
+  ]
+}

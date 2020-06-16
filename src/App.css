@@ -1,21 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap");
 
-body {
-  background-color: #bac1bf;
+body,
+html {
+  background-color: #bac1bf !important;
+}
+
+#header {
+  width: 100%;
+  position: fixed;
+  background: #e6e6e6;
+  padding: 0;
+  top: 0;
+  height: 10vh;
+}
+
+#hfirst {
+  font-size: 56px;
+  font-family: "Lora", serif;
+  color: #88a65e;
+}
+
+#hsecond {
+  font-size: 56px;
+  font-family: "Lora", serif;
+  color: #e8b704;
 }
 
 h1 {
   font-family: "Lora", serif;
   color: #e8b704;
 }
+
 h4 {
   font-family: "Lora", serif;
   color: white;
   letter-spacing: 0.1em;
-}
-
-#re {
-  color: #88a65e;
 }
 
 #submit,
@@ -31,6 +50,7 @@ h4 {
   height: 25px;
   letter-spacing: 0.1em;
 }
+
 input,
 textarea {
   font-family: "Lora", serif;
@@ -41,9 +61,11 @@ textarea {
   margin-bottom: 10px;
   width: 15vw;
 }
+
 textarea {
   height: 130px;
 }
+
 .login-container,
 .newQuest-container {
   margin-left: auto;

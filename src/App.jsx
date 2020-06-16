@@ -1,22 +1,22 @@
 import React from "react";
-import LoginForm from "./components/LoginForm";
 import { Switch, Route } from "react-router-dom";
+import AllRequests from "./components/AllRequests";
+import Header from "./components/Header";
 import NewRequest from "./components/NewRequest";
+import LoginForm from "./components/LoginForm";
 import "./App.css";
 
-const App = () => {
+function App() {
   return (
     <>
-      <h1>
-        <span id="re">re</span>
-        Quest
-      </h1>
+      <Header />
       <Switch>
-        <Route exact path="/" component={LoginForm} />
-        <Route exact path="/requests" component={NewRequest} />
+        <Route exact path="/" component={AllRequests}></Route>
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/myrequest" component={NewRequest} />
       </Switch>
     </>
   );
-};
+}
 
 export default App;

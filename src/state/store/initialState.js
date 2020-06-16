@@ -1,6 +1,6 @@
 const initialState = {
- authenticated: false,
- uid: "",
-}
-
+  requests: [],
+  authenticated: false,
+  uid: "",
+};
 export default initialState;

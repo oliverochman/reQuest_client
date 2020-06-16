@@ -1,17 +1,10 @@
-import initialState from "../store/initialState";
+import { combineReducers } from "redux";
+import requestReducer from "./requestReducer";
+import authenticationReducer from "./authenticationReducer";
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SET_AUTHENTICATED":
-      return {
-        ...state,
-        authenticated: action.payload.authenticated,
-        uid: action.payload.uid
-      };
-    
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+  requests: requestReducer,
+  authentication: authenticationReducer,
+});
 
 export default rootReducer;

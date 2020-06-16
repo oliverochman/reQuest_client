@@ -24,7 +24,7 @@ describe("User can log in to post new reQuest", () => {
       cy.route({
         method: "POST",
         url: "**/requests",
-        response: "fixture:post_new_quest.json",
+        response: "fixture:post_new_request.json",
         headers: {
           uid: "user@mail.com",
         },
@@ -38,7 +38,7 @@ describe("User can log in to post new reQuest", () => {
         },
       });
 
-      cy.visit("/");
+      cy.visit("/login");
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
@@ -47,6 +47,7 @@ describe("User can log in to post new reQuest", () => {
     });
 
     it("can post new reQuest", () => {
+      cy.get("#myrequest-btn").click();
       cy.get("p").should("contain", "user@mail.com");
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
@@ -70,7 +71,7 @@ describe("User can log in to post new reQuest", () => {
         },
         status: 400,
       });
-      cy.visit("/");
+      cy.visit("/login");
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("wrongpassword");
