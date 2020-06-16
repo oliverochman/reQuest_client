@@ -58,7 +58,13 @@ const Header = () => {
           </Button>
         </div>
         <div>
-          <NavLink to="/myrequest">my reQuest</NavLink>
+          <NavLink
+            id="myrequest-btn"
+            style={{ float: "right" }}
+            to="/myrequest"
+          >
+            my reQuest
+          </NavLink>
         </div>
         <p id="loginmessage">{message}</p>
       </div>

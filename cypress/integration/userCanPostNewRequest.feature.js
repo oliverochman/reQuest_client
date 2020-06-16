@@ -47,6 +47,7 @@ describe("User can log in to post new reQuest", () => {
     });
 
     it("can post new reQuest", () => {
+      cy.get("#myrequest-btn").click();
       cy.get("p").should("contain", "user@mail.com");
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
