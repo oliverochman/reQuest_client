@@ -6,9 +6,7 @@ import { Grid } from "semantic-ui-react";
 
 const AllRequests = () => {
   const dispatch = useDispatch();
-  const requests = useSelector((state) => {
-    return state.requests.requests;
-  });
+  const requests = useSelector((state) => state.requests.requests);
 
   useEffect(() => {
     getRequests(dispatch);
@@ -20,14 +18,7 @@ const AllRequests = () => {
 
   return (
     <div>
-      <Grid
-        id="qcards"
-        fluid
-        columns={3}
-        divided
-        centered
-        style={{ marginTop: 100 }}
-      >
+      <Grid id="qcards" columns={3} centered style={{ marginTop: 100 }}>
         {requestCards}
       </Grid>
     </div>

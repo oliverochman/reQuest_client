@@ -7,10 +7,9 @@ import { Redirect } from "react-router-dom";
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
-  const authenticated = useSelector((state) => {
-    debugger;
-    return state.authentication.authenticated;
-  });
+  const authenticated = useSelector(
+    (state) => state.authentication.authenticated
+  );
 
   const submitRequest = async (e) => {
     try {
