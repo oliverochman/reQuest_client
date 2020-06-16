@@ -23,7 +23,7 @@ const LoginForm = () => {
             uid: response.data.uid,
           },
         });
-        history.push("/newquests");
+        history.push("/requests");
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);

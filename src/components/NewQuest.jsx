@@ -28,7 +28,7 @@ const NewQuest = () => {
   const submitQuest = async (e) => {
     try {
       const response = await axios.post(
-        "http//localhost:3001/api/quests",
+        "/api/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
