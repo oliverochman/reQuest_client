@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button,Input } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from "../modules/auth";
 import axios from "axios";
@@ -26,7 +26,6 @@ const NewQuest = () => {
     currentTime < 12 ? "Morning" : currentTime < 18 ? "Afternoon" : "Evening";
 
   const submitQuest = async (e) => {
-    console.log("authenticated: " + authenticated);
     try {
       const response = await axios.post(
         "http//localhost:3001/api/quests",
@@ -42,18 +41,17 @@ const NewQuest = () => {
     }
   };
 
-  const isLogin = !authenticated ? (
-    <div name="login">
-      <Button size="small" floated="right" basic inverted id="login">
-        Login
-      </Button>
-    </div>
-  ) : (
+  const isLogin = authenticated && (
     <div>
       <p style={{ fontSize: "110%" }}>
         Good {time} <br></br>
         {uid}
       </p>
+    </div>
+  );
+  return (
+    <>
+    {/* Needs to be removed as soon as we have the header */}
       <div name="Logout">
         <Button
           floated="right"
@@ -66,27 +64,23 @@ const NewQuest = () => {
           Logout
         </Button>
       </div>
-    </div>
-  );
-  return (
-    <>
-      <div className="login-container">
+      <div className="newQuest-container">
         {isLogin}
+        <h1>{"New reQuest"}</h1>
         <Form onSubmit={(e) => submitQuest(e)}>
-          <input
+          <Form.Input
             id="title"
             name="Title"
             type="text"
             placeholder="Quest Title"
           />
-          <br />
-          <textarea
+          <Form.TextArea 
             id="description"
             name="Description"
             placeholder="Quest Description"
+            type="textarea"
           />
-          <br />
-          <input
+          <Input
             id="submit"
             type="submit"
             value="Submit"

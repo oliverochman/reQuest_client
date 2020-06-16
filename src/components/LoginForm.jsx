@@ -43,7 +43,6 @@ const LoginForm = () => {
             <Input name="email" type="email" id="email"></Input>
             <h4>{"Password"}</h4>
             <Input name="password" type="password" id="password"></Input>
-            <br></br>
             <Button id="submit">{"Submit"}</Button>
           </Form>
         </Grid.Column>
