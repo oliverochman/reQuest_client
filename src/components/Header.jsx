@@ -49,7 +49,7 @@ const Header = () => {
           <NavLink to="/myrequest">Quests</NavLink>
           <NavLink to="/myrequest">reQuests</NavLink>
         </div>
-        <NavLink id="myrequest-btn" to="/myrequest">
+        <NavLink id="myrequest-link" to="/myrequest">
           my reQuest
         </NavLink>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Container } from "semantic-ui-react";
+import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ const LoginForm = () => {
             uid: response.data.uid,
           },
         });
-        history.push("/requests");
+        history.push("/");
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);
