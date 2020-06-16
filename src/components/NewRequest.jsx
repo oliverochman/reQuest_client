@@ -12,12 +12,14 @@ const NewRequest = () => {
   );
 
   const submitRequest = async (e) => {
+    e.persist();
     try {
       const response = await axios.post(
         "/api/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
+          reward: e.target.reward.value,
         },
         { headers: createHeaders() }
       );
@@ -33,7 +35,7 @@ const NewRequest = () => {
         <Redirect to={{ pathname: "/login" }} />
       ) : (
         <div className="newQuest-container">
-          <h1>{"New reQuest"}</h1>
+          <h1 className='input-labels'>{"New reQuest"}</h1>
           <Form onSubmit={(e) => submitRequest(e)}>
             <Form.Input
               id="title"
@@ -50,10 +52,11 @@ const NewRequest = () => {
               required
             />
             <Form.Input
-              id="kpoints"
-              name="Karma"
+              id="reward"
+              name="Reward"
               type="number"
               placeholder="Karma Points"
+              min='0'
               step="5"
               required
             />
@@ -66,7 +69,7 @@ const NewRequest = () => {
               required
             />
           </Form>
-          <p id="message">{message}</p>
+          <p className='input-labels' id="message">{message}</p>
         </div>
       )}
     </>

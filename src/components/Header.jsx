@@ -27,9 +27,9 @@ const Header = () => {
     currentTime < 12 ? "Morning" : currentTime < 18 ? "Afternoon" : "Evening";
 
   const greeting = authenticated && (
-    <div>
-      <p style={{ fontSize: "110%" }}>
-        Good {time} <br></br>
+    <div >
+      <p id='greeting' style={{ fontSize: "110%" }}>
+        Good {time} &nbsp; 
         {uid}
       </p>
     </div>
