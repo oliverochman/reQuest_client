@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Container } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector } from "react-redux";
@@ -32,9 +32,9 @@ const NewRequest = () => {
       {!authenticated ? (
         <Redirect to={{ pathname: "/login" }} />
       ) : (
-        <div className="newQuest-container">
+        <Container className="form-container">
           <h1>{"New reQuest"}</h1>
-          <Form onSubmit={(e) => submitRequest(e)}>
+          <Form id="newRequest-form" onSubmit={(e) => submitRequest(e)}>
             <Form.Input
               id="title"
               name="Title"
@@ -57,7 +57,7 @@ const NewRequest = () => {
             />
           </Form>
           <p id="message">{message}</p>
-        </div>
+        </Container>
       )}
     </>
   );

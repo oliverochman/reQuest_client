@@ -36,39 +36,37 @@ const Header = () => {
   );
 
   return (
-    <>
-      <div id="header">
-        <p style={{ float: "left" }} id="hfirst">
-          re
-        </p>
-        <p style={{ float: "left" }} id="hsecond">
-          Quest
-        </p>
-        {greeting}
-        <div name="Logout">
-          <Button
-            floated="right"
-            basic
-            inverted
-            size="small"
-            id="logout"
-            onClick={() => logout()}
-          >
-            Logout
-          </Button>
-        </div>
-        <div>
-          <NavLink
-            id="myrequest-btn"
-            style={{ float: "right" }}
-            to="/myrequest"
-          >
-            my reQuest
-          </NavLink>
-        </div>
-        <p id="loginmessage">{message}</p>
+    <div id="header">
+      <div id="logo">
+        <span style={{ color: "#88a65e" }}>re</span>
+        <span style={{ color: "#e8b704" }}>Quest</span>
+        <div id="yellow_divider"></div>
+        <div id="green_divider"></div>
       </div>
-    </>
+      <div id="links">
+        <div id="small_links">
+          <NavLink to="/myrequest">profile</NavLink>
+          <NavLink to="/myrequest">Quests</NavLink>
+          <NavLink to="/myrequest">reQuests</NavLink>
+        </div>
+        <NavLink id="myrequest-btn" to="/myrequest">
+          my reQuest
+        </NavLink>
+      </div>
+      <div id="welcome-and-logout">
+        <p id="loginmessage">{message}</p>
+        {greeting}
+        <Button
+          basic
+          inverted
+          size="small"
+          id="logout"
+          onClick={() => logout()}
+        >
+          Logout
+        </Button>
+      </div>
+    </div>
   );
 };
 
