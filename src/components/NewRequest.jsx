@@ -5,7 +5,7 @@ import { auth } from "../modules/auth";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 
-const NewQuest = () => {
+const NewRequest = () => {
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.uid);
   const authenticated = useSelector((state) => state.authenticated);
@@ -25,7 +25,7 @@ const NewQuest = () => {
   let time =
     currentTime < 12 ? "Morning" : currentTime < 18 ? "Afternoon" : "Evening";
 
-  const submitQuest = async (e) => {
+  const submitRequest = async (e) => {
     try {
       const response = await axios.post(
         "/api/requests",
@@ -67,17 +67,17 @@ const NewQuest = () => {
       <div className="newQuest-container">
         {isLogin}
         <h1>{"New reQuest"}</h1>
-        <Form onSubmit={(e) => submitQuest(e)}>
+        <Form onSubmit={(e) => submitRequest(e)}>
           <Form.Input
             id="title"
             name="Title"
             type="text"
-            placeholder="Quest Title"
+            placeholder="reQuest Title"
           />
           <Form.TextArea 
             id="description"
             name="Description"
-            placeholder="Quest Description"
+            placeholder="reQuest Description"
             type="textarea"
           />
           <Input
@@ -95,4 +95,4 @@ const NewQuest = () => {
   );
 };
 
-export default NewQuest;
+export default NewRequest;

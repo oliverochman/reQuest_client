@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from "./components/LoginForm";
 import { Switch, Route } from "react-router-dom";
-import NewQuest from "./components/NewQuest";
+import NewRequest from "./components/NewRequest";
 import "./App.css";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
       </h1>
       <Switch>
         <Route exact path="/" component={LoginForm} />
-        <Route exact path="/requests" component={NewQuest} />
+        <Route exact path="/requests" component={NewRequest} />
       </Switch>
     </>
   );
