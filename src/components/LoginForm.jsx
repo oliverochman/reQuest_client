@@ -38,10 +38,10 @@ const LoginForm = () => {
       <Form id="login-form" onSubmit={login}>
         <h1 className='input-labels' >{"Log in"}</h1>
         <h4 className='input-labels' >{"Email"}</h4>
-        <Input name="email" type="email" id="email"></Input>
+        <Form.Input name="email" type="email" id="email"></Form.Input>
         <h4 className='input-labels' >{"Password"}</h4>
-        <Input name="password" type="password" id="password"></Input>
-        <Button id="submit">{"Submit"}</Button>
+        <Form.Input name="password" type="password" id="password"></Form.Input>
+        <Input type="submit" value="Submit" id="submit-btn"/>
       </Form>
     </Container>
   );

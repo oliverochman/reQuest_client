@@ -61,7 +61,7 @@ const NewRequest = () => {
               required
             />
             <Input
-              id="submit"
+              id="submit-btn"
               type="submit"
               value="Submit"
               rows="5"
