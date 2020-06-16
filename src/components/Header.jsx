@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../modules/auth";
-import { Button } from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -27,9 +27,9 @@ const Header = () => {
     currentTime < 12 ? "Morning" : currentTime < 18 ? "Afternoon" : "Evening";
 
   const greeting = authenticated && (
-    <div >
-      <p id='greeting' style={{ fontSize: "110%" }}>
-        Good {time} &nbsp; 
+    <div>
+      <p id="greeting" style={{ fontSize: "110%" }}>
+        Good {time} &nbsp;
         {uid}
       </p>
     </div>
@@ -37,37 +37,44 @@ const Header = () => {
 
   return (
     <>
-      <div id="header">
-        <p style={{ float: "left" }} id="hfirst">
-          re
-        </p>
-        <p style={{ float: "left" }} id="hsecond">
-          Quest
-        </p>
-        {greeting}
-        <div name="Logout">
-          <Button
-            floated="right"
-            basic
-            inverted
-            size="small"
-            id="logout"
-            onClick={() => logout()}
-          >
-            Logout
-          </Button>
-        </div>
-        <div>
-          <NavLink
-            id="myrequest-btn"
-            style={{ float: "right" }}
-            to="/myrequest"
-          >
-            my reQuest
-          </NavLink>
-        </div>
-        <p id="loginmessage">{message}</p>
-      </div>
+      <Grid id="header">
+        <Grid.Row columns="equal">
+          <Grid.Column>
+            <p style={{ float: "left" }} id="hfirst">
+              re
+            </p>
+            <p style={{ float: "left" }} id="hsecond">
+              Quest
+            </p>
+          </Grid.Column>
+          <Grid.Column>{greeting}</Grid.Column>
+          <Grid.Column>
+            <p id="loginmessage">{message}</p>
+          </Grid.Column>
+          <Grid.Column>
+            <div name="Logout">
+              <Button
+                floated="right"
+                basic
+                inverted
+                size="small"
+                id="logout"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <NavLink
+              id="myrequest-btn"
+              to="/myrequest"
+            >
+              my reQuest
+            </NavLink>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };
