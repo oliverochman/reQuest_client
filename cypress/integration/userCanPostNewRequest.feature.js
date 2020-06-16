@@ -51,6 +51,7 @@ describe("User can log in to post new reQuest", () => {
       cy.get("p").should("contain", "user@mail.com");
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
+      cy.get("#reward").type("100");
       cy.get("#submit").contains("Submit").click();
       cy.get("#message").should(
         "contain",

@@ -31,23 +31,23 @@ h1 {
   color: #e8b704;
 }
 
-h4 {
+h4, 
+.input-labels {
   font-family: "Lora", serif;
   color: white;
   letter-spacing: 0.1em;
 }
 
 #submit,
-#login,
-#logout {
+#login  {
   background-color: #e8b704;
   color: white;
   font-family: "Lora", serif;
   border-color: #e8b704;
   border-radius: 5px;
   margin: 2vw;
-  width: 100px;
-  height: 25px;
+  width: 10vw;
+  text-align: center;
   letter-spacing: 0.1em;
 }
 
@@ -60,24 +60,54 @@ textarea {
   color: #88a65e;
   margin-bottom: 10px;
   width: 15vw;
+  
 }
 
 textarea {
   height: 130px;
 }
+#login-grid {
+  width: 20vw;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Lora", serif !important;
+}
+.newQuest-container {
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Lora", serif !important;
+}
 
 .login-container,
 .newQuest-container {
+  margin-top: 15vh;
   margin-left: auto;
   margin-right: auto;
   background-color: #88a65e;
-  width: 25vw;
+  font-family: "Lora", serif;
   border-radius: 5%;
   color: #e8b704;
   text-align: center;
-  padding: 4vh 0;
+  
 }
 
 #message {
-  color: white;
+  color: #88a65e;
+}
+
+#Logout {
+  padding-left: 5vw;
+}
+
+#greeting {
+  padding-top: 2vh;
+  text-align: center;
+}
+
+#myrequest-btn {
+  font-family: "Lora", serif;
+  color: #e8b704;
+  font-size: larger;
+  float: right;
 }

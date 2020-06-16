@@ -3,6 +3,7 @@ import { Grid, Button, Form, Input } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import '../App.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -32,18 +33,18 @@ const LoginForm = () => {
 
   return (
     <>
-      <Grid className="login-container" verticalAlign="middle">
-        <Grid.Column align="center">
-          <h3 style={{ color: "white" }} id="error-message">
+      <Grid id='login-grid' >
+        <Grid.Column className="login-container" align="center">
+          <h3 className='input-labels' style={{ color: "white" }} id="error-message">
             {errorMessage}
           </h3>
-          <Form unstackable id="login-form" onSubmit={login}>
-            <h1>{"Log in"}</h1>
-            <h4>{"Email"}</h4>
+          <Form  id="login-form" onSubmit={login}>
+            <h1 className='input-labels'>Log in</h1>
+            <h4 className='input-labels'>Email</h4>
             <Input name="email" type="email" id="email"></Input>
-            <h4>{"Password"}</h4>
-            <Input name="password" type="password" id="password"></Input>
-            <Button id="submit">{"Submit"}</Button>
+            <h4 className='input-labels'>Password</h4>
+            <Input name="password" type="password" id="password"/><br/>
+            <Button id="submit">Submit</Button>
           </Form>
         </Grid.Column>
       </Grid>
