@@ -40,12 +40,22 @@ const NewRequest = () => {
               name="Title"
               type="text"
               placeholder="reQuest Title"
+              required
             />
             <Form.TextArea
               id="description"
               name="Description"
               placeholder="reQuest Description"
               type="textarea"
+              required
+            />
+            <Form.Input
+              id="kpoints"
+              name="Karma"
+              type="number"
+              placeholder="Karma Points"
+              step="5"
+              required
             />
             <Input
               id="submit"
