@@ -28,8 +28,8 @@ const Header = () => {
 
   const greeting = authenticated && (
     <div>
-      <p style={{ fontSize: "110%" }}>
-        Good {time} <br></br>
+      <p className="input-labels" style={{ fontSize: "110%" }}>
+        Good {time} &nbsp;
         {uid}
       </p>
     </div>
@@ -38,8 +38,8 @@ const Header = () => {
   return (
     <div id="header">
       <div id="logo">
-        <span style={{ color: "#88a65e" }}>re</span>
-        <span style={{ color: "#e8b704" }}>Quest</span>
+        <span id="hfirst">re</span>
+        <span id="hsecond">Quest</span>
         <div id="yellow_divider"></div>
         <div id="green_divider"></div>
       </div>
