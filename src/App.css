@@ -97,6 +97,7 @@ h1, h2, h3, h4, h5, h6, span {
 }
 
 #welcome-and-logout > * {
+  font-family: "Lora", serif;
   margin: 0 20px;
 }
 
@@ -106,7 +107,6 @@ h1, h2, h3, h4, h5, h6, span {
   padding: 20px 0;
   width: 25vw !important;
   border-radius: 4%;
-  color: #e8b704;
   text-align: center;
   background-color: #88a65e;
 }
@@ -123,6 +123,7 @@ h1, h2, h3, h4, h5, h6, span {
   color: white;
   font-family: "Lora", serif;
   border-radius: 5px;
+  margin: 5px;
   width: 100px !important;
   letter-spacing: 0.1em;
   text-align: center;
