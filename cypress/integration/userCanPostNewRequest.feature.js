@@ -37,7 +37,14 @@ describe("User can log in to post new reQuest", () => {
           uid: "user@mail.com",
         },
       });
-
+      cy.route({
+        method: "GET",
+        url: "**/karma_points*",
+        response: { karma: 500 },
+        headers: {
+          uid: "user@mail.com",
+        },
+      });
       cy.visit("/login");
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");

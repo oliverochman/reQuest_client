@@ -14,6 +14,8 @@ const Header = () => {
   const date = new Date();
   const currentTime = date.getHours();
 
+  
+
   const logout = async () => {
     try {
       await auth.signOut();
@@ -46,24 +48,14 @@ const Header = () => {
             <p style={{ float: "left" }} id="hsecond">
               Quest
             </p>
+            <hr></hr>
           </Grid.Column>
-          <Grid.Column>{greeting}</Grid.Column>
+          
           <Grid.Column>
             <p id="loginmessage">{message}</p>
           </Grid.Column>
           <Grid.Column>
-            <div name="Logout">
-              <Button
-                floated="right"
-                basic
-                inverted
-                size="small"
-                id="logout"
-                onClick={() => logout()}
-              >
-                Logout
-              </Button>
-            </div>
+          <Grid.Column>{greeting}</Grid.Column>  
           </Grid.Column>
           <Grid.Column>
             <NavLink
@@ -72,6 +64,19 @@ const Header = () => {
             >
               my reQuest
             </NavLink>
+          {authenticated && (
+           <div name="Logout">
+              <Button
+               float='right'
+                basic
+                color='yellow'
+                size="small"
+                id="logout"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </div>)}
           </Grid.Column>
         </Grid.Row>
       </Grid>

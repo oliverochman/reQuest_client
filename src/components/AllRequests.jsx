@@ -10,7 +10,7 @@ const AllRequests = () => {
 
   useEffect(() => {
     getRequests(dispatch);
-  }, []);
+  }, [dispatch]);
 
   const requestCards = requests.map((request) => (
     <RequestCard request={request} />
