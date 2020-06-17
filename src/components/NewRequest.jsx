@@ -15,7 +15,7 @@ const NewRequest = () => {
     e.persist();
     try {
       const response = await axios.post(
-        "/api/requests",
+        "/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
