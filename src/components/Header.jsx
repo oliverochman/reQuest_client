@@ -14,6 +14,8 @@ const Header = () => {
   const date = new Date();
   const currentTime = date.getHours();
 
+  
+
   const logout = async () => {
     try {
       await auth.signOut();
@@ -52,7 +54,8 @@ const Header = () => {
             <p id="loginmessage">{message}</p>
           </Grid.Column>
           <Grid.Column>
-            <div name="Logout">
+            {authenticated && (
+           <div name="Logout">
               <Button
                 floated="right"
                 basic
@@ -63,7 +66,7 @@ const Header = () => {
               >
                 Logout
               </Button>
-            </div>
+            </div>)}
           </Grid.Column>
           <Grid.Column>
             <NavLink
