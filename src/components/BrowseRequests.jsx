@@ -5,11 +5,11 @@ import SpecificRequest from './SpecificRequest'
 
 const BrowseRequests = () => {
   return (
-    <div style={{ padding: "50px", paddingTop: "80px", width: "100vw"}}>
+    <div stretched style={{ padding: "50px", paddingTop: "120px", width: "100vw"}}>
       <Grid>
-        <Grid.Column width={3}>A</Grid.Column>
+        <Grid.Column width={2}></Grid.Column>
         <Grid.Column width={9}><AllRequests></AllRequests></Grid.Column>
-        <Grid.Column width={4}><SpecificRequest /></Grid.Column>
+        <Grid.Column width={5}><SpecificRequest /></Grid.Column>
       </Grid>
     </div>
   )

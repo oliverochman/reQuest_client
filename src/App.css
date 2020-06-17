@@ -133,3 +133,13 @@ textarea {
 #myrequest-btn:hover {
   color: #88a65e;
 }
+
+#specific-component {
+  background-color: white;
+  border: 3px #88a65e solid;
+  padding: 4px;
+}
+
+#about-request h3 {
+  color: #88a65e;
+}

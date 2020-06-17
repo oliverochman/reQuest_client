@@ -18,7 +18,7 @@ const AllRequests = () => {
 
   return (
     <div>
-      <Grid id="qcards" columns={3} centered style={{ marginTop: 100 }}>
+      <Grid id="qcards" columns={3} centered>
         {requestCards}
       </Grid>
     </div>

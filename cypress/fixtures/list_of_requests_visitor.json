@@ -8,7 +8,7 @@
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "heavy", "car"],
       "kpoints": 90,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "location": { "area": "Yola", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "heavy", "paint"],
       "kpoints": 150,
-      "offerable": false
+      "offerable": null
       
     },
     {
@@ -29,7 +29,7 @@
       "location": { "area": "Buma", "long": 18.98, "lat": 58.18 },
       "categories": ["language", "beginner"],
       "kpoints": 200,
-      "offerable": false
+      "offerable": null
     },
     {
       "id": 4,
@@ -39,7 +39,7 @@
       "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
       "categories": ["piano", "instrument", "beginner"],
       "kpoints": 200,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 5,
@@ -49,7 +49,7 @@
       "location": { "area": "Aswa", "long": 18.98, "lat": 58.18 },
       "categories": ["shopping", "carry"],
       "kpoints": 35,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 6,
@@ -59,7 +59,7 @@
       "location": { "area": "Aler", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "tools"],
       "kpoints": 55,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 7,
@@ -69,7 +69,7 @@
       "location": { "area": "Paba", "long": 18.98, "lat": 58.18 },
       "categories": ["children", "baby"],
       "kpoints": 80,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 8,
@@ -79,7 +79,7 @@
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["carry", "heavy"],
       "kpoints": 120,
-      "offerable": true
+      "offerable": null
     },
     {
       "id": 9,
@@ -89,7 +89,7 @@
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["carry", "heavy"],
       "kpoints": 120,
-      "offerable": true
+      "offerable": null
     }
   ]
 }
