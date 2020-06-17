@@ -13,7 +13,7 @@ const AllRequests = () => {
   }, []);
 
   const requestCards = requests.map((request) => (
-    <RequestCard key={request.id} request={request} />
+    <RequestCard key={request.id} request={request} myRequests={false}/>
   ));
 
   return (

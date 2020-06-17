@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Card } from "semantic-ui-react";
 import RequestCard from "./RequestCard";
 import { getMyRequests } from "../modules/getRequests";
-import axios from "axios";
 
 const MyListComponent = () => {
   const [myRequests, setMyRequests] = useState([]);
@@ -18,18 +17,13 @@ const MyListComponent = () => {
   }, []);
 
   const cards = myRequests.map((request) => (
-    <RequestCard
-      key={request.id}
-      request={request}
-    />
+    <RequestCard key={request.id} request={request} myRequests={true} />
   ));
 
   return (
-    <>
-      <Card.Group id="my-list" itemsPerRow={1}>
-        {cards}
-      </Card.Group>
-    </>
+    <Card.Group id="my-list" itemsPerRow={1}>
+      {cards}
+    </Card.Group>
   );
 };
 

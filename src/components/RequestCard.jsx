@@ -4,33 +4,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleRequest } from "../modules/getRequests"
 import Offers from "./Offers"
 
-const RequestCard = ({ request }) => {
-  const activeCard = useSelector((state) => state.requests.activeRequest);
-  const active = activeCard && activeCard.id === request.id;
-  const req = active ? activeCard : request;
+const RequestCard = ({ request, myRequests }) => {
+  const activeRequest = useSelector((state) => state.requests.activeRequest);
+  const myActiveRequest = activeRequest && activeRequest.id === request.id;
+  const req = myActiveRequest ? activeRequest : request;
   const dispatch = useDispatch()
+
+  const toggleActiveRequest = () => {
+    myActiveRequest ? 
+      dispatch({ type: "RESET_ACTIVE_REQUEST" })
+      :
+      getSingleRequest(dispatch, req.id)
+  }
+
 
   return (
     <>
       <Card
         id={"request-" + req.id}
         onClick={() => {
-          getSingleRequest(dispatch, req.id);
+          toggleActiveRequest();
         }}
       >
         <Card.Content>
           <Card.Header>{req.title}</Card.Header>
           <Card.Meta>{req.reward} KP</Card.Meta>
-          {active && (
+          {myActiveRequest && (
             <Card.Description id={"request-description-" + req.id}>
               {req.description}
             </Card.Description>
           )}
         </Card.Content>
       </Card>
-      {active &&
+      {myActiveRequest &&
         <Offers 
-          request={activeCard}
+          request={activeRequest}
         />
       }
     </>

@@ -28,6 +28,14 @@ describe("Users", () => {
           uid: "me@mail.com",
         },
       })  
+      cy.route({
+        method: 'GET',
+        url: '**/my_requests/requests/2',
+        response: 'fixture:view_another_specific_request_with_offers.json',
+        headers: {
+          uid: "me@mail.com",
+        },
+      })  
       cy.get("#myrequest-home-link").click()
       cy.get("#requests-link").click()
     })
@@ -40,12 +48,34 @@ describe("Users", () => {
       cy.get("#offer-1").should("not.exist")
     })
     
-    it("click on a reQuest to view its description and offers", () => {
+    xit("click on a reQuest to view its description and offers", () => {
       cy.get("#request-1").click()
       cy.get("#request-description-1").should("contain", "I need help, really need help changing tyres.")
       cy.get("#offer-1").within(() => {
         cy.get("#offer-message").should("contain", "I can help you with this")
         cy.get("#offer-email").should("contain", "helper@mail.com")
+      })
+    })
+
+    it("click on it again to hide description and offers", () => {
+      cy.get("#request-1").click()
+      cy.wait(500)
+      cy.get("#request-1").click()
+      cy.get("#request-description-1").should("not.exist")
+      cy.get("#offer-1").should("not.exist")
+    })
+
+    it("click on another reQuest to expand that one instead", () => {
+      cy.get("#request-1").click()
+      cy.wait(500)
+      cy.get("#request-2").click()
+      cy.get("#request-description-1").should("not.exist")
+      cy.get("#offer-1").within(() => {
+        cy.get("#offer-message").should("not.contain", "I can help you with this")
+      })
+      cy.get("#request-description-2").should("be.visible")
+      cy.get("#offer-1").within(() => {
+        cy.get("#offer-message").should("contain", "I can do this for you")
       })
     })
   })
