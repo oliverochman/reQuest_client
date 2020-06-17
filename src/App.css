@@ -6,6 +6,14 @@ html {
   margin: 0px;
   padding: 0px;
 }
+hr {
+  text-align: start;
+  width:36%;
+  margin-left: 7vw;
+  padding-right: 85vw;
+  margin-top: 9vh;
+  border-bottom: 5px solid #e8b704;
+}
 
 #header {
   width: 100vw;
@@ -13,8 +21,9 @@ html {
   background: #e6e6e6;
   padding: 0;
   top: 0;
-  height: 10vh;
+  height: 12vh;
   margin: 0;
+  border-bottom: 7px solid #88a65e ;
 }
 
 #hfirst {
@@ -99,9 +108,11 @@ textarea {
   color: white;
 }
 
-#Logout {
+#logout {
   float: right;
-  padding-left: 5vw;
+  margin-top: 3vh;
+  margin-right: 2vw;
+  color: #e8b704;
 }
 
 #greeting {

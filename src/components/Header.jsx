@@ -3,6 +3,7 @@ import { auth } from "../modules/auth";
 import { Button, Grid } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import Logo from '../images/requestlogo.png'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -48,25 +49,14 @@ const Header = () => {
             <p style={{ float: "left" }} id="hsecond">
               Quest
             </p>
+            <hr></hr>
           </Grid.Column>
-          <Grid.Column>{greeting}</Grid.Column>
+          
           <Grid.Column>
             <p id="loginmessage">{message}</p>
           </Grid.Column>
           <Grid.Column>
-            {authenticated && (
-           <div name="Logout">
-              <Button
-               float='right'
-                basic
-                inverted
-                size="small"
-                id="logout"
-                onClick={() => logout()}
-              >
-                Logout
-              </Button>
-            </div>)}
+          <Grid.Column>{greeting}</Grid.Column>  
           </Grid.Column>
           <Grid.Column>
             <NavLink
@@ -75,6 +65,19 @@ const Header = () => {
             >
               my reQuest
             </NavLink>
+          {authenticated && (
+           <div name="Logout">
+              <Button
+               float='right'
+                basic
+                color='yellow'
+                size="small"
+                id="logout"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </div>)}
           </Grid.Column>
         </Grid.Row>
       </Grid>
