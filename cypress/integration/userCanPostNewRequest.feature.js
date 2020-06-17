@@ -1,9 +1,9 @@
-describe("User can log in to post new reQuest", () => {
+describe("User", () => {
   beforeEach(() => {
     cy.server();
   });
 
-  describe("can log in successfully", () => {
+  describe("can log in", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
@@ -46,9 +46,14 @@ describe("User can log in to post new reQuest", () => {
       });
     });
 
-    it("can post new reQuest", () => {
-      cy.get("#myrequest-home-link").click();
+    it("successfully", () => {
       cy.get("p").should("contain", "user@mail.com");
+    })
+
+    it("and post new reQuest after navigating to creation form", () => {
+      cy.get("#myrequest-home-link").click();
+      cy.get("#requests-link").click()
+      cy.get("#create-request-link").click();
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
       cy.get("#reward").type("100");
