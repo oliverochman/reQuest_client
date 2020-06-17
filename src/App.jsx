@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import NewRequest from "./components/NewRequest";
 import LoginForm from "./components/LoginForm";
 import "./App.css";
+import MyRequestsPage from "./components/MyRequestsPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={AllRequests}></Route>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/myrequest" component={NewRequest} />
+        <Route exact path="/myrequest/requests" component={MyRequestsPage} />
       </Switch>
     </>
   );

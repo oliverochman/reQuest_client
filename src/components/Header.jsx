@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const [activePage, setActivePage] = useState("home");
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -44,14 +45,31 @@ const Header = () => {
         <div id="green_divider"></div>
       </div>
       <div id="links">
-        <div id="small_links">
-          <NavLink to="/myrequest">profile</NavLink>
-          <NavLink to="/myrequest">Quests</NavLink>
-          <NavLink to="/myrequest">reQuests</NavLink>
-        </div>
-        <NavLink id="myrequest-link" to="/myrequest">
-          my reQuest
-        </NavLink>
+        {activePage === "home" && (
+          <NavLink
+            id="myrequest-home-link"
+            to="/myrequest"
+            onClick={() => setActivePage("myrequest")}
+          >
+            my reQuest
+          </NavLink>
+        )}
+        {activePage === "myrequest" && (
+          <>
+            <NavLink
+              id="myrequest-home-link"
+              to="/"
+              onClick={() => setActivePage("home")}
+            >
+              home
+            </NavLink>
+            <div id="small_links">
+              <NavLink id="profile-link" to="/myrequest/profile">profile</NavLink>
+              <NavLink id="quests-link" to="/myrequest/quests">Quests</NavLink>
+              <NavLink id="requests-link" to="/myrequest/requests">reQuests</NavLink>
+            </div>
+          </>
+        )}
       </div>
       <div id="welcome-and-logout">
         <p id="loginmessage">{message}</p>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getRequests from "../modules/getRequests";
+import { getRequests } from "../modules/getRequests";
 import RequestCard from "./RequestCard";
 import { Grid } from "semantic-ui-react";
 
