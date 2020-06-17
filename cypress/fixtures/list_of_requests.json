@@ -7,7 +7,7 @@
       "requester": "someone1@email.com",
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "heavy", "car"],
-      "kpoints": 90,
+      "reward": 90,
       "offerable": true
     },
     {
@@ -17,7 +17,7 @@
       "requester": "someone2@email.com",
       "location": { "area": "Yola", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "heavy", "paint"],
-      "kpoints": 150,
+      "reward": 150,
       "offerable": false
       
     },
@@ -28,7 +28,7 @@
       "requester": "someone3@email.com",
       "location": { "area": "Buma", "long": 18.98, "lat": 58.18 },
       "categories": ["language", "beginner"],
-      "kpoints": 200,
+      "reward": 200,
       "offerable": false
     },
     {
@@ -38,7 +38,7 @@
       "requester": "someone4@email.com",
       "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
       "categories": ["piano", "instrument", "beginner"],
-      "kpoints": 200,
+      "reward": 200,
       "offerable": true
     },
     {
@@ -48,7 +48,7 @@
       "requester": "someone5@email.com",
       "location": { "area": "Aswa", "long": 18.98, "lat": 58.18 },
       "categories": ["shopping", "carry"],
-      "kpoints": 35,
+      "reward": 35,
       "offerable": true
     },
     {
@@ -58,7 +58,7 @@
       "requester": "someone6@email.com",
       "location": { "area": "Aler", "long": 18.98, "lat": 58.18 },
       "categories": ["outdoors", "tools"],
-      "kpoints": 55,
+      "reward": 55,
       "offerable": true
     },
     {
@@ -68,7 +68,7 @@
       "requester": "someone7@email.com",
       "location": { "area": "Paba", "long": 18.98, "lat": 58.18 },
       "categories": ["children", "baby"],
-      "kpoints": 80,
+      "reward": 80,
       "offerable": true
     },
     {
@@ -78,7 +78,7 @@
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["carry", "heavy"],
-      "kpoints": 120,
+      "reward": 120,
       "offerable": true
     },
     {
@@ -88,7 +88,7 @@
       "requester": "someone9@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["carry", "heavy"],
-      "kpoints": 120,
+      "reward": 120,
       "offerable": true
     }
   ]

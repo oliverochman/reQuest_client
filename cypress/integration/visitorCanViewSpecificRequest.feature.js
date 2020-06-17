@@ -1,10 +1,13 @@
 describe("Can view details of a specific request", () => {
   beforeEach(() => {
-    cy.stubMain();
     cy.visit('/')
   });
 
   describe('as a visitor', () => {
+    beforeEach(() => {
+      cy.stubMain()
+    });
+
     it('a button should not exist when visitor is browsing', () => {
       cy.get("#request-4").click()
       cy.get("#selected-request").within(() => {
@@ -16,6 +19,9 @@ describe("Can view details of a specific request", () => {
   
   describe('as a user', () => {
     beforeEach(() => {
+      beforeEach(() => {
+        cy.stubMainLoggedIn()
+      });
       cy.login()
       cy.visit('/')
     });
