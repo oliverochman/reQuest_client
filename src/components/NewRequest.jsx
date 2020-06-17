@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Form, Input } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import getKarma from "../modules/getKarma"
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
+  const karmaPoints = useSelector(state=> state.karma.karma)
+   
+  useEffect(()=>{
+   getKarma(dispatch)
+  },[])
 
   const submitRequest = async (e) => {
     e.persist();
@@ -23,12 +30,12 @@ const NewRequest = () => {
         },
         { headers: createHeaders() }
       );
+      getKarma(dispatch)
       setMessage(response.data.message);
     } catch (error) {
       setMessage(error);
     }
   };
-  const balance = 500;
 
   return (
     <>
@@ -58,7 +65,7 @@ const NewRequest = () => {
               type="number"
               placeholder="Karma Points"
               min='0'
-              max={`${balance}`}
+              max={`${karmaPoints}`}
               step="5"
               required
             />
