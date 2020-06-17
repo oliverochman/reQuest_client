@@ -16,7 +16,7 @@ const NewRequest = () => {
 
   useEffect(() => {
     getKarma(dispatch);
-  }, []);
+  }, [dispatch]);
 
   const submitRequest = async (e) => {
     e.persist();
