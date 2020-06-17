@@ -3,15 +3,27 @@
 body,
 html {
   background-color: #bac1bf !important;
+  margin: 0px;
+  padding: 0px;
+}
+hr {
+  text-align: start;
+  width:36%;
+  margin-left: 7vw;
+  padding-right: 85vw;
+  margin-top: 9vh;
+  border-bottom: 5px solid #e8b704;
 }
 
 #header {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   background: #e6e6e6;
   padding: 0;
   top: 0;
-  height: 10vh;
+  height: 12vh;
+  margin: 0;
+  border-bottom: 7px solid #88a65e ;
 }
 
 #hfirst {
@@ -93,21 +105,31 @@ textarea {
 }
 
 #message {
-  color: #88a65e;
+  color: white;
 }
 
-#Logout {
-  padding-left: 5vw;
+#logout {
+  float: right;
+  margin-top: 3vh;
+  margin-right: 2vw;
+  color: #e8b704;
 }
 
 #greeting {
-  padding-top: 2vh;
+  padding-top: 5vh;
   text-align: center;
+  font-family: "Lora", serif;
+  color: #88a65e;
 }
 
 #myrequest-btn {
+  padding-top: 5vh;
+  padding-right: 2vw;
   font-family: "Lora", serif;
   color: #e8b704;
   font-size: larger;
   float: right;
+}
+#myrequest-btn:hover {
+  color: #88a65e;
 }

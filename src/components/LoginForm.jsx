@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, Button, Form, Input } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import '../App.css';
 
 const LoginForm = () => {
