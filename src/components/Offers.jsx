@@ -7,7 +7,13 @@ const Offers = ({ request }) => {
       <p id={"offer-message"}>{offer.message}</p>
     </div>
   ));
-  return <div>{offers}</div>;
+  
+  return (
+    <div id="offers">
+      <h3>Offers</h3>
+      {offers}
+    </div>
+  );
 };
 
 export default Offers;

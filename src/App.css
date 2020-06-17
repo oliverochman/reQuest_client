@@ -160,7 +160,7 @@ textarea {
 
 /* HOME PAGE - BROWSE REQUESTS */
 
-/* MYREQUEST PAGE */
+/* MYREQUEST PAGES */
 
 #leftmost-component {
   height: 60vh;
@@ -171,4 +171,13 @@ textarea {
 
 #my-list {
   width: 250px;
+}
+
+#offers {
+  display: flex;
+  flex-direction: column;
+}
+
+#offers > div {
+  margin-bottom: 30px; 
 }

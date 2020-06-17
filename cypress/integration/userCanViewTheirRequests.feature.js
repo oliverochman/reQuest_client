@@ -4,7 +4,7 @@ describe("Users", () => {
     cy.login()
   })
 
-  xdescribe("cannot navigate directly to their 'reQuests' page", () => {
+  describe("cannot navigate directly to their 'reQuests' page", () => {
     it("without first clicking 'my reQuest'", () => {
       cy.get("#requests-link").should("not.exist")
     })
@@ -40,7 +40,7 @@ describe("Users", () => {
       cy.get("#requests-link").click()
     })
 
-    xit("view their reQuest list, excl. description and offers", () => {
+    it("view their reQuest list, excl. description and offers", () => {
       cy.get("#request-1").should("be.visible")
       cy.get("#request-2").should("be.visible")
       cy.get("#request-3").should("be.visible")
@@ -48,7 +48,7 @@ describe("Users", () => {
       cy.get("#offer-1").should("not.exist")
     })
     
-    xit("click on a reQuest to view its description and offers", () => {
+    it("click on a reQuest to view its description and offers", () => {
       cy.get("#request-1").click()
       cy.get("#request-description-1").should("contain", "I need help, really need help changing tyres.")
       cy.get("#offer-1").within(() => {

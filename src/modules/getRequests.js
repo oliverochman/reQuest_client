@@ -30,7 +30,7 @@ const getSingleRequest = async (dispatch, id) => {
     const response = await axios.get(`/my_requests/requests/${id}`);
     dispatch({type: "SET_ACTIVE_REQUEST", payload: {request: response.data.request}})
   } catch (error) {
-    debugger;
+    console.log(error)
   }
 };
 

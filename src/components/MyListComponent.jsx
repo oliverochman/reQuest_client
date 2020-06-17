@@ -5,7 +5,6 @@ import { getMyRequests } from "../modules/getRequests";
 
 const MyListComponent = () => {
   const [myRequests, setMyRequests] = useState([]);
-  const [activeRequest, setActiveRequest] = useState(false);
 
   const getList = async () => {
     const requests = await getMyRequests();
