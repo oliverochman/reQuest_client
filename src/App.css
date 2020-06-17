@@ -3,15 +3,18 @@
 body,
 html {
   background-color: #bac1bf !important;
+  margin: 0px;
+  padding: 0px;
 }
 
 #header {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   background: #e6e6e6;
   padding: 0;
   top: 0;
   height: 10vh;
+  margin: 0;
 }
 
 #hfirst {
@@ -97,17 +100,25 @@ textarea {
 }
 
 #Logout {
+  float: right;
   padding-left: 5vw;
 }
 
 #greeting {
-  padding-top: 2vh;
+  padding-top: 5vh;
   text-align: center;
+  font-family: "Lora", serif;
+  color: #88a65e;
 }
 
 #myrequest-btn {
+  padding-top: 5vh;
+  padding-right: 2vw;
   font-family: "Lora", serif;
   color: #e8b704;
   font-size: larger;
   float: right;
+}
+#myrequest-btn:hover {
+  color: #88a65e;
 }

@@ -57,7 +57,7 @@ const Header = () => {
             {authenticated && (
            <div name="Logout">
               <Button
-                floated="right"
+               float='right'
                 basic
                 inverted
                 size="small"
