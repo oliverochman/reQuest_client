@@ -29,6 +29,6 @@ Cypress.Commands.add("login", () => {
   cy.get("#login-form").within(() => {
     cy.get("#email").type("user@mail.com");
     cy.get("#password").type("password");
-    cy.get("Button#submit").contains("Submit").click();
+    cy.get("#submit-btn").contains("Submit").click();
   });
 })
