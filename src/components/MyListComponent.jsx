@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Card } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import RequestCard from "./RequestCard";
-import { getMyQuestsOrRequests } from "../modules/getRequests";
+import { getMyRequests } from "../modules/getRequests";
+import axios from "axios";
 
-const MyListComponent = ({ type }) => {
-  const [list, setList] = useState([]);
-  const [activeCard, setActiveCard] = useState(0);
+const MyListComponent = () => {
+  const [myRequests, setMyRequests] = useState([]);
+  const [activeRequest, setActiveRequest] = useState(false);
 
   const getList = async () => {
-    const theList = await getMyQuestsOrRequests(type);
-    setList(theList);
+    const requests = await getMyRequests();
+    setMyRequests(requests);
   };
 
   useEffect(() => {
     getList();
   }, []);
 
-  const cards = list.map((request) => (
+  const cards = myRequests.map((request) => (
     <RequestCard
       key={request.id}
       request={request}
-      activeCard={request.id === activeCard ? true : false}
-      setActiveCard={setActiveCard}
     />
   ));
 
   return (
-    <Card.Group id="my-list" itemsPerRow={1}>
-      {cards}
-    </Card.Group>
+    <>
+      <Card.Group id="my-list" itemsPerRow={1}>
+        {cards}
+      </Card.Group>
+    </>
   );
 };
 

@@ -6,16 +6,16 @@
     "requester": "me@mail.com",
     "reward": 100,
     "offers": [{
-      "id": 3,
+      "id": 1,
       "helper": {
-        "id": 1,
+        "id": 36,
         "email": "helper@mail.com"
       }, 
       "request_id": 1,
       "message": "I can help you with this"
     },
     {
-      "id": 5,
+      "id": 2,
       "helper": {
         "id": 5,
         "email": "anotherhelper@mail.com"

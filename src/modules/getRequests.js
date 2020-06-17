@@ -15,9 +15,9 @@ const getRequests = async (dispatch) => {
   }
 };
 
-const getMyQuestsOrRequests = async type => {
+const getMyRequests = async () => {
   try {
-    const response = await axios.get(`/my_requests/${type}`);
+    const response = await axios.get("/my_requests/requests");
     return response.data.requests
   } catch (error) {
     console.log(error);
@@ -25,4 +25,13 @@ const getMyQuestsOrRequests = async type => {
   }
 }
 
-export { getRequests, getMyQuestsOrRequests };
+const getSingleRequest = async (dispatch, id) => {
+  try {
+    const response = await axios.get(`/my_requests/requests/${id}`);
+    dispatch({type: "SET_ACTIVE_REQUEST", payload: {request: response.data.request}})
+  } catch (error) {
+    debugger;
+  }
+};
+
+export { getRequests, getMyRequests, getSingleRequest };

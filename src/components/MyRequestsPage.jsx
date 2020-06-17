@@ -14,7 +14,7 @@ const MyRequestsPage = () => {
       </Menu>
       <Button>Create new reQuest</Button>
       </div>
-      <MyListComponent type="requests" />
+      <MyListComponent />
     </div>
   );
 };
