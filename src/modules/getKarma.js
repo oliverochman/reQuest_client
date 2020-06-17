@@ -6,7 +6,7 @@ const getKarma = async (dispatch) => {
     dispatch({
       type: "GET_KARMA",
       payload: {
-        karma: response.data.karma,
+        karma: response.data.karma_points,
       },
     });
   } catch (error) {

@@ -34,7 +34,7 @@ describe("User can assign Karma Points to the extent of their balance", () => {
         cy.route({
           method: "GET",
           url: "**/karma_points*",
-          response: { karma: 500 },
+          response: { karma_points: 500 },
           headers: {
             uid: "user@mail.com",
           },
@@ -69,7 +69,7 @@ describe("User can assign Karma Points to the extent of their balance", () => {
         cy.route({
           method: "GET",
           url: "**/karma_points*",
-          response: { karma: 500 },
+          response: { karma_points: 500 },
           headers: {
             uid: "user@mail.com",
           },

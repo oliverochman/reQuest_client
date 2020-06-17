@@ -66,7 +66,7 @@ const NewRequest = () => {
               placeholder="Karma Points"
               max={karmaPoints}
               min="0"
-              step="5"
+              step="1"
               required
             />
             <Input
