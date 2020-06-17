@@ -42,17 +42,17 @@ describe("User can log in to post new reQuest", () => {
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("Button#submit").contains("Submit").click();
+        cy.get("#submit-btn").contains("Submit").click();
       });
     });
 
     it("can post new reQuest", () => {
-      cy.get("#myrequest-link").click();
+      cy.get("#myrequest-home-link").click();
       cy.get("p").should("contain", "user@mail.com");
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
       cy.get("#reward").type("100");
-      cy.get("#submit").contains("Submit").click();
+      cy.get("#submit-btn").contains("Submit").click();
       cy.get("#message").should(
         "contain",
         "Your reQuest was successfully created!"
@@ -76,7 +76,7 @@ describe("User can log in to post new reQuest", () => {
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("wrongpassword");
-        cy.get("Button").contains("Submit").click();
+        cy.get("#submit-btn").contains("Submit").click();
       });
     });
     it("with invalid credentials", () => {
