@@ -1,6 +1,6 @@
 describe("Visitor can view all listed requests", () => {
   beforeEach(() => {
-    cy.stubMainPage();
+    cy.stubMain();
   });
   it("reQuests are shown", () => {
     cy.visit("/");

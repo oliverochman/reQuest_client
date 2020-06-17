@@ -1,4 +1,4 @@
-Cypress.Commands.add("stubMainPage", () => {
+Cypress.Commands.add("stubMain", () => {
   cy.server();
   cy.route({
     method: "GET",

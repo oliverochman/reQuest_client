@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
-  const [activePage, setActivePage] = useState("home");
   const [activeTab, setActiveTab] = useState("");
+  const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -37,6 +37,10 @@ const Header = () => {
     </div>
   );
 
+  const setActivePage = (page) => {
+    dispatch({ type: "SET_ACTIVE_PAGE", payload: page })
+  }
+
   const activeMenuItem = (menuItem) => {
     if (menuItem === activeTab) {
       return { backgroundColor: "#e8b704", color: "whitesmoke" };
@@ -55,8 +59,8 @@ const Header = () => {
         {activePage === "home" && (
           <NavLink
             id="myrequest-home-link"
-            to="/myrequest"
-            onClick={() => setActivePage("myrequest")}
+            to={ authenticated ? "/myrequest" : "/login" }
+            onClick={ authenticated && (() =>  setActivePage("myrequest"))}
           >
             my reQuest
           </NavLink>

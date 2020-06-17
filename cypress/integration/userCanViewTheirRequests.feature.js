@@ -1,17 +1,25 @@
 describe("Users", () => {
-  beforeEach(() => {
-    cy.stubMainPage()
-    cy.login()
-  })
-
   describe("cannot navigate directly to their 'reQuests' page", () => {
     it("without first clicking 'my reQuest'", () => {
+      cy.stubMain()
+      cy.login()
       cy.get("#requests-link").should("not.exist")
+    })
+  })
+
+  describe("cannot navigate to 'myRequest' if not logged in", () => {
+    it("but are redirected to login page instead", () => {
+      cy.stubMain()
+      cy.visit("/")
+      cy.get("#myrequest-home-link").click()
+      cy.get("#requests-link").should("not.exist")
+      cy.get("#login-form").should("be.visible")
     })
   })
 
   describe("can, by navigating to 'my reQuest' and then 'reQuests'", () => {
     beforeEach(() => {
+      cy.stubMain()
       cy.route({
         method: 'GET',
         url: '**/my_requests/requests',
@@ -35,7 +43,8 @@ describe("Users", () => {
         headers: {
           uid: "me@mail.com",
         },
-      })  
+      })
+      cy.login()  
       cy.get("#myrequest-home-link").click()
       cy.get("#requests-link").click()
     })

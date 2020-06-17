@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
@@ -8,6 +8,10 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch({type: "RESET_ACTIVE_PAGE"})
+  }, [])
 
   const login = async (e) => {
     try {
