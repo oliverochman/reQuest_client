@@ -17,14 +17,22 @@ describe("Users", () => {
         url: '**/my_requests/requests',
         response: 'fixture:list_of_my_requests.json',
         headers: {
-          uid: "user@mail.com",
+          uid: "me@mail.com",
+        },
+      })  
+      cy.route({
+        method: 'GET',
+        url: '**/my_requests/requests/1',
+        response: 'fixture:view_specific_request_with_offers.json',
+        headers: {
+          uid: "me@mail.com",
         },
       })  
       cy.get("#myrequest-home-link").click()
       cy.get("#requests-link").click()
     })
 
-    it("view their reQuest list, excl. description and offers", () => {
+    xit("view their reQuest list, excl. description and offers", () => {
       cy.get("#request-1").should("be.visible")
       cy.get("#request-2").should("be.visible")
       cy.get("#request-3").should("be.visible")
@@ -34,8 +42,11 @@ describe("Users", () => {
     
     it("click on a reQuest to view its description and offers", () => {
       cy.get("#request-1").click()
-      cy.get("#request-description-1").should("be.visible")
-      cy.get("#offer-1").should("be.visible")
+      cy.get("#request-description-1").should("contain", "I need help, really need help changing tyres.")
+      cy.get("#offer-1").within(() => {
+        cy.get("#offer-message").should("contain", "I can help you with this")
+        cy.get("#offer-email").should("contain", "helper@mail.com")
+      })
     })
   })
 })
