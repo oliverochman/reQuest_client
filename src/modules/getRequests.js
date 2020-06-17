@@ -11,6 +11,7 @@ const getRequests = async (dispatch) => {
     });
   } catch (error) {
     console.log(error);
+    return []
   }
 };
 
@@ -20,6 +21,7 @@ const getMyQuestsOrRequests = async type => {
     return response.data.requests
   } catch (error) {
     console.log(error);
+    return []
   }
 }
 

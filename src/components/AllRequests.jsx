@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRequests } from "../modules/getRequests";
 import RequestCard from "./RequestCard";
-import { Grid } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 const AllRequests = () => {
   const dispatch = useDispatch();
@@ -17,11 +17,9 @@ const AllRequests = () => {
   ));
 
   return (
-    <div>
-      <Grid id="qcards" columns={3} centered >
-        {requestCards}
-      </Grid>
-    </div>
+    <Card.Group id="qcards">
+      {requestCards}
+    </Card.Group>
   );
 };
 

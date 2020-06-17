@@ -16,6 +16,15 @@ h1, h2, h3, h4, h5, h6, span {
   color: whitesmoke
 }
 
+#page-container {
+  margin-top: 180px;
+  display: flex;
+}
+
+#page-container > * {
+  margin-left: 30px;
+}
+
 /* HEADER */
 #header {
   position: absolute;
@@ -104,7 +113,6 @@ h1, h2, h3, h4, h5, h6, span {
 
 /* FORMS */
 .form-container {
-  margin-top: 200px;
   padding: 20px 0;
   width: 25vw !important;
   border-radius: 4%;
@@ -151,6 +159,12 @@ textarea {
 }
 
 /* HOME PAGE - BROWSE REQUESTS */
-#qcards {
-  margin-top: 180px;
+
+/* MYREQUEST PAGE */
+
+#leftmost-component {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -30,7 +30,7 @@ const NewRequest = () => {
   };
 
   return (
-    <>
+    <div id="page-container">
       {!authenticated ? (
         <Redirect to={{ pathname: "/login" }} />
       ) : (
@@ -72,7 +72,7 @@ const NewRequest = () => {
           <p className='input-labels' id="message">{message}</p>
         </Container>
       )}
-    </>
+    </div>
   );
 };
 
