@@ -28,6 +28,7 @@ const NewRequest = () => {
       setMessage(error);
     }
   };
+  const balance = 500;
 
   return (
     <>
@@ -57,6 +58,7 @@ const NewRequest = () => {
               type="number"
               placeholder="Karma Points"
               min='0'
+              max={`${balance}`}
               step="5"
               required
             />
