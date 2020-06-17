@@ -8,6 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const [activePage, setActivePage] = useState("home");
+  const [activeTab, setActiveTab] = useState("");
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -35,6 +36,12 @@ const Header = () => {
       </p>
     </div>
   );
+
+  const activeMenuItem = (menuItem) => {
+    if (menuItem === activeTab) {
+      return { backgroundColor: "#e8b704", color: "whitesmoke" };
+    }
+  };
 
   return (
     <div id="header">
@@ -64,25 +71,50 @@ const Header = () => {
               home
             </NavLink>
             <div id="small_links">
-              <NavLink id="profile-link" to="/myrequest/profile">profile</NavLink>
-              <NavLink id="quests-link" to="/myrequest/quests">Quests</NavLink>
-              <NavLink id="requests-link" to="/myrequest/requests">reQuests</NavLink>
+              <NavLink
+                id="profile-link"
+                to="/myrequest/profile"
+                style={activeMenuItem("profile")}
+                onClick={() => setActiveTab("profile")}
+              >
+                profile
+              </NavLink>
+              <NavLink
+                id="quests-link"
+                to="/myrequest/quests"
+                style={activeMenuItem("quests")}
+                onClick={() => setActiveTab("quests")}
+              >
+                Quests
+              </NavLink>
+              <NavLink
+                id="requests-link"
+                to="/myrequest/requests"
+                style={activeMenuItem("requests")}
+                onClick={() => setActiveTab("requests")}
+              >
+                reQuests
+              </NavLink>
             </div>
           </>
         )}
       </div>
       <div id="welcome-and-logout">
         <p id="loginmessage">{message}</p>
-        {greeting}
-        <Button
-          basic
-          inverted
-          size="small"
-          id="logout"
-          onClick={() => logout()}
-        >
-          Logout
-        </Button>
+        {authenticated && (
+          <>
+            {greeting}
+            <Button
+              basic
+              inverted
+              size="small"
+              id="logout"
+              onClick={() => logout()}
+            >
+              Logout
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

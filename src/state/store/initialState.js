@@ -1,7 +1,8 @@
 const initialState = {
   requests: [],
+  activeRequest: false,
   authenticated: false,
   uid: "",
-  activeRequest: false
+  karma:0
 };
 export default initialState;

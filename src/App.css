@@ -78,23 +78,30 @@ h1, h2, h3, h4, h5, h6, span {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  width: calc(95vw - 270px);
+  width: calc(95vw - 300px);
 }
 
-#small_links {
-  display: flex;
-  justify-content: space-evenly;
-  width: 60%;
-}
-
-#links a {
+#small_links a {
+  padding: 10px 20px;
+  margin-top: -10px;
+  border-radius: 5px;
   color: #e8b704;
   font-size: 2vw;
 }
 
+#small_links a:hover {
+  background-color: #e8b70444;
+  color: whitesmoke;
+}
+
 #myrequest-home-link {
-  margin-top: -10px;
-  font-size: 2.5vw !important;
+  color: #e8b704;
+  font-size: 2.5vw;
+}
+
+#myrequest-home-link:hover {
+  transform: scale(1.1);
+  color: #fec804;
 }
 
 #welcome-and-logout {
