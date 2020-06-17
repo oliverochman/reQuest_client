@@ -168,3 +168,7 @@ textarea {
   flex-direction: column;
   justify-content: space-between;
 }
+
+#my-list {
+  width: 250px;
+}
