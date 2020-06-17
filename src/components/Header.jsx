@@ -3,7 +3,6 @@ import { auth } from "../modules/auth";
 import { Button, Grid } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Logo from '../images/requestlogo.png'
 
 const Header = () => {
   const dispatch = useDispatch();
