@@ -5,6 +5,7 @@ body,
 html {
   background-color: #bac1bf !important;
   z-index: -2;
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, span {
@@ -19,10 +20,20 @@ h1, h2, h3, h4, h5, h6, span {
 #page-container {
   margin-top: 180px;
   display: flex;
+  padding: 50px; 
+  padding-top: 20px;
+  width: 100vw;
 }
 
-#page-container > * {
-  margin-left: 30px;
+#page-container h1 {
+  position: absolute;
+  margin-top: -80px;
+  color: whitesmoke;
+  font-size: 300%;
+}
+
+#page-container * {
+  overflow: hidden;
 }
 
 /* HEADER */
@@ -167,6 +178,75 @@ textarea {
 
 /* HOME PAGE - BROWSE REQUESTS */
 
+#list-wrapper {
+  overflow: auto;
+  height: calc(90vh - 178px);
+}
+
+#qcards > * {
+  height: "initial";
+}
+
+#specific-component {
+  background-color: lightgray;
+  border: 3px #88a65e solid;
+  padding: 4px;
+  height: calc(75vh - 178px);
+  position: relative;
+}
+
+#about-request {
+  font-size: 125%;
+  overflow: auto;
+  height: 100%;
+}
+
+#about-request h3 {
+  color: #88a65e;
+}
+
+#description-wrapper {
+  overflow: auto;
+  height: calc((75vh - 178px)/2);
+  font-size: 80%;
+}
+
+#selected-request {
+  font-size: 150%;
+  color: #606060;
+  padding: 7px;
+}
+
+#contact-button{
+  position: absolute;
+  bottom: 39px;
+  right: 15px;
+  color: white;
+  background-color: #88a65e;
+  font-weight: 700;
+  font-size: 100%;
+}
+
+#selected-message {
+  position: absolute;
+  bottom: 8px;
+  justify-self: center;
+}
+
+#selected-title {
+  font-weight: 700;
+}
+
+#selected-reward {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background-color: #e8b704;
+  border: 6px solid transparent;
+  color: white;
+  font-weight: 700;
+}
+
 /* MYREQUEST PAGES */
 
 #leftmost-component {
@@ -188,3 +268,4 @@ textarea {
 #offers > div {
   margin-bottom: 30px; 
 }
+
