@@ -1,6 +1,6 @@
 const initialState = {
   requests: [],
-  activeRequest: false,
+  mySelectedRequest: false,
   activePage: "home",
   authenticated: false,
   uid: "",
