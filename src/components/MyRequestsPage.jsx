@@ -11,6 +11,10 @@ const MyRequestsPage = () => {
     (state) => state.authentication.authenticated
   );
 
+  const getMyActiveRequests = () => {
+    
+  }
+
   return (
     <div id="page-container">
       {!authenticated ? (
@@ -19,16 +23,21 @@ const MyRequestsPage = () => {
         <>
           <div id="leftmost-component">
             <Menu vertical secondary>
-              <Menu.Item active="true">pending</Menu.Item>
-              <Menu.Item>active</Menu.Item>
-              <Menu.Item>completed</Menu.Item>
+              <Menu.Item id='pending' active="true" >pending</Menu.Item>
+              <Menu.Item id='active' onClick={getMyActiveRequests} >active</Menu.Item>
+              <Menu.Item id='completed' >completed</Menu.Item>
             </Menu>
             <Link to="/myrequest/newrequest" id="create-request-link">
               <Button>Create new reQuest</Button>
             </Link>
           </div>
+          <div id="middle-component" >
           <MyListComponent />
           {mySelectedRequest && <Offers request={mySelectedRequest} />}
+          </div>
+          <div id="rightmost-component" >
+          <Button id='quest-completed'>Quest Completed</Button>
+          </div>
         </>
       )}
     </div>
