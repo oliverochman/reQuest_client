@@ -1,27 +1,35 @@
-import React from "react";
-import { List,Button, Card } from 'semantic-ui-react'
+import React, { useState } from "react";
+import { List } from "semantic-ui-react";
+import OfferMessage from "./OfferMessage";
 
 const Offers = ({ request }) => {
+  const [showHelperMessage, setShowHelperMessage] = useState(false);
+  const [activeOffer, setActiveOffer] = useState({});
+  const onHelperClick = (e) => {
+    setShowHelperMessage(true);
+    setActiveOffer({ ...request.offers[parseInt(e.target.id)] });
+  };
 
-  const showHelperMessage = ()=>{
-    console.log("BAJS")
-  }
-
-  const helper = request.offers.map((offer) => (
-    
-      <List.Item id={"offer-" + offer.id}>
-        <List.Content>
-          <List.Header onClick={showHelperMessage} id={"helper-email"}>{offer.helper.email}</List.Header>
-        </List.Content>
-      </List.Item>
-    
+  const helper = request.offers.map((offer, index) => (
+    <List.Item id={"offer-" + offer.id}>
+      <List.Content>
+        <List.Header
+          onClick={onHelperClick}
+          className={"helper-email-" + offer.id}
+          id={index}
+        >
+          {offer.helper.email}
+        </List.Header>
+      </List.Content>
+    </List.Item>
   ));
-  
+
   return (
     <List divided relaxed id="offers">
       <h3>Offers</h3>
       {helper}
-      </List>
+      {showHelperMessage && <OfferMessage activeOffer={activeOffer} />}
+    </List>
   );
 };
 

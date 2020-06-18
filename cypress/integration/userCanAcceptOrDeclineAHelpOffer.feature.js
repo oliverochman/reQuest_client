@@ -33,12 +33,12 @@ describe("User can", () => {
 
   describe("click on any offer", () => {
     it("to display more information about it", () => {
-      // cy.get("#offer-message").should("not.exist");
+      cy.get("#helper-message").should("not.be.visible");
+
       cy.get("#offer-1").within(() => {
-        cy.get("#helper-email").should("be.visible");
+        cy.get(".helper-email-1").should("be.visible");
       });
-      cy.get("#helper-email").click();
-      cy.get("#helper-message").should("be.visible");
+      cy.get(".helper-email-1").click();
       cy.get("button#accept").should("be.visible");
       cy.get("button#decline").should("be.visible");
     });
