@@ -17,7 +17,7 @@ const SpecificRequest = () => {
         case user && selectedRequest.offerable:
           disableButton = false;
           break;
-        case user && !selectedRequest.offerable && selectedRequest.requester == user:
+        case user && !selectedRequest.offerable && selectedRequest.requester === user:
           disableButton = true;
           message = "You cannot make an offer on your own request";
           break;
