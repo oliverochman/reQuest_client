@@ -2,21 +2,19 @@ import React from "react";
 import { List, Button, Card } from "semantic-ui-react";
 
 const OfferMessage = (props) => {
-  debugger;
+  // debugger;
   const helperMessage = (
     <Card.Group>
       <Card>
         <Card.Content>
-          <Card.Header>Steve Sanders</Card.Header>
-          <Card.Meta>Friends of Elliot</Card.Meta>
-          <Card.Description>
-            Steve wants to add you to the group <strong>best friends</strong>
-          </Card.Description>
+          <Card.Header></Card.Header>
+          <Card.Meta>{props.activeOffer.helper.email}</Card.Meta>
+          <Card.Description>{props.activeOffer.message}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div className="ui two buttons">
             <Button basic color="green">
-              Approve
+              Accept
             </Button>
             <Button basic color="red">
               Decline

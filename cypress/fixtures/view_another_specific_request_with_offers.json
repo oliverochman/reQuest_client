@@ -5,32 +5,34 @@
     "description": "I need help, really need help painting my fence, I have the tools and all, just come and do it for me, please",
     "requester": "me@mail.com",
     "reward": 150,
-    "offers": [{
-      "id": 1,
-      "helper": {
-        "id": 36,
-        "email": "helper@mail.com"
-      }, 
-      "request_id": 2,
-      "message": "I can do this for you"
-    },
-    {
-      "id": 2,
-      "helper": {
-        "id": 5,
-        "email": "anotherhelper@mail.com"
-      }, 
-      "request_id": 2,
-      "message": "I can fix this for you in a minute"
-    },
-    {
-      "id": 3,
-      "helper": {
-        "id": 25,
-        "email": "yetanotherhelper@mail.com"
-      }, 
-      "request_id": 2,
-      "message": "I can fix this for you in a minute"
-    }]
+    "offers": [
+      {
+        "id": 1,
+        "helper": {
+          "id": 36,
+          "email": "helper@mail.com"
+        },
+        "request_id": 2,
+        "message": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
+      },
+      {
+        "id": 2,
+        "helper": {
+          "id": 5,
+          "email": "anotherhelper@mail.com"
+        },
+        "request_id": 2,
+        "message": "I can fix this for you in a minute"
+      },
+      {
+        "id": 3,
+        "helper": {
+          "id": 25,
+          "email": "yetanotherhelper@mail.com"
+        },
+        "request_id": 2,
+        "message": "I can fix this for you in a minute"
+      }
+    ]
   }
 }
