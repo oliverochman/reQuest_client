@@ -1,9 +1,9 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import { useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 
 const RequestCard = ({ request }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const onClickHandler = () => {
     dispatch({
       type: "SET_SELECTED_REQUEST",
@@ -11,18 +11,21 @@ const RequestCard = ({ request }) => {
         request: request,
       },
     });
-  }
+  };
 
   return (
     <>
-      <Card style={{ margin: "10px" }} id={"request-" + request.id} onClick={ onClickHandler }>
+      <Card
+        style={{ margin: "10px" }}
+        id={"request-" + request.id}
+        onClick={onClickHandler}
+      >
         <Card.Content>
           <Card.Header>{request.title}</Card.Header>
           <Card.Meta>{request.reward} KP</Card.Meta>
         </Card.Content>
       </Card>
     </>
-
   );
 };
 

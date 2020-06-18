@@ -20,9 +20,19 @@ h1, h2, h3, h4, h5, h6, span {
 #page-container {
   margin-top: 180px;
   display: flex;
+  padding: 50px; 
+  padding-top: 20px;
+  width: 100vw;
 }
 
-#page-container > * {
+#page-container h1 {
+  position: absolute;
+  margin-top: -80px;
+  color: whitesmoke;
+  font-size: 300%;
+}
+
+#page-container * {
   overflow: hidden;
 }
 
@@ -168,30 +178,13 @@ textarea {
 
 /* HOME PAGE - BROWSE REQUESTS */
 
-#qcards {
+#list-wrapper {
   overflow: auto;
+  height: calc(90vh - 178px);
 }
 
-/* MYREQUEST PAGES */
-
-#leftmost-component {
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#my-list {
-  width: 250px;
-}
-
-#offers {
-  display: flex;
-  flex-direction: column;
-}
-
-#offers > div {
-  margin-bottom: 30px; 
+#qcards > * {
+  height: "initial";
 }
 
 #specific-component {
@@ -253,3 +246,26 @@ textarea {
   color: white;
   font-weight: 700;
 }
+
+/* MYREQUEST PAGES */
+
+#leftmost-component {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#my-list {
+  width: 250px;
+}
+
+#offers {
+  display: flex;
+  flex-direction: column;
+}
+
+#offers > div {
+  margin-bottom: 30px; 
+}
+
