@@ -1,12 +1,11 @@
 import React from "react";
 import MyListComponent from "./MyListComponent";
 import { Menu, Button } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
 
 const MyRequestsPage = () => {
-  const dispatch = useDispatch()
   const activeRequest = useSelector((state) => state.requests.activeRequest);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated

@@ -11,7 +11,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     dispatch({type: "RESET_ACTIVE_PAGE"})
-  }, [])
+  }, [dispatch])
 
   const login = async (e) => {
     try {
