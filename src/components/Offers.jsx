@@ -1,22 +1,27 @@
 import React from "react";
-import { List } from 'semantic-ui-react'
+import { List,Button, Card } from 'semantic-ui-react'
 
 const Offers = ({ request }) => {
+
+  const showHelperMessage = ()=>{
+    console.log("BAJS")
+  }
+
   const helper = request.offers.map((offer) => (
     
-    <div id={"offer-" + offer.id}>
-      <p id={"helper-email"}>{offer.helper.email}</p>
-      {/* <p id={"helper-message"}>{offer.message}</p> */}
-    </div>
+      <List.Item id={"offer-" + offer.id}>
+        <List.Content>
+          <List.Header onClick={showHelperMessage} id={"helper-email"}>{offer.helper.email}</List.Header>
+        </List.Content>
+      </List.Item>
+    
   ));
   
   return (
-    // <div id="offers">
     <List divided relaxed id="offers">
       <h3>Offers</h3>
       {helper}
       </List>
-    // </div>
   );
 };
 
