@@ -1,9 +1,9 @@
-describe("User can log in to post new reQuest", () => {
+describe("User", () => {
   beforeEach(() => {
     cy.server();
   });
 
-  describe("can log in successfully", () => {
+  describe("can log in", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
@@ -49,17 +49,22 @@ describe("User can log in to post new reQuest", () => {
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("Button#submit").contains("Submit").click();
+        cy.get("#submit-btn").contains("Submit").click();
       });
     });
 
-    it("can post new reQuest", () => {
-      cy.get("#myrequest-btn").click();
+    it("successfully", () => {
       cy.get("p").should("contain", "user@mail.com");
+    })
+
+    it("and post new reQuest after navigating to creation form", () => {
+      cy.get("#myrequest-home-link").click();
+      cy.get("#requests-link").click()
+      cy.get("#create-request-link").click();
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
       cy.get("#reward").type("100");
-      cy.get("#submit").contains("Submit").click();
+      cy.get("#submit-btn").contains("Submit").click();
       cy.get("#message").should(
         "contain",
         "Your reQuest was successfully created!"
@@ -83,7 +88,7 @@ describe("User can log in to post new reQuest", () => {
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("wrongpassword");
-        cy.get("Button").contains("Submit").click();
+        cy.get("#submit-btn").contains("Submit").click();
       });
     });
     it("with invalid credentials", () => {

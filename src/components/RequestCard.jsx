@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import { useDispatch} from 'react-redux'
 
-const QuestCard = ({ request }) => {
+const RequestCard = ({ request }) => {
   const dispatch = useDispatch()
   const onClickHandler = () => {
     dispatch({
@@ -22,7 +22,8 @@ const QuestCard = ({ request }) => {
         </Card.Content>
       </Card>
     </>
+
   );
 };
 
-export default QuestCard;
+export default RequestCard;

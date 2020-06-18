@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Container } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,7 +22,7 @@ const NewRequest = () => {
     e.persist();
     try {
       const response = await axios.post(
-        "/api/requests",
+        "/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
@@ -38,13 +38,13 @@ const NewRequest = () => {
   };
 
   return (
-    <>
+    <div id="page-container">
       {!authenticated ? (
         <Redirect to={{ pathname: "/login" }} />
       ) : (
-        <div className="newQuest-container">
-          <h1 className="input-labels">{"New reQuest"}</h1>
-          <Form onSubmit={(e) => submitRequest(e)}>
+        <Container className="form-container">
+          <h1 className='input-labels'>{"New reQuest"}</h1>
+          <Form id="newRequest-form" onSubmit={(e) => submitRequest(e)}>
             <Form.Input
               id="title"
               name="Title"
@@ -70,7 +70,7 @@ const NewRequest = () => {
               required
             />
             <Input
-              id="submit"
+              id="submit-btn"
               type="submit"
               value="Submit"
               rows="5"
@@ -78,12 +78,10 @@ const NewRequest = () => {
               required
             />
           </Form>
-          <p className="input-labels" id="message">
-            {message}
-          </p>
-        </div>
+          <p className='input-labels' id="message">{message}</p>
+        </Container>
       )}
-    </>
+    </div>
   );
 };
 

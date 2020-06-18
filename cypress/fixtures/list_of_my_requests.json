@@ -1,0 +1,25 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "title": "Change to winter tires",
+      "description": "I need help, really need help changing tyres, I have the tools and all, just come and do it for me, please",
+      "requester": "me@mail.com",
+      "reward": 100
+    },
+    {
+      "id": 2,
+      "title": "Paint fences in backyard",
+      "description": "I need help, really need help painting my fence, I have the tools and all, just come and do it for me, please",
+      "requester": "me@mail.com",
+      "reward": 150
+    },
+    {
+      "id": 3,
+      "title": "Teach me French",
+      "description": "I need help, really need help learning French, I have the books and all, just come and do it for me, please",
+      "requester": "me@mail.com",
+      "reward": 200
+    }
+  ]
+}
