@@ -1,6 +1,14 @@
 describe("Can view details of a specific request", () => {
+  describe('for everyone', () => {
+    it("displays an informative message until a request has been selected", () => {
+      cy.stubMain()
+      cy.visit('/')
+      cy.get("#about-request").should("contain", "The big idea")
+    })
+  })
+
   describe('as a visitor', () => {
-    it('a button should not exist when visitor is browsing', () => {
+    it('the contact button should be disabled when visitor is browsing', () => {
       cy.stubMain()
       cy.visit('/')
       cy.get("#request-4").click()
@@ -16,11 +24,7 @@ describe("Can view details of a specific request", () => {
       cy.stubMainLoggedIn()
       cy.login()
     });
-    
-    it("displays an informative message until a request has been selected", () => {
-      cy.get("#about-request").should("contain", "The big idea")
-    })
-  
+
     it("a request can be viewed", () => {
       cy.get("#request-1").click()
       cy.get("#selected-request").within(() => {
@@ -33,7 +37,7 @@ describe("Can view details of a specific request", () => {
       });
     });
   
-    it('a request can have contact button disabled if the user has already offered', () => {
+    it('a request will have contact button disabled if the user has already offered', () => {
       cy.get("#request-2").click()
       cy.get("#selected-request").within(() => {
         cy.get("#selected-title").should("contain", "Paint fences in backyard");
@@ -44,7 +48,7 @@ describe("Can view details of a specific request", () => {
       });
     });
 
-    it('a request can have contact button disabled if the user made the request', () => {
+    it('a request will have contact button disabled if the user made the request', () => {
       cy.get("#request-3").click()
       cy.get("#selected-request").within(() => {
         cy.get("#selected-title").should("contain", "Teach me French");
