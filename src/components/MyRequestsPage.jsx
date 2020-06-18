@@ -1,12 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import MyListComponent from "./MyListComponent";
 import { Menu, Button } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
-import getMyRequests from "../modules/getRequests";
+import {getMyRequests} from "../modules/getRequests";
+import Axios from "axios";
 
 const MyRequestsPage = () => {
+  const [message, setMessage] = useState()
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
@@ -15,17 +17,32 @@ const MyRequestsPage = () => {
   );
   const dispatch = useDispatch();
 
-  const getMyActiveRequests = async () => {
-    let requests = getMyRequests();
+  const getMyActiveRequests = async() => {
+    let requests = await getMyRequests();
     let activeRequest = requests.filter((request) => {
-      request.status == "active";
+      return request.status === "active"
     });
+    let activeRequestElement = activeRequest[0]
     dispatch({
       type: "SET_MY_SELECTED_REQUEST",
       payload: {
-        request: activeRequest,
+        request: activeRequestElement,
       },
     });
+  };
+
+  const completeRequest = async () => {
+    try {
+      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"))
+      const response = await Axios.put(
+        `/my_requests/requests/${mySelectedRequest.id}`,
+        { headers: headers },
+        { params: { activity: "completed" } }
+      );
+      setMessage(response.data.message)
+    } catch (error) {
+      setMessage(error.response.data.message)
+    }
   };
 
   return (
@@ -53,7 +70,13 @@ const MyRequestsPage = () => {
             {mySelectedRequest && <Offers request={mySelectedRequest} />}
           </div>
           <div id="rightmost-component">
-            <Button id="quest-completed">Quest Completed</Button>
+            {mySelectedRequest.status === "active" && ( <>
+              <Button id="quest-completed" onClick={completeRequest}>
+                Quest Completed
+              </Button>
+              <p>{message}</p>
+              </>
+            )}
           </div>
         </>
       )}
