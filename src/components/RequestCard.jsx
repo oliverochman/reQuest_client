@@ -18,7 +18,7 @@ const RequestCard = ({ request }) => {
       <Card style={{ margin: "10px" }} id={"request-" + request.id} onClick={ onClickHandler }>
         <Card.Content>
           <Card.Header>{request.title}</Card.Header>
-          <Card.Meta>{request.kpoints} KP</Card.Meta>
+          <Card.Meta>{request.reward} KP</Card.Meta>
         </Card.Content>
       </Card>
     </>

@@ -6,7 +6,7 @@ import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
 
 const MyRequestsPage = () => {
-  const activeRequest = useSelector((state) => state.requests.activeRequest);
+  const mySelectedRequest = useSelector((state) => state.requests.mySelectedRequest);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
@@ -28,7 +28,7 @@ const MyRequestsPage = () => {
             </Link>
           </div>
           <MyListComponent />
-          {activeRequest && <Offers request={activeRequest} />}
+          {mySelectedRequest && <Offers request={mySelectedRequest} />}
         </>
       )}
     </div>
