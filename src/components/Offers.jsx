@@ -1,18 +1,22 @@
 import React from "react";
+import { List } from 'semantic-ui-react'
 
 const Offers = ({ request }) => {
-  const offers = request.offers.map((offer) => (
+  const helper = request.offers.map((offer) => (
+    
     <div id={"offer-" + offer.id}>
-      <p id={"offer-email"}>{offer.helper.email}</p>
-      <p id={"offer-message"}>{offer.message}</p>
+      <p id={"helper-email"}>{offer.helper.email}</p>
+      {/* <p id={"helper-message"}>{offer.message}</p> */}
     </div>
   ));
   
   return (
-    <div id="offers">
+    // <div id="offers">
+    <List divided relaxed id="offers">
       <h3>Offers</h3>
-      {offers}
-    </div>
+      {helper}
+      </List>
+    // </div>
   );
 };
 
