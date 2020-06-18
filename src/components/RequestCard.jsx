@@ -1,17 +1,38 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleRequest } from "../modules/getRequests";
 
-const QuestCard = ({ request }) => {
+const RequestCard = ({ request, myRequests }) => {
+  const activeRequest = useSelector((state) => state.requests.activeRequest);
+  const myActiveRequest = activeRequest && activeRequest.id === request.id;
+  const req = myActiveRequest ? activeRequest : request;
+  const dispatch = useDispatch();
+
+  const toggleActiveRequest = () => {
+    myActiveRequest
+      ? dispatch({ type: "RESET_ACTIVE_REQUEST" })
+      : getSingleRequest(dispatch, req.id);
+  };
+
   return (
-    <>
-      <Card style={{ margin: "10px" }} id={"request-" + request.id}>
-        <Card.Content>
-          <Card.Header>{request.title}</Card.Header>
-          <Card.Meta>{request.kpoints} KP</Card.Meta>
-        </Card.Content>
-      </Card>
-    </>
+    <Card
+      id={"request-" + req.id}
+      onClick={() => {
+        toggleActiveRequest();
+      }}
+    >
+      <Card.Content>
+        <Card.Header>{req.title}</Card.Header>
+        <Card.Meta>{req.reward} KP</Card.Meta>
+        {myActiveRequest && (
+          <Card.Description id={"request-description-" + req.id}>
+            {req.description}
+          </Card.Description>
+        )}
+      </Card.Content>
+    </Card>
   );
 };
 
-export default QuestCard;
+export default RequestCard;

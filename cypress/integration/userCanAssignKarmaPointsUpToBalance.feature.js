@@ -1,28 +1,7 @@
 describe("User can assign Karma Points to the extent of their balance", () => {
   beforeEach(() => {
     cy.server();
-    cy.route({
-      method: "POST",
-      url: "**/auth/*",
-      response: "fixture:successful_login.json",
-      headers: {
-        uid: "user@mail.com",
-      },
-    });
-    cy.route({
-      method: "GET",
-      url: "**/auth/*",
-      response: "fixture:successful_login.json",
-      headers: {
-        uid: "user@mail.com",
-      },
-    });
-    cy.visit("/login");
-    cy.get("#login-form").within(() => {
-      cy.get("#email").type("user@mail.com");
-      cy.get("#password").type("password");
-      cy.get("Button#submit").contains("Submit").click();
-    });
+    cy.login();
   });
 
   describe("points are successfullly deducted on submission of form", () => {
@@ -46,11 +25,13 @@ describe("User can assign Karma Points to the extent of their balance", () => {
     });
 
     it("successfully creates", () => {
-      cy.get("#myrequest-btn").click();
+      cy.get("#myrequest-home-link").click();
+      cy.get("#requests-link").click()
+      cy.get("#create-request-link").click();
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
       cy.get("#reward").type("100");
-      cy.get("#submit").contains("Submit").click();
+      cy.get("#submit-btn").contains("Submit").click();
       cy.get("#message").should(
         "contain",
         "Your reQuest was successfully created!"
@@ -71,7 +52,9 @@ describe("User can assign Karma Points to the extent of their balance", () => {
     });
 
     it("unsuccessfully creates due to lack of karma points", () => {
-      cy.get("#myrequest-btn").click();
+      cy.get("#myrequest-home-link").click();
+      cy.get("#requests-link").click()
+      cy.get("#create-request-link").click();
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
       cy.get("#reward")

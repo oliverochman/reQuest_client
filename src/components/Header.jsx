@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { auth } from "../modules/auth";
-import { Button, Grid } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const [activeTab, setActiveTab] = useState("");
+  const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
   const date = new Date();
   const currentTime = date.getHours();
-
-  
 
   const logout = async () => {
     try {
@@ -30,57 +30,97 @@ const Header = () => {
 
   const greeting = authenticated && (
     <div>
-      <p id="greeting" style={{ fontSize: "110%" }}>
+      <p className="input-labels" style={{ fontSize: "110%" }}>
         Good {time} &nbsp;
         {uid}
       </p>
     </div>
   );
 
+  const setActivePage = (page) => {
+    dispatch({ type: "SET_ACTIVE_PAGE", payload: page })
+  }
+
+  const activeMenuItem = (menuItem) => {
+    if (menuItem === activeTab) {
+      return { backgroundColor: "#e8b704", color: "whitesmoke" };
+    }
+  };
+
   return (
-    <>
-      <Grid id="header">
-        <Grid.Row columns="equal">
-          <Grid.Column>
-            <p style={{ float: "left" }} id="hfirst">
-              re
-            </p>
-            <p style={{ float: "left" }} id="hsecond">
-              Quest
-            </p>
-            <hr></hr>
-          </Grid.Column>
-          
-          <Grid.Column>
-            <p id="loginmessage">{message}</p>
-          </Grid.Column>
-          <Grid.Column>
-          <Grid.Column>{greeting}</Grid.Column>  
-          </Grid.Column>
-          <Grid.Column>
+    <div id="header">
+      <div id="logo">
+        <span id="hfirst">re</span>
+        <span id="hsecond">Quest</span>
+        <div id="yellow_divider"></div>
+        <div id="green_divider"></div>
+      </div>
+      <div id="links">
+        {activePage === "home" && (
+          <NavLink
+            id="myrequest-home-link"
+            to={ authenticated ? "/myrequest" : "/login" }
+            onClick={ authenticated && (() =>  setActivePage("myrequest"))}
+          >
+            my reQuest
+          </NavLink>
+        )}
+        {activePage === "myrequest" && (
+          <>
             <NavLink
-              id="myrequest-btn"
-              to="/myrequest"
+              id="myrequest-home-link"
+              to="/"
+              onClick={() => setActivePage("home")}
             >
-              my reQuest
+              home
             </NavLink>
-          {authenticated && (
-           <div name="Logout">
-              <Button
-               float='right'
-                basic
-                color='yellow'
-                size="small"
-                id="logout"
-                onClick={() => logout()}
+            <div id="small_links">
+              <NavLink
+                id="profile-link"
+                to="/myrequest/profile"
+                style={activeMenuItem("profile")}
+                onClick={() => setActiveTab("profile")}
               >
-                Logout
-              </Button>
-            </div>)}
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </>
+                profile
+              </NavLink>
+              <NavLink
+                id="quests-link"
+                to="/myrequest/quests"
+                style={activeMenuItem("quests")}
+                onClick={() => setActiveTab("quests")}
+              >
+                Quests
+              </NavLink>
+              <NavLink
+                id="requests-link"
+                to="/myrequest/requests"
+                style={activeMenuItem("requests")}
+                onClick={() => setActiveTab("requests")}
+              >
+                reQuests
+              </NavLink>
+            </div>
+          </>
+        )}
+      </div>
+      <div id="welcome-and-logout">
+        <p id="loginmessage">{message}</p>
+        {authenticated && (
+          <>
+            {greeting}
+            <Button
+              basic
+              inverted
+              size="small"
+              id="logout"
+              onClick={() => logout()}
+            >
+              Logout
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

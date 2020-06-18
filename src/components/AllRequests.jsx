@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getRequests from "../modules/getRequests";
+import { getRequests } from "../modules/getRequests";
 import RequestCard from "./RequestCard";
-import { Grid } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 const AllRequests = () => {
   const dispatch = useDispatch();
@@ -13,15 +13,13 @@ const AllRequests = () => {
   }, [dispatch]);
 
   const requestCards = requests.map((request) => (
-    <RequestCard request={request} />
+    <RequestCard key={request.id} request={request} myRequests={false}/>
   ));
 
   return (
-    <div>
-      <Grid id="qcards" columns={3} centered style={{ marginTop: 100 }}>
-        {requestCards}
-      </Grid>
-    </div>
+    <Card.Group id="qcards">
+      {requestCards}
+    </Card.Group>
   );
 };
 

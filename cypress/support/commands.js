@@ -6,3 +6,29 @@ Cypress.Commands.add("stubMain", () => {
     response: "fixture:list_of_requests.json",
   });
 });
+
+Cypress.Commands.add("login", () => {
+  cy.route({
+    method: "POST",
+    url: "**/auth/*",
+    response: "fixture:successful_login.json",
+    headers: {
+      uid: "user@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/auth/*",
+    response: "fixture:successful_login.json",
+    headers: {
+      uid: "user@mail.com",
+    },
+  });
+
+  cy.visit("/login");
+  cy.get("#login-form").within(() => {
+    cy.get("#email").type("user@mail.com");
+    cy.get("#password").type("password");
+    cy.get("#submit-btn").contains("Submit").click();
+  });
+})

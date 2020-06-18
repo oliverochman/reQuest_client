@@ -7,6 +7,16 @@ const requestReducer = (state = initialState, action) => {
         ...state,
         requests: action.payload.requests,
       };
+    case "SET_ACTIVE_REQUEST":
+      return {
+        ...state,
+        activeRequest: action.payload.request,
+      };
+    case "RESET_ACTIVE_REQUEST":
+      return {
+        ...state,
+        activeRequest: false
+      }
     default:
       return state;
   }
