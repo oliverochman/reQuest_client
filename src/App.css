@@ -143,6 +143,7 @@ h1, h2, h3, h4, h5, h6, span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible
 }
 
 #submit-btn {
@@ -155,6 +156,9 @@ h1, h2, h3, h4, h5, h6, span {
   letter-spacing: 0.1em;
   text-align: center;
   cursor: pointer;
+}
+#category{
+  overflow: visible
 }
 
 input,
