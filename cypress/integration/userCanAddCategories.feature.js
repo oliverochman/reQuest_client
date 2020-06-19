@@ -40,9 +40,9 @@ describe("User can add categories to request", () => {
         cy.get("#reward").type("100");
       })
      
-  )
+  
   }
   )
 }
 )}
-  
+)
