@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
+import OfferList from "./OfferList";
 import axios from "axios";
-import { getMyRequests } from "../modules/getRequests";
-import { useSelector } from "react-redux";
+import { getSingleRequest } from "../modules/getRequests";
+import { useSelector, useDispatch } from "react-redux";
 
 const Offers = () => {
+  const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  const [myRequests, setMyRequests] = useState([]);
   const [helperOffer, setHelperOffer] = useState({});
   const [helperOfferStatus, setHelperOfferStatus] = useState({});
+  const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
-  const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-  // console.log({ request });
-  const getList = async () => {
-    const requests = await getMyRequests();
-    setMyRequests(requests);
-  };
-
-  useEffect(() => {
-    getList();
-  }, []);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -31,7 +23,6 @@ const Offers = () => {
     setHelperOfferStatus(
       mySelectedRequest.offers[parseInt(e.target.id)].status
     );
-    // debugger;
   };
 
   const onClickActivity = async (e) => {
@@ -40,30 +31,17 @@ const Offers = () => {
       activity: e.target.id,
     });
     setStatusMessage(resp.data.message);
-    getList();
+    debugger;
+    getSingleRequest(dispatch, mySelectedRequest.id);
   };
-
-  const helper = mySelectedRequest.offers.map(
-    (offer, index) =>
-      offer.status === "pending" && (
-        <List.Item id={"offer-" + offer.id} key={offer.id}>
-          <List.Content>
-            <List.Header
-              onClick={onHelperClick}
-              className={"helper-email-" + offer.id}
-              id={index}
-            >
-              {offer.helper.email}
-            </List.Header>
-          </List.Content>
-        </List.Item>
-      )
-  );
+  const myOffers = mySelectedRequest.offers.map((offer, index) => (
+    <OfferList offer={offer} index={index} onHelperClick={onHelperClick} />
+  ));
 
   return (
     <List divided relaxed id="offers">
       <h3>Offers</h3>
-      {helper}
+      {myOffers}
       {showHelperMessage && (
         <OfferMessage
           helperOffer={helperOffer}
@@ -71,7 +49,7 @@ const Offers = () => {
           helperOfferStatus={helperOfferStatus}
         />
       )}
-      {statusMessage}
+      <p id="status-message">{statusMessage}</p>
     </List>
   );
 };
