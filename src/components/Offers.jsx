@@ -2,34 +2,35 @@ import React, { useState, useEffect } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { getMyRequests } from "../modules/getRequests";
+import { useSelector } from "react-redux";
 
-const Offers = ({ request }) => {
+const Offers = () => {
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-
+  const [myRequests, setMyRequests] = useState([]);
   const [helperOffer, setHelperOffer] = useState({});
   const [helperOfferStatus, setHelperOfferStatus] = useState({});
-
+  const mySelectedRequest = useSelector(
+    (state) => state.requests.mySelectedRequest
+  );
   const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-  // const dispatch = useDispatch();
   // console.log({ request });
+  const getList = async () => {
+    const requests = await getMyRequests();
+    setMyRequests(requests);
+  };
 
-  // useEffect(() => {
-  //   getOffersId();
-  // }, [onClickActivity]);
-
-  // const getOffersId = async () => {
-  //   const resp = await axios.get("/offers/", {
-  //     headers: headers,
-  //   });
-  //   debugger;
-  // };
+  useEffect(() => {
+    getList();
+  }, []);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
-    setHelperOffer({ ...request.offers[parseInt(e.target.id)] });
-    setHelperOfferStatus(request.offers[parseInt(e.target.id)].status);
+    setHelperOffer({ ...mySelectedRequest.offers[parseInt(e.target.id)] });
+    setHelperOfferStatus(
+      mySelectedRequest.offers[parseInt(e.target.id)].status
+    );
     // debugger;
   };
 
@@ -39,9 +40,10 @@ const Offers = ({ request }) => {
       activity: e.target.id,
     });
     setStatusMessage(resp.data.message);
+    getList();
   };
 
-  const helper = request.offers.map(
+  const helper = mySelectedRequest.offers.map(
     (offer, index) =>
       offer.status === "pending" && (
         <List.Item id={"offer-" + offer.id} key={offer.id}>
