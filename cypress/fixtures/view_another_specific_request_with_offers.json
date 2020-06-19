@@ -13,6 +13,7 @@
           "email": "helper@mail.com"
         },
         "request_id": 2,
+        "status": "pending",
         "message": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
       },
       {
@@ -22,6 +23,7 @@
           "email": "anotherhelper@mail.com"
         },
         "request_id": 2,
+        "status": "pending",
         "message": "I can fix this for you in a minute"
       },
       {
@@ -31,6 +33,7 @@
           "email": "yetanotherhelper@mail.com"
         },
         "request_id": 2,
+        "status": "pending",
         "message": "I can fix this for you in a minute"
       }
     ]

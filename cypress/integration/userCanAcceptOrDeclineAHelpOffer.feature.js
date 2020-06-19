@@ -13,7 +13,7 @@ describe("User can", () => {
     cy.route({
       method: "GET",
       url: "**/my_requests/requests/1",
-      response: "fixture:view_specific_request_with_offers.json",
+      response: "fixture:view_specific_request_with_pending_offers.json",
       headers: {
         uid: "me@mail.com",
       },
@@ -21,7 +21,7 @@ describe("User can", () => {
     cy.route({
       method: "GET",
       url: "**/my_requests/requests/2",
-      response: "fixture:view_another_specific_request_with_offers.json",
+      response: "fixture:view_specific_request_with_offers.json",
       headers: {
         uid: "me@mail.com",
       },
@@ -47,20 +47,15 @@ describe("User can", () => {
         cy.get(".helper-email-1").should("be.visible");
       });
       cy.get(".helper-email-1").click();
-      cy.get(".helper-email-2").click();
-      cy.get("button#accept").should("be.visible");
-      cy.get("button#decline").should("be.visible");
+      cy.get("button#accepted").should("be.visible");
+      cy.get("button#declined").should("be.visible");
     });
   });
 
   describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
       cy.get(".helper-email-1").click();
-      // cy.get("#request-1").within(() => {
-      cy.get("#offer-1").within(() => {
-        cy.get("button#accepted").contains("Accepted").click();
-      });
-      // });
+      cy.get("button#accepted").contains("Accept").click();
     });
 
     it("and sees a success message", () => {
@@ -70,10 +65,8 @@ describe("User can", () => {
       );
     });
 
-    it("and the other offers disappears", () => {
-      cy.get("#request-1").within(() => {
-        cy.get("#offer-2").should("not.exist");
-      });
+    it("the offers disappears from pending", () => {
+      cy.get("#offer-1").should("not.exist");
     });
 
     it("and the buttons disappears", () => {
