@@ -2,7 +2,6 @@ import React from "react";
 import { List, Button, Card } from "semantic-ui-react";
 
 const OfferMessage = (props) => {
-  // debugger;
   const helperMessage = (
     <Card.Group>
       <Card>
@@ -13,11 +12,21 @@ const OfferMessage = (props) => {
         </Card.Content>
         <Card.Content extra>
           <div className="ui two buttons">
-            <Button basic color="green">
-              Accept
+            <Button
+              basic
+              color="green"
+              onClick={(e) => props.onClickActivity(e)}
+              id="accepted"
+            >
+              Accepted
             </Button>
-            <Button basic color="red">
-              Decline
+            <Button
+              basic
+              color="red"
+              onClick={(e) => props.onClickActivity(e)}
+              id="declined"
+            >
+              Declined
             </Button>
           </div>
         </Card.Content>

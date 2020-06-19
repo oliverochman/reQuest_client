@@ -26,6 +26,14 @@ describe("User can", () => {
         uid: "me@mail.com",
       },
     });
+    cy.route({
+      method: "PUT",
+      url: "**/offers",
+      response: "fixture:putOffer_accepted.json",
+      headers: {
+        uid: "me@mail.com",
+      },
+    });
     cy.get("#myrequest-home-link").click();
     cy.get("#requests-link").click();
     cy.get("#request-1").click();
@@ -39,24 +47,26 @@ describe("User can", () => {
         cy.get(".helper-email-1").should("be.visible");
       });
       cy.get(".helper-email-1").click();
+      cy.get(".helper-email-2").click();
       cy.get("button#accept").should("be.visible");
       cy.get("button#decline").should("be.visible");
     });
   });
 
-  xdescribe("successfully accept a help offer by clicking 'Accept'", () => {
+  describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
-      cy.get("#request-1").within(() => {
-        cy.get("#offer-1").within(() => {
-          cy.get("button#accept").contains("Accept").click();
-        });
+      cy.get(".helper-email-1").click();
+      // cy.get("#request-1").within(() => {
+      cy.get("#offer-1").within(() => {
+        cy.get("button#accepted").contains("Accepted").click();
       });
+      // });
     });
 
     it("and sees a success message", () => {
       cy.get("#accept-message").should(
         "contain",
-        "You have accepted help from helper@mail.com"
+        "You accepted help from helper@mail.com"
       );
     });
 
@@ -84,7 +94,7 @@ describe("User can", () => {
     it("and sees a success message", () => {
       cy.get("#decline-message").should(
         "contain",
-        "You have declined help from helper@mail.com"
+        "You declined help from helper@mail.com"
       );
     });
 
