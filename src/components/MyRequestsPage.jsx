@@ -17,14 +17,14 @@ const MyRequestsPage = () => {
   );
   const dispatch = useDispatch();
 
-  const getMyActiveRequests = async() => {
+  const getMyActiveRequest = async() => {
     let requests = await getMyRequests();
     let activeRequest = requests.filter((request) => {
       return request.status === "active"
     });
     let activeRequestElement = activeRequest[0]
     dispatch({
-      type: "SET_MY_SELECTED_REQUEST",
+      type: "SET_MY_SELECTED_ACTIVE_REQUEST",
       payload: {
         request: activeRequestElement,
       },
@@ -56,7 +56,7 @@ const MyRequestsPage = () => {
               <Menu.Item id="pending" active="true">
                 pending
               </Menu.Item>
-              <Menu.Item id="active" onClick={getMyActiveRequests}>
+              <Menu.Item id="active" onClick={getMyActiveRequest}>
                 active
               </Menu.Item>
               <Menu.Item id="completed">completed</Menu.Item>
