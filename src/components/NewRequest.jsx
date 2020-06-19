@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Container } from "semantic-ui-react";
+import { Form, Input, Container, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import getKarma from "../modules/getKarma";
+import categoryList from "../modules/category"
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
+  const category = categoryList()
   const dispatch = useDispatch();
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -27,6 +29,7 @@ const NewRequest = () => {
           title: e.target.title.value,
           description: e.target.description.value,
           reward: e.target.reward.value,
+          category: document.getElementById("category").innerText.toLowerCase()
         },
         { headers: createHeaders() }
       );
@@ -76,7 +79,7 @@ const NewRequest = () => {
                 id="category"
                 name="category"
                 placeholder="Other"
-                options={categories}
+                options={category}
               ></Dropdown>
             </Form.Input>
             <Input

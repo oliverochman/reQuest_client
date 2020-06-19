@@ -23,7 +23,7 @@ describe("User", () => {
       });
       cy.route({
         method: "POST",
-        url: "**/requests",
+        url: "**/my_request/requests",
         response: "fixture:post_new_request.json",
         headers: {
           uid: "user@mail.com",
