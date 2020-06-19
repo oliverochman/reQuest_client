@@ -27,7 +27,7 @@ const getMyRequests = async () => {
 
 const getSingleRequest = async (dispatch, id) => {
   try {
-    const response = await axios.get(`/my_requests/requests/${id}`);
+    const response = await axios.get(`/my_request/requests/${id}`);
     dispatch({type: "SET_MY_SELECTED_REQUEST", payload: {request: response.data.request}})
   } catch (error) {
     console.log(error)

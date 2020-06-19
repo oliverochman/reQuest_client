@@ -1,12 +1,20 @@
 import React from "react";
-import { List, Button, Card } from "semantic-ui-react";
+import { List, Button, Card, Popup } from "semantic-ui-react";
 
 const OfferMessage = (props) => {
   const helperMessage = (
     <Card.Content>
       <Card.Header></Card.Header>
       <Card.Meta>{props.helperOffer.helper.email}</Card.Meta>
-      <Card.Description>{props.helperOffer.message}</Card.Description>
+      <Card.Description>
+        <div style={{height: "35vh"}}></div>
+        <Popup 
+          content={props.helperOffer.message}
+          open
+          position="top left"
+          trigger={<div></div>}
+        />
+      </Card.Description>
     </Card.Content>
   );
   const showActivityButton = (

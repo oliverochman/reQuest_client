@@ -12,7 +12,7 @@ describe("User can", () => {
     });
     cy.route({
       method: "GET",
-      url: "**/my_requests/requests/2",
+      url: "**/my_request/requests/2",
       response: "fixture:view_specific_request_with_offers.json",
       headers: {
         uid: "me@mail.com",
@@ -20,7 +20,7 @@ describe("User can", () => {
     });
     cy.route({
       method: "GET",
-      url: "**/my_requests/requests/1",
+      url: "**/my_request/requests/1",
       response: "fixture:view_specific_request_with_pending_offers.json",
       headers: {
         uid: "me@mail.com",
@@ -67,12 +67,12 @@ describe("User can", () => {
       );
     });
 
-    xit("the offers disappears from pending", () => {
+    it("the offers disappears from pending", () => {
       cy.get("#offer-1").should("not.exist");
     });
   });
 
-  xdescribe("successfully decline a help offer by clicking 'Decline'", () => {
+  describe("successfully decline a help offer by clicking 'Decline'", () => {
     beforeEach(() => {
       cy.get("#request-1").within(() => {
         cy.get("#offer-1").within(() => {

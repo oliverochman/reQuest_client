@@ -39,18 +39,22 @@ const Offers = () => {
   ));
 
   return (
-    <List divided relaxed id="offers">
+    <div style={{marginLeft: "30px", display: "flex", flexDirection: "row"}}>
+      <List divided relaxed id="offers" >
       <h3>Offers</h3>
       {myOffers}
-      {showHelperMessage && (
-        <OfferMessage
-          helperOffer={helperOffer}
-          onClickActivity={onClickActivity}
-          helperOfferStatus={helperOfferStatus}
-        />
-      )}
-      <p id="status-message">{statusMessage}</p>
-    </List>
+      </List>
+      <div style={{marginLeft: "30px", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+        {showHelperMessage && (
+          <OfferMessage
+            helperOffer={helperOffer}
+            onClickActivity={onClickActivity}
+            helperOfferStatus={helperOfferStatus}
+          />
+        )}
+        <p id="status-message">{statusMessage}</p>
+      </div>
+    </div>
   );
 };
 
