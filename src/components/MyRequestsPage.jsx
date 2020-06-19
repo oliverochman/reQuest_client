@@ -39,7 +39,7 @@ const MyRequestsPage = () => {
     try {
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       const response = await Axios.put(
-        `/my_requests/requests/${mySelectedRequest.id}`,
+        `/my_requests/requests/${mySelectedActiveRequest.id}`,
         { headers: headers },
         { params: { activity: "completed" } }
       );
@@ -82,7 +82,7 @@ const MyRequestsPage = () => {
                 <Button id="quest-completed" onClick={completeRequest}>
                   Quest Completed
                 </Button>
-                <p>{message}</p>
+                <p id="message">{message}</p>
               </>
             )}
           </div>
