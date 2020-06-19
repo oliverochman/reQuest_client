@@ -14,7 +14,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={BrowseRequests}></Route>
         <Route exact path="/login" component={LoginForm} />
-        
         <Route exact path="/myrequest/newrequest" component={NewRequest} />
         <Route exact path="/myrequest/requests" component={MyRequestsPage} />
       </Switch>
