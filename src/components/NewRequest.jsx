@@ -43,7 +43,7 @@ const NewRequest = () => {
         <Redirect to={{ pathname: "/login" }} />
       ) : (
         <Container className="form-container">
-          <h1 className='input-labels'>{"New reQuest"}</h1>
+          <h1 className="input-labels">{"New reQuest"}</h1>
           <Form id="newRequest-form" onSubmit={(e) => submitRequest(e)}>
             <Form.Input
               id="title"
@@ -69,6 +69,16 @@ const NewRequest = () => {
               step="1"
               required
             />
+            <Form.Input>
+              <label>Category</label>
+              <Dropdown
+                selection
+                id="category"
+                name="category"
+                placeholder="Other"
+                options={categories}
+              ></Dropdown>
+            </Form.Input>
             <Input
               id="submit-btn"
               type="submit"
@@ -78,7 +88,9 @@ const NewRequest = () => {
               required
             />
           </Form>
-          <p className='input-labels' id="message">{message}</p>
+          <p className="input-labels" id="message">
+            {message}
+          </p>
         </Container>
       )}
     </div>
