@@ -1,28 +1,32 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import MyListComponent from "./MyListComponent";
 import { Menu, Button } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
+import ActiveRequest from "./ActiveRequest";
 import { Link, Redirect } from "react-router-dom";
-import {getMyRequests} from "../modules/getRequests";
+import { getMyRequests } from "../modules/getRequests";
 import Axios from "axios";
 
 const MyRequestsPage = () => {
-  const [message, setMessage] = useState()
+  const [message, setMessage] = useState();
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
+  );
+  const mySelectedActiveRequest = useSelector(
+    (state) => state.requests.mySelectedActiveRequest
   );
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
   const dispatch = useDispatch();
 
-  const getMyActiveRequest = async() => {
+  const getMyActiveRequest = async () => {
     let requests = await getMyRequests();
     let activeRequest = requests.filter((request) => {
-      return request.status === "active"
+      return request.status === "active";
     });
-    let activeRequestElement = activeRequest[0]
+    let activeRequestElement = activeRequest[0];
     dispatch({
       type: "SET_MY_SELECTED_ACTIVE_REQUEST",
       payload: {
@@ -33,15 +37,15 @@ const MyRequestsPage = () => {
 
   const completeRequest = async () => {
     try {
-      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"))
+      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       const response = await Axios.put(
         `/my_requests/requests/${mySelectedRequest.id}`,
         { headers: headers },
         { params: { activity: "completed" } }
       );
-      setMessage(response.data.message)
+      setMessage(response.data.message);
     } catch (error) {
-      setMessage(error.response.data.message)
+      setMessage(error.response.data.message);
     }
   };
 
@@ -70,11 +74,15 @@ const MyRequestsPage = () => {
             {mySelectedRequest && <Offers request={mySelectedRequest} />}
           </div>
           <div id="rightmost-component">
-            {mySelectedRequest.status === "active" && ( <>
-              <Button id="quest-completed" onClick={completeRequest}>
-                Quest Completed
-              </Button>
-              <p>{message}</p>
+            {mySelectedActiveRequest && (
+              <ActiveRequest request={mySelectedActiveRequest} />
+            )}
+            {mySelectedActiveRequest && (
+              <>
+                <Button id="quest-completed" onClick={completeRequest}>
+                  Quest Completed
+                </Button>
+                <p>{message}</p>
               </>
             )}
           </div>
