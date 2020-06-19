@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "semantic-ui-react";
-import RequestCard from "./RequestCard";
+import MyRequestCard from "./MyRequestCard";
 import { getMyRequests } from "../modules/getRequests";
 
 const MyListComponent = () => {
@@ -16,7 +16,7 @@ const MyListComponent = () => {
   }, []);
 
   const cards = myRequests.map((request) => (
-    <RequestCard key={request.id} request={request} myRequests={true} />
+    <MyRequestCard key={request.id} request={request} />
   ));
 
   return (

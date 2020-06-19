@@ -1,37 +1,31 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
-import { getSingleRequest } from "../modules/getRequests";
+import { useDispatch } from "react-redux";
 
-const RequestCard = ({ request, myRequests }) => {
-  const activeRequest = useSelector((state) => state.requests.activeRequest);
-  const myActiveRequest = activeRequest && activeRequest.id === request.id;
-  const req = myActiveRequest ? activeRequest : request;
+const RequestCard = ({ request }) => {
   const dispatch = useDispatch();
-
-  const toggleActiveRequest = () => {
-    myActiveRequest
-      ? dispatch({ type: "RESET_ACTIVE_REQUEST" })
-      : getSingleRequest(dispatch, req.id);
+  const onClickHandler = () => {
+    dispatch({
+      type: "SET_SELECTED_REQUEST",
+      payload: {
+        request: request,
+      },
+    });
   };
 
   return (
-    <Card
-      id={"request-" + req.id}
-      onClick={() => {
-        toggleActiveRequest();
-      }}
-    >
-      <Card.Content>
-        <Card.Header>{req.title}</Card.Header>
-        <Card.Meta>{req.reward} KP</Card.Meta>
-        {myActiveRequest && (
-          <Card.Description id={"request-description-" + req.id}>
-            {req.description}
-          </Card.Description>
-        )}
-      </Card.Content>
-    </Card>
+    <>
+      <Card
+        style={{ margin: "10px" }}
+        id={"request-" + request.id}
+        onClick={onClickHandler}
+      >
+        <Card.Content>
+          <Card.Header>{request.title}</Card.Header>
+          <Card.Meta>{request.reward} KP</Card.Meta>
+        </Card.Content>
+      </Card>
+    </>
   );
 };
 
