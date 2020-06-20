@@ -1,4 +1,4 @@
-describe("can log in", () => {
+describe("User can log in, when clicking the 'my reQuest' link", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -25,27 +25,23 @@ describe("can log in", () => {
         uid: "user@mail.com",
       },
     });
-    cy.route({
-      method: "GET",
-      url: "**/karma_points*",
-      response: { karma: 500 },
-      headers: {
-        uid: "user@mail.com",
-      },
-    });
+    cy.visit("/");
+    cy.get("#myrequest-home-link").click()
   });
-  it("Successfully", () => {
-    cy.visit("/login");
+
+  it("successfully, entering correct credentials", () => {
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("password");
       cy.get("#submit-btn").contains("Submit").click();
     });
+    cy.get("#welcome-and-logout").within(() => {
+      cy.get("p").should("contain", "user@mail.com")
+      cy.get("button#logout").should("be.visible")
+    })
   });
-});
-describe("unsuccessfully", () => {
-  beforeEach(() => {
-    cy.server();
+
+  it("unsuccessfully, with invalid credentials", () => {
     cy.route({
       method: "POST",
       url: "**/auth/*",
@@ -55,9 +51,6 @@ describe("unsuccessfully", () => {
       },
       status: 400,
     });
-  });
-  it("with invalid credentials", () => {
-    cy.visit("/login");
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("wrongpassword");
