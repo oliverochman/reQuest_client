@@ -6,26 +6,27 @@ import axios from "axios";
 import { getSingleRequest } from "../modules/getRequests";
 import { useSelector, useDispatch } from "react-redux";
 
-const Offers = () => {
+const Offers = ({ request }) => {
   const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
   const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-  const mySelectedRequest = useSelector(
-    (state) => state.requests.mySelectedRequest
-  );
 
   useEffect(() => {
-    const updateRequest = async () => {
-      await getSingleRequest(mySelectedRequest.id);
+    const updateRequest = async (request) => {
+      const response = await getSingleRequest(request.id);
+      dispatch({
+        type: "SET_MY_SELECTED_REQUEST",
+        payload: { request: response.data.request },
+      });
     };
-    updateRequest(mySelectedRequest);
-  }, [mySelectedRequest]);
+    updateRequest(request);
+  }, []);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
-    setHelperOffer({ ...mySelectedRequest.offers[parseInt(e.target.id)] });
+    setHelperOffer({ ...request.offers[parseInt(e.target.id)] });
   };
 
   const onClickActivity = async (e) => {
@@ -34,9 +35,9 @@ const Offers = () => {
       activity: e.target.id,
     });
     setStatusMessage(resp.data.message);
-    getSingleRequest(dispatch, mySelectedRequest.id);
   };
-  const myOffers = mySelectedRequest.offers.map((offer, index) => (
+
+  const myOffers = request.offers.map((offer, index) => (
     <OfferList offer={offer} index={index} onHelperClick={onHelperClick} />
   ));
 

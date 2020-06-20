@@ -16,7 +16,6 @@ const MyRequestCard = ({ request }) => {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
       const response = await getSingleRequest(req.id);
-      // debugger;
       dispatch({
         type: "SET_MY_SELECTED_REQUEST",
         payload: { request: response.data.request },

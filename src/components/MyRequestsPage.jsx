@@ -28,7 +28,7 @@ const MyRequestsPage = () => {
             </Link>
           </div>
           <MyListComponent />
-          {mySelectedRequest && <Offers />}
+          {mySelectedRequest && <Offers request={mySelectedRequest}/>}
         </>
       )}
     </div>
