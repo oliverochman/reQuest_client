@@ -1,4 +1,5 @@
 import axios from "axios";
+import createHeaders from "./headers.js";
 
 const getRequests = async (dispatch) => {
   try {
@@ -17,7 +18,9 @@ const getRequests = async (dispatch) => {
 
 const getMyRequests = async () => {
   try {
-    const response = await axios.get("/my_requests/requests");
+    const response = await axios.get("/my_request/requests", {
+      headers: createHeaders(),
+    });
     return response.data.requests;
   } catch (error) {
     console.log(error);
@@ -27,7 +30,9 @@ const getMyRequests = async () => {
 
 const getSingleRequest = async (id) => {
   try {
-    const response = await axios.get(`/my_request/requests/${id}`);
+    const response = await axios.get(`/my_request/requests/${id}`, {
+      headers: createHeaders(),
+    });
     return response;
   } catch (error) {
     console.log(error);
