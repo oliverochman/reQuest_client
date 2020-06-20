@@ -5,7 +5,7 @@ describe("User", () => {
     cy.route({
       method: "POST",
       url: "**/my_request/requests",
-      response: "fixture:post_new_request.json",
+      response: "fixture:requests/post_new_request.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -13,7 +13,7 @@ describe("User", () => {
       cy.route({
         method: "DELETE",
         url: "**/auth/*",
-        response: "fixture:logout.json",
+        response: "fixture:user/logout.json",
         headers: {
           uid: "user@mail.com",
         },

@@ -4,7 +4,7 @@ describe("can log in", () => {
     cy.route({
       method: "POST",
       url: "**/auth/*",
-      response: "fixture:successful_login.json",
+      response: "fixture:user/successful_login.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -12,7 +12,7 @@ describe("can log in", () => {
     cy.route({
       method: "GET",
       url: "**/auth/*",
-      response: "fixture:successful_login.json",
+      response: "fixture:user/successful_login.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -20,7 +20,7 @@ describe("can log in", () => {
     cy.route({
       method: "DELETE",
       url: "**/auth/*",
-      response: "fixture:logout.json",
+      response: "fixture:user/logout.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -49,7 +49,7 @@ describe("unsuccessfully", () => {
     cy.route({
       method: "POST",
       url: "**/auth/*",
-      response: "fixture:unsuccessful_login.json",
+      response: "fixture:user/unsuccessful_login.json",
       headers: {
         uid: "user@mail.com",
       },
