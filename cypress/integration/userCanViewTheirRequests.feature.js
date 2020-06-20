@@ -23,7 +23,7 @@ describe("Users", () => {
       cy.route({
         method: 'GET',
         url: '**/my_requests/requests',
-        response: 'fixture:list_of_my_requests.json',
+        response: 'fixture:requests/list_of_my_requests.json',
         headers: {
           uid: "me@mail.com",
         },
@@ -31,7 +31,7 @@ describe("Users", () => {
       cy.route({
         method: 'GET',
         url: '**/my_requests/requests/1',
-        response: 'fixture:view_specific_request_with_offers.json',
+        response: 'fixture:requests/view_specific_request_with_offers.json',
         headers: {
           uid: "me@mail.com",
         },
@@ -39,7 +39,7 @@ describe("Users", () => {
       cy.route({
         method: 'GET',
         url: '**/my_requests/requests/2',
-        response: 'fixture:view_another_specific_request_with_offers.json',
+        response: 'fixture:requests/view_another_specific_request_with_offers.json',
         headers: {
           uid: "me@mail.com",
         },

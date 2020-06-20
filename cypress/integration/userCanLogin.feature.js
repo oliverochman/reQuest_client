@@ -4,7 +4,7 @@ describe("User can log in, when clicking the 'my reQuest' link", () => {
     cy.route({
       method: "POST",
       url: "**/auth/*",
-      response: "fixture:successful_login.json",
+      response: "fixture:user/successful_login.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -12,7 +12,7 @@ describe("User can log in, when clicking the 'my reQuest' link", () => {
     cy.route({
       method: "GET",
       url: "**/auth/*",
-      response: "fixture:successful_login.json",
+      response: "fixture:user/successful_login.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -20,7 +20,7 @@ describe("User can log in, when clicking the 'my reQuest' link", () => {
     cy.route({
       method: "DELETE",
       url: "**/auth/*",
-      response: "fixture:logout.json",
+      response: "fixture:user/logout.json",
       headers: {
         uid: "user@mail.com",
       },
@@ -45,7 +45,7 @@ describe("User can log in, when clicking the 'my reQuest' link", () => {
     cy.route({
       method: "POST",
       url: "**/auth/*",
-      response: "fixture:unsuccessful_login.json",
+      response: "fixture:user/unsuccessful_login.json",
       headers: {
         uid: "user@mail.com",
       },
