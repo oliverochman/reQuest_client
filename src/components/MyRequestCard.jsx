@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleRequest } from "../modules/getRequests";
+import updateRequest from "../modules/updateMyRequest";
 
 const MyRequestCard = ({ request }) => {
   const activeRequest = useSelector(
@@ -15,11 +15,7 @@ const MyRequestCard = ({ request }) => {
     if (myActiveRequest) {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
-      const response = await getSingleRequest(req.id);
-      dispatch({
-        type: "SET_MY_SELECTED_REQUEST",
-        payload: { request: response.data.request },
-      });
+      updateRequest(request, dispatch);
     }
   };
 

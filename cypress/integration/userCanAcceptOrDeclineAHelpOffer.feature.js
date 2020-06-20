@@ -7,7 +7,7 @@ describe("User can", () => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests",
-        response: "fixture:list_of_my_requests.json",
+        response: "fixture:requests/list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -15,7 +15,8 @@ describe("User can", () => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests/1",
-        response: "fixture:view_specific_request_with_pending_offers.json",
+        response:
+          "fixture:requests/view_specific_request_with_pending_offers.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -23,7 +24,7 @@ describe("User can", () => {
       cy.route({
         method: "PUT",
         url: "**/offers/*",
-        response: "fixture:putOffer_accepted.json",
+        response: "fixture:offers/putOffer_accepted.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -32,6 +33,9 @@ describe("User can", () => {
       cy.get("#myrequest-home-link").click();
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
+    });
+
+    it("can view a message", () => {
       cy.get("#helper-message").should("not.be.visible");
       cy.get("#offer-1").within(() => {
         cy.get(".helper-email-1").should("be.visible");
@@ -43,6 +47,7 @@ describe("User can", () => {
     });
 
     it("success message is shown", () => {
+      cy.get(".helper-email-1").click();
       cy.get("button#accepted").contains("Accept").click();
       cy.get("p#status-message").contains(
         "You accepted help from helper@mail.com"
@@ -50,12 +55,12 @@ describe("User can", () => {
     });
   });
 
-  describe("When offer it accepted it's not shown in my pending offers", () => {
+  describe("When an offer is accepted, the reQuest is not shown in 'pending reQuests", () => {
     beforeEach(() => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests",
-        response: "fixture:list_of_my_requests.json",
+        response: "fixture:requests/list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -63,7 +68,8 @@ describe("User can", () => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests/1",
-        response: "fixture:view_specific_request_with_updated_offers.json",
+        response:
+          "fixture:requests/view_specific_request_with_updated_offers.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -86,7 +92,7 @@ describe("User can", () => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests",
-        response: "fixture:list_of_my_requests.json",
+        response: "fixture:requests/list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -94,7 +100,8 @@ describe("User can", () => {
       cy.route({
         method: "GET",
         url: "**/my_request/requests/1",
-        response: "fixture:view_specific_request_with_pending_offers.json",
+        response:
+          "fixture:requests/view_specific_request_with_pending_offers.json",
         headers: {
           uid: "me@mail.com",
         },
@@ -102,7 +109,7 @@ describe("User can", () => {
       cy.route({
         method: "PUT",
         url: "**/offers/*",
-        response: "fixture:putOffer_declined.json",
+        response: "fixture:offers/putOffer_declined.json",
         headers: {
           uid: "me@mail.com",
         },
