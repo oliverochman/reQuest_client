@@ -22,24 +22,39 @@ describe("Users", () => {
       cy.stubMain()
       cy.route({
         method: 'GET',
+<<<<<<< HEAD
         url: '**/my_request/requests',
         response: 'fixture:list_of_my_requests.json',
+=======
+        url: '**/my_requests/requests',
+        response: 'fixture:requests/list_of_my_requests.json',
+>>>>>>> 026fc7a9a80a68b68f3e732125a4129cdafde643
         headers: {
           uid: "me@mail.com",
         },
       })  
       cy.route({
         method: 'GET',
+<<<<<<< HEAD
         url: '**/my_request/requests/1',
         response: 'fixture:view_specific_request_with_offers.json',
+=======
+        url: '**/my_requests/requests/1',
+        response: 'fixture:requests/view_specific_request_with_offers.json',
+>>>>>>> 026fc7a9a80a68b68f3e732125a4129cdafde643
         headers: {
           uid: "me@mail.com",
         },
       })  
       cy.route({
         method: 'GET',
+<<<<<<< HEAD
         url: '**/my_request/requests/2',
         response: 'fixture:view_another_specific_request_with_offers.json',
+=======
+        url: '**/my_requests/requests/2',
+        response: 'fixture:requests/view_another_specific_request_with_offers.json',
+>>>>>>> 026fc7a9a80a68b68f3e732125a4129cdafde643
         headers: {
           uid: "me@mail.com",
         },

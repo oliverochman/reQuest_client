@@ -4,7 +4,7 @@ describe('User can view their active reQuests', () => {
     cy.route({
       method: "GET",
       url: "**/my_request/requests*",
-      response: "fixture:list_of_my_requests.json",
+      response: "fixture:requests/list_of_my_requests.json",
       headers: {
         uid: "me@mail.com",
       },
@@ -12,7 +12,7 @@ describe('User can view their active reQuests', () => {
     cy.route({
       method: "GET",
       url: "**/my_request/requests/2",
-      response: "fixture:active_specific_request_with_offer.json",
+      response: "fixture:requests/active_specific_request_with_offer.json",
       headers: {
         uid: "me@mail.com",
       },
