@@ -12,13 +12,12 @@ const MyListComponent = ({ selectedStatus }) => {
 
   const getList = async () => {
     const requests = await getMyRequests();
-    debugger
     setMyRequests(requests);
   };
 
   const requestsFilteredByStatus = myRequests.filter((request) => (
     request.status === selectedStatus
-  )) 
+  ))
 
   const cards = requestsFilteredByStatus.map((request) => (
     <MyRequestCard key={request.id} request={request} />
