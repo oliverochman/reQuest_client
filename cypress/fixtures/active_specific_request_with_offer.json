@@ -1,5 +1,5 @@
 {
-  "requests": [{
+  "request": {
     "id": 2,
     "title": "Paint fences in backyard",
     "description": "I need help, really need help painting my fence, I have the tools and all, just come and do it for me, please",
@@ -12,7 +12,8 @@
         "email": "helper@mail.com"
       }, 
       "request_id": 1,
-      "message": "I can help you with this"
+      "message": "I can help you with this, and I'm probably the first to offer my help",
+      "status": "accepted"
     },
     {
       "id": 2,
@@ -21,8 +22,19 @@
         "email": "anotherhelper@mail.com"
       }, 
       "request_id": 2,
-      "message": "I can help you with this"
+      "message": "I too can give you help with this",
+      "status": "declined"
+    },
+    {
+      "id": 3,
+      "helper": {
+        "id": 164,
+        "email": "yetanotherhelper@mail.com"
+      }, 
+      "request_id": 2,
+      "message": "Even I can help you out with this",
+      "status": "pending"
     }
     ]
-  }]
+  }
 } 

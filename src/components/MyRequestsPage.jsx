@@ -37,8 +37,8 @@ const doSomething = (status) => {
             </Link>
           </div>
           <div id="middle-component">
-            <MyListComponent status={selectedStatus}/>
-            {mySelectedRequest && <Offers request={mySelectedRequest} />}
+            <MyListComponent selectedStatus={selectedStatus}/>
+            {mySelectedRequest && (selectedStatus === "pending") && <Offers request={mySelectedRequest} />}
           </div>
         </>
       )}

@@ -10,9 +10,9 @@ const MyRequestCard = ({ request }) => {
   const dispatch = useDispatch();
 
   const toggleActiveRequest = () => {
-      myActiveRequest
-        ? dispatch({ type: "RESET_MY_SELECTED_REQUEST" })
-        : getSingleRequest(dispatch, req.id);
+    myActiveRequest
+      ? dispatch({ type: "RESET_MY_SELECTED_REQUEST" })
+      : getSingleRequest(dispatch, req.id);
   };
 
   return (
