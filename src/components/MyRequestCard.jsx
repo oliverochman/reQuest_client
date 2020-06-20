@@ -4,15 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleRequest } from "../modules/getRequests";
 
 const MyRequestCard = ({ request }) => {
-  const activeRequest = useSelector((state) => state.requests.mySelectedRequest);
+  const activeRequest = useSelector(
+    (state) => state.requests.mySelectedRequest
+  );
   const myActiveRequest = activeRequest && activeRequest.id === request.id;
   const req = myActiveRequest ? activeRequest : request;
   const dispatch = useDispatch();
 
-  const toggleActiveRequest = () => {
-      myActiveRequest
-        ? dispatch({ type: "RESET_MY_SELECTED_REQUEST" })
-        : getSingleRequest(dispatch, req.id);
+  const toggleActiveRequest = async () => {
+    if (myActiveRequest) {
+      dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
+    } else {
+      const response = await getSingleRequest(req.id);
+      // debugger;
+      dispatch({
+        type: "SET_MY_SELECTED_REQUEST",
+        payload: { request: response.data.request },
+      });
+    }
   };
 
   return (

@@ -18,10 +18,10 @@ const Offers = () => {
 
   useEffect(() => {
     const updateRequest = async () => {
-      await getSingleRequest(dispatch, mySelectedRequest.id);
+      await getSingleRequest(mySelectedRequest.id);
     };
-    updateRequest(dispatch, mySelectedRequest);
-  }, [mySelectedRequest, dispatch]);
+    updateRequest(mySelectedRequest);
+  }, [mySelectedRequest]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
