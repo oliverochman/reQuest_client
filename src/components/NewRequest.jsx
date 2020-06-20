@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Container } from "semantic-ui-react";
+import { Form, Input, Container, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import getKarma from "../modules/getKarma";
+import categoryList from "../modules/category"
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
+  const category = categoryList()
   const dispatch = useDispatch();
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -22,16 +24,19 @@ const NewRequest = () => {
     e.persist();
     try {
       const response = await axios.post(
-        "/requests",
+        "/my_request/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
           reward: e.target.reward.value,
+          category: document.getElementById("category").innerText.toLowerCase()
         },
         { headers: createHeaders() }
       );
       getKarma(dispatch);
+      e.target.reset()
       setMessage(response.data.message);
+      setTimeout(() => {setMessage("")}, 3000)
     } catch (error) {
       setMessage(error.response.data.message);
     }
@@ -43,7 +48,7 @@ const NewRequest = () => {
         <Redirect to={{ pathname: "/login" }} />
       ) : (
         <Container className="form-container">
-          <h1 className='input-labels'>{"New reQuest"}</h1>
+          <h1 className="input-labels">{"New reQuest"}</h1>
           <Form id="newRequest-form" onSubmit={(e) => submitRequest(e)}>
             <Form.Input
               id="title"
@@ -69,6 +74,16 @@ const NewRequest = () => {
               step="1"
               required
             />
+            <Form.Input>
+              <label>Category</label>
+              <Dropdown
+                selection
+                id="category"
+                name="category"
+                placeholder="Other"
+                options={category}
+              ></Dropdown>
+            </Form.Input>
             <Input
               id="submit-btn"
               type="submit"
@@ -78,7 +93,9 @@ const NewRequest = () => {
               required
             />
           </Form>
-          <p className='input-labels' id="message">{message}</p>
+          <p className="input-labels" id="message">
+            {message}
+          </p>
         </Container>
       )}
     </div>
