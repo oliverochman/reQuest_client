@@ -4,7 +4,7 @@ describe("User can post new reQuest, after navigating to creation form", () => {
     cy.route({
       method: "POST",
       url: "**/my_request/requests",
-      response: "fixture:post_new_request.json",
+      response: "fixture:requests/post_new_request.json",
       headers: {
         uid: "user@mail.com",
       },
