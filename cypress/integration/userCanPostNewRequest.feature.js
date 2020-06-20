@@ -18,9 +18,7 @@ describe("User can post new reQuest, after navigating to creation form", () => {
       },
     });
     cy.login();
-    cy.get("#myrequest-home-link").click();
-    cy.get("#requests-link").click();
-    cy.get("#create-request-link").click();
+    cy.visit("/");
   });
 
   describe("successfully", () => {
