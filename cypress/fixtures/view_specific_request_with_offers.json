@@ -8,21 +8,13 @@
     "offers": [
       {
         "id": 1,
-        "helper": {
-          "id": 36,
-          "email": "helper@mail.com"
-        },
-        "request_id": 1,
+        "email": "helper@mail.com",
         "status": "pending",
         "message": "I can help you with this"
       },
       {
         "id": 2,
-        "helper": {
-          "id": 5,
-          "email": "anotherhelper@mail.com"
-        },
-        "request_id": 1,
+        "email": "anotherhelper@mail.com",
         "status": "pending",
         "message": "I can fix this for you in a minute"
       }

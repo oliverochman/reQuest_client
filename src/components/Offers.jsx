@@ -14,9 +14,7 @@ const Offers = ({ request }) => {
   const [helperOffer, setHelperOffer] = useState({});
   const [updateOffer, setUpdateOffer] = useState(true);
 
-  useEffect(() => {
-    // console.log(updateOffer);
-  }, [updateOffer]);
+  useEffect(() => {}, [updateOffer]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);

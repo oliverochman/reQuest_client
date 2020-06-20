@@ -22,7 +22,7 @@ describe("Users", () => {
       cy.stubMain();
       cy.route({
         method: "GET",
-        url: "**/my_requests/requests",
+        url: "**/my_request/requests",
         response: "fixture:list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",

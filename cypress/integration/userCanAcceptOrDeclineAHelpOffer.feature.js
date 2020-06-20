@@ -22,7 +22,7 @@ describe("User can", () => {
       });
       cy.route({
         method: "PUT",
-        url: "**/offers",
+        url: "**/offers/*",
         response: "fixture:putOffer_accepted.json",
         headers: {
           uid: "me@mail.com",
@@ -47,9 +47,6 @@ describe("User can", () => {
       cy.get("p#status-message").contains(
         "You accepted help from helper@mail.com"
       );
-      cy.wait(3000);
-      cy.get(".helper-email-2").should("be.visible");
-      cy.get(".helper-email-1").should("not.be.visible");
     });
   });
 
@@ -104,7 +101,7 @@ describe("User can", () => {
       });
       cy.route({
         method: "PUT",
-        url: "**/offers",
+        url: "**/offers/*",
         response: "fixture:putOffer_declined.json",
         headers: {
           uid: "me@mail.com",
