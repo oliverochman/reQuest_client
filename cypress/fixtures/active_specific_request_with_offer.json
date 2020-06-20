@@ -1,9 +1,8 @@
 {
   "requests": [{
-    "id": 1,
-    "title": "Change to winter tires",
-    "description": "I need help, really need help changing tyres.",
-    "requester": "me@mail.com",
+    "id": 2,
+    "title": "Paint fences in backyard",
+    "description": "I need help, really need help painting my fence, I have the tools and all, just come and do it for me, please",
     "reward": 100,
     "status": "active",
     "offers": [{
@@ -13,6 +12,15 @@
         "email": "helper@mail.com"
       }, 
       "request_id": 1,
+      "message": "I can help you with this"
+    },
+    {
+      "id": 2,
+      "helper": {
+        "id": 16,
+        "email": "anotherhelper@mail.com"
+      }, 
+      "request_id": 2,
       "message": "I can help you with this"
     }
     ]

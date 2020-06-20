@@ -3,17 +3,19 @@ import { Card } from "semantic-ui-react";
 import MyRequestCard from "./MyRequestCard";
 import { getMyRequests } from "../modules/getRequests";
 
-const MyListComponent = () => {
+const MyListComponent = ({ selectedStatus }) => {
   const [myRequests, setMyRequests] = useState([]);
+  
+  useEffect(() => {
+    getList({ selectedStatus });
+  }, []);
 
   const getList = async () => {
     const requests = await getMyRequests();
     setMyRequests(requests);
+    debugger
   };
 
-  useEffect(() => {
-    getList();
-  }, []);
 
   const cards = myRequests.map((request) => (
     <MyRequestCard key={request.id} request={request} />
