@@ -16,13 +16,12 @@ const Offers = () => {
     (state) => state.requests.mySelectedRequest
   );
 
-  const updateRequest = async () => {
-    await getSingleRequest(dispatch, mySelectedRequest.id);
-  };
-
   useEffect(() => {
-    updateRequest();
-  }, [helperOffer]);
+    const updateRequest = async () => {
+      await getSingleRequest(dispatch, mySelectedRequest.id);
+    };
+    updateRequest(dispatch, mySelectedRequest);
+  }, [mySelectedRequest, dispatch]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
