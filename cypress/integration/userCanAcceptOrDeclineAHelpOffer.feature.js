@@ -6,7 +6,7 @@ describe("User can", () => {
     beforeEach(() => {
       cy.route({
         method: "GET",
-        url: "**/my_requests/requests",
+        url: "**/my_request/requests",
         response: "fixture:list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
@@ -47,6 +47,9 @@ describe("User can", () => {
       cy.get("p#status-message").contains(
         "You accepted help from helper@mail.com"
       );
+      cy.wait(3000);
+      cy.get(".helper-email-2").should("be.visible");
+      cy.get(".helper-email-1").should("not.be.visible");
     });
   });
 
@@ -54,7 +57,7 @@ describe("User can", () => {
     beforeEach(() => {
       cy.route({
         method: "GET",
-        url: "**/my_requests/requests",
+        url: "**/my_request/requests",
         response: "fixture:list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
@@ -85,7 +88,7 @@ describe("User can", () => {
     beforeEach(() => {
       cy.route({
         method: "GET",
-        url: "**/my_requests/requests",
+        url: "**/my_request/requests",
         response: "fixture:list_of_my_requests.json",
         headers: {
           uid: "me@mail.com",
@@ -115,7 +118,6 @@ describe("User can", () => {
       cy.get("#offer-2").within(() => {
         cy.get(".helper-email-2").should("be.visible").click();
       });
-      // cy.get(".helper-email-2").click();
       cy.get("button#declined").should("be.visible");
       cy.wait(1000);
     });
