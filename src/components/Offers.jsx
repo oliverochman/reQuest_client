@@ -3,8 +3,8 @@ import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
 import axios from "axios";
-import { getSingleRequest } from "../modules/getRequests";
-import { useSelector, useDispatch } from "react-redux";
+import updateMyRequest from "../modules/updateMyRequest";
+import { useDispatch } from "react-redux";
 
 const Offers = ({ request }) => {
   const dispatch = useDispatch();
@@ -14,15 +14,8 @@ const Offers = ({ request }) => {
   const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
 
   useEffect(() => {
-    const updateRequest = async (request) => {
-      const response = await getSingleRequest(request.id);
-      dispatch({
-        type: "SET_MY_SELECTED_REQUEST",
-        payload: { request: response.data.request },
-      });
-    };
-    updateRequest(request);
-  }, []);
+    updateMyRequest(request, dispatch);
+  }, [request]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
