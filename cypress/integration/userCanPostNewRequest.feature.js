@@ -49,32 +49,27 @@ describe("User", () => {
       );
       cy.get("#logout").click();
     });
-  });
-
-  describe("unsuccessfully", () => {
-    beforeEach(() => {
-      cy.server()
-      cy.route({
-        method: "POST",
-        url: "**/auth/*",
-        response: "fixture:unsuccessful_login.json",
-        headers: {
-          uid: "user@mail.com",
-        },
-        status: 400,
-      });
-      cy.visit("/login");
-      cy.get("#login-form").within(() => {
-        cy.get("#email").type("user@mail.com");
-        cy.get("#password").type("wrongpassword");
-        cy.get("#submit-btn").contains("Submit").click();
-      });
-    });
-    it("with invalid credentials", () => {
-      cy.get("#error-message").should(
+  
+  it("the input fields are cleared on submission", () => {
+    cy.get("#myrequest-home-link").click();
+      cy.get("#requests-link").click()
+      cy.get("#create-request-link").click();
+      cy.get("#title").type("Fix my bike");
+      cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
+      cy.get("#category").click();
+      cy.get("#category > .visible > :nth-child(2)").click();
+      cy.get("#reward").type("100");
+      cy.get("#submit-btn").contains("Submit").click();
+      cy.get("#message").should(
         "contain",
-        "Invalid login credentials. Please try again."
+        "Your reQuest was successfully created!"
       );
-    });
+      cy.get("#title").should("not.have.value", "Fix my bike");
+      cy.get("#description").should("not.have.value", "I cant ride my bike, HILFE, hilfe, pronto!");
+      cy.wait(3000);
+      cy.get("#message").should("not.be.visible");
+
+    })
   });
 
+  
