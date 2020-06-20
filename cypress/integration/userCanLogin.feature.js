@@ -62,10 +62,7 @@ describe("unsuccessfully", () => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("wrongpassword");
       cy.get("#submit-btn").contains("Submit").click();
-      cy.get("#error-message").should(
-        "contain",
-        "Invalid login credentials. Please try again."
-      );
+      cy.get("#error-message").should("contain","Invalid login credentials. Please try again.");
     });
   });
 });
