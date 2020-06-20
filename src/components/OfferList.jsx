@@ -10,7 +10,7 @@ const OfferList = (props) => {
           className={"helper-email-" + props.offer.id}
           id={props.index}
         >
-          {props.offer.helper.email}
+          {props.offer.email}
         </List.Header>
       </List.Content>
     </List.Item>

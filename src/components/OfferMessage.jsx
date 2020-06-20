@@ -5,7 +5,7 @@ const OfferMessage = (props) => {
   const helperMessage = (
     <Card.Content>
       <Card.Header></Card.Header>
-      <Card.Meta>{props.helperOffer.helper.email}</Card.Meta>
+      <Card.Meta>{props.helperOffer.email}</Card.Meta>
       <Card.Description>
         <div style={{ height: "35vh" }}></div>
         <Popup
@@ -25,6 +25,7 @@ const OfferMessage = (props) => {
           color="green"
           onClick={(e) => props.onClickActivity(e)}
           id="accepted"
+          value={props.id}
         >
           Accept
         </Button>
@@ -33,6 +34,7 @@ const OfferMessage = (props) => {
           color="red"
           onClick={(e) => props.onClickActivity(e)}
           id="declined"
+          value={props.id}
         >
           Decline
         </Button>

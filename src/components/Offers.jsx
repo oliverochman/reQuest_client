@@ -5,17 +5,18 @@ import OfferList from "./OfferList";
 import axios from "axios";
 import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
+import createHeaders from "../modules/headers";
 
 const Offers = ({ request }) => {
   const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+  const [updateOffer, setUpdateOffer] = useState(true);
 
   useEffect(() => {
-    updateMyRequest(request, dispatch);
-  }, [request]);
+    // console.log(updateOffer);
+  }, [updateOffer]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -23,11 +24,16 @@ const Offers = ({ request }) => {
   };
 
   const onClickActivity = async (e) => {
-    const resp = await axios.put("/offers", {
-      headers: headers,
-      activity: e.target.id,
-    });
+    const resp = await axios.put(
+      `/offers/${helperOffer.id}`,
+      {
+        activity: e.target.id,
+      },
+      { headers: createHeaders() }
+    );
     setStatusMessage(resp.data.message);
+    updateMyRequest(request, dispatch);
+    setUpdateOffer(!updateOffer);
   };
 
   const myOffers = request.offers.map((offer, index) => (
