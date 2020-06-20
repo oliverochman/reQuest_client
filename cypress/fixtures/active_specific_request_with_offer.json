@@ -1,0 +1,20 @@
+{
+  "requests": [{
+    "id": 1,
+    "title": "Change to winter tires",
+    "description": "I need help, really need help changing tyres.",
+    "requester": "me@mail.com",
+    "reward": 100,
+    "status": "active",
+    "offers": [{
+      "id": 1,
+      "helper": {
+        "id": 36,
+        "email": "helper@mail.com"
+      }, 
+      "request_id": 1,
+      "message": "I can help you with this"
+    }
+    ]
+  }]
+} 
