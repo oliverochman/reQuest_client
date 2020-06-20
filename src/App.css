@@ -143,7 +143,6 @@ h1, h2, h3, h4, h5, h6, span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: visible !important
 }
 
 #submit-btn {
@@ -156,9 +155,6 @@ h1, h2, h3, h4, h5, h6, span {
   letter-spacing: 0.1em;
   text-align: center;
   cursor: pointer;
-}
-#category{
-  overflow: visible !important
 }
 
 input,
@@ -178,7 +174,6 @@ textarea {
 
 #message {
   color: rgb(230, 230, 230);
-  overflow: visible
 }
 
 /* HOME PAGE - BROWSE REQUESTS */
