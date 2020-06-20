@@ -21,9 +21,11 @@ describe("User can add categories to request", () => {
     cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
     cy.get("#reward").type("100");
     cy.get("#category").click();
-    cy.get("#category> .visible > :nth-child(2)").click();
+    cy.get("#category > .visible > :nth-child(2)").click();
     cy.get("#submit-btn").contains("Submit").click();
+});
+    
     
   })
-})
+
   

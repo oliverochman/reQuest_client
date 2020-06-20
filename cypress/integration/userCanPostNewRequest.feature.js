@@ -1,34 +1,15 @@
 describe("User", () => {
   beforeEach(() => {
     cy.server();
+    cy.login()
+    cy.route({
+      method: "POST",
+      url: "**/my_request/requests",
+      response: "fixture:post_new_request.json",
+      headers: {
+        uid: "user@mail.com",
+      },
   });
-
-  describe("can log in", () => {
-    beforeEach(() => {
-      cy.route({
-        method: "POST",
-        url: "**/auth/*",
-        response: "fixture:successful_login.json",
-        headers: {
-          uid: "user@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/auth/*",
-        response: "fixture:successful_login.json",
-        headers: {
-          uid: "user@mail.com",
-        },
-      });
-      cy.route({
-        method: "POST",
-        url: "**/my_request/requests",
-        response: "fixture:post_new_request.json",
-        headers: {
-          uid: "user@mail.com",
-        },
-      });
       cy.route({
         method: "DELETE",
         url: "**/auth/*",
@@ -45,12 +26,7 @@ describe("User", () => {
           uid: "user@mail.com",
         },
       });
-      cy.visit("/login");
-      cy.get("#login-form").within(() => {
-        cy.get("#email").type("user@mail.com");
-        cy.get("#password").type("password");
-        cy.get("#submit-btn").contains("Submit").click();
-      });
+      
     });
 
     it("successfully", () => {
@@ -63,6 +39,8 @@ describe("User", () => {
       cy.get("#create-request-link").click();
       cy.get("#title").type("Fix my bike");
       cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
+      cy.get("#category").click();
+      cy.get("#category > .visible > :nth-child(2)").click();
       cy.get("#reward").type("100");
       cy.get("#submit-btn").contains("Submit").click();
       cy.get("#message").should(
@@ -75,6 +53,7 @@ describe("User", () => {
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
+      cy.server()
       cy.route({
         method: "POST",
         url: "**/auth/*",
@@ -98,4 +77,4 @@ describe("User", () => {
       );
     });
   });
-});
+

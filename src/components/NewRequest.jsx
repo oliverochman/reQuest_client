@@ -24,7 +24,7 @@ const NewRequest = () => {
     e.persist();
     try {
       const response = await axios.post(
-        "/requests",
+        "/my_request/requests",
         {
           title: e.target.title.value,
           description: e.target.description.value,
@@ -34,7 +34,9 @@ const NewRequest = () => {
         { headers: createHeaders() }
       );
       getKarma(dispatch);
+      e.target.reset()
       setMessage(response.data.message);
+      setTimeout(() => {setMessage("")}, 3000)
     } catch (error) {
       setMessage(error.response.data.message);
     }
