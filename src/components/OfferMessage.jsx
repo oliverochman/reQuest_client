@@ -7,8 +7,8 @@ const OfferMessage = (props) => {
       <Card.Header></Card.Header>
       <Card.Meta>{props.helperOffer.helper.email}</Card.Meta>
       <Card.Description>
-        <div style={{height: "35vh"}}></div>
-        <Popup 
+        <div style={{ height: "35vh" }}></div>
+        <Popup
           content={props.helperOffer.message}
           open
           position="top left"
@@ -45,7 +45,7 @@ const OfferMessage = (props) => {
       <Card.Group>
         <Card>
           {helperMessage}
-          {props.helperOfferStatus === "pending" && showActivityButton}
+          {props.helperOffer.status === "pending" && showActivityButton}
         </Card>
       </Card.Group>
     </List>

@@ -11,18 +11,22 @@ const Offers = () => {
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const [helperOfferStatus, setHelperOfferStatus] = useState({});
   const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
 
+  const updateRequest = async () => {
+    await getSingleRequest(dispatch, mySelectedRequest.id);
+  };
+
+  useEffect(() => {
+    updateRequest();
+  }, [helperOffer]);
+
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
     setHelperOffer({ ...mySelectedRequest.offers[parseInt(e.target.id)] });
-    setHelperOfferStatus(
-      mySelectedRequest.offers[parseInt(e.target.id)].status
-    );
   };
 
   const onClickActivity = async (e) => {
@@ -31,7 +35,6 @@ const Offers = () => {
       activity: e.target.id,
     });
     setStatusMessage(resp.data.message);
-    debugger;
     getSingleRequest(dispatch, mySelectedRequest.id);
   };
   const myOffers = mySelectedRequest.offers.map((offer, index) => (
@@ -39,17 +42,23 @@ const Offers = () => {
   ));
 
   return (
-    <div style={{marginLeft: "30px", display: "flex", flexDirection: "row"}}>
-      <List divided relaxed id="offers" >
-      <h3>Offers</h3>
-      {myOffers}
+    <div style={{ marginLeft: "30px", display: "flex", flexDirection: "row" }}>
+      <List divided relaxed id="offers">
+        <h3>Offers</h3>
+        {myOffers}
       </List>
-      <div style={{marginLeft: "30px", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+      <div
+        style={{
+          marginLeft: "30px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
         {showHelperMessage && (
           <OfferMessage
             helperOffer={helperOffer}
             onClickActivity={onClickActivity}
-            helperOfferStatus={helperOfferStatus}
           />
         )}
         <p id="status-message">{statusMessage}</p>
