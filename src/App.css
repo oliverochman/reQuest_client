@@ -249,6 +249,29 @@ textarea {
 
 /* MYREQUEST PAGES */
 
+#pending-link, 
+#active-link,
+#completed-link {
+  font-family: "Lora", serif;
+  font-size: larger;
+  text-align: center;
+  color: white;
+  width: 120px;
+  background-color: #88a65e;
+}
+
+#pending-link:hover, 
+#active-link:hover,
+#completed-link:hover {
+  color: #e6e6e6;
+}
+
+#pending-link:active, 
+#active-link:active,
+#completed-link:active {
+  background-color: #e8b704 !important;
+}
+
 #leftmost-component {
   height: 60vh;
   display: flex;
@@ -258,15 +281,17 @@ textarea {
 
 #my-list {
   width: 250px;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
+  color: #88a65e;
 }
 
 #offers > div {
   margin-bottom: 30px; 
 }
+
 
