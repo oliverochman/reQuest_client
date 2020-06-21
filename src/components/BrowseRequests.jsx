@@ -8,7 +8,6 @@ import Axios from "axios"
 
 const BrowseRequests = () => {
   const showCategory = async (e) => {
-    debugger
     try { const response = await Axios.get("/requests", { category: e.target.id }) }
     catch (error) {
       console.log(error)

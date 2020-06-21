@@ -197,7 +197,6 @@ textarea {
 
 #qcards > * {
   height: "initial";
-  
 }
 
 #specific-component {
@@ -211,6 +210,7 @@ textarea {
 #about-request {
   font-size: 125%;
   height: 100%;
+  overflow: auto;
 }
 
 #about-request h3 {
