@@ -11,7 +11,7 @@ describe("Requested can mark a request as completed", () => {
     });
     cy.route({
       method: "PUT",
-      url: "**/my_request/requests/*",
+      url: "**/my_request/requests/5",
       response: { message: "Request completed" },
       headers: {
         uid: "me@mail.com",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
-import axios from 'axios'
+import axios from 'axios';
 
 const OfferMessage = (props) => {
   const [completedMessage, setCompletedMessage] = useState("");
@@ -54,8 +54,10 @@ const OfferMessage = (props) => {
           { headers: headers },
           { params: { activity: "completed" } }
         );
+        debugger
         setCompletedMessage(response.data.message);
       } catch (error) {
+        debugger
         setCompletedMessage(error.response.data.message);
       }
     };
