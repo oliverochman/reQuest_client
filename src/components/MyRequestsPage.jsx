@@ -14,7 +14,7 @@ const MyRequestsPage = () => {
     (state) => state.authentication.authenticated
   );
 
-  const doSomething = (status) => {
+  const showMyRequests = (status) => {
     setSelectedStatus(status);
   };
 
@@ -29,21 +29,21 @@ const MyRequestsPage = () => {
               <Menu.Item
                 id="pending-link"
                 active={selectedStatus === "pending"}
-                onClick={() => doSomething("pending")}
+                onClick={() => showMyRequests("pending")}
               >
                 pending
               </Menu.Item>
               <Menu.Item
                 id="active-link"
                 active={selectedStatus === "active"}
-                onClick={() => doSomething("active")}
+                onClick={() => showMyRequests("active")}
               >
                 active
               </Menu.Item>
               <Menu.Item
                 id="completed-link"
                 active={selectedStatus === "complete"}
-                onClick={() => doSomething("completed")}
+                onClick={() => showMyRequests("completed")}
               >
                 completed
               </Menu.Item>

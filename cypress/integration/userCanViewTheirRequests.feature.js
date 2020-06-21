@@ -20,30 +20,7 @@ describe("Users", () => {
   describe("can, by navigating to 'my reQuest' and then 'reQuests'", () => {
     beforeEach(() => {
       cy.stubMain();
-      cy.route({
-        method: "GET",
-        url: "**/my_requests/requests",
-        response: "fixture:list_of_my_requests.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/1",
-        response: "fixture:view_specific_request_with_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/2",
-        response: "fixture:view_another_specific_request_with_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
+      cy.StubRequestPendingOffer();
       cy.login();
       cy.get("#myrequest-home-link").click();
       cy.get("#requests-link").click();
