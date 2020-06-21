@@ -38,7 +38,7 @@ describe("Users", () => {
       cy.get("#request-1").click();
       cy.get("#request-description-1").should(
         "contain",
-        "I need help, really need help changing tyres."
+        "One of the wheels came off and I'm not a handy person. You might need some wrench or something as well. Will tip quick fixer."
       );
 
       cy.wait(500);
