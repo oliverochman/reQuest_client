@@ -17,7 +17,7 @@ describe("User can assign Karma Points to the extent of their balance", () => {
       cy.route({
         method: "POST",
         url: "**/requests",
-        response: "fixture:post_new_request.json",
+        response: "fixture:requests/post_new_request.json",
         headers: {
           uid: "user@mail.com",
         },

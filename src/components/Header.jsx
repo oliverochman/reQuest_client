@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("profile");
   const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(

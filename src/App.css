@@ -8,19 +8,25 @@ html {
   overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
   font-family: "Lora", serif !important;
 }
 
 .input-labels {
   letter-spacing: 0.1em;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 #page-container {
   margin-top: 180px;
   display: flex;
-  padding: 50px; 
+  padding: 50px;
   padding-top: 20px;
   width: 100vw;
 }
@@ -32,7 +38,7 @@ h1, h2, h3, h4, h5, h6, span {
   font-size: 300%;
 }
 
-#page-container * {
+#qcard {
   overflow: hidden;
 }
 
@@ -55,11 +61,11 @@ h1, h2, h3, h4, h5, h6, span {
 }
 
 #hfirst {
-  color: #88a65e
+  color: #88a65e;
 }
 
 #hsecond {
-  color: #e8b704
+  color: #e8b704;
 }
 
 #yellow_divider {
@@ -121,7 +127,7 @@ h1, h2, h3, h4, h5, h6, span {
   right: 0;
   display: flex;
   justify-content: flex-end;
-  width: 50%
+  width: 50%;
 }
 
 #welcome-and-logout > * {
@@ -207,7 +213,7 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px)/2);
+  height: calc((75vh - 178px) / 2);
   font-size: 80%;
 }
 
@@ -217,7 +223,7 @@ textarea {
   padding: 7px;
 }
 
-#contact-button{
+#contact-button {
   position: absolute;
   bottom: 39px;
   right: 15px;
@@ -249,6 +255,29 @@ textarea {
 
 /* MYREQUEST PAGES */
 
+#pending-link,
+#active-link,
+#completed-link {
+  font-family: "Lora", serif;
+  font-size: larger;
+  text-align: center;
+  color: white;
+  width: 120px;
+  background-color: #88a65e;
+}
+
+#pending-link:hover,
+#active-link:hover,
+#completed-link:hover {
+  color: #e6e6e6;
+}
+
+#pending-link:active,
+#active-link:active,
+#completed-link:active {
+  background-color: #e8b704 !important;
+}
+
 #leftmost-component {
   height: 60vh;
   display: flex;
@@ -258,15 +287,17 @@ textarea {
 
 #my-list {
   width: 250px;
+  margin-left: 20px;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
+  color: #88a65e;
 }
 
 #offers > div {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
 #quest-completed {
@@ -278,5 +309,3 @@ textarea {
   font-weight: 700;
   font-size: 100%;
 }
-
-
