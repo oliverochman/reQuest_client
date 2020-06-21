@@ -56,6 +56,7 @@ const Offers = ({ request }) => {
       >
         {showHelperMessage && (
           <OfferMessage
+            request={request}
             helperOffer={helperOffer}
             onClickActivity={onClickActivity}
           />

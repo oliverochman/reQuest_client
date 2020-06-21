@@ -46,7 +46,7 @@ describe("Requested can mark a request as completed", () => {
       cy.get("#request-5").click();
       cy.get(".helper-email-36").click();
       cy.get("#quest-completed").click();
-      cy.get("#message").should("contain", "Request completed");
+      cy.get("#completed-message").should("contain", "Request completed");
     });
   });
 });

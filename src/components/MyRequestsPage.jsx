@@ -1,50 +1,34 @@
 import React, { useState } from "react";
 import MyListComponent from "./MyListComponent";
 import { Menu, Button } from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
-import { getMyRequests } from "../modules/getRequests";
-import Axios from "axios";
 
 const MyRequestsPage = () => {
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
   const [selectedStatus, setSelectedStatus] = useState("pending");
-  const [message, setMessage] = useState();
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const getMyActiveRequest = async () => {
-    let requests = await getMyRequests();
-    let activeRequest = requests.filter((request) => {
-      return request.status === "active";
-    });
-    let activeRequestElement = activeRequest[0];
-    dispatch({
-      type: "SET_MY_SELECTED_ACTIVE_REQUEST",
-      payload: {
-        request: activeRequestElement,
-      },
-    });
-  };
+  // const getMyActiveRequest = async () => {
+  //   let requests = await getMyRequests();
+  //   let activeRequest = requests.filter((request) => {
+  //     return request.status === "active";
+  //   });
+  //   let activeRequestElement = activeRequest[0];
+  //   dispatch({
+  //     type: "SET_MY_SELECTED_ACTIVE_REQUEST",
+  //     payload: {
+  //       request: activeRequestElement,
+  //     },
+  //   });
+  // };
 
-  //   const completeRequest = async () => {
-  //     try {
-  //       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-  //       const response = await Axios.put(
-  //         `/my_requests/requests/${mySelectedActiveRequest.id}`,
-  //         { headers: headers },
-  //         { params: { activity: "completed" } }
-  //       );
-  //       setMessage(response.data.message);
-  //     } catch (error) {
-  //       setMessage(error.response.data.message);
-  //     }
-  //   };
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);

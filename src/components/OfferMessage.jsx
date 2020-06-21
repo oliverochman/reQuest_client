@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
+import axios from 'axios'
 
 const OfferMessage = (props) => {
+  const [completedMessage, setCompletedMessage] = useState("");
+
   const helperMessage = (
     <Card.Content>
       <Card.Header></Card.Header>
@@ -43,6 +46,21 @@ const OfferMessage = (props) => {
     </Card.Content>
   );
 
+      const completeRequest = async () => {
+      try {
+        const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+        const response = await axios.put(
+          `/my_requests/requests/${props.request.id}`,
+          { headers: headers },
+          { params: { activity: "completed" } }
+        );
+        setCompletedMessage(response.data.message);
+      } catch (error) {
+        setCompletedMessage(error.response.data.message);
+      }
+    };
+
+
   return (
     <>
       <List divided relaxed id="offers">
@@ -54,7 +72,8 @@ const OfferMessage = (props) => {
         </Card.Group>
       </List>
       <div id="rightmost-component">
-        <Button id="quest-completed">Quest Completed</Button>
+        <Button id="quest-completed" onClick={completeRequest}>Quest Completed</Button>
+        <p id="completed-message">{completedMessage}</p>
       </div>
     </>
   );
