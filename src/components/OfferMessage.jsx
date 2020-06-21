@@ -78,7 +78,9 @@ const OfferMessage = (props) => {
             Quest Completed
           </Button>
           <br />
-          <p style={{ color: "black" }}>{completedMessage}</p>
+          <p style={{ color: "black" }} id="completed-message">
+            {completedMessage}
+          </p>
         </div>
       </List>
     </>
