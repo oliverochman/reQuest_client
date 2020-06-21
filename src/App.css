@@ -224,7 +224,8 @@ textarea {
   padding: 7px;
 }
 
-#contact-button {
+#contact-button,
+#message-send-btn {
   position: absolute;
   bottom: 20px;
   right: 15px;

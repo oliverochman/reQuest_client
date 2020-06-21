@@ -1,16 +1,34 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import axios from "axios";
+import createHeaders from "../modules/headers";
 import { AboutReQuest, SelectedRequest } from "./AboutReQuest";
-import Message from "./Message";
+import CreateOffer from "./CreateOffer";
+import { useHistory } from "react-router-dom";
 
 const SpecificRequest = () => {
   const selectedRequest = useSelector(
     (state) => state.requests.selectedRequest
   );
+  const [message, setMessage] = useState("");
+  const history = useHistory();
   const user = useSelector((state) => state.authentication.uid);
   const [showMessageForm, setShowMessageForm] = useState(false);
   const onContactHandler = () => setShowMessageForm(true);
+
+  const createOffer = async (e) => {
+    const resp = await axios.post(
+      "/offers",
+      {
+        request_id: selectedRequest.id,
+        message: e.target.firstElementChild.value,
+      },
+      { headers: createHeaders() }
+    );
+    setMessage(resp.data.message);
+    setShowMessageForm(false);
+    // history.push("/myrequest/requests");
+  };
 
   const render = () => {
     let disableButton, statusMessage;
@@ -51,7 +69,8 @@ const SpecificRequest = () => {
   return (
     <>
       <div id="specific-component">{render()}</div>
-      {showMessageForm && <Message />}
+      {showMessageForm && <CreateOffer createOffer={createOffer} />}
+      {message !== "" && <p id="message"> {message}</p>}
     </>
   );
 };
