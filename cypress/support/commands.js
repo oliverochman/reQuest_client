@@ -40,4 +40,73 @@ Cypress.Commands.add("login", () => {
     cy.get("#password").type("password");
     cy.get("#submit-btn").contains("Submit").click();
   });
-})
+});
+
+Cypress.Commands.add("StubRequestPendingOffer", () => {
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests",
+    response: "fixture:requests/list_of_my_requests.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/1",
+    response: "fixture:requests/view_specific_request_with_pending_offers.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/2",
+    response: "fixture:requests/view_another_specific_request_with_offers.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "PUT",
+    url: "**/offers/*",
+    response: "fixture:offers/putOffer_accepted.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+});
+Cypress.Commands.add("StubRequestUpdatedOffer", () => {
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests",
+    response: "fixture:requests/list_of_my_requests.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/1",
+    response: "fixture:requests/view_specific_request_with_updated_offers.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/2",
+    response: "fixture:requests/view_another_specific_request_with_offers.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "PUT",
+    url: "**/offers/*",
+    response: "fixture:offers/putOffer_accepted.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+});

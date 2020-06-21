@@ -1,34 +1,10 @@
 describe("User can", () => {
   beforeEach(() => {
     cy.stubMain();
+    cy.StubRequestPendingOffer();
   });
   describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests",
-        response: "fixture:requests/list_of_my_requests.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/1",
-        response:
-          "fixture:requests/view_specific_request_with_pending_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "PUT",
-        url: "**/offers/*",
-        response: "fixture:offers/putOffer_accepted.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
       cy.login();
       cy.get("#myrequest-home-link").click();
       cy.get("#requests-link").click();
@@ -57,23 +33,7 @@ describe("User can", () => {
 
   describe("When an offer is accepted, the reQuest is not shown in 'pending reQuests", () => {
     beforeEach(() => {
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests",
-        response: "fixture:requests/list_of_my_requests.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/1",
-        response:
-          "fixture:requests/view_specific_request_with_updated_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
+      cy.StubRequestUpdatedOffer();
       cy.login();
       cy.get("#myrequest-home-link").click();
       cy.get("#requests-link").click();

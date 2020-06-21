@@ -20,31 +20,7 @@ describe("Users", () => {
   describe("can, by navigating to 'my reQuest' and then 'reQuests'", () => {
     beforeEach(() => {
       cy.stubMain();
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests",
-        response: "fixture:requests/list_of_my_requests.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/1",
-        response: "fixture:requests/view_specific_request_with_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/2",
-        response:
-          "fixture:requests/view_another_specific_request_with_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
+      cy.StubRequestPendingOffer();
       cy.login();
       cy.get("#myrequest-home-link").click();
       cy.get("#requests-link").click();
@@ -62,7 +38,7 @@ describe("Users", () => {
       cy.get("#request-1").click();
       cy.get("#request-description-1").should(
         "contain",
-        "I need help, really need help changing tyres."
+        "One of the wheels came off and I'm not a handy person."
       );
 
       cy.wait(500);
