@@ -44,14 +44,19 @@ const OfferMessage = (props) => {
   );
 
   return (
-    <List divided relaxed id="offers">
-      <Card.Group>
-        <Card>
-          {helperMessage}
-          {props.helperOffer.status === "pending" && showActivityButton}
-        </Card>
-      </Card.Group>
-    </List>
+    <>
+      <List divided relaxed id="offers">
+        <Card.Group>
+          <Card>
+            {helperMessage}
+            {props.helperOffer.status === "pending" && showActivityButton}
+          </Card>
+        </Card.Group>
+      </List>
+      <div id="rightmost-component">
+        <Button id="quest-completed">Quest Completed</Button>
+      </div>
+    </>
   );
 };
 

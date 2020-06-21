@@ -302,8 +302,6 @@ textarea {
 
 #quest-completed {
   position: absolute;
-  bottom: 39px;
-  right: 15px;
   color: white;
   background-color: #88a65e;
   font-weight: 700;

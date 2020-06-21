@@ -10,6 +10,7 @@ const OfferList = (props) => {
             onClick={props.onHelperClick}
             className={"helper-email-" + props.offer.id}
             id={props.index}
+            style={{ cursor: "pointer" }}
           >
             {props.offer.email}
           </List.Header>
