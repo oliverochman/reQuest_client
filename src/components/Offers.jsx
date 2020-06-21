@@ -37,7 +37,7 @@ const Offers = ({ request }) => {
   };
 
   const myOffers = request.offers.map((offer, index) => (
-    <OfferList offer={offer} index={index} onHelperClick={onHelperClick} />
+    <OfferList offer={offer} requestStatus={request.status} index={index} onHelperClick={onHelperClick} />
   ));
 
   return (

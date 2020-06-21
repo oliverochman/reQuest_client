@@ -10,19 +10,31 @@
       "id": 2,
       "title": "Paint fences in backyard",
       "reward": 150,
-      "status": "active"
+      "status": "pending"
     },
     {
       "id": 3,
       "title": "Paint pictures for Michelangelo",
       "reward": 250,
-      "status": "active"
+      "status": "pending"
     },
     {
       "id": 4,
       "title": "Teach me French",
       "reward": 200,
       "status": "completed"
+    },
+    {
+      "id": 5,
+      "title": "Fix the fixtures in the app",
+      "reward": 150,
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "title": "Copy fixtures and then copy them again",
+      "reward": 250,
+      "status": "active"
     }
   ]
 }
