@@ -213,7 +213,7 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px) / 2);
+  /* height: calc((75vh - 178px) / 2); */
   font-size: 80%;
 }
 
@@ -222,6 +222,11 @@ textarea {
   font-size: 130%;
   color: #606060;
   padding: 7px;
+}
+#offerMessage {
+  font-size: 90%;
+  color: #606060;
+  padding: 10px;
 }
 
 #contact-button,
@@ -241,7 +246,8 @@ textarea {
   justify-self: center;
 }
 
-#selected-title {
+#selected-title,
+#createOffer-label {
   font-weight: 700;
 }
 
