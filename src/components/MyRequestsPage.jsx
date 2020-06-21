@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MyListComponent from "./MyListComponent";
-import { Menu, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
@@ -13,25 +13,15 @@ const MyRequestsPage = () => {
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
-  // const dispatch = useDispatch();
-
-  // const getMyActiveRequest = async () => {
-  //   let requests = await getMyRequests();
-  //   let activeRequest = requests.filter((request) => {
-  //     return request.status === "active";
-  //   });
-  //   let activeRequestElement = activeRequest[0];
-  //   dispatch({
-  //     type: "SET_MY_SELECTED_ACTIVE_REQUEST",
-  //     payload: {
-  //       request: activeRequestElement,
-  //     },
-  //   });
-  // };
-
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
+  };
+
+  const activeMenuItem = (menuItem) => {
+    if (menuItem === selectedStatus) {
+      return { backgroundColor: "#88a65e", color: "whitesmoke" };
+    }
   };
 
   return (
@@ -41,29 +31,32 @@ const MyRequestsPage = () => {
       ) : (
         <>
           <div id="leftmost-component">
-            <Menu vertical secondary>
-              <Menu.Item
-                id="pending-link"
-                active={selectedStatus === "pending"}
-                onClick={() => showMyRequests("pending")}
-              >
-                pending
-              </Menu.Item>
-              <Menu.Item
-                id="active-link"
-                active={selectedStatus === "active"}
-                onClick={() => showMyRequests("active")}
-              >
-                active
-              </Menu.Item>
-              <Menu.Item
-                id="completed-link"
-                active={selectedStatus === "complete"}
-                onClick={() => showMyRequests("completed")}
-              >
-                completed
-              </Menu.Item>
-            </Menu>
+            <div id="menu-container">
+              <div id="vertical-line"></div>
+              <div id="menu">
+                <div
+                  id="pending-link"
+                  style={activeMenuItem("pending")}
+                  onClick={() => showMyRequests("pending")}
+                >
+                  pending
+                </div>
+                <div
+                  id="active-link"
+                  style={activeMenuItem("active")}
+                  onClick={() => showMyRequests("active")}
+                >
+                  active
+                </div>
+                <div
+                  id="completed-link"
+                  style={activeMenuItem("completed")}
+                  onClick={() => showMyRequests("completed")}
+                >
+                  completed
+                </div>
+              </div>
+            </div>
             <Link to="/myrequest/newrequest" id="create-request-link">
               <Button>Create new reQuest</Button>
             </Link>
