@@ -4,20 +4,19 @@ import axios from "axios";
 import createHeaders from "../modules/headers";
 import { AboutReQuest, SelectedRequest } from "./AboutReQuest";
 import CreateOffer from "./CreateOffer";
-import { useHistory } from "react-router-dom";
 
 const SpecificRequest = () => {
   const selectedRequest = useSelector(
     (state) => state.requests.selectedRequest
   );
   const [message, setMessage] = useState("");
-  const history = useHistory();
   const user = useSelector((state) => state.authentication.uid);
   const [showMessageForm, setShowMessageForm] = useState(false);
   const onContactHandler = () => setShowMessageForm(true);
 
   const createOffer = async (e) => {
-    const resp = await axios.post(
+    e.preventDefault();
+    const response = await axios.post(
       "/offers",
       {
         request_id: selectedRequest.id,
@@ -25,9 +24,8 @@ const SpecificRequest = () => {
       },
       { headers: createHeaders() }
     );
-    setMessage(resp.data.message);
+    setMessage(response.data.message);
     setShowMessageForm(false);
-    // history.push("/myrequest/requests");
   };
 
   const render = () => {
