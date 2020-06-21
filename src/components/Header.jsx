@@ -43,7 +43,7 @@ const Header = () => {
 
   const activeMenuItem = (menuItem) => {
     if (menuItem === activeTab) {
-      return { backgroundColor: "#e8b704", color: "whitesmoke" };
+      return { backgroundColor: "#f2be00", color: "whitesmoke" };
     }
   };
 
