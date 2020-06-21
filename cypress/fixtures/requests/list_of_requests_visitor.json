@@ -6,7 +6,7 @@
       "description": "Need a hand with tyres",
       "requester": "someone1@email.com",
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
-      "categories": ["outdoors", "heavy", "car"],
+      "categories": ["Vehicles"],
       "reward": 90,
       "offerable": null
     },
@@ -16,7 +16,7 @@
       "description": "Need a hand with painting",
       "requester": "someone2@email.com",
       "location": { "area": "Yola", "long": 18.98, "lat": 58.18 },
-      "categories": ["outdoors", "heavy", "paint"],
+      "categories": ["Home"],
       "reward": 150,
       "offerable": null
       
@@ -27,7 +27,7 @@
       "description": "Need a tongue with French",
       "requester": "someone3@email.com",
       "location": { "area": "Buma", "long": 18.98, "lat": 58.18 },
-      "categories": ["language", "beginner"],
+      "categories": ["Education"],
       "reward": 200,
       "offerable": null
     },
@@ -37,7 +37,7 @@
       "description": "Need a Mozart to help",
       "requester": "someone4@email.com",
       "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
-      "categories": ["piano", "instrument", "beginner"],
+      "categories": ["Education"],
       "reward": 200,
       "offerable": null
     },
@@ -47,7 +47,7 @@
       "description": "Need someone grosser that the grocer",
       "requester": "someone5@email.com",
       "location": { "area": "Aswa", "long": 18.98, "lat": 58.18 },
-      "categories": ["shopping", "carry"],
+      "categories": ["Home"],
       "reward": 35,
       "offerable": null
     },
@@ -57,7 +57,7 @@
       "description": "Need a hand with a window",
       "requester": "someone6@email.com",
       "location": { "area": "Aler", "long": 18.98, "lat": 58.18 },
-      "categories": ["outdoors", "tools"],
+      "categories": ["Home"],
       "reward": 55,
       "offerable": null
     },
@@ -67,7 +67,7 @@
       "description": "Need a hand with a baby",
       "requester": "someone7@email.com",
       "location": { "area": "Paba", "long": 18.98, "lat": 58.18 },
-      "categories": ["children", "baby"],
+      "categories": ["Education"],
       "reward": 80,
       "offerable": null
     },
@@ -77,7 +77,7 @@
       "description": "Need a hand with furniture",
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
-      "categories": ["carry", "heavy"],
+      "categories": ["Home"],
       "reward": 120,
       "offerable": null
     },
@@ -87,7 +87,7 @@
       "description": "Need a hand with furniture",
       "requester": "someone9@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
-      "categories": ["carry", "heavy"],
+      "categories": ["Home"],
       "reward": 120,
       "offerable": null
     }

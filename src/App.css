@@ -35,6 +35,18 @@ h1, h2, h3, h4, h5, h6, span {
 #qcard {
   overflow: hidden;
 }
+#categories{
+  font-family: "Lora", serif;
+  font-size: 24px;
+  color: white;
+  background-color: #88a65e;
+  height: fit-content;
+  text-align: center;
+  padding: 10px;
+}
+#home,#education,#it,#vehicles,#others{
+  color: white;
+}
 
 /* HEADER */
 #header {
@@ -185,6 +197,7 @@ textarea {
 
 #qcards > * {
   height: "initial";
+  
 }
 
 #specific-component {
@@ -197,7 +210,6 @@ textarea {
 
 #about-request {
   font-size: 125%;
-  overflow: auto;
   height: 100%;
 }
 

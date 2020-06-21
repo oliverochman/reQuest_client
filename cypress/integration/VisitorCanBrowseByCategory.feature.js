@@ -2,6 +2,11 @@ describe("Visitor can browse by category", () => {
   beforeEach(() => {
     cy.server();
     cy.visit("/")
+    cy.route({
+      method: "GET",
+      url:"**/requests",
+      response: "fixture:requests/list_of_requests_visitor.json",
+    });
   });
 
   it("and they should all be visible", () => {
@@ -19,8 +24,21 @@ describe("Visitor can browse by category", () => {
     cy.get("#home").click()
     cy.get("#education").click()
   });
-
-  //it("but only existing categories", () => {
-    //cy.get("cleaning").should("not exist")
-  //})
+  it("click home successfully", () => {
+    cy.get("#home").click();
+    cy.get("#request-2").should("be.visible");
+    cy.get("#request-8").should("be.visible");
+    cy.get("#request-9").should("be.visible");
+    cy.get("#request-6").should("be.visible");
+    cy.get("#request-5").should("be.visible");
+    cy.get("#request-1").should("not.be.visible");
+    cy.get("#request-4").should("not.be.visible");
+  });
+  it("click education successfully", () => {
+    cy.get("#education").click();
+    cy.get("#request-4").should("be.visible");
+    cy.get("#request-7").should("be.visible");
+    cy.get("#request-8").should("not.be.visible");
+    cy.get("#request-6").should("not.be.visible");
+  });
 })
