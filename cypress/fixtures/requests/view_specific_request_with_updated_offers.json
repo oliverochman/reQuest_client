@@ -8,7 +8,7 @@
       {
         "id": 1,
         "email": "helper@mail.com",
-        "status": "pending",
+        "status": "accepted",
         "message": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
       },
       {
@@ -16,12 +16,6 @@
         "email": "betterHelper@mail.com",
         "status": "pending",
         "message": "Im the lejoin, Im the king in Sweden, can do anything. I dont need the tip, im so rich.I'll arrive fast in my lambo. Later, Ibrahimovich"
-      },
-      {
-        "id": 3,
-        "email": "superHelper@mail.com",
-        "status": "pending",
-        "message": "Im so handy. I have been handy my hole carrerier. I can do anything with silver tejp. Ready when you have time. // MacGyver"
       }
     ]
   }
