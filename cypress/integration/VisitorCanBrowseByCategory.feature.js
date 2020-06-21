@@ -5,19 +5,22 @@ describe("Visitor can browse by category", () => {
   });
 
   it("and they should all be visible", () => {
-    cy.get("#Home").should("be visible")
-    cy.get("#Education").should("be visible")
-    cy.get("#IT").should("be visible")
-    cy.get("#Vehicles").should("be visible")
-    cy.get("#Others").should("be visible")
+    cy.get("#categories").within(() => {
+      cy.get("#home").should("be.visible")
+    cy.get("#education").should("be.visible")
+    cy.get("#it").should("be.visible")
+    cy.get("#vehicles").should("be.visible")
+    cy.get("#others").should("be.visible")
+    })
+    
   });
 
   it("and they should be clickable", () => {
-    cy.get("#Home").click()
-    cy.get("#Education").click()
+    cy.get("#home").click()
+    cy.get("#education").click()
   });
 
-  it("but only existing categories", () => {
-    cy.get("cleaning").should("not exist")
-  })
+  //it("but only existing categories", () => {
+    //cy.get("cleaning").should("not exist")
+  //})
 })
