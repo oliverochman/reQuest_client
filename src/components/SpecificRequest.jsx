@@ -46,12 +46,11 @@ const SpecificRequest = () => {
           statusMessage = "You cannot make an offer on your own request";
           break;
         default:
-          debugger;
           disableButton = true;
           statusMessage = "You have already offered to help with this request";
       }
       return (
-        <>
+        <div id="message-component">
           <SelectedRequest
             onContactHandler={onContactHandler}
             selectedRequest={selectedRequest}
@@ -59,16 +58,20 @@ const SpecificRequest = () => {
             disableButton={disableButton}
             showMessageForm={showMessageForm}
           />
-        </>
+        </div>
       );
     } else {
-      return <AboutReQuest />;
+      return (
+        <div id="specific-component">
+          <AboutReQuest />
+        </div>
+      );
     }
   };
 
   return (
     <>
-      <div id="specific-component">{render()}</div>
+      {render()}
       {showMessageForm && <CreateOffer createOffer={createOffer} />}
       {message !== "" && <p id="message"> {message}</p>}
     </>

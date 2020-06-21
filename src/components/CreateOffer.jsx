@@ -3,7 +3,7 @@ import { Button } from "semantic-ui-react";
 
 const CreateOffer = (props) => {
   return (
-    <div id="specific-component">
+    <div id="message-component-send">
       <div id="message-container">
         <h3 className="createOffer-label">{"Your message:"}</h3>
         <form id="send-message-form" onSubmit={(e) => props.createOffer(e)}>

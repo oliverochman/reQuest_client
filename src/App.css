@@ -29,6 +29,7 @@ span {
   padding: 50px;
   padding-top: 20px;
   width: 100vw;
+  position: absolute;
 }
 
 #page-container h1 {
@@ -197,12 +198,26 @@ textarea {
   background-color: lightgray;
   border: 3px #88a65e solid;
   padding: 4px;
-  height: calc(75vh - 178px);
+  height: calc(85vh - 178px);
+  position: relative;
+}
+#message-component {
+  background-color: lightgray;
+  border: 3px #88a65e solid;
+  padding: 4px;
+  height: calc(55vh - 178px);
+  position: relative;
+}
+#message-component-send {
+  background-color: lightgray;
+  border: 3px #88a65e solid;
+  padding: 4px;
+  height: calc(60vh - 178px);
   position: relative;
 }
 
 #about-request {
-  font-size: 125%;
+  font-size: 110%;
   overflow: auto;
   height: 100%;
 }
@@ -213,7 +228,7 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  /* height: calc((75vh - 178px) / 2); */
+  height: calc((75vh - 178px) / 2);
   font-size: 80%;
 }
 
@@ -223,16 +238,20 @@ textarea {
   color: #606060;
   padding: 7px;
 }
+
 #offerMessage {
   font-size: 90%;
   color: #606060;
   padding: 10px;
 }
-
+#send-message-form {
+  padding: 10px;
+  padding-top: 7px;
+}
 #contact-button,
 #message-send-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   right: 15px;
   color: white;
   background-color: #88a65e;
