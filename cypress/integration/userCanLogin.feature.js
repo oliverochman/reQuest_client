@@ -70,6 +70,7 @@ describe("User can log in, when clicking the 'my reQuest' link", () => {
     cy.get("#welcome-and-logout").within(() => {
       cy.get("button#logout").click();
       cy.get("button#logout").should("not.exist");
+      cy.get("p").should("not.contain", "user@mail.com");
     });
   });
 });
