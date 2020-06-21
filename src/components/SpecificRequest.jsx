@@ -13,8 +13,8 @@ const SpecificRequest = () => {
   const onContactHandler = () => setShowMessageForm(true);
 
   const render = () => {
+    let disableButton, statusMessage;
     if (selectedRequest) {
-      let disableButton, statusMessage;
       switch (true) {
         case !user:
           disableButton = true;
@@ -33,7 +33,6 @@ const SpecificRequest = () => {
           disableButton = true;
           statusMessage = "You have already offered to help with this request";
       }
-
       return (
         <>
           <SelectedRequest
@@ -42,7 +41,6 @@ const SpecificRequest = () => {
             statusMessage={statusMessage}
             disableButton={disableButton}
           />
-          {showMessageForm && <Message />}
         </>
       );
     } else {
@@ -50,7 +48,12 @@ const SpecificRequest = () => {
     }
   };
 
-  return <div id="specific-component">{render()}</div>;
+  return (
+    <>
+      <div id="specific-component">{render()}</div>
+      {showMessageForm && <Message />}
+    </>
+  );
 };
 
 export default SpecificRequest;

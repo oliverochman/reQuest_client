@@ -33,29 +33,26 @@ export const AboutReQuest = () => {
   );
 };
 
-export const SelectedRequest = (
-  selectedRequest,
-  onContactHandler,
-  statusMessage,
-  disableButton
-) => {
+export const SelectedRequest = (props) => {
   return (
     <div id="selected-request">
-      <h2 id="selected-title">{selectedRequest.title}</h2>
-      <span id="selected-requester">{selectedRequest.requester}</span>
+      <h3 id="selected-title">{props.selectedRequest.title}</h3>
+      <span id="selected-requester">{props.selectedRequest.requester}</span>
       <Divider />
       <div id="description-wrapper">
-        <p id="selected-description">{selectedRequest.description}</p>
+        <p id="selected-description">{props.selectedRequest.description}</p>
       </div>
-      <div id="selected-reward">{selectedRequest.reward}p</div>
+      <div id="selected-reward">{props.selectedRequest.reward}p</div>
       <Button
         id="contact-button"
-        disabled={disableButton}
-        onClick={onContactHandler}
+        disabled={props.disableButton}
+        onClick={props.onContactHandler}
       >
         contact
       </Button>
-      {statusMessage && <span id="selected-message">{statusMessage}</span>}
+      {props.statusMessage && (
+        <span id="selected-message">{props.statusMessage}</span>
+      )}
     </div>
   );
 };
