@@ -43,13 +43,15 @@ export const SelectedRequest = (props) => {
         <p id="selected-description">{props.selectedRequest.description}</p>
       </div>
       <div id="selected-reward">{props.selectedRequest.reward}p</div>
-      <Button
-        id="contact-button"
-        disabled={props.disableButton}
-        onClick={props.onContactHandler}
-      >
-        contact
-      </Button>
+      {!props.showMessageForm && (
+        <Button
+          id="contact-button"
+          disabled={props.disableButton}
+          onClick={props.onContactHandler}
+        >
+          contact
+        </Button>
+      )}
       {props.statusMessage && (
         <span id="selected-message">{props.statusMessage}</span>
       )}

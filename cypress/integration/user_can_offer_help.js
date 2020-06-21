@@ -1,8 +1,8 @@
 describe("User can offer help", () => {
   beforeEach(() => {
     cy.server();
-    cy.login();
     cy.stubMainLoggedIn();
+    cy.login();
     cy.get("#request-1").within(() => {
       cy.get(".header").should("contain", "Change to winter tires").click();
     });

@@ -46,6 +46,7 @@ const SpecificRequest = () => {
           statusMessage = "You cannot make an offer on your own request";
           break;
         default:
+          debugger;
           disableButton = true;
           statusMessage = "You have already offered to help with this request";
       }
@@ -56,6 +57,7 @@ const SpecificRequest = () => {
             selectedRequest={selectedRequest}
             statusMessage={statusMessage}
             disableButton={disableButton}
+            showMessageForm={showMessageForm}
           />
         </>
       );
