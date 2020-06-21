@@ -17,7 +17,7 @@ describe("Visitor can browse by category", () => {
     cy.get("#Education").click()
   });
 
-  it("only existing categories", () => {
-    cy.get("cleaning").should("not be visible")
+  it("but only existing categories", () => {
+    cy.get("cleaning").should("not exist")
   })
 })
