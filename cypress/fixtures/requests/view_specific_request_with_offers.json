@@ -4,6 +4,7 @@
     "title": "Change to winter tires",
     "description": "One of the wheels came off and I'm not a handy person. You might need some wrench or something as well. Will tip quick fixer.",
     "reward": 100,
+    "status":"pending",
     "offers": [
       {
         "id": 1,

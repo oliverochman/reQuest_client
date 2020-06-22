@@ -13,12 +13,9 @@ describe("Can view details of a specific request", () => {
       cy.visit("/");
       cy.get("#request-4").click();
       cy.get("#selected-request").within(() => {
-        cy.get("button").should("be.disabled");
-        cy.get("#selected-message").should(
-          "contain",
-          "Log in or sign up to offer your help"
-        );
+        cy.get("button").contains("contact").click()
       });
+      cy.get("#message-component-send").should("not.exist")
     });
   });
 
@@ -38,9 +35,9 @@ describe("Can view details of a specific request", () => {
         );
         cy.get("#selected-reward").should("contain", "90");
         cy.get("#selected-requester").should("contain", "someone1@email.com");
-        cy.get("button").should("be.enabled");
-        cy.get("#selected-message").should("not.exist");
+        cy.get("button").contains("contact").click()
       });
+      cy.get("#message-component-send").should("be.visible");
     });
 
     it("a request will have contact button disabled if the user has already offered", () => {
@@ -52,12 +49,9 @@ describe("Can view details of a specific request", () => {
           "Need a hand with painting"
         );
         cy.get("#selected-requester").should("contain", "someone2@email.com");
-        cy.get("button").should("be.disabled");
-        cy.get("#selected-message").should(
-          "contain",
-          "You have already offered to help with this request"
-        );
+        cy.get("button").contains("contact").click()
       });
+      cy.get("#message-component-send").should("not.exist")
     });
 
     it("a request will have contact button disabled if the user made the request", () => {
@@ -69,12 +63,9 @@ describe("Can view details of a specific request", () => {
           "Need a tongue with French"
         );
         cy.get("#selected-requester").should("contain", "user@mail.com");
-        cy.get("button").should("be.disabled");
-        cy.get("#selected-message").should(
-          "contain",
-          "You cannot make an offer on your own request"
-        );
+        cy.get("button").contains("contact").click()
       });
+      cy.get("#message-component-send").should("not.exist")
     });
   });
 });

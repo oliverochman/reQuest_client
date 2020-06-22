@@ -5,6 +5,7 @@
     "description": "I need help, really need help painting my fence, I have the tools and all, just come and do it for me, please",
     "requester": "me@mail.com",
     "reward": 150,
+    "status":"pending",
     "offers": [
       {
         "id": 1,

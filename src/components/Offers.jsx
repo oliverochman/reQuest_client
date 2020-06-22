@@ -7,7 +7,7 @@ import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
 import createHeaders from "../modules/headers";
 
-const Offers = ({ request }) => {
+const Offers = ({ request, selectedStatus }) => {
   const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -37,31 +37,48 @@ const Offers = ({ request }) => {
   };
 
   const myOffers = request.offers.map((offer, index) => (
-    <OfferList offer={offer} index={index} onHelperClick={onHelperClick} />
+    <OfferList
+      offer={offer}
+      requestStatus={request.status}
+      index={index}
+      onHelperClick={onHelperClick}
+    />
   ));
 
+  const acceptedHelperOffer = request.offers.filter(
+    (offer) => offer.status === "accepted"
+  )[0];
+
   return (
-    <div style={{ marginLeft: "30px", display: "flex", flexDirection: "row" }}>
-      <List divided relaxed id="offers">
-        <h3>Offers</h3>
-        {myOffers}
-      </List>
-      <div
-        style={{
-          marginLeft: "30px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
-        {showHelperMessage && (
-          <OfferMessage
-            helperOffer={helperOffer}
-            onClickActivity={onClickActivity}
-          />
-        )}
-        <p id="status-message">{statusMessage}</p>
-      </div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      {selectedStatus === "pending" && (
+        <>
+          <List divided relaxed id="offers">
+            <h3>Offers</h3>
+            {myOffers}
+          </List>
+          <div
+            style={{
+              marginLeft: "30px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            {showHelperMessage && (
+              <OfferMessage
+                helperOffer={helperOffer}
+                onClickActivity={onClickActivity}
+                selectedStatus={selectedStatus} 
+              />
+            )}
+            <p id="status-message">{statusMessage}</p>
+          </div>
+        </>
+      )}
+      {selectedStatus === "active" && (
+        <OfferMessage helperOffer={acceptedHelperOffer} selectedStatus={selectedStatus} />
+      )}
     </div>
   );
 };

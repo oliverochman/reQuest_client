@@ -8,21 +8,28 @@ html {
   overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
   font-family: "Lora", serif !important;
 }
 
 .input-labels {
   letter-spacing: 0.1em;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 #page-container {
   margin-top: 180px;
   display: flex;
-  padding: 50px; 
+  padding: 50px;
   padding-top: 20px;
   width: 100vw;
+  position: absolute;
 }
 
 #page-container h1 {
@@ -35,7 +42,18 @@ h1, h2, h3, h4, h5, h6, span {
 #qcard {
   overflow: hidden;
 }
-
+#categories{
+  font-family: "Lora", serif;
+  font-size: 24px;
+  color: white;
+  background-color: #88a65e;
+  height: fit-content;
+  text-align: center;
+  padding: 10px;
+}
+#categories a {
+    color: white;
+}
 /* HEADER */
 #header {
   position: absolute;
@@ -55,11 +73,11 @@ h1, h2, h3, h4, h5, h6, span {
 }
 
 #hfirst {
-  color: #88a65e
+  color: #88a65e;
 }
 
 #hsecond {
-  color: #e8b704
+  color: #e8b704;
 }
 
 #yellow_divider {
@@ -121,12 +139,26 @@ h1, h2, h3, h4, h5, h6, span {
   right: 0;
   display: flex;
   justify-content: flex-end;
-  width: 50%
+  width: 50%;
 }
 
 #welcome-and-logout > * {
   font-family: "Lora", serif;
   margin: 0 20px;
+}
+
+#points-display {
+  height: 50px;
+  width: 50px;
+  background-color: #e8b704;
+  border-radius: 50%;
+  margin: -30px 0;
+}
+#karma-points-amount {
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Lora", serif;
 }
 
 /* FORMS */
@@ -191,14 +223,29 @@ textarea {
   background-color: lightgray;
   border: 3px #88a65e solid;
   padding: 4px;
-  height: calc(75vh - 178px);
+  height: calc(85vh - 178px);
+  position: relative;
+}
+#message-component {
+  background-color: lightgray;
+  border: 3px #88a65e solid;
+  padding: 4px;
+  height: calc(55vh - 178px);
+  position: relative;
+}
+#message-component-send {
+  background-color: lightgray;
+  border: 3px #88a65e solid;
+  padding: 4px;
+  height: calc(60vh - 178px);
   position: relative;
 }
 
 #about-request {
-  font-size: 125%;
+  font-size: 110%;
   overflow: auto;
   height: 100%;
+  overflow: auto;
 }
 
 #about-request h3 {
@@ -207,19 +254,31 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px)/2);
+  height: calc((75vh - 178px) / 2);
   font-size: 80%;
 }
 
-#selected-request {
-  font-size: 150%;
+#selected-request,
+#message-container {
+  font-size: 130%;
   color: #606060;
   padding: 7px;
 }
 
-#contact-button{
+#offerMessage {
+  font-size: 90%;
+  color: #606060;
+  padding: 10px;
+}
+#send-message-form {
+  padding: 10px;
+  padding-top: 7px;
+}
+#contact-button,
+#disabled-contact-button,
+#message-send-btn {
   position: absolute;
-  bottom: 39px;
+  bottom: 15px;
   right: 15px;
   color: white;
   background-color: #88a65e;
@@ -227,13 +286,12 @@ textarea {
   font-size: 100%;
 }
 
-#selected-message {
-  position: absolute;
-  bottom: 8px;
-  justify-self: center;
+#disabled-contact-button {
+  background-color: #bac1bf;
 }
 
-#selected-title {
+#selected-title,
+#createOffer-label {
   font-weight: 700;
 }
 
@@ -248,6 +306,40 @@ textarea {
 }
 
 /* MYREQUEST PAGES */
+#menu-container {
+  display: flex;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#vertical-line {
+  height: 100%;
+  width: 5px;
+  background-color: #88a65e;
+}
+
+#pending-link,
+#active-link,
+#completed-link {
+  font-family: "Lora", serif;
+  font-size: larger;
+  text-align: center;
+  color: #88a65e;
+  margin: 0 -4px;
+  width: 170px;
+  padding: 10px 20px 10px 50px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#pending-link:hover,
+#active-link:hover,
+#completed-link:hover {
+  color: #e6e6e6;
+}
 
 #leftmost-component {
   height: 60vh;
@@ -258,15 +350,20 @@ textarea {
 
 #my-list {
   width: 250px;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
+  color: #88a65e;
 }
 
 #offers > div {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
+#quest-completed {
+  color: white;
+  background-color: #88a65e;
+}

@@ -20,8 +20,13 @@ const requestReducer = (state = initialState, action) => {
     case "RESET_MY_SELECTED_REQUEST":
       return {
         ...state,
-        mySelectedRequest: false
-      }
+        mySelectedRequest: false,
+      };
+    case "SET_MY_SELECTED_ACTIVE_REQUEST":
+      return {
+        ...state,
+        mySelectedActiveRequest: action.payload.request,
+      };
     default:
       return state;
   }
