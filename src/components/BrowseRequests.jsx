@@ -25,7 +25,7 @@ const BrowseRequests = () => {
           <List.Item id="education">Education</List.Item>
           <List.Item id="it">IT</List.Item>
           <List.Item id="vehicles">Vehicles</List.Item>
-          <List.Item id="others">Others</List.Item>
+          <List.Item id="other">Others</List.Item>
         </List>
         <Grid>
           <Grid.Column width={2}></Grid.Column>
