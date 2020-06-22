@@ -43,9 +43,6 @@ const LoginForm = () => {
   return (
     <div id="page-container">
       <Container className="form-container">
-        <h3 className="input-labels" id="error-message">
-          {errorMessage}
-        </h3>
         <Form id="login-form" onSubmit={login}>
           <h1 className="input-labels">{"Log in"}</h1>
           <h4 className="input-labels">{"Email"}</h4>
@@ -57,6 +54,9 @@ const LoginForm = () => {
             id="password"
           ></Form.Input>
           <Input type="submit" value="Submit" id="submit-btn" />
+          <h3 className="input-labels" id="error-message">
+          {errorMessage}
+        </h3>
         </Form>
       </Container>
     </div>
