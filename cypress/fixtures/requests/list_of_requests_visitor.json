@@ -22,6 +22,17 @@
       "offerable": null
       
     },
+
+    {
+      "id": 4,
+      "title": "Want to learn piano",
+      "description": "Need a Mozart to help",
+      "requester": "someone4@email.com",
+      "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
+      "categories": ["piano", "instrument", "beginner"],
+      "reward": 200,
+      "offerable": null
+    },
     
     {
       "id": 5,
