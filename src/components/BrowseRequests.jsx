@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, List } from "semantic-ui-react";
 import AllRequests from "./AllRequests";
 import SpecificRequest from "./SpecificRequest";
+import { useDispatch } from "react-redux";
 
 const BrowseRequests = () => {
-  const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
   const onItemClickHandler = (e) => {
-    setCategory(e.target.id);
+    dispatch({
+      type: "SET_ACTIVE_CATEGORY",
+      payload: {
+        activeCategory: e.target.id,
+      },
+    });
   };
 
   return (
@@ -32,7 +38,7 @@ const BrowseRequests = () => {
         <Grid>
           <Grid.Column width={2}></Grid.Column>
           <Grid.Column width={9} id="list-wrapper">
-            <AllRequests category={category} />
+            <AllRequests />
           </Grid.Column>
           <Grid.Column width={5}>
             <SpecificRequest />
