@@ -3,6 +3,7 @@ import { auth } from "../modules/auth";
 import { Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import getKarma from '../modules/getKarma'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Header = () => {
 
   const setActivePage = (page) => {
     dispatch({ type: "SET_ACTIVE_PAGE", payload: page });
+    getKarma(dispatch);
   };
 
   const activeMenuItem = (menuItem) => {
