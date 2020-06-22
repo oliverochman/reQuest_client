@@ -9,6 +9,20 @@ const OfferMessage = (props) => {
     (state) => state.requests.mySelectedRequest
   );
 
+  const completeRequest = async () => {
+    try {
+      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+      const response = await axios.put(
+        `/my_request/requests/${mySelectedRequest.id}`,
+        { headers: headers },
+        { params: { activity: "completed" } }
+      );
+      setCompletedMessage(response.data.message);
+    } catch (error) {
+      setCompletedMessage(error.response.data.message);
+    }
+  };
+
   const helperMessage = (
     <Card.Content>
       <Card.Header></Card.Header>
@@ -25,44 +39,42 @@ const OfferMessage = (props) => {
       </Card.Description>
     </Card.Content>
   );
+
   const showActivityButton = (
     <Card.Content extra>
-      <div className="ui two buttons">
-        <Button
-          basic
-          color="green"
-          onClick={(e) => props.onClickActivity(e)}
-          id="accepted"
-          value={props.id}
-        >
-          Accept
-        </Button>
-        <Button
-          basic
-          color="red"
-          onClick={(e) => props.onClickActivity(e)}
-          id="declined"
-          value={props.id}
-        >
-          Decline
-        </Button>
-      </div>
+      <>
+        {props.selectedStatus === "pending" && (
+          <div className="ui two buttons">
+            <Button
+              basic
+              color="green"
+              onClick={(e) => props.onClickActivity(e)}
+              id="accepted"
+              value={props.id}
+            >
+              Accept
+            </Button>
+            <Button
+              basic
+              color="red"
+              onClick={(e) => props.onClickActivity(e)}
+              id="declined"
+              value={props.id}
+            >
+              Decline
+            </Button>
+          </div>
+        )}
+        {props.selectedStatus === "active" && !completedMessage && (
+          <div className="ui two buttons">
+            <Button id="quest-completed" onClick={completeRequest}>
+              Quest Completed
+            </Button>
+          </div>
+        )}
+      </>
     </Card.Content>
   );
-
-  const completeRequest = async () => {
-    try {
-      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-      const response = await axios.put(
-        `/my_request/requests/${mySelectedRequest.id}`,
-        { headers: headers },
-        { params: { activity: "completed" } }
-      );
-      setCompletedMessage(response.data.message);
-    } catch (error) {
-      setCompletedMessage(error.response.data.message);
-    }
-  };
 
   return (
     <>
@@ -70,18 +82,12 @@ const OfferMessage = (props) => {
         <Card.Group>
           <Card>
             {helperMessage}
-            {props.helperOffer.status === "pending" && showActivityButton}
+            {showActivityButton}
           </Card>
         </Card.Group>
-        <div>
-          <Button id="quest-completed" onClick={completeRequest}>
-            Quest Completed
-          </Button>
-          <br />
-          <p style={{ color: "black" }} id="completed-message">
-            {completedMessage}
-          </p>
-        </div>
+        <p style={{ color: "black" }} id="completed-message">
+          {completedMessage}
+        </p>
       </List>
     </>
   );
