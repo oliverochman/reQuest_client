@@ -5,13 +5,18 @@ const activePageReducer = (state = initialState, action) => {
     case "SET_ACTIVE_PAGE":
       return {
         ...state,
-        activePage: action.payload
+        activePage: action.payload,
+      };
+    case "SET_ACTIVE_CATEGORY":
+      return {
+        ...state,
+        activeCategory: action.payload,
       };
     case "RESET_ACTIVE_PAGE":
       return {
         ...state,
-        activePage: "home"
-      }
+        activePage: "home",
+      };
     default:
       return state;
   }

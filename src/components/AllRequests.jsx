@@ -7,19 +7,20 @@ import { Card } from "semantic-ui-react";
 const AllRequests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((state) => state.requests.requests);
+  const activeCategory = useSelector((state) => state.pages.activeCategory);
 
   useEffect(() => {
-    getRequests(dispatch);
-  }, [dispatch]);
+    getRequests(dispatch, activeCategory);
+  }, [dispatch, activeCategory]);
 
   const requestCards = requests.map((request) => (
-    <RequestCard key={request.id} request={request} myRequests={false}/>
+    <RequestCard key={request.id} request={request} myRequests={false} />
   ));
 
   return (
-    <Card.Group id="qcards">
-      {requestCards}
-    </Card.Group>
+    <>
+      <Card.Group id="qcards">{requestCards}</Card.Group>
+    </>
   );
 };
 
