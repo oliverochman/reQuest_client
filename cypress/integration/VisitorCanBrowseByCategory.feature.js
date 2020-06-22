@@ -2,11 +2,6 @@ describe("Visitor can browse by category", () => {
   beforeEach(() => {
     cy.server();
     cy.stubMain();
-    cy.route({
-      method: "GET",
-      url: "**/requests",
-      response: "fixture:requests/list_of_requests_visitor.json",
-    });
     cy.visit("/");
   });
 

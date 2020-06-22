@@ -1,6 +1,17 @@
 {
   "requests": [
     {
+      "id": 1,
+      "title": "Change to winter tires",
+      "description": "Need a hand with tyres",
+      "requester": "someone1@email.com",
+      "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
+      "categories": ["outdoors", "heavy", "car"],
+      "reward": 90,
+      "offerable": null
+    },
+    
+    {
       "id": 2,
       "title": "Paint fences in backyard",
       "description": "Need a hand with painting",
