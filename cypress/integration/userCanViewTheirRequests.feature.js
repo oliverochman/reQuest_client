@@ -23,6 +23,7 @@ describe("Users", () => {
       cy.StubRequestPendingOffer();
       cy.login();
       cy.get("#myrequest-home-link").click();
+      cy.wait(500)
       cy.get("#requests-link").click();
     });
 

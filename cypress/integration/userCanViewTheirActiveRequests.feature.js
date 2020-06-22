@@ -27,6 +27,7 @@ describe("User can view their active reQuests", () => {
     })
     cy.login();
     cy.get("#myrequest-home-link").click();
+    cy.wait(500)
     cy.get("#requests-link").click();
   });
 
