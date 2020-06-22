@@ -65,7 +65,7 @@ span {
 }
 
 #hsecond {
-  color: #f2be00
+  color: #e8b704
 }
 
 #yellow_divider {
@@ -74,7 +74,7 @@ span {
   bottom: -23px;
   height: 5px;
   width: 6000px;
-  background-color: #f2be00;
+  background-color: #e8b704;
 }
 
 #green_divider {
@@ -101,18 +101,18 @@ span {
 #small_links a {
   padding: 10px 20px;
   border-radius: 5px;
-  color: #f2be00;
+  color: #e8b704;
   font-size: 20px;
 }
 
 #small_links a:hover {
-  background-color: #f2be0044;
+  background-color: #e8b70444;
   color: whitesmoke;
 }
 
 #myrequest-home-link {
   margin-top: -10px;
-  color: #f2be00;
+  color: #e8b704;
   font-size: 35px;
 }
 
@@ -152,7 +152,7 @@ span {
 }
 
 #submit-btn {
-  background-color: #f2be00;
+  background-color: #e8b704;
   color: white;
   font-family: "Lora", serif;
   border-radius: 5px;
@@ -247,7 +247,7 @@ textarea {
   position: absolute;
   right: 4px;
   top: 4px;
-  background-color: #f2be00;
+  background-color: #e8b704;
   border: 6px solid transparent;
   color: white;
   font-weight: 700;
