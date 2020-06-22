@@ -147,6 +147,20 @@ span {
   margin: 0 20px;
 }
 
+#points-display {
+  height: 50px;
+  width: 50px;
+  background-color: #e8b704;
+  border-radius: 50%;
+  margin: -30px 0;
+}
+#karma-points-amount {
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Lora", serif;
+}
+
 /* FORMS */
 .form-container {
   padding: 20px 0;
