@@ -25,9 +25,14 @@ const LoginForm = () => {
           payload: {
             authenticated: response.success,
             uid: response.data.uid,
-          },
+          }, 
         });
-        history.push("/");
+        dispatch({
+            type: "GET_KARMA",
+            payload: {
+              karma: response.data.karma_points,
+            },
+        });
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);
