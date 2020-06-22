@@ -8,19 +8,25 @@ html {
   overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
   font-family: "Lora", serif !important;
 }
 
 .input-labels {
   letter-spacing: 0.1em;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 #page-container {
   margin-top: 180px;
   display: flex;
-  padding: 50px; 
+  padding: 50px;
   padding-top: 20px;
   width: 100vw;
 }
@@ -55,7 +61,7 @@ h1, h2, h3, h4, h5, h6, span {
 }
 
 #hfirst {
-  color: #88a65e
+  color: #88a65e;
 }
 
 #hsecond {
@@ -121,7 +127,7 @@ h1, h2, h3, h4, h5, h6, span {
   right: 0;
   display: flex;
   justify-content: flex-end;
-  width: 50%
+  width: 50%;
 }
 
 #welcome-and-logout > * {
@@ -207,7 +213,7 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px)/2);
+  height: calc((75vh - 178px) / 2);
   font-size: 80%;
 }
 
@@ -217,7 +223,7 @@ textarea {
   padding: 7px;
 }
 
-#contact-button{
+#contact-button {
   position: absolute;
   bottom: 39px;
   right: 15px;
@@ -248,6 +254,40 @@ textarea {
 }
 
 /* MYREQUEST PAGES */
+#menu-container {
+  display: flex;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#vertical-line {
+  height: 100%;
+  width: 5px;
+  background-color: #88a65e;
+}
+
+#pending-link,
+#active-link,
+#completed-link {
+  font-family: "Lora", serif;
+  font-size: larger;
+  text-align: center;
+  color: #88a65e;
+  margin: 0 -4px;
+  width: 170px;
+  padding: 10px 20px 10px 50px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#pending-link:hover, 
+#active-link:hover,
+#completed-link:hover {
+  color: #e6e6e6;
+}
 
 #leftmost-component {
   height: 60vh;
@@ -258,15 +298,15 @@ textarea {
 
 #my-list {
   width: 250px;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
+  color: #88a65e;
 }
 
 #offers > div {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
-
