@@ -2,7 +2,7 @@ Cypress.Commands.add("stubMain", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "http://localhost:3000/api/requests",
+    url: "**/requests",
     response: "fixture:requests/list_of_requests_visitor.json",
   });
 });
@@ -11,7 +11,7 @@ Cypress.Commands.add("stubMainLoggedIn", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "http://localhost:3000/api/requests",
+    url: "**/requests",
     response: "fixture:requests/list_of_requests.json",
   });
 });
