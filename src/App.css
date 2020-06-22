@@ -321,6 +321,10 @@ textarea {
   background-color: #88a65e;
 }
 
+#no-requests-message {
+  color: white;
+}
+
 #pending-link,
 #active-link,
 #completed-link {

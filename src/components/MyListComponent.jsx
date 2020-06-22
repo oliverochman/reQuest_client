@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "semantic-ui-react";
 import MyRequestCard from "./MyRequestCard";
-import { getMyRequests } from "../modules/getRequests";
+import { getMyRequests, getMyQuests } from "../modules/getRequests";
 
-const MyListComponent = ({ selectedStatus }) => {
+const MyListComponent = ({ selectedStatus, page }) => {
   const [myRequests, setMyRequests] = useState([]);
   
   useEffect(() => {
@@ -11,7 +11,7 @@ const MyListComponent = ({ selectedStatus }) => {
   }, []);
 
   const getList = async () => {
-    const requests = await getMyRequests();
+    const requests = page === "requests" ? await getMyRequests() : await getMyQuests();
     setMyRequests(requests);
   };
 
@@ -23,8 +23,12 @@ const MyListComponent = ({ selectedStatus }) => {
     <MyRequestCard key={request.id} request={request} />
   ));
 
+  const message = cards.length === 0 &&
+   <h4 id="no-requests-message">You have no {selectedStatus} {page} to show!</h4>
+
   return (
     <Card.Group id="my-list" itemsPerRow={1}>
+      {message}
       {cards}
     </Card.Group>
   );
