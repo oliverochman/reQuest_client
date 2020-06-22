@@ -31,6 +31,18 @@ const getMyRequests = async () => {
   }
 };
 
+const getMyQuests = async () => {
+  try {
+    const response = await axios.get("/my_request/quests", {
+      headers: createHeaders(),
+    });
+    return response.data.quests;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 const getSingleRequest = async (id) => {
   try {
     const response = await axios.get(`/my_request/requests/${id}`, {
@@ -42,4 +54,4 @@ const getSingleRequest = async (id) => {
   }
 };
 
-export { getRequests, getMyRequests, getSingleRequest };
+export { getRequests, getMyRequests, getMyQuests, getSingleRequest };
