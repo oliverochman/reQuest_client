@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const karmaPoints = useSelector((state) => state.karma.karma);
   const [activeTab, setActiveTab] = useState("profile");
   const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
@@ -15,7 +16,6 @@ const Header = () => {
   );
   const date = new Date();
   const currentTime = date.getHours();
-
   const logout = async () => {
     try {
       await auth.signOut();
@@ -38,8 +38,8 @@ const Header = () => {
   );
 
   const setActivePage = (page) => {
-    dispatch({ type: "SET_ACTIVE_PAGE", payload: page })
-  }
+    dispatch({ type: "SET_ACTIVE_PAGE", payload: page });
+  };
 
   const activeMenuItem = (menuItem) => {
     if (menuItem === activeTab) {
@@ -59,8 +59,8 @@ const Header = () => {
         {activePage === "home" && (
           <NavLink
             id="myrequest-home-link"
-            to={ authenticated ? "/myrequest" : "/login" }
-            onClick={ authenticated && (() =>  setActivePage("myrequest"))}
+            to={authenticated ? "/myrequest" : "/login"}
+            onClick={authenticated && (() => setActivePage("myrequest"))}
           >
             my reQuest
           </NavLink>
@@ -74,6 +74,9 @@ const Header = () => {
             >
               home
             </NavLink>
+            <div id="points-display">
+              <p id="karma-points-amount">{karmaPoints}p</p>
+            </div>
             <div id="small_links">
               <NavLink
                 id="profile-link"
