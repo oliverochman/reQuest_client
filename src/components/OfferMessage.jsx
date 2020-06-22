@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const OfferMessage = (props) => {
   const [completedMessage, setCompletedMessage] = useState("");
+  const [error, setError] = useState(false);
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
@@ -18,8 +19,10 @@ const OfferMessage = (props) => {
         { params: { activity: "completed" } }
       );
       setCompletedMessage(response.data.message);
+      setError(false)
     } catch (error) {
       setCompletedMessage(error.response.data.message);
+      setError(true)
     }
   };
 
@@ -65,7 +68,7 @@ const OfferMessage = (props) => {
             </Button>
           </div>
         )}
-        {props.selectedStatus === "active" && !completedMessage && (
+        {props.selectedStatus === "active" && (!completedMessage || error) && (
           <div className="ui two buttons">
             <Button id="quest-completed" onClick={completeRequest}>
               Quest Completed

@@ -10,42 +10,66 @@ describe("Requested can mark a request as completed", () => {
       },
     });
     cy.route({
-      method: "PUT",
+      method: "GET",
       url: "**/my_request/requests/*",
-      response: { message: "Request completed" },
+      response:
+        "fixture:requests/another_active_specific_request_with_offer.json",
       headers: {
         uid: "me@mail.com",
       },
     });
-
     cy.login();
     cy.get("#myrequest-home-link").click();
     cy.get("#requests-link").click();
+    cy.get("#active-link").click();
   });
+
   describe("should have a quest completed button and can complete request", () => {
     beforeEach(() => {
-      cy.server();
       cy.route({
-        method: "GET",
+        method: "PUT",
         url: "**/my_request/requests/*",
-        response:
-          "fixture:requests/another_active_specific_request_with_offer.json",
+        response: { message: "Request completed" },
         headers: {
           uid: "me@mail.com",
         },
       });
     });
+
     it("have complete button", () => {
-      cy.get("#active-link").click();
       cy.get("#my-list").should("contain", "Fix the fixtures in the app");
       cy.get("#request-5").click();
       cy.get("#quest-completed").should("exist");
     });
+
     it("can complete request", () => {
-      cy.get("#active-link").click();
       cy.get("#request-5").click();
       cy.get("#quest-completed").click();
       cy.get("#completed-message").should("contain", "Request completed");
+    });
+
+    it("button disappears when completed", () => {
+      cy.get("#request-5").click();
+      cy.get("#quest-completed").click();
+      cy.get("#quest-completed").should("not.exist");
+    });
+  });
+
+  describe("when error is encountered", () => {
+    it("button stays in place", () => {
+      cy.route({
+        method: "PUT",
+        url: "**/my_request/requests/*",
+        response: { message: "there was an error" },
+        status: 422,
+        headers: {
+          uid: "me@mail.com",
+        },
+      });
+      cy.get("#request-5").click();
+      cy.get("#quest-completed").click();
+      cy.get("#completed-message").should("contain", "there was an error");
+      cy.get("#quest-completed").should("be.visible");
     });
   });
 });
