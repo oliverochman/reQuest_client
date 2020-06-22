@@ -350,3 +350,8 @@ textarea {
 #offers > div {
   margin-bottom: 30px;
 }
+
+#quest-completed {
+  color: white;
+  background-color: #88a65e;
+}

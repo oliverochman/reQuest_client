@@ -4,6 +4,7 @@ const initialState = {
   activePage: "home",
   authenticated: false,
   uid: "",
-  karma:0
+  karma: 0,
+  mySelectedActiveRequest: false,
 };
 export default initialState;
