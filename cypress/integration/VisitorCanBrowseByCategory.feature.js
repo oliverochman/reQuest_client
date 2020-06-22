@@ -31,7 +31,7 @@ describe("Visitor can browse by category", () => {
       response: "fixture:requests/list_of_requests_visitor.json",
     });
     cy.get("#home").click();
-    cy.get("#request-2").should("be.visible");
+    cy.get("#request-2").should("be.visible").should('contain', 'Paint fences in backyard');
     cy.get("#request-8").should("be.visible");
     cy.get("#request-9").should("be.visible");
     cy.get("#request-6").should("be.visible");

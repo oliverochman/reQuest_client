@@ -1,9 +1,9 @@
 import axios from "axios";
 import createHeaders from "./headers.js";
 
-const getRequests = async (dispatch) => {
+const getRequests = async (dispatch, category) => {
   try {
-    const response = await axios.get("/requests");
+    const response = await axios.get("/requests", { category: category });
     dispatch({
       type: "GET_REQUESTS",
       payload: {
