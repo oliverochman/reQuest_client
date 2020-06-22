@@ -22,18 +22,10 @@ const BrowseRequests = () => {
         <List id="categories" onClick={(e) => onItemClickHandler(e)}>
           <List.Item id="all">All</List.Item>
           <List.Item id="home">Home</List.Item>
-          <List.Item id="education" as="a">
-            Education
-          </List.Item>
-          <List.Item id="it" as="a">
-            IT
-          </List.Item>
-          <List.Item id="vehicles" as="a">
-            Vehicles
-          </List.Item>
-          <List.Item id="others" as="a">
-            Others
-          </List.Item>
+          <List.Item id="education">Education</List.Item>
+          <List.Item id="it">IT</List.Item>
+          <List.Item id="vehicles">Vehicles</List.Item>
+          <List.Item id="others">Others</List.Item>
         </List>
         <Grid>
           <Grid.Column width={2}></Grid.Column>
