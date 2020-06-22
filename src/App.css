@@ -44,10 +44,9 @@ h1, h2, h3, h4, h5, h6, span {
   text-align: center;
   padding: 10px;
 }
-#home,#education,#it,#vehicles,#others{
-  color: white;
+#categories a {
+    color: white;
 }
-
 /* HEADER */
 #header {
   position: absolute;
