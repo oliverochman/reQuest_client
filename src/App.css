@@ -249,6 +249,7 @@ textarea {
   padding-top: 7px;
 }
 #contact-button,
+#disabled-contact-button,
 #message-send-btn {
   position: absolute;
   bottom: 15px;
@@ -259,10 +260,8 @@ textarea {
   font-size: 100%;
 }
 
-#selected-message {
-  position: absolute;
-  bottom: 8px;
-  justify-self: center;
+#disabled-contact-button {
+  background-color: #bac1bf;
 }
 
 #selected-title,

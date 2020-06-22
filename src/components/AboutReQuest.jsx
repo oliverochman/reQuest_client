@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Divider } from "semantic-ui-react";
+import { Button, Divider, Popup } from "semantic-ui-react";
 
 export const AboutReQuest = () => {
   return (
@@ -44,16 +44,28 @@ export const SelectedRequest = (props) => {
       </div>
       <div id="selected-reward">{props.selectedRequest.reward}p</div>
       {!props.showMessageForm && (
+        !props.disableButton ? (
         <Button
           id="contact-button"
-          disabled={props.disableButton}
           onClick={props.onContactHandler}
         >
           contact
         </Button>
-      )}
-      {props.statusMessage && (
-        <span id="selected-message">{props.statusMessage}</span>
+        ) : (
+        <Popup
+        id="selected-message"
+        content={props.statusMessage}
+        hoverable
+        inverted
+        position="top left"
+        trigger={ <Button
+            id="disabled-contact-button"
+          >
+            contact
+          </Button>
+        }
+      />
+        )
       )}
     </div>
   );
