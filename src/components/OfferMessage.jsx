@@ -12,6 +12,7 @@ const OfferMessage = (props) => {
           content={props.helperOffer.message}
           open
           position="top left"
+          id="offer-message"
           trigger={<div></div>}
         />
       </Card.Description>
