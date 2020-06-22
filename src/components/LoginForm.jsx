@@ -10,8 +10,8 @@ const LoginForm = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch({type: "RESET_ACTIVE_PAGE"})
-  }, [dispatch])
+    dispatch({ type: "RESET_ACTIVE_PAGE" });
+  }, [dispatch]);
 
   const login = async (e) => {
     try {
@@ -25,14 +25,15 @@ const LoginForm = () => {
           payload: {
             authenticated: response.success,
             uid: response.data.uid,
-          }, 
+          },
         });
         dispatch({
-            type: "GET_KARMA",
-            payload: {
-              karma: response.data.karma_points,
-            },
+          type: "GET_KARMA",
+          payload: {
+            karma: response.data.karma_points,
+          },
         });
+        history.push("/");
       }
     } catch (error) {
       setErrorMessage(error.response.data.errors[0]);
