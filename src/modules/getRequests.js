@@ -4,8 +4,7 @@ import createHeaders from "./headers.js";
 const getRequests = async (dispatch, category) => {
   try {
     const response = await axios.get("/requests", {
-      category: category,
-      headers: createHeaders(),
+      params: { category: category.activeCategory },
     });
     dispatch({
       type: "GET_REQUESTS",
