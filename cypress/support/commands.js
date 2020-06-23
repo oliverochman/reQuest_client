@@ -4,16 +4,17 @@ Cypress.Commands.add("stubMain", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "**/requests",
+    url: "**/requests*",
     response: "fixture:requests/list_of_requests_visitor.json",
   });
+  cy.visit("/", stubLocation({ latitude: 57.71, longitude: 11.97 }));
 });
 
 Cypress.Commands.add("stubMainLoggedIn", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "**/requests",
+    url: "**/requests*",
     response: "fixture:requests/list_of_requests.json",
   });
 });

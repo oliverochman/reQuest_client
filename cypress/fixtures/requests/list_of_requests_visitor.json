@@ -8,9 +8,10 @@
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
       "categories": ["Vehicles"],
       "reward": 90,
-      "offerable": null
+      "offerable": null,
+      "distance": "1.2 km"
     },
-    
+
     {
       "id": 2,
       "title": "Paint fences in backyard",
@@ -19,8 +20,8 @@
       "location": { "area": "Yola", "long": 18.98, "lat": 58.18 },
       "categories": ["Home"],
       "reward": 150,
-      "offerable": null
-      
+      "offerable": null,
+      "distance": "0.4 km"
     },
     {
       "id": 4,
@@ -30,9 +31,10 @@
       "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
       "categories": ["Education"],
       "reward": 200,
-      "offerable": null
+      "offerable": null,
+      "distance": "0.4 km"
     },
-    
+
     {
       "id": 5,
       "title": "Need someone for grocery shopping",
@@ -41,7 +43,8 @@
       "location": { "area": "Aswa", "long": 18.98, "lat": 58.18 },
       "categories": ["Home"],
       "reward": 35,
-      "offerable": null
+      "offerable": null,
+      "distance": "0.4 km"
     },
     {
       "id": 6,
@@ -51,18 +54,20 @@
       "location": { "area": "Aler", "long": 18.98, "lat": 58.18 },
       "categories": ["Home"],
       "reward": 55,
-      "offerable": null
+      "offerable": null,
+      "distance": "0.4 km"
     },
-    
+
     {
       "id": 8,
       "title": "Move out help needed",
       "description": "Need a hand with furniture",
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
-      "categories": [ "Home"],
+      "categories": ["Home"],
       "reward": 120,
-      "offerable": null
+      "offerable": null,
+      "distance": "0.4 km"
     },
     {
       "id": 9,
@@ -72,7 +77,8 @@
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
       "categories": ["Home"],
       "reward": 120,
-      "offerable": null
+      "offerable": null,
+      "distance": "0.4 km"
     }
   ]
 }
