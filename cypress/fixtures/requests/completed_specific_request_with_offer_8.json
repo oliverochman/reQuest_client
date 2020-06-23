@@ -1,26 +1,26 @@
 {
   "request": {
-    "id": 7,
-    "title": "Teach me French",
-    "description": "I want to learn to speak french when i go there",
+    "id": 8,
+    "title": "Im in prison",
+    "description": "I need help to get out!",
     "reward": 250,
     "status": "completed",
     "offers": [{
       "id": 36,
-      "email": "pauline@mail.com",
-      "message": "Im a natural, i can teach you",
+      "email": "offerer666@mail.com",
+      "message": "I have a saw, I'm fast",
       "status": "accepted"
     },
     {
       "id": 2,
       "email": "anotherhelper@mail.com",
-      "message": "I too can give you help with this",
+      "message": "I too digg a tunnel",
       "status": "declined"
     },
     {
       "id": 3,
       "email": "yetanotherhelper@mail.com",
-      "message": "Even I can help you out with this",
+      "message": "Im here too, we can get out together",
       "status": "pending"
     }
     ]
