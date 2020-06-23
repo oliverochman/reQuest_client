@@ -107,7 +107,7 @@ describe("User cannot post new request without location", () => {
     cy.route({
       method: "POST",
       url: "**/my_request/requests",
-      response: "fixture:requests/post_new_request.json",
+      response: "fixture:requests/post_new_request_without_location.json",
       headers: {
         uid: "user@mail.com",
       },

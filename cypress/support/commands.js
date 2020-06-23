@@ -1,3 +1,5 @@
+const stubLocation = require("../support/stubLocation")
+
 Cypress.Commands.add("stubMain", () => {
   cy.server();
   cy.route({
