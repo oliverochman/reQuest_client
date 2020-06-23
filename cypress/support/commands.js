@@ -1,4 +1,4 @@
-const stubLocation = require("../support/stubLocation")
+const stubLocation = require("../support/stubLocation");
 
 Cypress.Commands.add("stubMain", () => {
   cy.server();
@@ -113,7 +113,6 @@ Cypress.Commands.add("StubRequestUpdatedOffer", () => {
   });
 });
 
-<<<<<<< HEAD
 Cypress.Commands.add("loginWithoutLocation", () => {
   cy.route({
     method: "POST",
@@ -121,20 +120,10 @@ Cypress.Commands.add("loginWithoutLocation", () => {
     response: "fixture:user/successful_login.json",
     headers: {
       uid: "user@mail.com",
-=======
-Cypress.Commands.add("StubRequestCompleted", () => {
-  cy.route({
-    method: "GET",
-    url: "**/my_request/requests*",
-    response: "fixture:requests/list_of_my_requests.json",
-    headers: {
-      uid: "me@mail.com",
->>>>>>> e6ff0179339d167672ee0973f0d5fbbcfb050736
     },
   });
   cy.route({
     method: "GET",
-<<<<<<< HEAD
     url: "**/auth/*",
     response: "fixture:user/successful_login.json",
     headers: {
@@ -147,20 +136,5 @@ Cypress.Commands.add("StubRequestCompleted", () => {
     cy.get("#email").type("user@mail.com");
     cy.get("#password").type("password");
     cy.get("#submit-btn").contains("Submit").click();
-=======
-    url: "**/my_request/requests/7",
-    response: "fixture:requests/completed_specific_request_with_offer_7.json",
-    headers: {
-      uid: "me@mail.com",
-    },
-  });
-  cy.route({
-    method: "GET",
-    url: "**/my_request/requests/8",
-    response: "fixture:requests/completed_specific_request_with_offer_8.json",
-    headers: {
-      uid: "me@mail.com",
-    },
->>>>>>> e6ff0179339d167672ee0973f0d5fbbcfb050736
   });
 });
