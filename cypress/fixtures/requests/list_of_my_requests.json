@@ -35,6 +35,18 @@
       "title": "Copy fixtures and then copy them again",
       "reward": 250,
       "status": "active"
+    },
+    {
+      "id": 7,
+      "title": "Im in prison",
+      "status": "completed",
+      "reward": 250
+    },
+    {
+      "id": 8,
+      "title": "Teach me French",
+      "reward": 200,
+      "status": "completed"
     }
   ]
 }
