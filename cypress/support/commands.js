@@ -138,3 +138,30 @@ Cypress.Commands.add("loginWithoutLocation", () => {
     cy.get("#submit-btn").contains("Submit").click();
   });
 });
+
+Cypress.Commands.add("StubRequestCompleted", () => {
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests*",
+    response: "fixture:requests/list_of_my_requests.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/7",
+    response: "fixture:requests/completed_specific_request_with_offer_7.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/my_request/requests/8",
+    response: "fixture:requests/completed_specific_request_with_offer_8.json",
+    headers: {
+      uid: "me@mail.com",
+    },
+  });
+});
