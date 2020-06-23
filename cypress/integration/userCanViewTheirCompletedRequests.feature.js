@@ -57,6 +57,10 @@ describe("User can view their completed reQuests", () => {
       "contain",
       "offerer666@mail.com"
     );
+    cy.get("#offers > .cards > .ui > .content > .meta").should(
+      "not.contain",
+      "anotherhelper@mail.com"
+    );
     cy.get("#offer-message").should("be.visible");
     cy.get("#pending-link").click();
     cy.get("#request-description-8").should("not.be.visible");
