@@ -6,6 +6,7 @@ const initialState = {
   authenticated: false,
   uid: "",
   karma: 0,
+  signupMessage: "",
   mySelectedActiveRequest: false,
   longitude: undefined,
   latitude: undefined

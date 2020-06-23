@@ -177,6 +177,7 @@ span {
 }
 
 #login-form,
+#signup-form,
 #newRequest-form {
   display: flex;
   flex-direction: column;
@@ -210,6 +211,13 @@ textarea {
   height: 130px;
 }
 
+#signup {
+  height: fit-content;
+  color: white;
+}
+#signup:hover {
+  color: #e8b704;
+}
 #message {
   color: rgb(230, 230, 230);
 }

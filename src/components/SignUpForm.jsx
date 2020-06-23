@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUpForm = () => {
   const signupMessage = useSelector(state => state.messages.signupMessage);
@@ -22,7 +22,7 @@ const SignUpForm = () => {
         password_confirmation: e.target.passwordConfirmation.value,
       });
       if (response.success) {
-        history.replace("/sign_in");
+        history.replace("/login");
         dispatch({
           type: "SET_SIGNUP_MESSAGE",
           payload: { signupMessage: response.data.message },
@@ -49,7 +49,7 @@ const SignUpForm = () => {
             type="password"
             id="password"
           ></Form.Input>
-          <h4 className="input-labels">{"Repeat Password"}</h4>
+          <h4 className="input-labels">{"Password Confirmation"}</h4>
           <Form.Input
             name="password-confirmation"
             type="password"

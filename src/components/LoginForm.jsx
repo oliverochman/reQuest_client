@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
@@ -58,6 +58,9 @@ const LoginForm = () => {
           {errorMessage}
         </h3>
         </Form>
+        <Link id="signup" name="Signup" to={{ pathname: "/signup" }}>
+        <h3>Don't have an account?  <br/>Sign up here</h3>
+        </Link>
       </Container>
     </div>
   );

@@ -3,7 +3,7 @@ describe("User can sign up, when clicking the 'Sign Up' link", () => {
     cy.server();
     cy.visit("/");
     cy.get("#myrequest-home-link").click();
-    cy.get('sign-up').click();
+    cy.get('#signup').click({force: true});
   });
 
   describe("can sign up successfully", () => {
@@ -16,8 +16,8 @@ describe("User can sign up, when clicking the 'Sign Up' link", () => {
       cy.get("#signup-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("#passwordConfirmation").type("password");
-        cy.get("Button#submit").contains("Submit").click();
+        cy.get("#password-confirmation").type("password");
+        cy.get("#submit-btn").contains("Submit").click();
       });
       cy.get("#login-form");
     });
@@ -41,8 +41,8 @@ describe("User can sign up, when clicking the 'Sign Up' link", () => {
         cy.get("#signup-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("#passwordConfirmation").type("pasword");
-        cy.get("Button#submit").contains("Submit").click();
+        cy.get("#password-confirmation").type("pasword");
+        cy.get("#submit-btn").contains("Submit").click();
       });
     });
 
