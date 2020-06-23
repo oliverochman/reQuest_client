@@ -19,10 +19,10 @@ const OfferMessage = (props) => {
         { params: { activity: "completed" } }
       );
       setCompletedMessage(response.data.message);
-      setError(false)
+      setError(false);
     } catch (error) {
       setCompletedMessage(error.response.data.message);
-      setError(true)
+      setError(true);
     }
   };
 
@@ -43,6 +43,9 @@ const OfferMessage = (props) => {
     </Card.Content>
   );
 
+  const replyOfferMessage = () => {
+    console.log("BAJS");
+  };
   const showActivityButton = (
     <Card.Content extra>
       <>
