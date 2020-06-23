@@ -10,9 +10,7 @@ const authenticationReducer = (state = initialState, action) => {
       };
     case "LOGOUT":
       return {
-        ...state,
-        authenticated: false,
-        uid: "",
+        ...initialState
       };
     default:
       return state;
