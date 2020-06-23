@@ -1,11 +1,16 @@
 import { getSingleRequest } from "./getRequests";
 
 const updateRequest = async (request, dispatch) => {
-  const response = await getSingleRequest(request.id);
-  dispatch({
-    type: "SET_MY_SELECTED_REQUEST",
-    payload: { request: response.data.request },
-  });
+  try {
+    const response = await getSingleRequest(request.id);
+    response &&
+      dispatch({
+        type: "SET_MY_SELECTED_REQUEST",
+        payload: { request: response.data.request },
+      });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default updateRequest;

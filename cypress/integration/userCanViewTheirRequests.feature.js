@@ -23,7 +23,7 @@ describe("Users", () => {
       cy.StubRequestPendingOffer();
       cy.login();
       cy.get("#myrequest-home-link").click();
-      cy.wait(500)
+      cy.wait(500);
       cy.get("#requests-link").click();
     });
 
@@ -51,7 +51,8 @@ describe("Users", () => {
       cy.get("#request-1").click();
       cy.wait(500);
       cy.get("#request-1").click();
-      cy.get("#request-description-1").should("not.exist");
+      cy.wait(1000);
+      cy.get("#request-description-1").should("not.be.visible");
       cy.get("#offer-1").should("not.exist");
     });
 
@@ -59,7 +60,8 @@ describe("Users", () => {
       cy.get("#request-1").click();
       cy.wait(500);
       cy.get("#request-2").click();
-      cy.get("#request-description-1").should("not.exist");
+      cy.wait(1000);
+      cy.get("#request-description-1").should("not.be.visible");
       cy.get(".helper-email-1").should("be.visible").click();
       cy.get("#request-description-2").should("be.visible");
       cy.get(".helper-email-2").should("be.visible").click();
