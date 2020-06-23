@@ -131,7 +131,10 @@ Cypress.Commands.add("loginWithoutLocation", () => {
     },
   });
 
-  cy.visit("/login");
+  cy.visit(
+    "/login",
+    stubLocation({ latitude: undefined, longitude: undefined })
+  );
   cy.get("#login-form").within(() => {
     cy.get("#email").type("user@mail.com");
     cy.get("#password").type("password");
