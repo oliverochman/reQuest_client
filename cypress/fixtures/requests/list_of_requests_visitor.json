@@ -6,7 +6,7 @@
       "description": "Need a hand with tyres",
       "requester": "someone1@email.com",
       "location": { "area": "Nobu", "long": 18.98, "lat": 58.18 },
-      "categories": ["outdoors", "heavy", "car"],
+      "categories": ["Vehicles"],
       "reward": 90,
       "offerable": null
     },
@@ -22,14 +22,13 @@
       "offerable": null
       
     },
-
     {
       "id": 4,
       "title": "Want to learn piano",
       "description": "Need a Mozart to help",
       "requester": "someone4@email.com",
       "location": { "area": "Veca", "long": 18.98, "lat": 58.18 },
-      "categories": ["piano", "instrument", "beginner"],
+      "categories": ["Education"],
       "reward": 200,
       "offerable": null
     },
@@ -61,7 +60,7 @@
       "description": "Need a hand with furniture",
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
-      "categories": ["Home"],
+      "categories": [ "Home"],
       "reward": 120,
       "offerable": null
     },

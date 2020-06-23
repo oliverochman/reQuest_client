@@ -7,5 +7,7 @@ const initialState = {
   uid: "",
   karma: 0,
   mySelectedActiveRequest: false,
+  longitude: undefined,
+  latitude: undefined
 };
 export default initialState;
