@@ -9,6 +9,14 @@ describe("User can", () => {
         uid: "user@mail.com",
       },
     });
+    cy.route({
+      method: "POST",
+      url: "**/offers/1/messages",
+      response: "fixture:offers/offerConversation.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
     cy.stubMain();
     cy.StubRequestUpdatedOffer();
   });
@@ -30,13 +38,15 @@ describe("User can", () => {
       );
       cy.get("button#quest-completed").should("be.visible");
       cy.get("button#quest-reply").should("be.visible");
-      cy.get("form#send-message-form").should("be.visible");
     });
 
     it("can send a reply message", () => {
-      cy.get("button#quest-reply").should("be.visible");
+      cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
+      cy.wait(1000);
+      cy.get("#message-send-btn").click();
+      cy.get("#helper-message").should("be.visible");
     });
   });
 });

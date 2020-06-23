@@ -3,6 +3,7 @@ import { List, Button, Card, Popup } from "semantic-ui-react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { ReplyOffer } from "./CreateOffer";
+import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
   const [completedMessage, setCompletedMessage] = useState("");
@@ -11,6 +12,7 @@ const OfferMessage = (props) => {
     (state) => state.requests.mySelectedRequest
   );
   const [replyStatus, setReplyStatus] = useState(false);
+  const [updateMessages, setUpdateMessages] = useState({});
 
   const completeRequest = async () => {
     try {
@@ -26,6 +28,18 @@ const OfferMessage = (props) => {
       setCompletedMessage(error.response.data.message);
       setError(true);
     }
+  };
+
+  const replyOfferMessage = async (e) => {
+    const resp = await axios.post(
+      `offers/${mySelectedRequest.id}/messages`,
+      {
+        message: e.target.firstElementChild.value,
+      },
+      { headers: createHeaders() }
+    );
+    debugger;
+    resp && setUpdateMessages(resp);
   };
 
   const helperMessage = (
@@ -44,10 +58,6 @@ const OfferMessage = (props) => {
       </Card.Description>
     </Card.Content>
   );
-
-  const replyOfferMessage = (e) => {
-    console.log(e);
-  };
 
   const showActivityButton = (
     <Card.Content extra>

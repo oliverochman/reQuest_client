@@ -12,7 +12,7 @@ const Offers = ({ request, selectedStatus }) => {
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const [updateOffer, setUpdateOffer] = useState(true);
+  // const [updateOffer, setUpdateOffer] = useState(true);
 
   // useEffect(() => {
   //   updateMyRequest(request, dispatch);
