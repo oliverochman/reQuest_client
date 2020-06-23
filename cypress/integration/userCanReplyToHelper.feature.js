@@ -31,12 +31,12 @@ describe("User can", () => {
       cy.get("button#quest-completed").should("be.visible");
       cy.get("button#quest-reply").should("be.visible");
       cy.get("form#send-message-form").should("be.visible");
-      cy.wait(1000);
     });
 
-    xit("success message is shown", () => {
-      cy.get("#helper-message").should("not.be.visible");
+    it("can send a reply message", () => {
       cy.get("button#quest-reply").should("be.visible");
+      cy.get("#send-message-form").should("be.visible");
+      cy.get("#replyMessage").type("Can you swing by this weekend?");
     });
   });
 });

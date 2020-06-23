@@ -14,9 +14,9 @@ const Offers = ({ request, selectedStatus }) => {
   const [helperOffer, setHelperOffer] = useState({});
   const [updateOffer, setUpdateOffer] = useState(true);
 
-  useEffect(() => {
-    updateMyRequest(request, dispatch);
-  }, [updateOffer]);
+  // useEffect(() => {
+  //   updateMyRequest(request, dispatch);
+  // }, [updateOffer]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -32,8 +32,8 @@ const Offers = ({ request, selectedStatus }) => {
       { headers: createHeaders() }
     );
     setStatusMessage(resp.data.message);
-    updateMyRequest(request, dispatch);
-    setUpdateOffer(!updateOffer);
+    await updateMyRequest(request, dispatch);
+    // setUpdateOffer(!updateOffer);
   };
 
   const myOffers = request.offers.map((offer, index) => (

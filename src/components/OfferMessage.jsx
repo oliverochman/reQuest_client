@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { ReplyOffer } from "./CreateOffer";
 
 const OfferMessage = (props) => {
   const [completedMessage, setCompletedMessage] = useState("");
@@ -9,6 +10,7 @@ const OfferMessage = (props) => {
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
+  const [replyStatus, setReplyStatus] = useState(false);
 
   const completeRequest = async () => {
     try {
@@ -43,9 +45,10 @@ const OfferMessage = (props) => {
     </Card.Content>
   );
 
-  const replyOfferMessage = () => {
-    console.log("BAJS");
+  const replyOfferMessage = (e) => {
+    console.log(e);
   };
+
   const showActivityButton = (
     <Card.Content extra>
       <>
@@ -73,7 +76,10 @@ const OfferMessage = (props) => {
         )}
         {props.selectedStatus === "active" && (!completedMessage || error) && (
           <div className="ui two buttons">
-            <Button id="quest-reply" onClick={replyOfferMessage}>
+            <Button
+              id="quest-reply"
+              onClick={() => setReplyStatus(!replyStatus)}
+            >
               Reply
             </Button>
             <Button id="quest-completed" onClick={completeRequest}>
@@ -97,6 +103,7 @@ const OfferMessage = (props) => {
         <p style={{ color: "black" }} id="completed-message">
           {completedMessage}
         </p>
+        {replyStatus && <ReplyOffer replyOfferMessage={replyOfferMessage} />}
       </List>
     </>
   );
