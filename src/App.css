@@ -57,7 +57,7 @@ span {
 #categories a {
     color: white;
 }
-#categories :active {
+.active {
   color: #e8b704;
 }
 /* HEADER */
