@@ -1,5 +1,5 @@
-const getPlace = (dispatch) => {
-  navigator.geolocation.getCurrentPosition(
+const getPlace = async (dispatch) => {
+  await navigator.geolocation.getCurrentPosition(
     (pos) => {
       dispatch({
         type: "SET_LOCATION",
@@ -10,4 +10,6 @@ const getPlace = (dispatch) => {
       }
       )
     }
-  )}
+  )
+}
+export default getPlace;
