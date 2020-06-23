@@ -15,7 +15,7 @@ Cypress.Commands.add("stubMainWithoutLocation", () => {
   cy.route({
     method: "GET",
     url: "**/requests*",
-    response: "fixture:requests/list_of_requests_visitor.json",
+    response: "fixture:requests/list_of_requests_visitor_no_location.json",
   });
   cy.visit("/", stubLocation({ latitude: undefined, longitude: undefined }));
 });
