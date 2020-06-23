@@ -10,6 +10,16 @@ Cypress.Commands.add("stubMain", () => {
   cy.visit("/", stubLocation({ latitude: 57.71, longitude: 11.97 }));
 });
 
+Cypress.Commands.add("stubMainWithoutLocation", () => {
+  cy.server();
+  cy.route({
+    method: "GET",
+    url: "**/requests*",
+    response: "fixture:requests/list_of_requests_visitor.json",
+  });
+  cy.visit("/", stubLocation({ latitude: undefined, longitude: undefined }));
+});
+
 Cypress.Commands.add("stubMainLoggedIn", () => {
   cy.server();
   cy.route({

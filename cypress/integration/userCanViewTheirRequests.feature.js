@@ -66,3 +66,6 @@ describe("Users", () => {
     });
   });
 });
+describe("visitor who refuses to share location", () => {
+   
+ })
