@@ -42,7 +42,18 @@ span {
 #qcard {
   overflow: hidden;
 }
-
+#categories{
+  font-family: "Lora", serif;
+  font-size: 24px;
+  color: white;
+  background-color: #88a65e;
+  height: fit-content;
+  text-align: center;
+  padding: 10px;
+}
+#categories a {
+    color: white;
+}
 /* HEADER */
 #header {
   position: absolute;
@@ -136,6 +147,20 @@ span {
   margin: 0 20px;
 }
 
+#points-display {
+  height: 50px;
+  width: 50px;
+  background-color: #e8b704;
+  border-radius: 50%;
+  margin: -30px 0;
+}
+#karma-points-amount {
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Lora", serif;
+}
+
 /* FORMS */
 .form-container {
   padding: 20px 0;
@@ -220,6 +245,7 @@ textarea {
   font-size: 110%;
   overflow: auto;
   height: 100%;
+  overflow: auto;
 }
 
 #about-request h3 {
@@ -295,6 +321,10 @@ textarea {
   background-color: #88a65e;
 }
 
+#no-requests-message {
+  color: white;
+}
+
 #pending-link,
 #active-link,
 #completed-link {
@@ -335,4 +365,9 @@ textarea {
 
 #offers > div {
   margin-bottom: 30px;
+}
+
+#quest-completed {
+  color: white;
+  background-color: #88a65e;
 }

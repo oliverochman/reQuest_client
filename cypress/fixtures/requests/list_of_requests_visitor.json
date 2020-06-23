@@ -10,6 +10,7 @@
       "reward": 90,
       "offerable": null
     },
+    
     {
       "id": 2,
       "title": "Paint fences in backyard",
@@ -22,16 +23,6 @@
       
     },
     {
-      "id": 3,
-      "title": "Teach me French",
-      "description": "Need a tongue with French",
-      "requester": "someone3@email.com",
-      "location": { "area": "Buma", "long": 18.98, "lat": 58.18 },
-      "categories": ["Education"],
-      "reward": 200,
-      "offerable": null
-    },
-    {
       "id": 4,
       "title": "Want to learn piano",
       "description": "Need a Mozart to help",
@@ -41,6 +32,7 @@
       "reward": 200,
       "offerable": null
     },
+    
     {
       "id": 5,
       "title": "Need someone for grocery shopping",
@@ -61,6 +53,7 @@
       "reward": 55,
       "offerable": null
     },
+<<<<<<< HEAD
     {
       "id": 7,
       "title": "Babysitter needed",
@@ -71,13 +64,20 @@
       "reward": 80,
       "offerable": null
     },
+=======
+    
+>>>>>>> a6225633c3eff8e83c4ce9365e8b4841e39119d4
     {
       "id": 8,
       "title": "Move out help needed",
       "description": "Need a hand with furniture",
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
+<<<<<<< HEAD
       "categories": [ "Home"],
+=======
+      "categories": ["Home"],
+>>>>>>> a6225633c3eff8e83c4ce9365e8b4841e39119d4
       "reward": 120,
       "offerable": null
     },

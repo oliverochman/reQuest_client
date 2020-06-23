@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
 
-const MyRequestsPage = () => {
+const MyRequestsPage = (props) => {
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
@@ -13,6 +13,8 @@ const MyRequestsPage = () => {
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
+
+  const page = props.match.params.page
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
@@ -62,7 +64,7 @@ const MyRequestsPage = () => {
             </Link>
           </div>
           <div id="middle-left-component" style={{ marginLeft: "30px" }}>
-            <MyListComponent selectedStatus={selectedStatus} />
+            <MyListComponent selectedStatus={selectedStatus} page={page} />
           </div>
           <div id="middle-right-component" style={{ marginLeft: "30px" }}>
             {mySelectedRequest && (

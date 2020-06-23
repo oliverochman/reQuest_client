@@ -1,9 +1,12 @@
 import axios from "axios";
 import createHeaders from "./headers.js";
 
-const getRequests = async (dispatch) => {
+const getRequests = async (dispatch, category) => {
   try {
-    const response = await axios.get("/requests");
+    const response = await axios.get("/requests", {
+      category: category,
+      headers: createHeaders(),
+    });
     dispatch({
       type: "GET_REQUESTS",
       payload: {
@@ -28,6 +31,18 @@ const getMyRequests = async () => {
   }
 };
 
+const getMyQuests = async () => {
+  try {
+    const response = await axios.get("/my_request/quests", {
+      headers: createHeaders(),
+    });
+    return response.data.quests;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 const getSingleRequest = async (id) => {
   try {
     const response = await axios.get(`/my_request/requests/${id}`, {
@@ -39,4 +54,4 @@ const getSingleRequest = async (id) => {
   }
 };
 
-export { getRequests, getMyRequests, getSingleRequest };
+export { getRequests, getMyRequests, getMyQuests, getSingleRequest };

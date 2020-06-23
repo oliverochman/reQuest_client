@@ -37,7 +37,12 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const myOffers = request.offers.map((offer, index) => (
-    <OfferList offer={offer} requestStatus={request.status} index={index} onHelperClick={onHelperClick} />
+    <OfferList
+      offer={offer}
+      requestStatus={request.status}
+      index={index}
+      onHelperClick={onHelperClick}
+    />
   ));
 
   const acceptedHelperOffer = request.offers.filter(
@@ -64,6 +69,7 @@ const Offers = ({ request, selectedStatus }) => {
               <OfferMessage
                 helperOffer={helperOffer}
                 onClickActivity={onClickActivity}
+                selectedStatus={selectedStatus} 
               />
             )}
             <p id="status-message">{statusMessage}</p>
@@ -71,7 +77,7 @@ const Offers = ({ request, selectedStatus }) => {
         </>
       )}
       {selectedStatus === "active" && (
-        <OfferMessage helperOffer={acceptedHelperOffer} />
+        <OfferMessage helperOffer={acceptedHelperOffer} selectedStatus={selectedStatus} />
       )}
     </div>
   );
