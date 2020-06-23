@@ -11,7 +11,7 @@ describe("User can", () => {
     });
     cy.route({
       method: "POST",
-      url: "**/offers/1/messages",
+      url: "**/offers/5/messages",
       response: "fixture:offers/offerConversation.json",
       headers: {
         uid: "user@mail.com",
@@ -44,8 +44,8 @@ describe("User can", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
-      cy.wait(1000);
       cy.get("#message-send-btn").click();
+      cy.wait(1000);
       cy.get("#helper-message").should("be.visible");
     });
   });

@@ -24,7 +24,11 @@
         "content": "hi it would be great if you come and help me this weekend",
         "me": false
       },
-      { "content": "hello that fits me like a glove! Is 8am ok?", "me": true }
+      { "content": "hello that fits me like a glove! Is 8am ok?", "me": true },
+      {
+        "content": "That sounds great, can you confirm",
+        "me": false
+      }
     ]
   }
 }
