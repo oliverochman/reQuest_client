@@ -11,7 +11,8 @@ const NewRequest = () => {
   const [message, setMessage] = useState("");
   const category = categoryList()
   const dispatch = useDispatch();
-  const latitude = 
+  const latitude = useSelector(state => state.coords.latitude)
+  const longitude = useSelector(state => state.coords.longitude)
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
@@ -30,7 +31,8 @@ const NewRequest = () => {
           title: e.target.title.value,
           description: e.target.description.value,
           reward: e.target.reward.value,
-          category: document.getElementById("category").innerText.toLowerCase()
+          category: document.getElementById("category").innerText.toLowerCase(),
+          coords: { lat: latitude, long: longitude} 
         },
         { headers: createHeaders() }
       );
