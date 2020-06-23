@@ -49,6 +49,14 @@ const Offers = ({ request, selectedStatus }) => {
     (offer) => offer.status === "accepted"
   )[0];
 
+  const myOffersActiveComp = (selectedStatus === "active" ||
+    selectedStatus === "completed") && (
+    <OfferMessage
+      helperOffer={acceptedHelperOffer}
+      selectedStatus={selectedStatus}
+    />
+  );
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       {selectedStatus === "pending" && (
@@ -69,16 +77,14 @@ const Offers = ({ request, selectedStatus }) => {
               <OfferMessage
                 helperOffer={helperOffer}
                 onClickActivity={onClickActivity}
-                selectedStatus={selectedStatus} 
+                selectedStatus={selectedStatus}
               />
             )}
             <p id="status-message">{statusMessage}</p>
           </div>
         </>
       )}
-      {selectedStatus === "active" && (
-        <OfferMessage helperOffer={acceptedHelperOffer} selectedStatus={selectedStatus} />
-      )}
+      {myOffersActiveComp}
     </div>
   );
 };
