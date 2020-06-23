@@ -1,17 +1,20 @@
+const stubLocation = require("../support/stubLocation");
+
 Cypress.Commands.add("stubMain", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "**/requests",
+    url: "**/requests*",
     response: "fixture:requests/list_of_requests_visitor.json",
   });
+  cy.visit("/", stubLocation({ latitude: 57.71, longitude: 11.97 }));
 });
 
 Cypress.Commands.add("stubMainLoggedIn", () => {
   cy.server();
   cy.route({
     method: "GET",
-    url: "**/requests",
+    url: "**/requests*",
     response: "fixture:requests/list_of_requests.json",
   });
 });
@@ -34,7 +37,7 @@ Cypress.Commands.add("login", () => {
     },
   });
 
-  cy.visit("/login");
+  cy.visit("/login", stubLocation({ latitude: 57.71, longitude: 11.97 }));
   cy.get("#login-form").within(() => {
     cy.get("#email").type("user@mail.com");
     cy.get("#password").type("password");
@@ -108,6 +111,35 @@ Cypress.Commands.add("StubRequestUpdatedOffer", () => {
     headers: {
       uid: "me@mail.com",
     },
+  });
+});
+
+Cypress.Commands.add("loginWithoutLocation", () => {
+  cy.route({
+    method: "POST",
+    url: "**/auth/*",
+    response: "fixture:user/successful_login.json",
+    headers: {
+      uid: "user@mail.com",
+    },
+  });
+  cy.route({
+    method: "GET",
+    url: "**/auth/*",
+    response: "fixture:user/successful_login.json",
+    headers: {
+      uid: "user@mail.com",
+    },
+  });
+
+  cy.visit(
+    "/login",
+    stubLocation({ latitude: undefined, longitude: undefined })
+  );
+  cy.get("#login-form").within(() => {
+    cy.get("#email").type("user@mail.com");
+    cy.get("#password").type("password");
+    cy.get("#submit-btn").contains("Submit").click();
   });
 });
 

@@ -8,11 +8,14 @@ import LoginForm from "./components/LoginForm";
 import "./App.css";
 import MyRequestsPage from "./components/MyRequestsPage";
 import { persistLogin } from "./modules/auth";
+import getPlace from "./modules/location";
+
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    getPlace(dispatch)
     persistLogin(dispatch);
   }, []);
 

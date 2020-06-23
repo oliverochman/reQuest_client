@@ -19,7 +19,7 @@ describe("User can post new reQuest, after navigating to creation form", () => {
     });
     cy.login();
     cy.get("#myrequest-home-link").click();
-    cy.wait(500)
+    cy.wait(500);
     cy.get("#requests-link").click();
     cy.get("#create-request-link").click();
   });
@@ -98,5 +98,45 @@ describe("User can post new reQuest, after navigating to creation form", () => {
           );
         });
     });
+  });
+});
+
+describe("User cannot post new request without location", () => {
+  beforeEach(() => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "**/my_request/requests",
+      response: "fixture:requests/post_new_request_without_location.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.route({
+      method: "GET",
+      url: "**/karma_points*",
+      response: { karma_points: 500 },
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.loginWithoutLocation();
+    cy.get("#myrequest-home-link").click();
+    cy.wait(500);
+    cy.get("#requests-link").click();
+    cy.get("#create-request-link").click();
+  });
+
+  it("fails on creation", () => {
+    cy.get("#title").type("Fix my bike");
+    cy.get("#description").type("I cant ride my bike, HILFE, hilfe, pronto!");
+    cy.get("#reward").type("100");
+    cy.get("#category").click();
+    cy.get("#category > .visible > :nth-child(2)").click();
+    cy.get("#submit-btn").contains("Submit").click();
+    cy.get("#message").should(
+      "contain",
+      "Cannot create request without location information"
+    );
   });
 });
