@@ -32,11 +32,12 @@ span {
   position: absolute;
 }
 
-#page-container h1 {
+#page-container h2 {
   position: absolute;
-  margin-top: -80px;
-  color: whitesmoke;
-  font-size: 300%;
+  margin-top: -30px;
+  color: #88a65e;
+  font-size: 185%;
+  text-align: center;
 }
 
 #qcard {
@@ -49,10 +50,15 @@ span {
   background-color: #88a65e;
   height: fit-content;
   text-align: center;
+  cursor: pointer;
   padding: 10px;
+  border-radius: 5px;
 }
 #categories a {
     color: white;
+}
+#categories :active {
+  color: #e8b704;
 }
 /* HEADER */
 #header {

@@ -18,9 +18,9 @@ const BrowseRequests = () => {
   return (
     <>
       <div id="page-container">
-        <h1 id="browse-title">Browse reQuests</h1>
+        <h2 id="browse-title">Categories</h2>
         <List id="categories" onClick={(e) => onItemClickHandler(e)}>
-          <List.Item id="all">All</List.Item>
+          <List.Item id="all" active='true'>All</List.Item>
           <List.Item id="home">Home</List.Item>
           <List.Item id="education">Education</List.Item>
           <List.Item id="it">IT</List.Item>
