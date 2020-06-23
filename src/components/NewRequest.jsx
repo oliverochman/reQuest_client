@@ -11,6 +11,7 @@ const NewRequest = () => {
   const [message, setMessage] = useState("");
   const category = categoryList()
   const dispatch = useDispatch();
+  const latitude = 
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
