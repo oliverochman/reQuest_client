@@ -1,10 +1,13 @@
 import axios from "axios";
 import createHeaders from "./headers.js";
 
-const getRequests = async (dispatch, category) => {
+const getRequests = async (dispatch, category, coords) => {
   try {
     const response = await axios.get("/requests", {
-      params: { category: category.activeCategory },
+      params: {
+        category: category.activeCategory,
+        coordinates: { lat: coords.lat, long: coords.long },
+      },
     });
     dispatch({
       type: "GET_REQUESTS",
