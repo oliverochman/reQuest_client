@@ -53,31 +53,14 @@
       "reward": 55,
       "offerable": null
     },
-<<<<<<< HEAD
-    {
-      "id": 7,
-      "title": "Babysitter needed",
-      "description": "Need a hand with a baby",
-      "requester": "someone7@email.com",
-      "location": { "area": "Paba", "long": 18.98, "lat": 58.18 },
-      "categories": ["Education"],
-      "reward": 80,
-      "offerable": null
-    },
-=======
     
->>>>>>> a6225633c3eff8e83c4ce9365e8b4841e39119d4
     {
       "id": 8,
       "title": "Move out help needed",
       "description": "Need a hand with furniture",
       "requester": "someone8@email.com",
       "location": { "area": "Jeno", "long": 18.98, "lat": 58.18 },
-<<<<<<< HEAD
       "categories": [ "Home"],
-=======
-      "categories": ["Home"],
->>>>>>> a6225633c3eff8e83c4ce9365e8b4841e39119d4
       "reward": 120,
       "offerable": null
     },
