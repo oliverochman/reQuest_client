@@ -70,6 +70,9 @@ const OfferMessage = (props) => {
         )}
         {props.selectedStatus === "active" && (!completedMessage || error) && (
           <div className="ui two buttons">
+            <Button id="quest-reply" onClick={replyOfferMessage}>
+              Reply
+            </Button>
             <Button id="quest-completed" onClick={completeRequest}>
               Quest Completed
             </Button>
