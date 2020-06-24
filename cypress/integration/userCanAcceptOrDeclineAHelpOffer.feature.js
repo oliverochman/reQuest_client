@@ -6,8 +6,9 @@ describe("User can", () => {
   describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
       cy.login();
+      cy.wait(1500)
       cy.get("#myrequest-home-link").click();
-      cy.wait(500)
+      cy.wait(1500)
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
     });
@@ -36,8 +37,9 @@ describe("User can", () => {
     beforeEach(() => {
       cy.StubRequestUpdatedOffer();
       cy.login();
+      cy.wait(1500)
       cy.get("#myrequest-home-link").click();
-      cy.wait(500)
+      cy.wait(1500)
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
       cy.wait(1000);
@@ -77,8 +79,9 @@ describe("User can", () => {
         },
       });
       cy.login();
+      cy.wait(1500)
       cy.get("#myrequest-home-link").click();
-      cy.wait(500)
+      cy.wait(1500)
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
       cy.get("#helper-message").should("not.be.visible");

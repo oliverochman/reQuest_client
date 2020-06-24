@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
-import axios from "axios";
+
 import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
-import createHeaders from "../modules/headers";
+import {
+  updateOffer,
+  markRequestCompleted,
+  replyToConversation,
+} from "../modules/messaging";
 
 const Offers = ({ request, selectedStatus }) => {
   const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const [updateOffer, setUpdateOffer] = useState(true);
-
-  useEffect(() => {
-    updateMyRequest(request, dispatch);
-  }, [updateOffer]);
+  const [messagesUpdate, triggerMessagesUpdate] = useState({});
+  const [completedMessage, setCompletedMessage] = useState("");
+  const [error, setError] = useState(false);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -24,16 +26,29 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const onClickActivity = async (e) => {
-    const resp = await axios.put(
-      `/offers/${helperOffer.id}`,
-      {
-        activity: e.target.id,
-      },
-      { headers: createHeaders() }
+    const response = await updateOffer(e.target.id, helperOffer.id);
+    setStatusMessage(response.data.message);
+    await updateMyRequest(request, dispatch);
+  };
+
+  const completeRequest = async () => {
+    const response = await markRequestCompleted(request.id);
+    if (!response.isAxiosError) {
+      setCompletedMessage(response.data.message);
+      setError(false);
+    } else {
+      setCompletedMessage(response.response.data.message);
+      setError(true);
+    }
+  };
+
+  const replyOfferMessage = async (e) => {
+    const message = e.target.replyMessage.value
+    const resp = await replyToConversation(
+      acceptedHelperOffer.id,
+      message
     );
-    setStatusMessage(resp.data.message);
-    updateMyRequest(request, dispatch);
-    setUpdateOffer(!updateOffer);
+    resp && acceptedHelperOffer.conversation.messages.push({me: true, content: message}) && triggerMessagesUpdate(resp)
   };
 
   const myOffers = request.offers.map((offer, index) => (
@@ -54,6 +69,10 @@ const Offers = ({ request, selectedStatus }) => {
     <OfferMessage
       helperOffer={acceptedHelperOffer}
       selectedStatus={selectedStatus}
+      completeRequest={completeRequest}
+      replyOfferMessage={replyOfferMessage}
+      completedMessage={completedMessage}
+      error={error}
     />
   );
 

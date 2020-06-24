@@ -11,6 +11,7 @@ describe("User can offer help", () => {
       },
     });
     cy.login();
+    cy.wait(1500)
     cy.get("#request-1").within(() => {
       cy.get(".header").should("contain", "Change to winter tires").click();
     });

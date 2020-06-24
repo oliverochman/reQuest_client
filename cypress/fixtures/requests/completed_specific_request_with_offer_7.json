@@ -9,20 +9,41 @@
       {
         "id": 36,
         "email": "pauline@mail.com",
-        "message": "Im a natural, i can teach you",
-        "status": "accepted"
+        "status": "accepted",
+        "conversation": {
+          "messages": [
+            { 
+              "me": false,
+              "content": "Im a natural, i can teach you"
+            }
+          ]
+        }
       },
       {
         "id": 2,
         "email": "helper@mail.com",
-        "message": "I too can give you help with this",
-        "status": "declined"
+        "status": "declined",
+        "conversation": {
+          "messages": [
+            { 
+              "me": false,
+              "content": "I too can give you help with this"
+            }
+          ]
+        }
       },
       {
         "id": 3,
         "email": "helpering@mail.com",
-        "message": "Even I can help you out with this",
-        "status": "pending"
+        "status": "pending",
+        "conversation": {
+          "messages": [
+            { 
+              "me": false,
+              "content": "Even I can help you out with this"
+            }
+          ]
+        }
       }
     ]
   }

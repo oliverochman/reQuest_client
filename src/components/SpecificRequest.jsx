@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { AboutReQuest, SelectedRequest } from "./AboutReQuest";
-import CreateOffer from "./CreateOffer";
+import { CreateOffer } from "./CreateOffer";
 
 const SpecificRequest = () => {
   const selectedRequest = useSelector(

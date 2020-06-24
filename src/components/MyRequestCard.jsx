@@ -3,24 +3,26 @@ import { Card } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import updateRequest from "../modules/updateMyRequest";
 
-const MyRequestCard = ({ request }) => {
+const MyRequestCard = ({ request, page }) => {
   const activeRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
   const myActiveRequest = activeRequest && activeRequest.id === request.id;
   const req = myActiveRequest ? activeRequest : request;
   const dispatch = useDispatch();
-  const [viewDesc, setViewDesc] = useState(false);
 
   const toggleActiveRequest = async () => {
     if (myActiveRequest) {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
-      req.status !== "completed" && updateRequest(request, dispatch);
-      setViewDesc(!viewDesc);
+      page === "requests" ? (
+        updateRequest(request, dispatch)
+      ) : ( 
+        dispatch({type: "SET_MY_SELECTED_REQUEST", payload: { request }})
+      )
     }
   };
-  const description = viewDesc && (
+  const description = myActiveRequest && (
     <Card.Description id={"request-description-" + req.id}>
       {req.description}
     </Card.Description>
@@ -37,7 +39,6 @@ const MyRequestCard = ({ request }) => {
         <Card.Header>{req.title}</Card.Header>
         {description}
         <Card.Meta>{req.reward} KP</Card.Meta>
-        {viewDesc}
       </Card.Content>
     </Card>
   );

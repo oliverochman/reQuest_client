@@ -67,7 +67,7 @@ const MyRequestsPage = (props) => {
             <MyListComponent selectedStatus={selectedStatus} page={page} />
           </div>
           <div id="middle-right-component" style={{ marginLeft: "30px" }}>
-            {mySelectedRequest && (
+            {mySelectedRequest && page === "requests" && (
               <Offers
                 request={mySelectedRequest}
                 selectedStatus={selectedStatus}

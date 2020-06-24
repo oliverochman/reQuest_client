@@ -2,7 +2,9 @@ describe("User can see a list of all quests", () => {
   beforeEach(() => {
     cy.stubMain();
     cy.login();
+    cy.wait(1500)
     cy.get("#myrequest-home-link").click();
+    cy.wait(1500)
   });
 
   describe("when there is something to show", () => {

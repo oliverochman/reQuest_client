@@ -89,6 +89,7 @@ Cypress.Commands.add("StubRequestPendingOffer", () => {
     },
   });
 });
+
 Cypress.Commands.add("StubRequestUpdatedOffer", () => {
   cy.route({
     method: "GET",

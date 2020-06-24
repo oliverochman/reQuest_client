@@ -2,7 +2,9 @@ describe("User can see their current karma points", () => {
   beforeEach(() => {
     cy.server();
     cy.login();
+    cy.wait(1500)
     cy.get("#myrequest-home-link").click();
+    cy.wait(1500)
     cy.get("#requests-link").click();
     cy.route({
       method: "GET",
