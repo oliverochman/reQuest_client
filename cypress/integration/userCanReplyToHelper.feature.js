@@ -1,6 +1,15 @@
 describe("User can", () => {
   beforeEach(() => {
     cy.server();
+    cy.stubMain();
+    cy.route({
+      method: "GET",
+      url: "**/my_request/requests",
+      response: "fixture:requests/list_of_my_requests.json",
+      headers: {
+        uid: "me@mail.com",
+      },
+    });
     cy.route({
       method: "GET",
       url: "**/karma_points*",
@@ -10,15 +19,27 @@ describe("User can", () => {
       },
     });
     cy.route({
-      method: "POST",
-      url: "**/offers/1/messages",
+      method: "GET",
+      url: "**/my_request/requests/5",
       response: "fixture:offers/offerConversation.json",
+      headers: {
+        uid: "me@mail.com",
+      },
+    });
+    cy.route({
+      method: "POST",
+      url: "**/offers/5/messages",
+      response: {
+        message: {
+          me: true,
+          content: "what I just posted",
+        },
+      },
       headers: {
         uid: "user@mail.com",
       },
     });
-    cy.stubMain();
-    cy.StubRequestUpdatedOffer();
+    // cy.StubRequestUpdatedOffer();
   });
   describe("successfully reply message'", () => {
     beforeEach(() => {
@@ -44,8 +65,8 @@ describe("User can", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
-      cy.wait(1000);
       cy.get("#message-send-btn").click();
+      cy.wait(1000);
       cy.get("#helper-message").should("be.visible");
     });
   });

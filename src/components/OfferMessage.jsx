@@ -1,62 +1,27 @@
 import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { ReplyOffer } from "./CreateOffer";
-import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
-  const [completedMessage, setCompletedMessage] = useState("");
-  const [error, setError] = useState(false);
-  const mySelectedRequest = useSelector(
-    (state) => state.requests.mySelectedRequest
-  );
+  // debugger;
   const [replyStatus, setReplyStatus] = useState(false);
-  const [updateMessages, setUpdateMessages] = useState({});
 
-  const completeRequest = async () => {
-    try {
-      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-      const response = await axios.put(
-        `/my_request/requests/${mySelectedRequest.id}`,
-        { headers: headers },
-        { params: { activity: "completed" } }
-      );
-      setCompletedMessage(response.data.message);
-      setError(false);
-    } catch (error) {
-      setCompletedMessage(error.response.data.message);
-      setError(true);
-    }
-  };
-
-  const replyOfferMessage = async (e) => {
-    const resp = await axios.post(
-      `offers/${mySelectedRequest.id}/messages`,
-      {
-        message: e.target.firstElementChild.value,
-      },
-      { headers: createHeaders() }
-    );
+  const HelperMessage = (props) => {
     debugger;
-    resp && setUpdateMessages(resp);
+    return (
+      <Popup
+        content={props.message.content}
+        open
+        position="top left"
+        id="offer-message"
+        trigger={<div></div>}
+      />
+    );
   };
 
-  const helperMessage = (
-    <Card.Content>
-      <Card.Header></Card.Header>
-      <Card.Meta>{props.helperOffer.email}</Card.Meta>
-      <Card.Description>
-        <div style={{ height: "35vh" }}></div>
-        <Popup
-          content={props.helperOffer.message}
-          open
-          position="top left"
-          id="offer-message"
-          trigger={<div></div>}
-        />
-      </Card.Description>
-    </Card.Content>
+  const conversation = props.helperOffer.conversation.messages.map(
+    (message) => <HelperMessage message={message} />
   );
 
   const showActivityButton = (
@@ -84,19 +49,20 @@ const OfferMessage = (props) => {
             </Button>
           </div>
         )}
-        {props.selectedStatus === "active" && (!completedMessage || error) && (
-          <div className="ui two buttons">
-            <Button
-              id="quest-reply"
-              onClick={() => setReplyStatus(!replyStatus)}
-            >
-              Reply
-            </Button>
-            <Button id="quest-completed" onClick={completeRequest}>
-              Quest Completed
-            </Button>
-          </div>
-        )}
+        {props.selectedStatus === "active" &&
+          (!props.completedMessage || props.error) && (
+            <div className="ui two buttons">
+              <Button
+                id="quest-reply"
+                onClick={() => setReplyStatus(!replyStatus)}
+              >
+                Reply
+              </Button>
+              <Button id="quest-completed" onClick={props.completeRequest}>
+                Quest Completed
+              </Button>
+            </div>
+          )}
       </>
     </Card.Content>
   );
@@ -106,14 +72,23 @@ const OfferMessage = (props) => {
       <List divided relaxed id="offers">
         <Card.Group>
           <Card>
-            {helperMessage}
+            <Card.Content>
+              <Card.Header></Card.Header>
+              <Card.Meta>{props.helperOffer.email}</Card.Meta>
+              <Card.Description>
+                <div style={{ height: "35vh" }}></div>
+                {conversation}
+              </Card.Description>
+            </Card.Content>
             {showActivityButton}
           </Card>
         </Card.Group>
         <p style={{ color: "black" }} id="completed-message">
-          {completedMessage}
+          {props.completedMessage}
         </p>
-        {replyStatus && <ReplyOffer replyOfferMessage={replyOfferMessage} />}
+        {replyStatus && (
+          <ReplyOffer replyOfferMessage={props.replyOfferMessage} />
+        )}
       </List>
     </>
   );

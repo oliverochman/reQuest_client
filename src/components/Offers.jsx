@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
-import axios from "axios";
+
 import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
-import createHeaders from "../modules/headers";
+import {
+  updateOffer,
+  updateRequest,
+  createReplyMessages,
+} from "../modules/messaging";
 
 const Offers = ({ request, selectedStatus }) => {
   const dispatch = useDispatch();
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
+  const [updateMessages, setUpdateMessages] = useState({});
+  const [completedMessage, setCompletedMessage] = useState("");
+  const [error, setError] = useState(false);
   // const [updateOffer, setUpdateOffer] = useState(true);
 
   // useEffect(() => {
@@ -24,16 +31,31 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const onClickActivity = async (e) => {
-    const resp = await axios.put(
-      `/offers/${helperOffer.id}`,
-      {
-        activity: e.target.id,
-      },
-      { headers: createHeaders() }
-    );
-    setStatusMessage(resp.data.message);
+    const response = await updateOffer(e.target.id, helperOffer.id);
+    setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
     // setUpdateOffer(!updateOffer);
+  };
+
+  const completeRequest = async () => {
+    const response = await updateRequest(request.id);
+    if (response) {
+      setCompletedMessage(response.data.message);
+      setError(false);
+    } else {
+      setCompletedMessage(error.response.data.message);
+      setError(true);
+    }
+  };
+
+  const replyOfferMessage = async (e) => {
+    debugger;
+    const resp = await createReplyMessages(
+      request.id,
+      e.target.firstElementChild.value
+    );
+    debugger;
+    resp && setUpdateMessages(resp);
   };
 
   const myOffers = request.offers.map((offer, index) => (
@@ -54,6 +76,10 @@ const Offers = ({ request, selectedStatus }) => {
     <OfferMessage
       helperOffer={acceptedHelperOffer}
       selectedStatus={selectedStatus}
+      completeRequest={completeRequest}
+      replyOfferMessage={replyOfferMessage}
+      completedMessage={completedMessage}
+      error={error}
     />
   );
 

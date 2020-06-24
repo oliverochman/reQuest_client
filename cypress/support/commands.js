@@ -115,14 +115,6 @@ Cypress.Commands.add("StubRequestUpdatedOffer", () => {
     },
   });
   cy.route({
-    method: "GET",
-    url: "**/my_request/requests/5",
-    response: "fixture:offers/offerConversation.json",
-    headers: {
-      uid: "me@mail.com",
-    },
-  });
-  cy.route({
     method: "PUT",
     url: "**/offers/*",
     response: "fixture:offers/putOffer_accepted.json",
