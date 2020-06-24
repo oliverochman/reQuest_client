@@ -14,7 +14,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "I can help you with this, and I'm probably the first to offer my help",
+              "content": "I can help you with this, and I'm probably the first to offer my help"
             }
           ]
         }
@@ -27,7 +27,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "I too can give you help with this",
+              "content": "I too can give you help with this"
             }
           ]
         }
@@ -40,7 +40,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "Even I can help you out with this",
+              "content": "Even I can help you out with this"
             }
           ]
         }

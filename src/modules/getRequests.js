@@ -25,6 +25,7 @@ const getMyRequests = async () => {
     const response = await axios.get("/my_request/requests", {
       headers: createHeaders(),
     });
+    debugger
     return response.data.requests;
   } catch (error) {
     console.log(error);

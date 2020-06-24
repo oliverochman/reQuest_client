@@ -14,7 +14,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "Im a natural, i can teach you",
+              "content": "Im a natural, i can teach you"
             }
           ]
         }
@@ -27,7 +27,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "I too can give you help with this",
+              "content": "I too can give you help with this"
             }
           ]
         }
@@ -40,7 +40,7 @@
           "messages": [
             { 
               "me": false,
-              "content": "Even I can help you out with this",
+              "content": "Even I can help you out with this"
             }
           ]
         }
