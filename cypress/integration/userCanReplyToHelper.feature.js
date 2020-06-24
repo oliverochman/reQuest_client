@@ -64,7 +64,7 @@ describe("User can", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
-      cy.get("#message-send-btn").click();
+      cy.get("#send-chat-message").click();
       cy.wait(1000);
       cy.get("#helper-message").should("be.visible");
     });

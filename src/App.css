@@ -24,10 +24,9 @@ span {
 }
 
 #page-container {
-  margin-top: 180px;
+  margin-top: 200px;
   display: flex;
-  padding: 50px;
-  padding-top: 20px;
+  padding: 0px 50px;
   width: 100vw;
   position: absolute;
 }
@@ -215,9 +214,11 @@ textarea {
   height: fit-content;
   color: white;
 }
+
 #signup:hover {
   color: #e8b704;
 }
+
 #message {
   color: rgb(230, 230, 230);
 }
@@ -381,7 +382,13 @@ textarea {
   margin-bottom: 30px;
 }
 
-#quest-completed {
+#quest-completed,
+#quest-reply {
   color: white;
   background-color: #88a65e;
+}
+
+#send-chat-message {
+  color: white;
+  background-color: #e8b704;
 }

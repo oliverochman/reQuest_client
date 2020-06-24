@@ -1,27 +1,12 @@
 import React, { useState } from "react";
-import { List, Button, Card, Popup } from "semantic-ui-react";
+import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
 import { ReplyOffer } from "./CreateOffer";
-
-const HelperMessage = (props) => {
-  return (
-    <Popup
-      content={props.message.content}
-      open
-      position="top left"
-      id="offer-message"
-      trigger={<div></div>}
-    />
-  );
-};
+import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {
   const [replyStatus, setReplyStatus] = useState(false);
 
-  const conversation = props.helperOffer.conversation.messages.map(
-    (message) => <HelperMessage message={message} />
-  );
-
-  const showActivityButton = (
+  const showActivityButtons = (
     <Card.Content extra>
       <>
         {props.selectedStatus === "pending" && (
@@ -46,48 +31,81 @@ const OfferMessage = (props) => {
             </Button>
           </div>
         )}
-        {props.selectedStatus === "active" &&
-          (!props.completedMessage || props.error) && (
-            <div className="ui two buttons">
-              <Button
-                id="quest-reply"
-                onClick={() => setReplyStatus(!replyStatus)}
-              >
-                Reply
-              </Button>
+        {props.selectedStatus === "active" && (
+          <div className="ui two buttons">
+            {!props.completedMessage && (
               <Button id="quest-completed" onClick={props.completeRequest}>
                 Quest Completed
               </Button>
-            </div>
-          )}
+            )}
+            {replyStatus ? (
+              <Button id="send-chat-message" 
+                form="send-message-form"
+                type="submit"
+              >
+                Send
+              </Button>
+            ) : (
+              <Button id="quest-reply"
+                type="button"
+                form="no-form"
+                onClick={() => setReplyStatus(true)}>
+                Reply
+              </Button>
+            )}
+          </div>
+        )}
       </>
     </Card.Content>
   );
 
   return (
-    <>
-      <List divided relaxed id="offers">
-        <Card.Group>
-          <Card>
-            <Card.Content>
-              <Card.Header></Card.Header>
-              <Card.Meta>{props.helperOffer.email}</Card.Meta>
-              <Card.Description>
-                <div style={{ height: "35vh" }}></div>
-                {conversation}
-              </Card.Description>
+    <List divided relaxed id="offers">
+      <Card.Group>
+        <Card>
+          <Card.Content>
+            <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
+            <Card.Content
+              style={{ maxHeight: "35vh", overflow: "auto", color: "#444" }}
+            >
+              <ChatBubbles messages={props.helperOffer.conversation.messages} />
             </Card.Content>
-            {showActivityButton}
-          </Card>
-        </Card.Group>
-        <p style={{ color: "black" }} id="completed-message">
-          {props.completedMessage}
-        </p>
-        {replyStatus && (
-          <ReplyOffer replyOfferMessage={props.replyOfferMessage} />
-        )}
-      </List>
-    </>
+            {replyStatus && (
+              <Card.Content style={{ paddingBottom: 0 }}>
+                <Card.Meta style={{display: "flex", justifyContent: "space-between"}}>
+                  your message:
+                  <Icon name="close" onClick={() => setReplyStatus(false)} style={{padding: "3px", cursor: "pointer"}} />
+                </Card.Meta>
+                <Form
+                  id="send-message-form"
+                  onSubmit={(e) => {
+                    e.target.replyMessage.value != "" &&
+                    props.replyOfferMessage(e) &&
+                    setReplyStatus(false)
+                  }}
+                  style={{ padding: 0 }}
+                >
+                  <TextArea
+                    id="replyMessage"
+                    name="replyMessage"
+                    placeholder="Write..."
+                    style={{
+                      maxWidth: "100%",
+                      height: "70px",
+                      marginTop: "10px",
+                    }}
+                  />
+                </Form>
+              </Card.Content>
+            )}
+          </Card.Content>
+          {showActivityButtons}
+        </Card>
+      </Card.Group>
+      <p style={{ color: "black" }} id="completed-message">
+        {props.completedMessage}
+      </p>
+    </List>
   );
 };
 
