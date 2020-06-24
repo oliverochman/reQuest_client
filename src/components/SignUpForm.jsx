@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory } from "react-router-dom";
@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 const SignUpForm = () => {
   const signupMessage = useSelector(state => state.messages.signupMessage);
   const dispatch = useDispatch();
-  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const SignUpForm = () => {
         password: e.target.password.value,
         password_confirmation: e.target.passwordConfirmation.value,
       });
-      if (response.success) {
+      if (response.data.status === "success") {
         history.replace("/login");
         dispatch({
           type: "SET_SIGNUP_MESSAGE",
@@ -51,13 +50,13 @@ const SignUpForm = () => {
           ></Form.Input>
           <h4 className="input-labels">{"Password Confirmation"}</h4>
           <Form.Input
-            name="password-confirmation"
+            name="passwordConfirmation"
             type="password"
-            id="password-confirmation"
+            id="passwordConfirmation"
           ></Form.Input>
           <Input type="submit" value="Submit" id="submit-btn" />
           <h3 className="input-labels" id="error-message">
-          {errorMessage}
+          {signupMessage}
         </h3>
         </Form>
       </Container>

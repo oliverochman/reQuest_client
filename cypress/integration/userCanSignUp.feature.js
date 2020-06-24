@@ -16,7 +16,7 @@ describe("User can sign up, when clicking the 'Sign Up' link", () => {
       cy.get("#signup-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("#password-confirmation").type("password");
+        cy.get("#passwordConfirmation").type("password");
         cy.get("#submit-btn").contains("Submit").click();
       });
       cy.get("#login-form");
@@ -34,20 +34,20 @@ describe("User can sign up, when clicking the 'Sign Up' link", () => {
         url: "**/auth",
         response: {
           success: false,
-          errors: { full_messages: "doesn't match Password" },
+          errors: { full_messages: "Passwords don't match" },
         },
         status: 422,
       });
         cy.get("#signup-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
-        cy.get("#password-confirmation").type("pasword");
+        cy.get("#passwordConfirmation").type("pasword");
         cy.get("#submit-btn").contains("Submit").click();
       });
     });
 
     it("can see unsucessful message", () => {
-      cy.get("#error-message").should("contain", "doesn't match Password");
+      cy.get("#error-message").should("contain", "Passwords don't match");
     });
   });
 });

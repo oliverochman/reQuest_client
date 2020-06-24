@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import { auth } from "../modules/auth";
 import { useHistory, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
+  const signupMessage = useSelector((state) => state.messages.signupMessage);
   const history = useHistory();
 
   useEffect(() => {
@@ -40,6 +41,19 @@ const LoginForm = () => {
     }
   };
 
+  const signUp_message =
+  signupMessage === "" ? (
+    <h3>
+      Don't have an account?
+      <br></br>
+      <Link id="signup" name="Signup" to={{ pathname: "/signup" }}>
+        Click here to sign up
+      </Link>
+    </h3>
+  ) : (
+    <h3 id="signedup">Signed up sucessfully!</h3>
+  );
+
   return (
     <div id="page-container">
       <Container className="form-container">
@@ -55,14 +69,13 @@ const LoginForm = () => {
           ></Form.Input>
           <Input type="submit" value="Submit" id="submit-btn" />
           <h3 className="input-labels" id="error-message">
-          {errorMessage}
+          {errorMessage}<br/>
+          {signUp_message}
         </h3>
         </Form>
-        <Link id="signup" name="Signup" to={{ pathname: "/signup" }}>
-        <h3>Don't have an account?  <br/>Sign up here</h3>
-        </Link>
       </Container>
     </div>
   );
-};
+  };
+
 export default LoginForm;
