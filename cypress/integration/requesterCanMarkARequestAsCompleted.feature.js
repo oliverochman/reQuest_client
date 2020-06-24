@@ -19,7 +19,9 @@ describe("Requested can mark a request as completed", () => {
       },
     });
     cy.login();
+    cy.wait(1000)
     cy.get("#myrequest-home-link").click();
+    cy.wait(1000)
     cy.get("#requests-link").click();
     cy.get("#active-link").click();
   });

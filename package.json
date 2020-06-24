@@ -13,10 +13,12 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scrollable-feed": "^1.1.2",
     "redux": "^4.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
-    "start-server-and-test": "^1.11.0"
+    "start-server-and-test": "^1.11.0",
+    "style-it": "^2.1.4"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
