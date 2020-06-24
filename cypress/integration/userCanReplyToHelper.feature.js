@@ -39,7 +39,7 @@ describe("User can reply to helper", () => {
   describe("Requester can successfully", () => {
     beforeEach(() => {
       cy.login();
-      cy.wait(1500)
+      cy.wait(1500);
       cy.get("#myrequest-home-link").click();
       cy.wait(1500);
       cy.get("#requests-link").click();
@@ -57,7 +57,7 @@ describe("User can reply to helper", () => {
       cy.get("button#quest-reply").should("be.visible");
     });
 
-    it.only("send a reply message", () => {
+    it("send a reply message", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
