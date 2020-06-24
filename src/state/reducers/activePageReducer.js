@@ -10,7 +10,7 @@ const activePageReducer = (state = initialState, action) => {
     case "SET_ACTIVE_CATEGORY":
       return {
         ...state,
-        activeCategory: action.payload,
+        activeCategory: action.payload.activeCategory,
       };
     case "RESET_ACTIVE_PAGE":
       return {

@@ -47,8 +47,7 @@ const OfferMessage = (props) => {
                 Send
               </Button>
             ) : (
-              <Button id="quest-reply"
-                onClick={() => setReplyStatus(true)}>
+              <Button id="quest-reply" onClick={() => setReplyStatus(true)}>
                 Reply
               </Button>
             )}
@@ -65,7 +64,12 @@ const OfferMessage = (props) => {
           <Card.Content>
             <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
             <Card.Content
-              style={{ height: "35vh", overflow: "auto", color: "#444", paddingTop: "10px"}}
+              style={{
+                height: "35vh",
+                overflow: "auto",
+                color: "#444",
+                paddingTop: "10px",
+              }}
             >
               <ChatBubbles messages={props.helperOffer.conversation.messages} />
             </Card.Content>
@@ -86,8 +90,8 @@ const OfferMessage = (props) => {
                   id="send-message-form"
                   onSubmit={(e) => {
                     e.target.replyMessage.value !== "" &&
-                    props.replyOfferMessage(e) &&
-                    e.target.reset()
+                      props.replyOfferMessage(e) &&
+                      e.target.reset();
                   }}
                   style={{ padding: 0 }}
                 >

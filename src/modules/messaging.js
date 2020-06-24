@@ -20,7 +20,7 @@ export const markRequestCompleted = async (mySelectedRequestId) => {
   try {
     const resp = await axios.put(
       `/my_request/requests/${mySelectedRequestId}`,
-      { params: { activity: "completed" } },
+      { activity: "completed" },
       { headers: createHeaders() }
     );
     return resp;
@@ -39,9 +39,9 @@ export const replyToConversation = async (offerId, message) => {
       },
       { headers: createHeaders() }
     );
-    return true
+    return true;
   } catch (error) {
     console.error(error);
-    return false
+    return false;
   }
 };
