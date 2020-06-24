@@ -52,7 +52,7 @@ describe("User can view their active reQuests", () => {
       "contain",
       "helper@mail.com"
     );
-    cy.get("#offer-message").should(
+    cy.get(".your-bubble").should(
       "contain",
       "I can help you with this, and I'm probably the first to offer my help"
     );
@@ -68,7 +68,7 @@ describe("User can view their active reQuests", () => {
       "contain",
       "offerer@mail.com"
     );
-    cy.get("#offer-message").should(
+    cy.get(".your-bubble").should(
       "contain",
       "I can copy the fixtures, I'm fast"
     );
@@ -90,9 +90,9 @@ describe("User can view their active reQuests", () => {
       "contain",
       "helper@mail.com"
     );
-    cy.get("#offer-message").should("be.visible");
+    cy.get(".your-bubble").should("be.visible");
     cy.get("#pending-link").click();
     cy.get("#request-description-5").should("not.be.visible");
-    cy.get("#offer-message").should("not.be.visible");
+    cy.get(".your-bubble").should("not.be.visible");
   })
 });

@@ -1,4 +1,4 @@
-describe("Users", () => {
+describe.only("Users", () => {
   describe("cannot navigate directly to their 'reQuests' page", () => {
     it("without first clicking 'my reQuest'", () => {
       cy.stubMain();

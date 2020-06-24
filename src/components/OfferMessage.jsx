@@ -65,7 +65,7 @@ const OfferMessage = (props) => {
           <Card.Content>
             <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
             <Card.Content
-              style={{ maxHeight: "35vh", overflow: "auto", color: "#444" }}
+              style={{ height: "35vh", overflow: "auto", color: "#444" }}
             >
               <ChatBubbles messages={props.helperOffer.conversation.messages} />
             </Card.Content>

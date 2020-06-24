@@ -10,17 +10,15 @@ const MyRequestCard = ({ request }) => {
   const myActiveRequest = activeRequest && activeRequest.id === request.id;
   const req = myActiveRequest ? activeRequest : request;
   const dispatch = useDispatch();
-  const [viewDesc, setViewDesc] = useState(false);
 
   const toggleActiveRequest = async () => {
     if (myActiveRequest) {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
-      req.status !== "completed" && updateRequest(request, dispatch);
-      setViewDesc(!viewDesc);
+      updateRequest(request, dispatch);
     }
   };
-  const description = viewDesc && (
+  const description = myActiveRequest && (
     <Card.Description id={"request-description-" + req.id}>
       {req.description}
     </Card.Description>
@@ -37,7 +35,6 @@ const MyRequestCard = ({ request }) => {
         <Card.Header>{req.title}</Card.Header>
         {description}
         <Card.Meta>{req.reward} KP</Card.Meta>
-        {viewDesc}
       </Card.Content>
     </Card>
   );

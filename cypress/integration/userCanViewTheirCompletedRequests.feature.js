@@ -27,7 +27,7 @@ describe("User can view their completed reQuests", () => {
       "contain",
       "pauline@mail.com"
     );
-    cy.get("#offer-message").should("contain", "Im a natural, i can teach you");
+    cy.get(".your-bubble").should("contain", "Im a natural, i can teach you");
   });
 
   it("when a second reQuest is clicked, it's expanded instead of the first", () => {
@@ -38,7 +38,7 @@ describe("User can view their completed reQuests", () => {
       "contain",
       "offerer666@mail.com"
     );
-    cy.get("#offer-message").should("contain", "I have a saw, I'm fast");
+    cy.get(".your-bubble").should("contain", "I have a saw, I'm fast");
   });
 
   it("clicking a reQuest a second time makes it collapse", () => {
@@ -61,9 +61,9 @@ describe("User can view their completed reQuests", () => {
       "not.contain",
       "anotherhelper@mail.com"
     );
-    cy.get("#offer-message").should("be.visible");
+    cy.get(".your-bubble").should("be.visible");
     cy.get("#pending-link").click();
     cy.get("#request-description-8").should("not.be.visible");
-    cy.get("#offer-message").should("not.be.visible");
+    cy.get(".your-bubble").should("not.be.visible");
   });
 });
