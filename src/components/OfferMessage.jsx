@@ -81,7 +81,8 @@ const OfferMessage = (props) => {
                   id="send-message-form"
                   onSubmit={(e) => {
                     e.target.replyMessage.value != "" &&
-                    props.replyOfferMessage(e)
+                    props.replyOfferMessage(e) &&
+                    e.target.reset()
                   }}
                   style={{ padding: 0 }}
                 >
