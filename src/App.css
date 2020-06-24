@@ -327,6 +327,20 @@ textarea {
   background-color: #88a65e;
 }
 
+#create-request {
+  color: white;
+  background-color: #88a65e;
+  font-family: "Lora", serif;
+  color: white;
+  font-weight: 700;
+  padding: 18px;
+  font-size: 150%;
+  border: 1px solid #e8b704;
+  }
+  #create-request:hover {
+  color: #e8b704;
+  }
+
 #no-requests-message {
   color: white;
 }
