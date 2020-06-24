@@ -1,5 +1,6 @@
 import React from 'react'
 import SingleChatBubble from './SingleChatBubble'
+import ScrollableFeed from 'react-scrollable-feed'
 
 const ChatBubbles = ({ messages }) => {
   const chatBubbles = messages.map((message) => (
@@ -7,7 +8,9 @@ const ChatBubbles = ({ messages }) => {
   ))
 
   return (
-    chatBubbles
+    <ScrollableFeed forceScroll="true">
+      {chatBubbles}
+    </ScrollableFeed>
   )
 }
 
