@@ -15,14 +15,14 @@ const OfferMessage = (props) => {
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       const response = await axios.put(
         `/my_request/requests/${mySelectedRequest.id}`,
-        { headers: headers },
-        { params: { activity: "completed" } }
+        { activity: "completed" },
+        { headers: headers }
       );
       setCompletedMessage(response.data.message);
-      setError(false)
+      setError(false);
     } catch (error) {
       setCompletedMessage(error.response.data.message);
-      setError(true)
+      setError(true);
     }
   };
 
