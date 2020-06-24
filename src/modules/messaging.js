@@ -30,19 +30,17 @@ export const updateRequest = async (mySelectedRequestId) => {
 };
 
 export const createReplyMessages = async (mySelectedRequestId, message) => {
-  debugger;
   try {
     const resp = await axios.post(
       `/offers/${mySelectedRequestId}/messages`,
       {
+        me: true,
         message: message,
       },
       { headers: createHeaders() }
     );
-    debugger;
     return resp;
   } catch (error) {
-    debugger;
     console.error(error);
   }
 };
