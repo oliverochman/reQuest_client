@@ -50,7 +50,7 @@ describe("User can", () => {
       cy.get("#request-5").click();
     });
 
-    xit("can view messages", () => {
+    it("can view messages", () => {
       cy.get("#helper-message").should("not.be.visible");
       cy.get("#offers > .cards > .ui > .content > .meta").should(
         "contain",
@@ -66,7 +66,12 @@ describe("User can", () => {
       cy.get("#replyMessage").type("Can you swing by this weekend?");
       cy.get("#send-chat-message").click();
       cy.wait(1000);
-      cy.get("#helper-message").should("be.visible");
+      cy.get(".my-bubble").should("be.visible");
+      cy.get("#replyMessage").type(
+        "Or just looked at the calendar, will sunday at noon fit?"
+      );
+      cy.get("#send-chat-message").click();
+      cy.get("#close-messages").click();
     });
   });
 });

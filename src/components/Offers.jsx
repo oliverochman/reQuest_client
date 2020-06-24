@@ -16,14 +16,8 @@ const Offers = ({ request, selectedStatus }) => {
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const [updateMessages, setUpdateMessages] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
-  // const [updateOffer, setUpdateOffer] = useState(true);
-
-  // useEffect(() => {
-  //   updateMyRequest(request, dispatch);
-  // }, [updateOffer]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -34,7 +28,6 @@ const Offers = ({ request, selectedStatus }) => {
     const response = await updateOffer(e.target.id, helperOffer.id);
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
-    // setUpdateOffer(!updateOffer);
   };
 
   const completeRequest = async () => {
@@ -49,14 +42,14 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
-    const message = e.target.replyMessage.value
-    const resp = await createReplyMessages(
-      request.id,
-      message
-    );
+    const message = e.target.replyMessage.value;
+    const resp = await createReplyMessages(request.id, message);
     // THIS LINE BELOW IS ONLY TEMPORARY SINCE IT CHANGES THE STATE LOCALLY WITHOUT RESPONSE FROM BACKEND
-    acceptedHelperOffer.conversation.messages.push({me: true, content: message})
-    resp && setUpdateMessages(resp);
+    acceptedHelperOffer.conversation.messages.push({
+      me: true,
+      content: message,
+    });
+    resp.data.message.me !== true && setStatusMessage("Message not sent");
   };
 
   const myOffers = request.offers.map((offer, index) => (

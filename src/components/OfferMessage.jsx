@@ -39,7 +39,8 @@ const OfferMessage = (props) => {
               </Button>
             )}
             {replyStatus ? (
-              <Button id="send-chat-message" 
+              <Button
+                id="send-chat-message"
                 form="send-message-form"
                 type="submit"
                 color="yellow"
@@ -47,10 +48,12 @@ const OfferMessage = (props) => {
                 Send
               </Button>
             ) : (
-              <Button id="quest-reply"
+              <Button
+                id="quest-reply"
                 type="button"
                 form="no-form"
-                onClick={() => setReplyStatus(true)}>
+                onClick={() => setReplyStatus(true)}
+              >
                 Reply
               </Button>
             )}
@@ -73,15 +76,23 @@ const OfferMessage = (props) => {
             </Card.Content>
             {replyStatus && (
               <Card.Content style={{ paddingBottom: 0 }}>
-                <Card.Meta style={{display: "flex", justifyContent: "space-between"}}>
+                <Card.Meta
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   your message:
-                  <Icon name="close" onClick={() => setReplyStatus(false)} style={{padding: "3px", cursor: "pointer"}} />
+                  <Icon
+                  id="close-messages"
+                    name="close"
+                    onClick={() => setReplyStatus(false)}
+                    style={{ padding: "3px", cursor: "pointer" }}
+                  />
                 </Card.Meta>
                 <Form
                   id="send-message-form"
                   onSubmit={(e) => {
-                    e.target.replyMessage.value != "" &&
-                    props.replyOfferMessage(e)
+                    e.target.replyMessage.value !== "" &&
+                      props.replyOfferMessage(e);
+                    e.target.reset();
                   }}
                   style={{ padding: 0 }}
                 >
