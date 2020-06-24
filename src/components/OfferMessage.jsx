@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+// import axios from "axios";
+// import { useSelector } from "react-redux";
 import { ReplyOffer } from "./CreateOffer";
-import createHeaders from "../modules/headers";
+// import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
   const [replyStatus, setReplyStatus] = useState(false);

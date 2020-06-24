@@ -31,8 +31,8 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const onClickActivity = async (e) => {
-    const resp = await updateOffer(e.target.id, helperOffer.id);
-    setStatusMessage(resp.data.message);
+    const response = await updateOffer(e.target.id, helperOffer.id);
+    setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
     // setUpdateOffer(!updateOffer);
   };
@@ -49,6 +49,7 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
+    debugger;
     const resp = await createReplyMessages(
       request.id,
       e.target.firstElementChild.value

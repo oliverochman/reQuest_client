@@ -18,12 +18,10 @@ export const updateOffer = async (activity, id) => {
 
 export const updateRequest = async (mySelectedRequestId) => {
   try {
-    const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-
     const resp = await axios.put(
       `/my_request/requests/${mySelectedRequestId}`,
-      { headers: headers },
-      { params: { activity: "completed" } }
+      { params: { activity: "completed" } },
+      { headers: createHeaders() }
     );
     return resp;
   } catch (error) {
@@ -32,16 +30,19 @@ export const updateRequest = async (mySelectedRequestId) => {
 };
 
 export const createReplyMessages = async (mySelectedRequestId, message) => {
+  debugger;
   try {
     const resp = await axios.post(
-      `offers/${mySelectedRequestId}/messages`,
+      `/offers/${mySelectedRequestId}/messages`,
       {
         message: message,
       },
       { headers: createHeaders() }
     );
+    debugger;
     return resp;
   } catch (error) {
+    debugger;
     console.error(error);
   }
 };

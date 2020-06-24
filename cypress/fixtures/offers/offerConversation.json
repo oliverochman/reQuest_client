@@ -10,24 +10,53 @@
         "id": 1,
         "email": "helper@mail.com",
         "status": "accepted",
-        "message": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
+        "conversation": {
+          "id": 1,
+          "messages": [
+            {
+              "me": false,
+              "content": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
+            },
+            {
+              "me": true,
+              "content": "hi it would be great if you come and help me this weekend"
+            },
+            {
+              "me": false,
+              "content": "hello that fits me like a glove! Is 8am ok?"
+            },
+            {
+              "me": true,
+              "content": "That sounds great, can you confirm"
+            }
+          ]
+        }
       },
       {
         "id": 2,
         "email": "betterHelper@mail.com",
         "status": "pending",
-        "message": "Im the lejoin, Im the king in Sweden, can do anything. I dont need the tip, im so rich.I'll arrive fast in my lambo. Later, Ibrahimovich"
-      }
-    ],
-    "messages": [
-      {
-        "content": "hi it would be great if you come and help me this weekend",
-        "me": false
-      },
-      { "content": "hello that fits me like a glove! Is 8am ok?", "me": true },
-      {
-        "content": "That sounds great, can you confirm",
-        "me": false
+        "conversation": {
+          "id": 1,
+          "messages": [
+            {
+              "me": false,
+              "content": "Im the lejoin, Im the king in Sweden, can do anything. I dont need the tip, im so rich.I'll arrive fast in my lambo. Later, Ibrahimovich"
+            },
+            {
+              "me": true,
+              "content": "hi it would be great if you come and help me this weekend"
+            },
+            {
+              "me": false,
+              "content": "hello that fits me like a glove! Is 8am ok?"
+            },
+            {
+              "me": true,
+              "content": "That sounds great, can you confirm"
+            }
+          ]
+        }
       }
     ]
   }
