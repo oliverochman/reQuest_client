@@ -6,41 +6,9 @@ import { ReplyOffer } from "./CreateOffer";
 import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
-  const [completedMessage, setCompletedMessage] = useState("");
-  const [error, setError] = useState(false);
-  const mySelectedRequest = useSelector(
-    (state) => state.requests.mySelectedRequest
-  );
+  
   const [replyStatus, setReplyStatus] = useState(false);
-  const [updateMessages, setUpdateMessages] = useState({});
-
-  const completeRequest = async () => {
-    try {
-      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
-      const response = await axios.put(
-        `/my_request/requests/${mySelectedRequest.id}`,
-        { headers: headers },
-        { params: { activity: "completed" } }
-      );
-      setCompletedMessage(response.data.message);
-      setError(false);
-    } catch (error) {
-      setCompletedMessage(error.response.data.message);
-      setError(true);
-    }
-  };
-
-  const replyOfferMessage = async (e) => {
-    const resp = await axios.post(
-      `offers/${mySelectedRequest.id}/messages`,
-      {
-        message: e.target.firstElementChild.value,
-      },
-      { headers: createHeaders() }
-    );
-    debugger;
-    resp && setUpdateMessages(resp);
-  };
+  
 
   const helperMessage = (
     <Card.Content>
@@ -92,7 +60,7 @@ const OfferMessage = (props) => {
             >
               Reply
             </Button>
-            <Button id="quest-completed" onClick={completeRequest}>
+            <Button id="quest-completed" onClick={props.completeRequest}>
               Quest Completed
             </Button>
           </div>
@@ -113,7 +81,9 @@ const OfferMessage = (props) => {
         <p style={{ color: "black" }} id="completed-message">
           {completedMessage}
         </p>
-        {replyStatus && <ReplyOffer replyOfferMessage={replyOfferMessage} />}
+        {replyStatus && (
+          <ReplyOffer replyOfferMessage={props.replyOfferMessage} />
+        )}
       </List>
     </>
   );
