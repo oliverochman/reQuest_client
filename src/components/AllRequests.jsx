@@ -8,9 +8,12 @@ const AllRequests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((state) => state.requests.requests);
   const activeCategory = useSelector((state) => state.pages.activeCategory);
+  const latitude = useSelector((state) => state.coords.latitude);
+  const longitude = useSelector((state) => state.coords.longitude);
+  const coords = { lat: latitude, long: longitude };
 
   useEffect(() => {
-    getRequests(dispatch, activeCategory);
+    getRequests(dispatch, activeCategory, coords);
   }, [dispatch, activeCategory]);
 
   const requestCards = requests.map((request) => (
