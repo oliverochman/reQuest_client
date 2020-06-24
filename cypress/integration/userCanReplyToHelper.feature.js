@@ -57,7 +57,7 @@ describe("User can reply to helper", () => {
       cy.get("button#quest-reply").should("be.visible");
     });
 
-    it("send a reply message", () => {
+    it.only("send a reply message", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
@@ -69,7 +69,7 @@ describe("User can reply to helper", () => {
       );
       cy.get("#send-chat-message").click();
       cy.get("#close-messages").click();
-      cy.get(".my-bubble").should("not.be.visible");
+      cy.get("#replyMessage").should("not.be.visible");
     });
   });
 });
