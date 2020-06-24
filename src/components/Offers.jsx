@@ -49,11 +49,13 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
+    const message = e.target.replyMessage.value
     const resp = await createReplyMessages(
       request.id,
-      e.target.replyMessage.value
+      message
     );
-    debugger;
+    // THIS LINE BELOW IS ONLY TEMPORARY SINCE IT CHANGES THE STATE LOCALLY WITHOUT RESPONSE FROM BACKEND
+    acceptedHelperOffer.conversation.messages.push({me: true, content: message})
     resp && setUpdateMessages(resp);
   };
 

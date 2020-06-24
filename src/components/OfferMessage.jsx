@@ -42,6 +42,7 @@ const OfferMessage = (props) => {
               <Button id="send-chat-message" 
                 form="send-message-form"
                 type="submit"
+                color="yellow"
               >
                 Send
               </Button>
@@ -80,8 +81,7 @@ const OfferMessage = (props) => {
                   id="send-message-form"
                   onSubmit={(e) => {
                     e.target.replyMessage.value != "" &&
-                    props.replyOfferMessage(e) &&
-                    setReplyStatus(false)
+                    props.replyOfferMessage(e)
                   }}
                   style={{ padding: 0 }}
                 >
