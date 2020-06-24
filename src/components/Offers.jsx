@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import {
   updateOffer,
   updateRequest,
-  createReplyMessages,
+  replyToConversation,
 } from "../modules/messaging";
 
 const Offers = ({ request, selectedStatus }) => {
@@ -16,7 +16,7 @@ const Offers = ({ request, selectedStatus }) => {
   const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [helperOffer, setHelperOffer] = useState({});
-  const [updateMessages, setUpdateMessages] = useState({});
+  const [messagesUpdate, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
   // const [updateOffer, setUpdateOffer] = useState(true);
@@ -50,13 +50,12 @@ const Offers = ({ request, selectedStatus }) => {
 
   const replyOfferMessage = async (e) => {
     const message = e.target.replyMessage.value
-    const resp = await createReplyMessages(
-      request.id,
+    const resp = await replyToConversation(
+      acceptedHelperOffer.id,
       message
     );
-    // THIS LINE BELOW IS ONLY TEMPORARY SINCE IT CHANGES THE STATE LOCALLY WITHOUT RESPONSE FROM BACKEND
-    acceptedHelperOffer.conversation.messages.push({me: true, content: message})
-    resp && setUpdateMessages(resp);
+    debugger
+    resp && acceptedHelperOffer.conversation.messages.push({me: true, content: message}) && triggerMessagesUpdate(resp)
   };
 
   const myOffers = request.offers.map((offer, index) => (

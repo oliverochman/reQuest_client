@@ -29,18 +29,19 @@ export const updateRequest = async (mySelectedRequestId) => {
   }
 };
 
-export const createReplyMessages = async (mySelectedRequestId, message) => {
+export const replyToConversation = async (offerId, message) => {
   try {
-    const resp = await axios.post(
-      `/offers/${mySelectedRequestId}/messages`,
+    await axios.post(
+      `/messages`,
       {
-        me: true,
-        message: message,
+        offer_id: offerId,
+        content: message,
       },
       { headers: createHeaders() }
     );
-    return resp;
+    return true
   } catch (error) {
     console.error(error);
+    return false
   }
 };

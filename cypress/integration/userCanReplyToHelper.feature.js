@@ -21,20 +21,16 @@ describe("User can", () => {
     cy.route({
       method: "GET",
       url: "**/my_request/requests/5",
-      response: "fixture:offers/offerConversation.json",
+      response: "fixture:offers/offer_with_conversation.json",
       headers: {
         uid: "me@mail.com",
       },
     });
     cy.route({
       method: "POST",
-      url: "**/offers/5/messages",
-      response: {
-        message: {
-          me: true,
-          content: "what I just posted",
-        },
-      },
+      url: "**/message*",
+      response: {},
+      status: 201,
       headers: {
         uid: "user@mail.com",
       },
@@ -50,7 +46,7 @@ describe("User can", () => {
       cy.get("#request-5").click();
     });
 
-    xit("can view messages", () => {
+    it("can view messages", () => {
       cy.get("#helper-message").should("not.be.visible");
       cy.get("#offers > .cards > .ui > .content > .meta").should(
         "contain",
@@ -61,12 +57,13 @@ describe("User can", () => {
     });
 
     it("can send a reply message", () => {
+      const lastMessage = ".s1117201058"
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
       cy.get("#send-chat-message").click();
       cy.wait(1000);
-      cy.get("#helper-message").should("be.visible");
+      cy.get(lastMessage).should("contain", "Can you swing by this weekend?");
     });
   });
 });

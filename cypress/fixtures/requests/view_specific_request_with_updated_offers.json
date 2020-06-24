@@ -10,13 +10,27 @@
         "id": 1,
         "email": "helper@mail.com",
         "status": "accepted",
-        "message": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
+        "conversation": {
+          "messages": [
+            { 
+              "me": false,
+              "content": "Hi! I'd love to help you with your wheel-chair and I have the tools needed. Although I think 140p would be better. Deal? When can I come // Benedict "
+            }
+          ]
+        }
       },
       {
         "id": 2,
         "email": "betterHelper@mail.com",
         "status": "pending",
-        "message": "Im the lejoin, Im the king in Sweden, can do anything. I dont need the tip, im so rich.I'll arrive fast in my lambo. Later, Ibrahimovich"
+        "conversation": {
+          "messages": [
+            { 
+              "me": false,
+              "content": "Im the lejoin, Im the king in Sweden, can do anything. I dont need the tip, im so rich.I'll arrive fast in my lambo. Later, Ibrahimovich"
+            }
+          ]
+        }
       }
     ]
   }
