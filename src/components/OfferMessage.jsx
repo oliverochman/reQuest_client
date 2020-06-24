@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
-import { ReplyOffer } from "./CreateOffer";
 import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {
@@ -39,7 +38,8 @@ const OfferMessage = (props) => {
               </Button>
             )}
             {replyStatus ? (
-              <Button id="send-chat-message" 
+              <Button
+                id="send-chat-message"
                 form="send-message-form"
                 type="submit"
                 color="yellow"
@@ -65,20 +65,27 @@ const OfferMessage = (props) => {
           <Card.Content>
             <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
             <Card.Content
-              style={{ height: "35vh", overflow: "auto", color: "#444" }}
+              style={{ height: "35vh", overflow: "auto", color: "#444", paddingTop: "10px"}}
             >
               <ChatBubbles messages={props.helperOffer.conversation.messages} />
             </Card.Content>
             {replyStatus && (
               <Card.Content style={{ paddingBottom: 0 }}>
-                <Card.Meta style={{display: "flex", justifyContent: "space-between"}}>
+                <Card.Meta
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   your message:
-                  <Icon name="close" onClick={() => setReplyStatus(false)} style={{padding: "3px", cursor: "pointer"}} />
+                  <Icon
+                    id="close-messages"
+                    name="close"
+                    onClick={() => setReplyStatus(false)}
+                    style={{ padding: "3px", cursor: "pointer" }}
+                  />
                 </Card.Meta>
                 <Form
                   id="send-message-form"
                   onSubmit={(e) => {
-                    e.target.replyMessage.value != "" &&
+                    e.target.replyMessage.value !== "" &&
                     props.replyOfferMessage(e) &&
                     e.target.reset()
                   }}

@@ -18,8 +18,9 @@ describe("User can post new reQuest, after navigating to creation form", () => {
       },
     });
     cy.login();
+    cy.wait(1500)
     cy.get("#myrequest-home-link").click();
-    cy.wait(500);
+    cy.wait(1500);
     cy.get("#requests-link").click();
     cy.get("#create-request-link").click();
   });
@@ -122,7 +123,7 @@ describe("User cannot post new request without location", () => {
     });
     cy.loginWithoutLocation();
     cy.get("#myrequest-home-link").click();
-    cy.wait(500);
+    cy.wait(1500);
     cy.get("#requests-link").click();
     cy.get("#create-request-link").click();
   });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
@@ -19,11 +19,6 @@ const Offers = ({ request, selectedStatus }) => {
   const [messagesUpdate, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
-  // const [updateOffer, setUpdateOffer] = useState(true);
-
-  // useEffect(() => {
-  //   updateMyRequest(request, dispatch);
-  // }, [updateOffer]);
 
   const onHelperClick = (e) => {
     setShowHelperMessage(true);
@@ -34,12 +29,11 @@ const Offers = ({ request, selectedStatus }) => {
     const response = await updateOffer(e.target.id, helperOffer.id);
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
-    // setUpdateOffer(!updateOffer);
   };
 
   const completeRequest = async () => {
     const response = await markRequestCompleted(request.id);
-    if (response.status === 200) {
+    if (!response.isAxiosError) {
       setCompletedMessage(response.data.message);
       setError(false);
     } else {

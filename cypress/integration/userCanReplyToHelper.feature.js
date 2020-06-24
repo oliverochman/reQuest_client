@@ -1,4 +1,4 @@
-describe("User can", () => {
+describe("User can reply to helper", () => {
   beforeEach(() => {
     cy.server();
     cy.stubMain();
@@ -36,17 +36,18 @@ describe("User can", () => {
       },
     });
   });
-  describe("successfully reply message'", () => {
+  describe("Requester can successfully", () => {
     beforeEach(() => {
       cy.login();
+      cy.wait(1500)
       cy.get("#myrequest-home-link").click();
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("#requests-link").click();
       cy.get("#active-link").click();
       cy.get("#request-5").click();
     });
 
-    it("can view messages", () => {
+    it("view messages", () => {
       cy.get("#helper-message").should("not.be.visible");
       cy.get("#offers > .cards > .ui > .content > .meta").should(
         "contain",
@@ -56,14 +57,19 @@ describe("User can", () => {
       cy.get("button#quest-reply").should("be.visible");
     });
 
-    it("can send a reply message", () => {
-      const lastMessage = ".s1117201058"
+    it("send a reply message", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
       cy.get("#replyMessage").type("Can you swing by this weekend?");
       cy.get("#send-chat-message").click();
       cy.wait(1000);
-      cy.get(lastMessage).should("contain", "Can you swing by this weekend?");
+      cy.get(".my-bubble").should("contain", "Can you swing by this weekend?");
+      cy.get("#replyMessage").type(
+        "Or just looked at the calendar, will sunday at noon fit?"
+      );
+      cy.get("#send-chat-message").click();
+      cy.get("#close-messages").click();
+      cy.get(".my-bubble").should("not.be.visible");
     });
   });
 });

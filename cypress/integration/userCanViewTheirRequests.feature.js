@@ -22,8 +22,9 @@ describe("Users", () => {
       cy.stubMain();
       cy.StubRequestPendingOffer();
       cy.login();
+      cy.wait(1500)
       cy.get("#myrequest-home-link").click();
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("#requests-link").click();
     });
 
@@ -42,14 +43,14 @@ describe("Users", () => {
         "One of the wheels came off and I'm not a handy person. You might need some wrench or something as well. Will tip quick fixer."
       );
 
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("#offer-1").should("exist");
       cy.get(".helper-email-1").should("contain", "helper@mail.com");
     });
 
     it("click on it again to hide description and offers", () => {
       cy.get("#request-1").click();
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("#request-1").click();
       cy.wait(1000);
       cy.get("#request-description-1").should("not.be.visible");
@@ -58,7 +59,7 @@ describe("Users", () => {
 
     it("click on another reQuest to expand that one instead", () => {
       cy.get("#request-1").click();
-      cy.wait(500);
+      cy.wait(1500);
       cy.get("#request-2").click();
       cy.wait(1000);
       cy.get("#request-description-1").should("not.be.visible");

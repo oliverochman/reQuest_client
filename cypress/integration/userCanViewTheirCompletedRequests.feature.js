@@ -3,8 +3,9 @@ describe("User can view their completed reQuests", () => {
     cy.stubMain();
     cy.StubRequestCompleted();
     cy.login();
+    cy.wait(1500)
     cy.get("#myrequest-home-link").click();
-    cy.wait(500);
+    cy.wait(1500);
     cy.get("#requests-link").click();
   });
 

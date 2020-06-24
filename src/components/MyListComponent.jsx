@@ -20,7 +20,7 @@ const MyListComponent = ({ selectedStatus, page }) => {
   ))
 
   const cards = requestsFilteredByStatus.map((request) => (
-    <MyRequestCard key={request.id} request={request} />
+    <MyRequestCard key={request.id} request={request} page={page} />
   ));
 
   const message = cards.length === 0 &&

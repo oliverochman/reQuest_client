@@ -23,6 +23,7 @@ describe("Can view details of a specific request", () => {
     beforeEach(() => {
       cy.stubMainLoggedIn();
       cy.login();
+      cy.wait(1500)
     });
 
     it("a request can be viewed", () => {

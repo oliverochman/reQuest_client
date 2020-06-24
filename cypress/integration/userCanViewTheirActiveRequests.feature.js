@@ -26,8 +26,9 @@ describe("User can view their active reQuests", () => {
       },
     })
     cy.login();
+    cy.wait(1500)
     cy.get("#myrequest-home-link").click();
-    cy.wait(500)
+    cy.wait(1500)
     cy.get("#requests-link").click();
   });
 
@@ -70,7 +71,7 @@ describe("User can view their active reQuests", () => {
     );
     cy.get(".your-bubble").should(
       "contain",
-      "I can copy the fixtures, I'm fast"
+      "I can help you with this, and I'm probably the first to offer my help"
     );
   })
 

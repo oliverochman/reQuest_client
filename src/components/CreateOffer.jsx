@@ -46,4 +46,3 @@ export const ReplyOffer = (props) => {
   );
 };
 
-// export default { CreateOffer, ReplyOffer };

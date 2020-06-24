@@ -3,7 +3,7 @@ import { Card } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import updateRequest from "../modules/updateMyRequest";
 
-const MyRequestCard = ({ request }) => {
+const MyRequestCard = ({ request, page }) => {
   const activeRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
@@ -15,7 +15,11 @@ const MyRequestCard = ({ request }) => {
     if (myActiveRequest) {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
-      updateRequest(request, dispatch);
+      page === "requests" ? (
+        updateRequest(request, dispatch)
+      ) : ( 
+        dispatch({type: "SET_MY_SELECTED_REQUEST", payload: { request }})
+      )
     }
   };
   const description = myActiveRequest && (
