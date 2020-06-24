@@ -1,6 +1,15 @@
 describe("User can", () => {
   beforeEach(() => {
     cy.server();
+    cy.stubMain();
+    cy.route({
+      method: "GET",
+      url: "**/my_request/requests",
+      response: "fixture:requests/list_of_my_requests.json",
+      headers: {
+        uid: "me@mail.com",
+      },
+    });
     cy.route({
       method: "GET",
       url: "**/karma_points*",
@@ -10,15 +19,27 @@ describe("User can", () => {
       },
     });
     cy.route({
+      method: "GET",
+      url: "**/my_request/requests/5",
+      response: "fixture:offers/offerConversation.json",
+      headers: {
+        uid: "me@mail.com",
+      },
+    });
+    cy.route({
       method: "POST",
       url: "**/offers/5/messages",
-      response: "fixture:offers/offerConversation.json",
+      response: {
+        message: {
+          me: true,
+          content: "what I just posted",
+        },
+      },
       headers: {
         uid: "user@mail.com",
       },
     });
-    cy.stubMain();
-    cy.StubRequestUpdatedOffer();
+    // cy.StubRequestUpdatedOffer();
   });
   describe("successfully reply message'", () => {
     beforeEach(() => {

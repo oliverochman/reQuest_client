@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
-// import axios from "axios";
 // import { useSelector } from "react-redux";
 import { ReplyOffer } from "./CreateOffer";
-// import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
+  // debugger;
   const [replyStatus, setReplyStatus] = useState(false);
 
-  const helperMessage = (
-    <Card.Content>
-      <Card.Header></Card.Header>
-      <Card.Meta>{props.helperOffer.email}</Card.Meta>
-      <Card.Description>
-        <div style={{ height: "35vh" }}></div>
-        <Popup
-          content={props.helperOffer.message}
-          open
-          position="top left"
-          id="offer-message"
-          trigger={<div></div>}
-        />
-      </Card.Description>
-    </Card.Content>
+  const HelperMessage = (props) => {
+    debugger;
+    return (
+      <Popup
+        content={props.message.content}
+        open
+        position="top left"
+        id="offer-message"
+        trigger={<div></div>}
+      />
+    );
+  };
+
+  const conversation = props.helperOffer.conversation.messages.map(
+    (message) => <HelperMessage message={message} />
   );
 
   const showActivityButton = (
@@ -73,7 +72,14 @@ const OfferMessage = (props) => {
       <List divided relaxed id="offers">
         <Card.Group>
           <Card>
-            {helperMessage}
+            <Card.Content>
+              <Card.Header></Card.Header>
+              <Card.Meta>{props.helperOffer.email}</Card.Meta>
+              <Card.Description>
+                <div style={{ height: "35vh" }}></div>
+                {conversation}
+              </Card.Description>
+            </Card.Content>
             {showActivityButton}
           </Card>
         </Card.Group>
