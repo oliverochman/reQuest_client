@@ -60,7 +60,7 @@ const MyRequestsPage = (props) => {
               </div>
             </div>
             <Link to="/myrequest/newrequest" id="create-request-link">
-              <Button>Create new reQuest</Button>
+              <Button id='create-request'>Create a <br/> new reQuest</Button>
             </Link>
           </div>
           <div id="middle-left-component" style={{ marginLeft: "30px" }}>

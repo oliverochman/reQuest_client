@@ -78,12 +78,12 @@ const NewRequest = () => {
               required
             />
             <Form.Input>
-              <label>Category</label>
               <Dropdown
                 selection
                 id="category"
                 name="category"
-                placeholder="Other"
+                required
+                placeholder="Category"
                 options={category}
               ></Dropdown>
             </Form.Input>
