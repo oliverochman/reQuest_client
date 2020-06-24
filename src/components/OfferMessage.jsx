@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
-import { ReplyOffer } from "./CreateOffer";
 import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {
@@ -33,7 +32,7 @@ const OfferMessage = (props) => {
         )}
         {props.selectedStatus === "active" && (
           <div className="ui two buttons">
-            {!props.completedMessage && (
+            {!props.error && (
               <Button id="quest-completed" onClick={props.completeRequest}>
                 Quest Completed
               </Button>
@@ -81,7 +80,7 @@ const OfferMessage = (props) => {
                 >
                   your message:
                   <Icon
-                  id="close-messages"
+                    id="close-messages"
                     name="close"
                     onClick={() => setReplyStatus(false)}
                     style={{ padding: "3px", cursor: "pointer" }}

@@ -72,6 +72,7 @@ describe("User can", () => {
       );
       cy.get("#send-chat-message").click();
       cy.get("#close-messages").click();
+      cy.get(".my-bubble").should("not.be.visible");
     });
   });
 });

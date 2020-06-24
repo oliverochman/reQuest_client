@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
@@ -32,24 +32,23 @@ const Offers = ({ request, selectedStatus }) => {
 
   const completeRequest = async () => {
     const response = await updateRequest(request.id);
-    if (response) {
+    if (!response.isAxiosError) {
       setCompletedMessage(response.data.message);
       setError(false);
     } else {
-      setCompletedMessage(error.response.data.message);
+      setCompletedMessage(response.message);
       setError(true);
     }
   };
 
   const replyOfferMessage = async (e) => {
     const message = e.target.replyMessage.value;
-    const resp = await createReplyMessages(request.id, message);
+    const resp = await createReplyMessages(helperOffer.id, message);
     // THIS LINE BELOW IS ONLY TEMPORARY SINCE IT CHANGES THE STATE LOCALLY WITHOUT RESPONSE FROM BACKEND
     acceptedHelperOffer.conversation.messages.push({
       me: true,
       content: message,
     });
-    resp.data.message.me !== true && setStatusMessage("Message not sent");
   };
 
   const myOffers = request.offers.map((offer, index) => (
