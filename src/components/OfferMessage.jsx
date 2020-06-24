@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import { List, Button, Card, Popup } from "semantic-ui-react";
-// import { useSelector } from "react-redux";
 import { ReplyOffer } from "./CreateOffer";
 
-const OfferMessage = (props) => {
-  // debugger;
-  const [replyStatus, setReplyStatus] = useState(false);
+const HelperMessage = (props) => {
+  return (
+    <Popup
+      content={props.message.content}
+      open
+      position="top left"
+      id="offer-message"
+      trigger={<div></div>}
+    />
+  );
+};
 
-  const HelperMessage = (props) => {
-    debugger;
-    return (
-      <Popup
-        content={props.message.content}
-        open
-        position="top left"
-        id="offer-message"
-        trigger={<div></div>}
-      />
-    );
-  };
+const OfferMessage = (props) => {
+  const [replyStatus, setReplyStatus] = useState(false);
 
   const conversation = props.helperOffer.conversation.messages.map(
     (message) => <HelperMessage message={message} />

@@ -49,7 +49,6 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
-    debugger;
     const resp = await createReplyMessages(
       request.id,
       e.target.firstElementChild.value

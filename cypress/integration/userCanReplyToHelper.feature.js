@@ -39,7 +39,6 @@ describe("User can", () => {
         uid: "user@mail.com",
       },
     });
-    // cy.StubRequestUpdatedOffer();
   });
   describe("successfully reply message'", () => {
     beforeEach(() => {
@@ -51,7 +50,7 @@ describe("User can", () => {
       cy.get("#request-5").click();
     });
 
-    it("can view messages", () => {
+    xit("can view messages", () => {
       cy.get("#helper-message").should("not.be.visible");
       cy.get("#offers > .cards > .ui > .content > .meta").should(
         "contain",
