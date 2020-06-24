@@ -5,7 +5,11 @@ import OfferList from "./OfferList";
 
 import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
-import { updateOffer, updateRequest } from "../modules/messaging";
+import {
+  updateOffer,
+  updateRequest,
+  createReplyMessages,
+} from "../modules/messaging";
 
 const Offers = ({ request, selectedStatus }) => {
   const dispatch = useDispatch();
@@ -73,6 +77,8 @@ const Offers = ({ request, selectedStatus }) => {
       selectedStatus={selectedStatus}
       completeRequest={completeRequest}
       replyOfferMessage={replyOfferMessage}
+      completedMessage={completedMessage}
+      error={error}
     />
   );
 

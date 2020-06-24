@@ -6,9 +6,7 @@ import { ReplyOffer } from "./CreateOffer";
 import createHeaders from "../modules/headers";
 
 const OfferMessage = (props) => {
-  
   const [replyStatus, setReplyStatus] = useState(false);
-  
 
   const helperMessage = (
     <Card.Content>
@@ -52,19 +50,20 @@ const OfferMessage = (props) => {
             </Button>
           </div>
         )}
-        {props.selectedStatus === "active" && (!completedMessage || error) && (
-          <div className="ui two buttons">
-            <Button
-              id="quest-reply"
-              onClick={() => setReplyStatus(!replyStatus)}
-            >
-              Reply
-            </Button>
-            <Button id="quest-completed" onClick={props.completeRequest}>
-              Quest Completed
-            </Button>
-          </div>
-        )}
+        {props.selectedStatus === "active" &&
+          (!props.completedMessage || props.error) && (
+            <div className="ui two buttons">
+              <Button
+                id="quest-reply"
+                onClick={() => setReplyStatus(!replyStatus)}
+              >
+                Reply
+              </Button>
+              <Button id="quest-completed" onClick={props.completeRequest}>
+                Quest Completed
+              </Button>
+            </div>
+          )}
       </>
     </Card.Content>
   );
@@ -79,7 +78,7 @@ const OfferMessage = (props) => {
           </Card>
         </Card.Group>
         <p style={{ color: "black" }} id="completed-message">
-          {completedMessage}
+          {props.completedMessage}
         </p>
         {replyStatus && (
           <ReplyOffer replyOfferMessage={props.replyOfferMessage} />
