@@ -7,7 +7,7 @@ import updateMyRequest from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
 import {
   updateOffer,
-  updateRequest,
+  markRequestCompleted,
   replyToConversation,
 } from "../modules/messaging";
 
@@ -38,12 +38,12 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const completeRequest = async () => {
-    const response = await updateRequest(request.id);
-    if (response) {
+    const response = await markRequestCompleted(request.id);
+    if (response.status === 200) {
       setCompletedMessage(response.data.message);
       setError(false);
     } else {
-      setCompletedMessage(error.response.data.message);
+      setCompletedMessage(response.response.data.message);
       setError(true);
     }
   };
@@ -54,7 +54,6 @@ const Offers = ({ request, selectedStatus }) => {
       acceptedHelperOffer.id,
       message
     );
-    debugger
     resp && acceptedHelperOffer.conversation.messages.push({me: true, content: message}) && triggerMessagesUpdate(resp)
   };
 

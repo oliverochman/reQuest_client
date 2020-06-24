@@ -16,7 +16,7 @@ export const updateOffer = async (activity, id) => {
   }
 };
 
-export const updateRequest = async (mySelectedRequestId) => {
+export const markRequestCompleted = async (mySelectedRequestId) => {
   try {
     const resp = await axios.put(
       `/my_request/requests/${mySelectedRequestId}`,

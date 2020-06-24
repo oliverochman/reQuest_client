@@ -33,7 +33,7 @@ const OfferMessage = (props) => {
         )}
         {props.selectedStatus === "active" && (
           <div className="ui two buttons">
-            {!props.completedMessage && (
+            {(!props.completedMessage || props.error) && (
               <Button id="quest-completed" onClick={props.completeRequest}>
                 Quest Completed
               </Button>
@@ -48,8 +48,6 @@ const OfferMessage = (props) => {
               </Button>
             ) : (
               <Button id="quest-reply"
-                type="button"
-                form="no-form"
                 onClick={() => setReplyStatus(true)}>
                 Reply
               </Button>
