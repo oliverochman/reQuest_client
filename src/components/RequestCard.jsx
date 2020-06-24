@@ -22,9 +22,10 @@ const RequestCard = ({ request }) => {
       >
         <Card.Content>
           <Card.Header>{request.title}</Card.Header>
-          <Card.Meta>{request.reward} KP</Card.Meta>{
-            request.distance && 
-            <Card.Meta id="distance">Distance: {request.distance}</Card.Meta>}
+          <Card.Meta>{request.reward} KP</Card.Meta>
+          {request.distance && (
+            <Card.Meta id="distance">Distance: {request.distance} km</Card.Meta>
+          )}
         </Card.Content>
       </Card>
     </>
