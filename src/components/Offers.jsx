@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List } from "semantic-ui-react";
+import { Button, Card, Form, TextArea } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
 
@@ -10,6 +10,7 @@ import {
   markRequestCompleted,
   replyToConversation,
 } from "../modules/messaging";
+import ChatBubbles from "./ChatBubbles";
 
 import { getSingleRequest } from '../modules/getRequests'
 
@@ -37,31 +38,16 @@ const Offers = ({ req }) => {
       // with the helper.
     }
   }
-  const fetchRequest = async () => {
-    const response = await getSingleRequest(req.id)
-    setRequest(response.data.request)
-    getAcceptedOffer(response.data.request)
-  }
 
   useEffect(() => {
     fetchRequest()
   }, [])
 
-  const displayOffer = (e) => {
-    e.preventDefault()
-    let offer = request.offers.find(offer => offer.id === parseInt(e.target.id));
-    setActiveOffer(offer)
-    setShowOffer(true)
+  const fetchRequest = async () => {
+    const response = await getSingleRequest(req.id)
+    setRequest(response.data.request)
+    getAcceptedOffer(response.data.request)
   }
-
-  const offerList = request.status == 'pending' && (
-    request.offers.map((offer, index) => (
-      <OfferList
-        offer={offer}
-        displayOffer={displayOffer}
-      />
-    ))
-  )
 
   const updateOfferStatus = async (e) => {
     e.preventDefault()
@@ -83,6 +69,31 @@ const Offers = ({ req }) => {
     }
   };
 
+  const displayOffer = (e) => {
+    e.preventDefault()
+    let offer = request.offers.find(offer => offer.id === parseInt(e.target.id));
+    setActiveOffer(offer)
+    setShowOffer(true)
+  }
+
+  const offerList = request.status == 'pending' && (
+    request.offers.map((offer) => (
+      <OfferList
+        offer={offer}
+        displayOffer={displayOffer}
+      />
+    ))
+  )
+
+  const sendMessage = async (e) => {
+    debugger;
+    const message = e.target.replyMessage.value
+    const response = await replyToConversation(
+      activeOffer.id,
+      message
+    );
+    response && activeOffer.conversation.messages.push({ me: true, content: message })
+  }
 
   const getAcceptedOffer = (request) => {
     if (request.status == 'active') {
@@ -102,10 +113,57 @@ const Offers = ({ req }) => {
     </>
 
   ) : (
-    <>
-      <button onClick={completeRequest} type="submit">Complete</button>
-    </>
-  )
+      <>
+        <button onClick={completeRequest} type="submit">Complete</button>
+        <Card.Group>
+          <Card>
+            <Card.Content>
+              <Card.Content
+                style={{
+                  height: "35vh",
+                  overflow: "auto",
+                  color: "#444",
+                  paddingTop: "10px",
+                }}
+              >
+                <ChatBubbles messages={activeOffer && activeOffer.conversation.messages} />
+              </Card.Content>
+                <Card.Content style={{ paddingBottom: 0 }}>
+                  <Card.Meta
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    your message:
+                  </Card.Meta>
+                  <Form
+                    id="send-message-form"
+                    onSubmit={(e) => {
+                      e.target.replyMessage.value !== "" &&
+                        sendMessage(e) &&
+                        e.target.reset();
+                    }}
+                    style={{ padding: 0 }}
+                  >
+                    <TextArea
+                      id="replyMessage"
+                      name="replyMessage"
+                      placeholder="Write..."
+                      style={{
+                        maxWidth: "100%",
+                        height: "70px",
+                        marginTop: "10px",
+                      }}
+                    />
+
+                    <Button id="quest-reply">
+                      Reply
+                    </Button>
+                  </Form>
+                </Card.Content>
+            </Card.Content>
+          </Card>
+        </Card.Group>
+      </>
+    )
 
   return (
     <>
@@ -145,17 +203,17 @@ const Offers = ({ req }) => {
 //     await updateMyRequest(request, dispatch);
 //   };
 
-  // const completeRequest = async () => {
-  //   const response = await markRequestCompleted(request.id);
-  //   if (!response.isAxiosError) {
-  //     setCompletedMessage(response.data.message);
-  //     // 
-  //     setError(false);
-  //   } else {
-  //     setCompletedMessage(response.response.data.message);
-  //     setError(true);
-  //   }
-  // };
+// const completeRequest = async () => {
+//   const response = await markRequestCompleted(request.id);
+//   if (!response.isAxiosError) {
+//     setCompletedMessage(response.data.message);
+//     // 
+//     setError(false);
+//   } else {
+//     setCompletedMessage(response.response.data.message);
+//     setError(true);
+//   }
+// };
 
 //   const replyOfferMessage = async (e) => {
 //     const message = e.target.replyMessage.value
