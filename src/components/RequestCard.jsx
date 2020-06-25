@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 
-const RequestCard = ({ request }) => {
+const RequestCard = ({ request, setShowMessageForm, setMessage }) => {
   const dispatch = useDispatch();
   const selectedRequest = useSelector(
     (state) => state.requests.selectedRequest
@@ -18,6 +18,8 @@ const RequestCard = ({ request }) => {
         },
       });
     }
+    setMessage("")
+    setShowMessageForm(false)
   };
 
   return (

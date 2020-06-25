@@ -39,7 +39,7 @@ export const SelectedRequest = (props) => {
         <p id="selected-description">{props.selectedRequest.description}</p>
       </div>
       <div className="reward">{props.selectedRequest.reward}p</div>
-      {!props.showMessageForm && (
+      {!props.showMessageForm && props.message === "" && (
         !props.disableButton ? (
         <Button
           id="contact-button"

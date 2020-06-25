@@ -4,7 +4,7 @@ import { getRequests } from "../modules/getRequests";
 import RequestCard from "./RequestCard";
 import { Card } from "semantic-ui-react";
 
-const AllRequests = () => {
+const AllRequests = ({ setShowMessageForm, setMessage }) => {
   const dispatch = useDispatch();
   const requests = useSelector((state) => state.requests.requests);
   const activeCategory = useSelector((state) => state.pages.activeCategory);
@@ -17,14 +17,16 @@ const AllRequests = () => {
   }, [dispatch, activeCategory]);
 
   const requestCards = requests.map((request) => (
-    <RequestCard key={request.id} request={request} myRequests={false} />
+    <RequestCard
+      key={request.id}
+      request={request}
+      myRequests={false}
+      setShowMessageForm={setShowMessageForm}
+      setMessage={setMessage}
+    />
   ));
 
-  return (
-    <>
-      <Card.Group id="qcards">{requestCards}</Card.Group>
-    </>
-  );
+  return <Card.Group id="qcards">{requestCards}</Card.Group>;
 };
 
 export default AllRequests;

@@ -60,16 +60,16 @@ describe("User can reply to helper", () => {
     it("send a reply message", () => {
       cy.get("button#quest-reply").should("be.visible").click();
       cy.get("#send-message-form").should("be.visible");
-      cy.get("#replyMessage").type("Can you swing by this weekend?");
+      cy.get("#message-text").type("Can you swing by this weekend?");
       cy.get("#send-chat-message").click();
       cy.wait(1000);
       cy.get(".my-bubble").should("contain", "Can you swing by this weekend?");
-      cy.get("#replyMessage").type(
+      cy.get("#message-text").type(
         "Or just looked at the calendar, will sunday at noon fit?"
       );
       cy.get("#send-chat-message").click();
       cy.get("#close-messages").click();
-      cy.get("#replyMessage").should("not.be.visible");
+      cy.get("#message-text").should("not.be.visible");
     });
   });
 });

@@ -40,13 +40,14 @@ span {
 }
 
 .ui.cards {
+  width: 80%;
   height: fit-content;
   margin: 0px !important;
 }
 
 .ui.card {
   background-color: #fafafa !important;
-  height: fit-content;
+  height: initial;
   margin: 10px;
   padding-bottom: 8px !important;
 }
@@ -58,6 +59,7 @@ span {
 
 .ui.card .header {
   max-width: 80%;
+  color: #606060;
 }
 
 /* HEADER */
@@ -238,16 +240,7 @@ textarea {
   color: #f4c315;
 }
 
-#message {
-  color: rgb(230, 230, 230);
-}
-
 /* HOME PAGE - BROWSE REQUESTS */
-
-/* 
-#qcards > * {
-  height: "initial";
-} */
 
 #categories {
   font-family: "Lora", serif;
@@ -278,38 +271,38 @@ textarea {
   text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
 }
 
+#qcards {
+  margin-right: -20px;
+}
+
 #list-wrapper {
   overflow: auto;
   height: calc(90vh - 178px);
 }
 
 #specific-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #eee;
+  width: 300px !important;
+  max-width: 300px !important;
   border: 3px #7cac5a solid;
-  padding: 4px;
-  margin-left: 50px;
-  height: calc(85vh - 178px);
+  padding: 10px 10px 70px;
+  margin-left: 30px;
+  height: fit-content;
+  max-height: calc(85vh - 178px);
   position: relative;
   box-shadow: 1px 1px 3px #44444444;
 }
 
-#selected-message .content {
-  max-width: 130px;
-}
-
-#message-component {
-  background-color: #eee;
-  border: 3px #7cac5a solid;
-  padding: 4px;
-  height: fit-content;
-  position: relative;
-}
-#message-component-send {
-  background-color: #eee;
-  border: 3px #7cac5a solid;
-  padding: 4px;
-  height: calc(60vh - 178px);
-  position: relative;
+#message-text {
+  max-width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 90%;
+  color: #606060;
 }
 
 #about-title {
@@ -334,8 +327,6 @@ textarea {
   font-size: 110%;
   overflow: auto;
   height: 100%;
-  overflow: auto;
-  width: 300px !important;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   cursor: all-scroll;
@@ -351,17 +342,13 @@ textarea {
 
 #description-wrapper {
   overflow: auto;
-  height: calc((95vh - 178px) / 2);
+  height: 100%;
   font-size: 80%;
 }
 
-#selected-request,
-#message-container {
+#selected-request {
   font-size: 130%;
   color: #606060;
-  padding: 7px;
-  width: 300px !important;
-  margin-bottom: 65px;
 }
 
 #selected-requester {
@@ -371,25 +358,22 @@ textarea {
 #selected-description {
   margin-bottom: 5px;
 }
-#offerMessage {
-  font-size: 90%;
-  color: #606060;
-  padding: 10px;
-}
-#send-message-form {
-  padding: 10px;
-  padding-top: 7px;
-}
+
 #contact-button,
 #disabled-contact-button,
 #message-send-btn {
   position: absolute;
   bottom: 15px;
-  right: 15px;
+  right: 10px;
   color: whitesmoke;
   background-color: #7cac5a;
   font-weight: 700;
   font-size: 100%;
+}
+
+#message-send-btn {
+  bottom: -45px;
+  right: 0px;
 }
 
 #disabled-contact-button {
@@ -397,19 +381,20 @@ textarea {
 }
 
 #selected-title,
-#createOffer-label {
+.createOffer-label {
   max-width: 230px;
   font-weight: 700;
+  color: #606060 !important;
 }
 
 .reward {
   position: absolute;
-  right: 4px;
-  top: 4px;
+  right: 6px;
+  top: 6px;
   height: fit-content;
   background-color: #f4c315;
   border: 6px solid transparent;
-  color: whitesmoke !important;
+  color: white !important;
   font-weight: 700;
 }
 
@@ -516,6 +501,11 @@ textarea {
   font-size: larger;
   color: whitesmoke !important;
   font-family: "Lora", serif;
+}
+
+#message {
+  color: #7cac5a !important;
+  margin-bottom: -50px;
 }
 
 #quest-completed,

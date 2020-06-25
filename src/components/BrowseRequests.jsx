@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 
 const BrowseRequests = () => {
   const [selectedTab, setSelectedTab] = useState("all");
+  const [showMessageForm, setShowMessageForm] = useState(false);
+  const [message, setMessage] = useState("");
+
   const dispatch = useDispatch();
   const onItemClickHandler = (e) => {
     setSelectedTab(e.target.id);
@@ -62,11 +65,19 @@ const BrowseRequests = () => {
             display: "flex",
             justifyContent: "space-between",
             flexDirection: "row",
-            width: "100%"
+            width: "100%",
           }}
         >
-          <AllRequests />
-          <SpecificRequest />
+          <AllRequests
+            setShowMessageForm={setShowMessageForm}
+            setMessage={setMessage}
+          />
+          <SpecificRequest
+            showMessageForm={showMessageForm}
+            setShowMessageForm={setShowMessageForm}
+            message={message}
+            setMessage={setMessage}
+          />
         </div>
       </div>
     </>

@@ -95,14 +95,9 @@ const OfferMessage = (props) => {
                   style={{ padding: 0 }}
                 >
                   <TextArea
-                    id="replyMessage"
+                    id="message-text"
                     name="replyMessage"
                     placeholder="Write..."
-                    style={{
-                      maxWidth: "100%",
-                      height: "70px",
-                      marginTop: "10px",
-                    }}
                   />
                 </Form>
               </Card.Content>
