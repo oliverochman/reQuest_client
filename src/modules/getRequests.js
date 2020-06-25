@@ -3,11 +3,11 @@ import createHeaders from "./headers.js";
 
 const getRequests = async (dispatch, category, coords) => {
   try {
-    debugger;
     const response = await axios.get("/requests", {
       params: {
         category: category,
-        coordinates: { lat: coords.lat, long: coords.long },
+        "coordinates[lat]": coords.lat,
+        "coordinates[long]": coords.long
       },
       headers: createHeaders(),
     });
