@@ -32,7 +32,7 @@ const NewRequest = () => {
           description: e.target.description.value,
           reward: e.target.reward.value,
           category: document.getElementById("category").innerText.toLowerCase(),
-          coords: { lat: latitude, long: longitude} 
+          coordinates: { lat: 14, long: 13} 
         },
         { headers: createHeaders() }
       );

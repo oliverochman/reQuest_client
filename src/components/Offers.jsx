@@ -11,7 +11,7 @@ import {
   replyToConversation,
 } from "../modules/messaging";
 
-import {getSingleRequest} from '../modules/getRequests'
+import { getSingleRequest } from '../modules/getRequests'
 
 const Offers = ({ req }) => {
   const [showOffer, setShowOffer] = useState(false)
@@ -21,16 +21,13 @@ const Offers = ({ req }) => {
 
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const s = showOffer
-  //   debugger;
-  // }, [showOffer])
-
   const checkRequestStatus = () => {
     if (request.status == 'pending') {
       // Render list of offers with email of helper.
       // When offer is clicked, window that displays message
       // from helper appears and option to accept or decline.
+
+      // DONE!
     } else if (request.status == 'active') {
       // Render window message from accepted helper
       // User should be able to message helper and complete the request
@@ -43,6 +40,7 @@ const Offers = ({ req }) => {
   const fetchRequest = async () => {
     const response = await getSingleRequest(req.id)
     setRequest(response.data.request)
+    getAcceptedOffer(response.data.request)
   }
 
   useEffect(() => {
@@ -70,25 +68,60 @@ const Offers = ({ req }) => {
     const response = await updateOffer(e.target.id, activeOffer.id);
     setShowOffer(false)
     setStatusMessage(response.data.message)
-    dispatch({type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true }})
+    dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } })
   }
 
-return (
-  <>
-    {offerList}
-    {showOffer && (
-      <form > 
-        <p>{activeOffer.email}</p>
-        {activeOffer.conversation.messages.map((offer) => {
-          return <p>{offer.content}</p>
-        })}
-        <button onClick={updateOfferStatus} id="accepted" type="submit">Accept</button>
-        <button onClick={updateOfferStatus} id="declined" type="submit">Decline</button>
-      </form>
-    )}
-    {statusMessage}
-  </>
-)
+  const completeRequest = async (e) => {
+    e.preventDefault()
+    const response = await markRequestCompleted(request.id);
+    if (response.status === 200) {
+      setShowOffer(false)
+      setStatusMessage(response.data.message);
+      dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } })
+    } else {
+      setStatusMessage(response.response.data.message);
+    }
+  };
+
+
+  const getAcceptedOffer = (request) => {
+    if (request.status == 'active') {
+      const offer = request.offers.filter(
+        (offer) => offer.status === "accepted"
+      )[0];
+
+      setActiveOffer(offer)
+      setShowOffer(true)
+    }
+  }
+
+  const offerScenarios = request.status === 'pending' ? (
+    <>
+      <button onClick={updateOfferStatus} id="accepted" type="submit">Accept</button>
+      <button onClick={updateOfferStatus} id="declined" type="submit">Decline</button>
+    </>
+
+  ) : (
+    <>
+      <button onClick={completeRequest} type="submit">Complete</button>
+    </>
+  )
+
+  return (
+    <>
+      {offerList}
+      {showOffer && (
+        <form >
+          <p>{activeOffer.email}</p>
+          {activeOffer.conversation.messages.map((offer) => {
+            return <p>{offer.content}</p>
+          })}
+          {offerScenarios}
+        </form>
+      )}
+      {statusMessage}
+    </>
+  )
 }
 
 // const Offers = ({ request, selectedStatus }) => {
@@ -112,17 +145,17 @@ return (
 //     await updateMyRequest(request, dispatch);
 //   };
 
-//   const completeRequest = async () => {
-//     const response = await markRequestCompleted(request.id);
-//     if (!response.isAxiosError) {
-//       setCompletedMessage(response.data.message);
-//       // 
-//       setError(false);
-//     } else {
-//       setCompletedMessage(response.response.data.message);
-//       setError(true);
-//     }
-//   };
+  // const completeRequest = async () => {
+  //   const response = await markRequestCompleted(request.id);
+  //   if (!response.isAxiosError) {
+  //     setCompletedMessage(response.data.message);
+  //     // 
+  //     setError(false);
+  //   } else {
+  //     setCompletedMessage(response.response.data.message);
+  //     setError(true);
+  //   }
+  // };
 
 //   const replyOfferMessage = async (e) => {
 //     const message = e.target.replyMessage.value
