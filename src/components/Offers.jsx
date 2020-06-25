@@ -14,11 +14,11 @@ import ChatBubbles from "./ChatBubbles";
 
 import { getSingleRequest } from '../modules/getRequests'
 
-const Offers = ({ req }) => {
+const Offers = ({ req, page }) => {
   const [showOffer, setShowOffer] = useState(false)
-  const [request, setRequest] = useState({})
+  const [request, setRequest] = useState(req)
   const [activeOffer, setActiveOffer] = useState()
-  const [statusMessage, setStatusMessage] = useState("")
+  const [statusMessage, setStatusMessage] = useState({})
 
   const dispatch = useDispatch()
 
@@ -39,21 +39,21 @@ const Offers = ({ req }) => {
     }
   }
 
-  useEffect(() => {
-    fetchRequest()
-  }, [])
+  // const fetchRequest = async () => {
+  //   const response = await getSingleRequest(req.id)
+  //   setRequest(response.data.request)
+  //   getAcceptedOffer(response.data.request)
+  // }
 
-  const fetchRequest = async () => {
-    const response = await getSingleRequest(req.id)
-    setRequest(response.data.request)
-    getAcceptedOffer(response.data.request)
-  }
+  useEffect(() => {
+    getAcceptedOffer(request)
+  }, [])
 
   const updateOfferStatus = async (e) => {
     e.preventDefault()
     const response = await updateOffer(e.target.id, activeOffer.id);
     setShowOffer(false)
-    setStatusMessage(response.data.message)
+    setStatusMessage({ content: response.data.message, error: false })
     dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } })
   }
 
@@ -62,10 +62,10 @@ const Offers = ({ req }) => {
     const response = await markRequestCompleted(request.id);
     if (response.status === 200) {
       setShowOffer(false)
-      setStatusMessage(response.data.message);
+      setStatusMessage({ content: response.data.message, error: false })
       dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } })
     } else {
-      setStatusMessage(response.response.data.message);
+      setStatusMessage({ content: response.response.data.message, error: true })
     }
   };
 
@@ -76,7 +76,7 @@ const Offers = ({ req }) => {
     setShowOffer(true)
   }
 
-  const offerList = request.status == 'pending' && (
+  const offerList = request.status == 'pending' && page == "requests" && (
     request.offers.map((offer) => (
       <OfferList
         offer={offer}
@@ -106,80 +106,47 @@ const Offers = ({ req }) => {
     }
   }
 
-  const offerScenarios = request.status === 'pending' ? (
-    <>
-      <button onClick={updateOfferStatus} id="accepted" type="submit">Accept</button>
-      <button onClick={updateOfferStatus} id="declined" type="submit">Decline</button>
-    </>
+  const offerScenarios = () => {
+    let elements
+    switch() {
+      case request.status === 'pending' && page === 'requests':
+        elements = (
+          <>
+            <button onClick={updateOfferStatus} id="accepted" type="submit">Accept</button>
+            <button onClick={updateOfferStatus} id="declined" type="submit">Decline</button>
+          </>
+        )
+        break;
+      case request.status === 'active':
+        elements = (
+          <>
+            <Chat
+              statusMessage={statusMessage}
+              reciver={}
+            />
+            <button onClick = { completeRequest } type = "submit">Complete</button >
+          </>
+        )
+    }
+  }
+  request.status === 'pending' ? (
 
-  ) : (
-      <>
-        <button onClick={completeRequest} type="submit">Complete</button>
-        <Card.Group>
-          <Card>
-            <Card.Content>
-              <Card.Content
-                style={{
-                  height: "35vh",
-                  overflow: "auto",
-                  color: "#444",
-                  paddingTop: "10px",
-                }}
-              >
-                <ChatBubbles messages={activeOffer && activeOffer.conversation.messages} />
-              </Card.Content>
-                <Card.Content style={{ paddingBottom: 0 }}>
-                  <Card.Meta
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    your message:
-                  </Card.Meta>
-                  <Form
-                    id="send-message-form"
-                    onSubmit={(e) => {
-                      e.target.replyMessage.value !== "" &&
-                        sendMessage(e) &&
-                        e.target.reset();
-                    }}
-                    style={{ padding: 0 }}
-                  >
-                    <TextArea
-                      id="replyMessage"
-                      name="replyMessage"
-                      placeholder="Write..."
-                      style={{
-                        maxWidth: "100%",
-                        height: "70px",
-                        marginTop: "10px",
-                      }}
-                    />
 
-                    <Button id="quest-reply">
-                      Reply
-                    </Button>
-                  </Form>
-                </Card.Content>
-            </Card.Content>
-          </Card>
-        </Card.Group>
-      </>
-    )
-
-  return (
-    <>
-      {offerList}
-      {showOffer && (
-        <form >
-          <p>{activeOffer.email}</p>
-          {activeOffer.conversation.messages.map((offer) => {
-            return <p>{offer.content}</p>
-          })}
-          {offerScenarios}
-        </form>
-      )}
-      {statusMessage}
-    </>
-  )
+return (
+  <>
+    {offerList}
+    {showOffer && (
+      <form >
+        <p>{activeOffer.email}</p>
+        {activeOffer.conversation.messages.map((offer) => {
+          return <p>{offer.content}</p>
+        })}
+        {offerScenarios}
+      </form>
+    )}
+    {statusMessage}
+  </>
+)
 }
 
 // const Offers = ({ request, selectedStatus }) => {

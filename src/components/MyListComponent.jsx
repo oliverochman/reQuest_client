@@ -4,7 +4,6 @@ import MyRequestCard from "./MyRequestCard";
 import { getMyRequests, getMyQuests } from "../modules/getRequests";
 import { useDispatch, useSelector } from "react-redux";
 
-
 const MyListComponent = ({ selectedStatus, page }) => {
   const [myRequests, setMyRequests] = useState([]);
   const dispatch = useDispatch()
@@ -28,7 +27,6 @@ const MyListComponent = ({ selectedStatus, page }) => {
     const response = page === "requests" ? await getMyRequests() : await getMyQuests();
     setMyRequests(response)
     dispatch({type: "FETCH_MY_REQUESTS", payload: { getMyRequests: false }})
-
   };
 
   const requestsFilteredByStatus = myRequests.filter((request) => (

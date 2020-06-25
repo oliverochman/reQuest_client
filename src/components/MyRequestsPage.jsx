@@ -9,6 +9,7 @@ const MyRequestsPage = (props) => {
   const mySelectedRequest = useSelector(
     (state) => state.requests.mySelectedRequest
   );
+  
   const [selectedStatus, setSelectedStatus] = useState("pending");
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
@@ -18,7 +19,6 @@ const MyRequestsPage = (props) => {
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
-    
   };
 
   const activeMenuItem = (menuItem) => {
@@ -67,14 +67,14 @@ const MyRequestsPage = (props) => {
           <div id="middle-left-component" style={{ marginLeft: "30px" }}>
             <MyListComponent selectedStatus={selectedStatus} page={page} />
           </div>
-          {/* <div id="middle-right-component" style={{ marginLeft: "30px" }}>
-            {mySelectedRequest && page === "requests" && (
+          <div id="middle-right-component" style={{ marginLeft: "30px" }}>
+            {mySelectedRequest (
               <Offers
-                request={mySelectedRequest}
-                selectedStatus={selectedStatus}
+                req={mySelectedRequest}
+                page={page}
               />
             )}
-          </div> */}
+          </div>
         </>
       )}
     </div>
