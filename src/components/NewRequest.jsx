@@ -3,16 +3,17 @@ import { Form, Input, Container, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import getKarma from "../modules/getKarma";
-import categoryList from "../modules/category"
+import categoryList from "../modules/category";
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
-  const category = categoryList()
+  const category = categoryList();
   const dispatch = useDispatch();
-  const latitude = useSelector(state => state.coords.latitude)
-  const longitude = useSelector(state => state.coords.longitude)
+  const history = useHistory();
+  const latitude = useSelector((state) => state.coords.latitude);
+  const longitude = useSelector((state) => state.coords.longitude);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
@@ -32,14 +33,17 @@ const NewRequest = () => {
           description: e.target.description.value,
           reward: e.target.reward.value,
           category: document.getElementById("category").innerText.toLowerCase(),
-          coords: { lat: latitude, long: longitude} 
+          coords: { lat: latitude, long: longitude },
         },
         { headers: createHeaders() }
       );
       getKarma(dispatch);
-      e.target.reset()
+      e.target.reset();
       setMessage(response.data.message);
-      setTimeout(() => {setMessage("")}, 3000)
+      setTimeout(() => {
+        setMessage("");
+        history.push("/myrequest/requests");
+      }, 1000);
     } catch (error) {
       setMessage(error.response.data.message);
     }
