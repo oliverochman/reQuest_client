@@ -51,6 +51,9 @@ const BrowseRequests = () => {
           <List.Item id="education" className={activeTab("education")}>
             Education
           </List.Item>
+          <List.Item id="sport" className={activeTab("sport")}>
+            Sport
+          </List.Item>
           <List.Item id="it" className={activeTab("it")}>
             IT
           </List.Item>

@@ -49,7 +49,7 @@ describe("User can reply to helper", () => {
 
     it("view messages", () => {
       cy.get("#helper-message").should("not.be.visible");
-      cy.get("#offers > .cards > .ui > .content > .meta").should(
+      cy.get("#conversation > .cards > .ui > .content > .meta").should(
         "contain",
         "helper@mail.com"
       );

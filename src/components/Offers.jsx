@@ -29,6 +29,7 @@ const Offers = ({ request, selectedStatus }) => {
     const response = await updateOffer(e.target.id, helperOffer.id);
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
+    setShowHelperMessage(false);
   };
 
   const completeRequest = async () => {

@@ -49,7 +49,7 @@ describe("User can view their active reQuests", () => {
     cy.get("#active-link").click();
     cy.get("#request-5").click();
     cy.get("#request-description-5").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .cards > .ui > .content > .meta").should(
       "contain",
       "helper@mail.com"
     );
@@ -65,7 +65,7 @@ describe("User can view their active reQuests", () => {
     cy.wait(800)
     cy.get("#request-6").click();
     cy.get("#request-description-6").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .cards > .ui > .content > .meta").should(
       "contain",
       "offerer@mail.com"
     );
@@ -87,7 +87,7 @@ describe("User can view their active reQuests", () => {
     cy.get("#active-link").click();
     cy.get("#request-5").click();
     cy.get("#request-description-5").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .cards > .ui > .content > .meta").should(
       "contain",
       "helper@mail.com"
     );
