@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
+import { Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
 import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {

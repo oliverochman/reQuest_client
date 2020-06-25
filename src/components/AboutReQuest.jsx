@@ -29,9 +29,11 @@ export const SelectedRequest = (props) => {
   return (
     <div id="selected-request">
       <h3 id="selected-title">{props.selectedRequest.title}</h3>
-      <h5 id="selected-requester">{props.selectedRequest.requester}</h5>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h5 id="selected-requester">{props.selectedRequest.requester}</h5>
+        <div className="reward">{props.selectedRequest.reward}p</div>
+      </div>
       <Divider />
-      <div className="reward">{props.selectedRequest.reward}p</div>
       <div className="description-wrapper">
         <p id="selected-description">{props.selectedRequest.description}</p>
       </div>

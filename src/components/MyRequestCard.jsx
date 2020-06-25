@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Card } from "semantic-ui-react";
+import React from "react";
+import { Card, Label } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import updateRequest from "../modules/updateMyRequest";
 
@@ -37,7 +37,9 @@ const MyRequestCard = ({ request, page }) => {
       <Card.Content>
         <Card.Header>{req.title}</Card.Header>
         <Card.Content>
-          <Card.Meta className="reward">{req.reward} p</Card.Meta>
+          <Label color="yellow" ribbon="right">
+            {req.reward} p
+          </Label>
           <div className="description-wrapper">{description}</div>
         </Card.Content>
       </Card.Content>

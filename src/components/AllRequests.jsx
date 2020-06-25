@@ -14,7 +14,7 @@ const AllRequests = ({ setShowMessageForm, setMessage }) => {
 
   useEffect(() => {
     getRequests(dispatch, activeCategory, coords);
-  }, [dispatch, activeCategory]);
+  }, [dispatch, activeCategory, coords]);
 
   const requestCards = requests.map((request) => (
     <RequestCard

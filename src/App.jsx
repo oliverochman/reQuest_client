@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     getPlace(dispatch)
     persistLogin(dispatch);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

@@ -26,7 +26,7 @@ span {
 #page-container {
   margin-top: calc(150px + 3.5vh);
   display: flex;
-  padding: 0px 6vw;
+  padding: 0px 5vw;
   width: 100vw;
   position: absolute;
 }
@@ -48,7 +48,7 @@ span {
 .ui.card {
   background-color: #fafafa !important;
   height: initial;
-  margin: 10px;
+  margin: 10px !important;
 }
 
 .ui.card .description {
@@ -58,7 +58,7 @@ span {
 }
 
 .ui.card .header {
-  color: #606060;
+  color: #606060 !important;
 }
 
 /* HEADER */
@@ -286,6 +286,10 @@ textarea {
   max-height: calc(85vh - 178px);
 }
 
+#distance {
+  color: #7cac5a;
+}
+
 #specific-component {
   background-color: #eee;
   width: 300px !important;
@@ -295,7 +299,7 @@ textarea {
   margin-top: 10px;
   margin-left: 4vw;
   height: fit-content;
-  max-height: calc(85vh - 178px);
+  max-height: calc(95vh - 100px);
   position: relative;
   box-shadow: 1px 1px 3px #44444444;
 }
@@ -389,14 +393,9 @@ textarea {
 }
 
 .reward {
-  position: relative;
   margin: 5px -2px;
-  left: 87%;
-  text-align: right;
-  width: fit-content;
-  height: fit-content;
+  padding: 4px 7px;
   background-color: #f4c315;
-  border: 6px solid transparent;
   color: white !important;
   font-weight: 700;
 }

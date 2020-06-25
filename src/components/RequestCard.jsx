@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Label } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 
 const RequestCard = ({ request, setShowMessageForm, setMessage }) => {
@@ -28,8 +28,10 @@ const RequestCard = ({ request, setShowMessageForm, setMessage }) => {
         <Card.Content>
           <Card.Header>{request.title}</Card.Header>
           <Card.Content>
-            <Card.Meta className="reward">{request.reward} p</Card.Meta>
-            {request.distance && (
+            <Label color="yellow" ribbon="right">
+              {request.reward} p
+            </Label>
+            {request.distance > 0 && (
               <Card.Meta id="distance">
                 Distance: {request.distance} km
               </Card.Meta>
