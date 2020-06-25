@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const karmaPoints = useSelector((state) => state.karma.karma);
-  const [activeTab, setActiveTab] = useState("profile");
+  const [activeTab, setActiveTab] = useState("requests");
   const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
@@ -67,10 +67,10 @@ const Header = () => {
         {activePage === "home" && (
           <NavLink
             id="myrequest-home-link"
-            to={authenticated ? "/myrequest" : "/login"}
+            to={authenticated ? "/myrequest/requests" : "/login"}
             onClick={authenticated && (() => {
               setActivePage("myrequest")
-              setActiveTab("profile")            
+              setActiveTab("requests")            
             })}
           >
             my reQuest
@@ -89,14 +89,6 @@ const Header = () => {
               <p id="karma-points-amount">{karmaPoints} p</p>
             </div>
             <div id="small_links">
-              <NavLink
-                id="profile-link"
-                to="/myrequest/profile"
-                className={activeMenuItem("profile")}
-                onClick={() => setActiveTab("profile")}
-              >
-                profile
-              </NavLink>
               <NavLink
                 id="quests-link"
                 to="/myrequest/quests"
