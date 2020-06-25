@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import updateRequest from "../modules/updateMyRequest";
+import Offers from '../components/Offers'
 
 const MyRequestCard = ({ request, page }) => {
   const activeRequest = useSelector(
@@ -12,20 +13,21 @@ const MyRequestCard = ({ request, page }) => {
   const dispatch = useDispatch();
 
   const toggleActiveRequest = async () => {
-    if (myActiveRequest) {
-      dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
-    } else {
-      page === "requests" ? (
-        updateRequest(request, dispatch)
-      ) : ( 
-        dispatch({type: "SET_MY_SELECTED_REQUEST", payload: { request }})
+    page === "requests" ? (
+      updateRequest(request, dispatch)
+    ) : (
+        dispatch({ type: "SET_MY_SELECTED_REQUEST", payload: { request } })
       )
-    }
-  };
+  }
+
+
   const description = myActiveRequest && (
-    <Card.Description id={"request-description-" + req.id}>
-      {req.description}
-    </Card.Description>
+    <>
+      <Card.Description id={"request-description-" + req.id}>
+        {req.description}
+      </Card.Description>
+      <Offers req={request} />
+    </>
   );
 
   return (

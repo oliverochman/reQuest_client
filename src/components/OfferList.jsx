@@ -2,19 +2,19 @@ import React from "react";
 import { List } from "semantic-ui-react";
 
 const OfferList = (props) => {
-  let offerlist = props.offer.status === "pending" && (
+  return (
     <List.Item id={"offer-" + props.offer.id} key={props.offer.id}>
       <List.Content>
         <List.Header
-          onClick={props.onHelperClick}
+          onClick={props.displayOffer}
           className={"helper-email-" + props.offer.id}
-          id={props.index}
+          id={props.offer.id}
+          type="button"
         >
           {props.offer.email}
         </List.Header>
       </List.Content>
     </List.Item>
-  );
-  return offerlist;
+  )
 };
 export default OfferList;

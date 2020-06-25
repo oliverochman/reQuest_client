@@ -9,6 +9,7 @@ const initialState = {
   signupMessage: "",
   mySelectedActiveRequest: false,
   longitude: undefined,
-  latitude: undefined
+  latitude: undefined,
+  getMyRequests: false
 };
 export default initialState;

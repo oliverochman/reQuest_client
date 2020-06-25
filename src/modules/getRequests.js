@@ -35,7 +35,6 @@ const getMyRequests = async () => {
 };
 
 const getMyQuests = async () => {
-  debugger;
   try {
     const response = await axios.get("/my_request/quests", {
       headers: createHeaders(),
