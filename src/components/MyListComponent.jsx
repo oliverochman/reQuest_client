@@ -15,7 +15,7 @@ const MyListComponent = ({ selectedStatus, page }) => {
 
   useEffect(() => {
     getList();
-  }, [page, selectedStatus]);
+  }, [selectedStatus, page]);
 
   useEffect(() => {
     if (fetchMyRequests) {

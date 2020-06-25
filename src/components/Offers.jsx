@@ -14,21 +14,15 @@ import {
 const Offers = ({ request, selectedStatus, page }) => {
   const dispatch = useDispatch();
   const [statusMessage, setStatusMessage] = useState("");
-  const [, triggerMessagesUpdate] = useState({});
+  const [messagesUpdate, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
-
   const [showActiveOffer, setShowActiveOffer] = useState(false);
   const [activeOffer, setActiveOffer] = useState();
 
   useEffect(() => {
     getAcceptedOffer(request);
   }, []);
-
-  // useEffect(() => {
-  //   const s = showActiveOffer;
-  //   debugger;
-  // }, [showActiveOffer]);
 
   const getAcceptedOffer = (request) => {
     if (selectedStatus === "active" || selectedStatus === "completed") {
@@ -37,7 +31,7 @@ const Offers = ({ request, selectedStatus, page }) => {
       )[0];
       setActiveOffer(offer);
       setShowActiveOffer(true);
-      // setCompletedMessage("");
+      setCompletedMessage("");
     }
   };
   const onHelperClick = (e) => {
@@ -51,7 +45,7 @@ const Offers = ({ request, selectedStatus, page }) => {
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
     setShowActiveOffer(false);
-    dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: false } });
+    dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } });
   };
 
   const completeRequest = async () => {
@@ -60,12 +54,12 @@ const Offers = ({ request, selectedStatus, page }) => {
       setCompletedMessage(response.data.message);
       dispatch({
         type: "FETCH_MY_REQUESTS",
-        payload: { getMyRequests: false },
+        payload: { getMyRequests: true },
       });
       setError(false);
       setShowActiveOffer(false);
     } else {
-      setCompletedMessage(response.response.data.message);
+      setCompletedMessage(response.data.message);
       setError(true);
     }
   };
@@ -74,12 +68,11 @@ const Offers = ({ request, selectedStatus, page }) => {
     const message = e.target.replyMessage.value;
     const resp = await replyToConversation(acceptedHelperOffer.id, message);
     resp &&
-      activeOffer.conversation.messages.push({
+      acceptedHelperOffer.conversation.messages.push({
         me: true,
         content: message,
       }) &&
       triggerMessagesUpdate(resp);
-    dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: false } });
   };
 
   const myOffer =
