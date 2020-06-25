@@ -5,14 +5,14 @@ import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import getKarma from "../modules/getKarma";
-import categoryList from "../modules/category"
+import categoryList from "../modules/category";
 
 const NewRequest = () => {
   const [message, setMessage] = useState("");
-  const category = categoryList()
+  const category = categoryList();
   const dispatch = useDispatch();
-  const latitude = useSelector(state => state.coords.latitude)
-  const longitude = useSelector(state => state.coords.longitude)
+  const latitude = useSelector((state) => state.coords.latitude);
+  const longitude = useSelector((state) => state.coords.longitude);
   const authenticated = useSelector(
     (state) => state.authentication.authenticated
   );
@@ -32,14 +32,16 @@ const NewRequest = () => {
           description: e.target.description.value,
           reward: e.target.reward.value,
           category: document.getElementById("category").innerText.toLowerCase(),
-          coords: { lat: latitude, long: longitude} 
+          coordinates: { lat: latitude, long: longitude },
         },
         { headers: createHeaders() }
       );
       getKarma(dispatch);
-      e.target.reset()
+      e.target.reset();
       setMessage(response.data.message);
-      setTimeout(() => {setMessage("")}, 3000)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     } catch (error) {
       setMessage(error.response.data.message);
     }
