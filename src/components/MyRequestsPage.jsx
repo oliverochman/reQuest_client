@@ -14,7 +14,7 @@ const MyRequestsPage = (props) => {
     (state) => state.authentication.authenticated
   );
 
-  const page = props.match.params.page
+  const page = props.match.params.page;
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
@@ -60,7 +60,9 @@ const MyRequestsPage = (props) => {
               </div>
             </div>
             <Link to="/myrequest/newrequest" id="create-request-link">
-              <Button id='create-request'>Create a <br/> new reQuest</Button>
+              <Button id="create-request">
+                Create a <br /> new reQuest
+              </Button>
             </Link>
           </div>
           <div id="middle-left-component" style={{ marginLeft: "30px" }}>

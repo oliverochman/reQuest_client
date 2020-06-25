@@ -3,6 +3,7 @@ import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
 import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {
+  debugger;
   const [replyStatus, setReplyStatus] = useState(false);
 
   const showActivityButtons = (
