@@ -29,6 +29,7 @@ const Offers = ({ request, selectedStatus }) => {
     const response = await updateOffer(e.target.id, helperOffer.id);
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
+    setShowHelperMessage(false);
   };
 
   const completeRequest = async () => {
@@ -43,12 +44,14 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
-    const message = e.target.replyMessage.value
-    const resp = await replyToConversation(
-      acceptedHelperOffer.id,
-      message
-    );
-    resp && acceptedHelperOffer.conversation.messages.push({me: true, content: message}) && triggerMessagesUpdate(resp)
+    const message = e.target.replyMessage.value;
+    const resp = await replyToConversation(acceptedHelperOffer.id, message);
+    resp &&
+      acceptedHelperOffer.conversation.messages.push({
+        me: true,
+        content: message,
+      }) &&
+      triggerMessagesUpdate(resp);
   };
 
   const myOffers = request.offers.map((offer, index) => (
