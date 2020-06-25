@@ -2,17 +2,31 @@ import React, { useEffect, useState } from "react";
 import { Card } from "semantic-ui-react";
 import MyRequestCard from "./MyRequestCard";
 import { getMyRequests, getMyQuests } from "../modules/getRequests";
+import { useDispatch, useSelector } from "react-redux";
 
 const MyListComponent = ({ selectedStatus, page }) => {
   const [myRequests, setMyRequests] = useState([]);
+  const dispatch = useDispatch()
+  const fetchMyRequests = useSelector(state => state.requests.getMyRequests)
   
   useEffect(() => {
     getList();
   }, []);
 
+  useEffect(() => {
+    getList();
+  }, [selectedStatus, page]);
+
+  useEffect(() => {
+    if (fetchMyRequests) {
+      getList();
+    }
+  }, [fetchMyRequests])
+
   const getList = async () => {
     const requests = page === "requests" ? await getMyRequests() : await getMyQuests();
     setMyRequests(requests);
+    dispatch({type: "FETCH_MY_REQUESTS", payload: { getMyRequests: false }})
   };
 
   const requestsFilteredByStatus = myRequests.filter((request) => (

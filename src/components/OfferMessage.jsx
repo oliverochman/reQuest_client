@@ -52,7 +52,7 @@ const OfferMessage = (props) => {
               </Button>
             )}
           </div>
-        )}
+        )},
       </>
     </Card.Content>
   );
