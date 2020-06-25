@@ -1,14 +1,22 @@
 describe("User can", () => {
   beforeEach(() => {
     cy.stubMain();
+    cy.route({
+      method: "GET",
+      url: "**/karma_points*",
+      response: { karma_points: 50 },
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
     cy.StubRequestPendingOffer();
   });
   describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
       cy.login();
-      cy.wait(1500)
+      cy.wait(1500);
       cy.get("#myrequest-home-link").click();
-      cy.wait(1500)
+      cy.wait(1500);
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
     });
@@ -24,28 +32,13 @@ describe("User can", () => {
       cy.wait(1000);
     });
 
-    it("success message is shown", () => {
+    it("success message is shown and it disapers from pending", () => {
+      cy.StubRequestUpdatedOffer();
       cy.get(".helper-email-1").click();
       cy.get("button#accepted").contains("Accept").click();
       cy.get("p#status-message").contains(
         "You accepted help from helper@mail.com"
       );
-    });
-  });
-
-  describe("When an offer is accepted, the reQuest is not shown in 'pending reQuests", () => {
-    beforeEach(() => {
-      cy.StubRequestUpdatedOffer();
-      cy.login();
-      cy.wait(1500)
-      cy.get("#myrequest-home-link").click();
-      cy.wait(1500)
-      cy.get("#requests-link").click();
-      cy.get("#request-1").click();
-      cy.wait(1000);
-    });
-
-    it("the offers disappears from pending", () => {
       cy.get(".helper-email-2").should("be.visible");
       cy.get(".helper-email-1").should("not.be.visible");
     });
@@ -53,35 +46,11 @@ describe("User can", () => {
 
   describe("successfully decline a help offer by clicking 'Decline'", () => {
     beforeEach(() => {
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests",
-        response: "fixture:requests/list_of_my_requests.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "GET",
-        url: "**/my_request/requests/1",
-        response:
-          "fixture:requests/view_specific_request_with_pending_offers.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
-      cy.route({
-        method: "PUT",
-        url: "**/offers/*",
-        response: "fixture:offers/putOffer_declined.json",
-        headers: {
-          uid: "me@mail.com",
-        },
-      });
+      cy.StubRequestPendingOffer();
       cy.login();
-      cy.wait(1500)
+      cy.wait(1500);
       cy.get("#myrequest-home-link").click();
-      cy.wait(1500)
+      cy.wait(1500);
       cy.get("#requests-link").click();
       cy.get("#request-1").click();
       cy.get("#helper-message").should("not.be.visible");
@@ -93,6 +62,7 @@ describe("User can", () => {
     });
 
     it("and sees a decline success message", () => {
+      cy.StubRequestUpdatedOffer();
       cy.get("button#declined").contains("Decline").click();
       cy.get("p#status-message").contains(
         "You declined help from helper@mail.com"
