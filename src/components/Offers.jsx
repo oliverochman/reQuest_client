@@ -38,6 +38,7 @@ const Offers = ({ request, selectedStatus, page }) => {
     e.preventDefault();
     setActiveOffer(request.offers[parseInt(e.target.id)]);
     setShowActiveOffer(true);
+    setCompletedMessage("");
   };
 
   const updateOfferStatus = async (e) => {

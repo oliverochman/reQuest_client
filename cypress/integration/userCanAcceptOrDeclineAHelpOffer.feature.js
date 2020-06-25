@@ -44,7 +44,7 @@ describe("User can", () => {
     });
   });
 
-  describe("successfully decline a help offer by clicking 'Decline'", () => {
+  describe.only("successfully decline a help offer by clicking 'Decline'", () => {
     beforeEach(() => {
       cy.StubRequestPendingOffer();
       cy.login();
@@ -63,10 +63,19 @@ describe("User can", () => {
 
     it("and sees a decline success message", () => {
       cy.StubRequestUpdatedOffer();
+      cy.route({
+        method: "PUT",
+        url: "**/offers/*",
+        response: "fixture:offers/putOffer_declined.json",
+        headers: {
+          uid: "me@mail.com",
+        },
+      });
       cy.get("button#declined").contains("Decline").click();
       cy.get("p#status-message").contains(
         "You declined help from helper@mail.com"
       );
+      cy.get(".helper-email-1").should("not.be.visible");
     });
   });
 });
