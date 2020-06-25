@@ -3,7 +3,6 @@ import createHeaders from "./headers.js";
 
 const getRequests = async (dispatch, category, coords) => {
   try {
-    debugger;
     const response = await axios.get("/requests", {
       params: {
         category: category,

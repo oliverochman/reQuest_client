@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { AboutReQuest, SelectedRequest } from "./AboutReQuest";
@@ -13,6 +13,7 @@ const SpecificRequest = () => {
   const user = useSelector((state) => state.authentication.uid);
   const [showMessageForm, setShowMessageForm] = useState(false);
   const onContactHandler = () => setShowMessageForm(true);
+  const dispatch = useDispatch();
 
   const createOffer = async (e) => {
     e.preventDefault();
@@ -26,6 +27,10 @@ const SpecificRequest = () => {
     );
     setMessage(response.data.message);
     setShowMessageForm(false);
+    dispatch({
+      type: "SET_SELECTED_REQUEST",
+      payload: { request: { ...selectedRequest, offerable: null } },
+    });
   };
 
   const render = () => {
