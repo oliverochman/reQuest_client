@@ -23,7 +23,6 @@ const RequestCard = ({ request }) => {
   return (
     <>
       <Card
-        style={{ margin: "10px" }}
         color="olive"
         id={"request-" + request.id}
         onClick={onClickHandler}

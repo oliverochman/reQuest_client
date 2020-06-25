@@ -3,7 +3,7 @@
 
 body,
 html {
-  background-color: #bac1bf !important;
+  background-color: #bfcab1 !important;
   z-index: -2;
   overflow: hidden;
 }
@@ -34,31 +34,54 @@ span {
 #page-container h2 {
   position: absolute;
   margin-top: -30px;
-  color: #88a65e;
+  color: #7cac5a;
   font-size: 185%;
   text-align: center;
+}
+
+.ui.cards {
+  height: fit-content;
+  margin: 0px !important;
+}
+
+.ui.card {
+  background-color: #fafafa !important;
+  height: fit-content;
+  margin: 10px;
 }
 
 #qcard {
   overflow: hidden;
 }
-#categories{
+#categories {
   font-family: "Lora", serif;
   font-size: 24px;
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
   height: fit-content;
   text-align: center;
   cursor: pointer;
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
+  border: 1px solid #f4c315;
+  margin-right: 50px;
 }
-#categories a {
-    color: white;
+
+#categories .item:hover {
+  opacity: 0.75;
 }
+
 .active {
-  color: #e8b704;
+  color: #f4c315;
+  text-shadow: 1px 0px 0 #ffec7e;
 }
+
+#browse-title {
+  text-align: center;
+  margin-left: 10px;
+  text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
+}
+
 /* HEADER */
 #header {
   position: absolute;
@@ -66,49 +89,55 @@ span {
   width: 100%;
   height: 100px;
   font-family: "Lora", serif !important;
-  background: #e6e6e6;
+  background: linear-gradient(#456034, #355024);
+  box-shadow: -2px 0px 5px #444;
 }
 
 #logo {
   position: absolute;
   left: 50px;
-  bottom: 20px;
+  bottom: 23px;
   font-size: 56px;
   z-index: 2;
 }
 
 #hfirst {
-  color: #88a65e;
+  color: #7cac5a;
+  text-shadow: 1px -1px 0 rgb(160, 220, 76);
 }
 
 #hsecond {
-  color: #e8b704;
+  color: #f4c315;
+  text-shadow: 1px -1px 0 #ffec7e;
 }
 
 #yellow_divider {
   position: absolute;
   left: 100px;
-  bottom: -23px;
-  height: 5px;
+  bottom: -23.5px;
+  height: 4.5px;
   width: 6000px;
-  background-color: #e8b704;
+  background-color: #f4c315;
+  box-shadow: 0 -1.8px 0 #ffde67;
+  z-index: 2;
 }
 
 #green_divider {
   position: absolute;
   left: -50px;
-  bottom: -30px;
-  height: 10px;
+  bottom: -23.5px;
+  height: 4px;
   width: 6000px;
-  background-color: #88a65e;
+  background-color: #7cac5a;
   z-index: -1;
+  box-shadow: 1px -1px 0 rgb(143, 199, 65);
 }
 
 /* NAVBAR */
 #links {
   position: absolute;
   right: 30px;
-  top: 70px;
+  top: 67px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -118,19 +147,28 @@ span {
 #small_links a {
   padding: 10px 20px;
   border-radius: 5px;
-  color: #e8b704;
+  color: #f4c315;
   font-size: 20px;
 }
 
-#small_links a:hover {
-  background-color: #e8b70444;
-  color: whitesmoke;
+.inactiveTab:hover {
+  opacity: 0.8 !important;
+}
+
+.activeTab {
+  position: relative;
+  background-color: #f4c315; 
+  box-shadow: 2px -1px 0 #ffde67;
+  color: #355720 !important;
+  text-shadow: 0px 0px 0 #fff;
+  z-index: 10;
 }
 
 #myrequest-home-link {
   margin-top: -10px;
-  color: #e8b704;
+  color: #f4c315;
   font-size: 35px;
+  text-shadow: 0.7px -0px 0 #ffde67;
 }
 
 #myrequest-home-link:hover {
@@ -155,15 +193,17 @@ span {
 #points-display {
   height: 50px;
   width: 50px;
-  background-color: #e8b704;
+  background-color: #f4c315;
   border-radius: 50%;
+  box-shadow: 2px 0px 0 #ffde67;
   margin: -30px 0;
 }
 #karma-points-amount {
-  color: white;
+  color: #355720;
   text-align: center;
   line-height: 50px;
   font-family: "Lora", serif;
+  letter-spacing: 0.1em;
 }
 
 /* FORMS */
@@ -172,7 +212,8 @@ span {
   width: 25vw !important;
   border-radius: 4%;
   text-align: center;
-  background-color: #88a65e;
+  background-color: #7cac5a;
+  border: 1px solid #f4c315;
 }
 
 #login-form,
@@ -184,8 +225,9 @@ span {
 }
 
 #submit-btn {
-  background-color: #e8b704;
-  color: white;
+  background-color: #f4c315;
+  border: 1px solid #ffde67;
+  color: whitesmoke;
   font-family: "Lora", serif;
   border-radius: 5px;
   margin: 5px;
@@ -199,9 +241,9 @@ input,
 textarea {
   font-family: "Lora", serif;
   border-radius: 5px;
-  border-color: #88a65e;
+  border-color: #7cac5a;
   background-color: #e6e6e6;
-  color: #88a65e;
+  color: #7cac5a;
   margin-bottom: 10px;
   width: 20vw !important;
 }
@@ -212,11 +254,11 @@ textarea {
 
 #signup {
   height: fit-content;
-  color: white;
+  color: whitesmoke;
 }
 
 #signup:hover {
-  color: #e8b704;
+  color: #f4c315;
 }
 
 #message {
@@ -235,25 +277,50 @@ textarea {
 }
 
 #specific-component {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
+  background-color: #eee;
+  border: 3px #7cac5a solid;
   padding: 4px;
+  margin-left: 50px;
   height: calc(85vh - 178px);
   position: relative;
+  box-shadow: 1px 1px 3px #44444444;
 }
+
+#selected-message .content {
+  max-width: 130px;
+}
+
 #message-component {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
+  background-color: #eee;
+  border: 3px #7cac5a solid;
   padding: 4px;
-  height: calc(55vh - 178px);
+  height: fit-content;
   position: relative;
 }
 #message-component-send {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
+  background-color: #eee;
+  border: 3px #7cac5a solid;
   padding: 4px;
   height: calc(60vh - 178px);
   position: relative;
+}
+
+#about-title {
+  margin-bottom: 0px;
+  font-size: x-large;
+  text-align: center;
+ 
+}
+
+#about-byline {
+  margin-top: 0px;
+  text-align: center;
+}
+
+#about-body {
+  text-align: justify;
+  color: #333;
+  padding: 10px;
 }
 
 #about-request {
@@ -261,15 +328,23 @@ textarea {
   overflow: auto;
   height: 100%;
   overflow: auto;
+  width: 300px !important;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  cursor: all-scroll;
+}
+
+#about-request::-webkit-scrollbar {
+  display: none; /* Chrome */
 }
 
 #about-request h3 {
-  color: #88a65e;
+  color: #7cac5a;
 }
 
 #description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px) / 2);
+  height: calc((95vh - 178px) / 2);
   font-size: 80%;
 }
 
@@ -278,8 +353,17 @@ textarea {
   font-size: 130%;
   color: #606060;
   padding: 7px;
+  width: 300px !important;
+  margin-bottom: 65px;
 }
 
+#selected-requester {
+  margin-top: 5px;
+}
+
+#selected-description {
+  margin-bottom: 5px;
+}
 #offerMessage {
   font-size: 90%;
   color: #606060;
@@ -295,8 +379,8 @@ textarea {
   position: absolute;
   bottom: 15px;
   right: 15px;
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
   font-weight: 700;
   font-size: 100%;
 }
@@ -307,6 +391,7 @@ textarea {
 
 #selected-title,
 #createOffer-label {
+  max-width: 230px;
   font-weight: 700;
 }
 
@@ -314,9 +399,9 @@ textarea {
   position: absolute;
   right: 4px;
   top: 4px;
-  background-color: #e8b704;
+  background-color: #f4c315;
   border: 6px solid transparent;
-  color: white;
+  color: whitesmoke;
   font-weight: 700;
 }
 
@@ -333,25 +418,33 @@ textarea {
 #vertical-line {
   height: 100%;
   width: 5px;
-  background-color: #88a65e;
+  background-color: #7cac5a;
 }
 
 #create-request {
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
   font-family: "Lora", serif;
-  color: white;
+  color: whitesmoke;
   font-weight: 700;
   padding: 18px;
   font-size: 150%;
-  border: 1px solid #e8b704;
-  }
-  #create-request:hover {
-  color: #e8b704;
-  }
+  border: 1px solid #f4c315;
+}
+
+#create-request:hover {
+  color: #f4c315;
+}
 
 #no-requests-message {
-  color: white;
+  color: whitesmoke;
+  font-size: 1vw; 
+  width: 100%;
+}
+
+.activeMenuItem {
+  background-color: #7cac5a !important;
+  color: whitesmoke !important;
 }
 
 #pending-link,
@@ -360,10 +453,10 @@ textarea {
   font-family: "Lora", serif;
   font-size: larger;
   text-align: center;
-  color: #88a65e;
+  color: #7cac5a;
   margin: 0 -4px;
   width: 170px;
-  padding: 10px 20px 10px 50px;
+  padding: 10px 15px 10px 20px;
   background-color: transparent;
   cursor: pointer;
 }
@@ -381,6 +474,13 @@ textarea {
   justify-content: space-between;
 }
 
+#middle-left-component,
+#middle-right-component {
+  margin-left: 40px;
+  max-height: 60vh;
+  overflow: auto;
+}
+
 #my-list {
   width: 250px;
   margin-left: 20px;
@@ -389,23 +489,26 @@ textarea {
 #offers {
   display: flex;
   flex-direction: column;
-  color: #88a65e;
+  background-color: #7cac5a;
+  padding: 5px 10px;
+  color: whitesmoke;
 }
 
 #offers > div {
   margin-bottom: 30px;
 }
-#message {
-  margin-top: 20px;
+
+#message, 
+#completed-message {
+  margin-top: 15px;
   text-align: center;
   font-size: larger;
-  color: white;
+  color: whitesmoke !important;
   font-family: "Lora", serif;
 }
 
-
 #quest-completed,
 #quest-reply {
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
 }
