@@ -18,6 +18,7 @@ const MyRequestsPage = (props) => {
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
+    
   };
 
   const activeMenuItem = (menuItem) => {

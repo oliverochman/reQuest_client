@@ -10,9 +10,20 @@ const MyListComponent = ({ selectedStatus, page }) => {
     getList();
   }, []);
 
+  useEffect(() => {
+    getList();
+  }, [page, selectedStatus]);
+
   const getList = async () => {
-    const requests = page === "requests" ? await getMyRequests() : await getMyQuests();
-    setMyRequests(requests);
+    const response = page === "requests" ? await getMyRequests() : await getMyQuests();
+    debugger
+
+    setMyRequests(response)
+    // if ('requests' in response) {
+    //   setMyRequests(response.requests);
+    // } else {
+    //   setMyQuests(response.quests)
+    // }
   };
 
   const requestsFilteredByStatus = myRequests.filter((request) => (

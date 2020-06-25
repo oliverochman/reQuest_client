@@ -28,6 +28,7 @@ const Offers = ({ request, selectedStatus }) => {
   const onClickActivity = async (e) => {
     const response = await updateOffer(e.target.id, helperOffer.id);
     setStatusMessage(response.data.message);
+    // update_my_requests
     await updateMyRequest(request, dispatch);
   };
 
@@ -35,6 +36,7 @@ const Offers = ({ request, selectedStatus }) => {
     const response = await markRequestCompleted(request.id);
     if (!response.isAxiosError) {
       setCompletedMessage(response.data.message);
+      // update_my_requests
       setError(false);
     } else {
       setCompletedMessage(response.response.data.message);

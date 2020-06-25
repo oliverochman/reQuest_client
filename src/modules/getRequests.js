@@ -3,7 +3,6 @@ import createHeaders from "./headers.js";
 
 const getRequests = async (dispatch, category, coords) => {
   try {
-    debugger;
     const response = await axios.get("/requests", {
       params: {
         category: category,
@@ -36,6 +35,7 @@ const getMyRequests = async () => {
 };
 
 const getMyQuests = async () => {
+  debugger;
   try {
     const response = await axios.get("/my_request/quests", {
       headers: createHeaders(),

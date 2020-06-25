@@ -3,6 +3,7 @@ describe("User can", () => {
     cy.stubMain();
     cy.StubRequestPendingOffer();
   });
+  
   describe("successfully accept a help offer by clicking 'Accept'", () => {
     beforeEach(() => {
       cy.login();
@@ -50,6 +51,8 @@ describe("User can", () => {
       cy.get(".helper-email-1").should("not.be.visible");
     });
   });
+
+  
 
   describe("successfully decline a help offer by clicking 'Decline'", () => {
     beforeEach(() => {
