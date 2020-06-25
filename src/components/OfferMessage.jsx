@@ -65,8 +65,7 @@ const OfferMessage = (props) => {
             <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
             <Card.Content
               style={{
-                height: "35vh",
-                overflow: "auto",
+                height: "37vh",
                 color: "#444",
                 paddingTop: "10px",
               }}
@@ -74,7 +73,7 @@ const OfferMessage = (props) => {
               <ChatBubbles messages={props.helperOffer.conversation.messages} />
             </Card.Content>
             {replyStatus && (
-              <Card.Content style={{ paddingBottom: 0 }}>
+              <Card.Content style={{ paddingBottom: 0, marginTop: "10px" }}>
                 <Card.Meta
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
@@ -83,7 +82,7 @@ const OfferMessage = (props) => {
                     id="close-messages"
                     name="close"
                     onClick={() => setReplyStatus(false)}
-                    style={{ padding: "3px", cursor: "pointer" }}
+                    style={{ margin: "3px 17px", cursor: "pointer" }}
                   />
                 </Card.Meta>
                 <Form
