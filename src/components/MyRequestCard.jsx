@@ -38,8 +38,8 @@ const MyRequestCard = ({ request, page }) => {
     >
       <Card.Content>
         <Card.Header>{req.title}</Card.Header>
+        <Card.Meta className="reward">{req.reward} p</Card.Meta>
         {description}
-        <Card.Meta>{req.reward} KP</Card.Meta>
       </Card.Content>
     </Card>
   );

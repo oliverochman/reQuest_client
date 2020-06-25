@@ -58,10 +58,10 @@ const OfferMessage = (props) => {
   );
 
   return (
-    <List divided relaxed id="offers">
-      <Card.Group>
+    <List divided relaxed id="conversation">
+      <Card.Group  style={{height: "60vh"}}>
         <Card>
-          <Card.Content>
+          <Card.Content >
             <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
             <Card.Content
               style={{

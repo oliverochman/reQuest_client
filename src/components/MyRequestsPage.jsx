@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import MyListComponent from "./MyListComponent";
 import { Button } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
+import { persistLogin } from "../modules/auth";
+
 
 const MyRequestsPage = (props) => {
   const mySelectedRequest = useSelector(
@@ -15,6 +17,10 @@ const MyRequestsPage = (props) => {
   );
 
   const page = props.match.params.page
+  const dispatch = useDispatch();
+  useLayoutEffect(() => {
+    persistLogin(dispatch);
+  }, []);
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);

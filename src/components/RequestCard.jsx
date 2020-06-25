@@ -29,7 +29,7 @@ const RequestCard = ({ request }) => {
       >
         <Card.Content>
           <Card.Header>{request.title}</Card.Header>
-          <Card.Meta>{request.reward} KP</Card.Meta>
+          <Card.Meta className="reward">{request.reward} p</Card.Meta>
           {request.distance && (
             <Card.Meta id="distance">Distance: {request.distance} km</Card.Meta>
           )}

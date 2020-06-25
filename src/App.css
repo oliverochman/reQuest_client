@@ -48,38 +48,16 @@ span {
   background-color: #fafafa !important;
   height: fit-content;
   margin: 10px;
+  padding-bottom: 8px !important;
 }
 
-#qcard {
-  overflow: hidden;
-}
-#categories {
-  font-family: "Lora", serif;
-  font-size: 24px;
-  color: whitesmoke;
-  background-color: #7cac5a;
-  height: fit-content;
-  text-align: center;
-  cursor: pointer;
-  padding: 20px;
-  border-radius: 5px;
-  border: 1px solid #f4c315;
-  margin-right: 50px;
+.ui.card .description {
+  max-height: 40vh;
+  overflow: auto;
 }
 
-#categories .item:hover {
-  opacity: 0.75;
-}
-
-.active {
-  color: #f4c315;
-  text-shadow: 1px 0px 0 #ffec7e;
-}
-
-#browse-title {
-  text-align: center;
-  margin-left: 10px;
-  text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
+.ui.card .header {
+  max-width: 80%;
 }
 
 /* HEADER */
@@ -203,7 +181,6 @@ span {
   text-align: center;
   line-height: 50px;
   font-family: "Lora", serif;
-  letter-spacing: 0.1em;
 }
 
 /* FORMS */
@@ -267,13 +244,43 @@ textarea {
 
 /* HOME PAGE - BROWSE REQUESTS */
 
+/* 
+#qcards > * {
+  height: "initial";
+} */
+
+#categories {
+  font-family: "Lora", serif;
+  font-size: 24px;
+  color: whitesmoke;
+  background-color: #7cac5a;
+  height: fit-content;
+  text-align: center;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #f4c315;
+  margin-right: 50px;
+}
+
+#categories .item:hover {
+  opacity: 0.75;
+}
+
+.active {
+  color: #f4c315;
+  text-shadow: 1px 0px 0 #ffec7e;
+}
+
+#browse-title {
+  text-align: center;
+  margin-left: 10px;
+  text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
+}
+
 #list-wrapper {
   overflow: auto;
   height: calc(90vh - 178px);
-}
-
-#qcards > * {
-  height: "initial";
 }
 
 #specific-component {
@@ -395,13 +402,14 @@ textarea {
   font-weight: 700;
 }
 
-#selected-reward {
+.reward {
   position: absolute;
   right: 4px;
   top: 4px;
+  height: fit-content;
   background-color: #f4c315;
   border: 6px solid transparent;
-  color: whitesmoke;
+  color: whitesmoke !important;
   font-weight: 700;
 }
 
@@ -474,11 +482,14 @@ textarea {
   justify-content: space-between;
 }
 
-#middle-left-component,
-#middle-right-component {
+#middle-left-component {
   margin-left: 40px;
   max-height: 60vh;
   overflow: auto;
+}
+
+#middle-right-component {
+  margin-left: 40px;
 }
 
 #my-list {

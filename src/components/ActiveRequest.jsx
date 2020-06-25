@@ -11,7 +11,7 @@ const ActiveRequest = ({ request }) => {
         <div id="description-wrapper">
           <p id="selected-description">{request.description}</p>
         </div>
-        <div id="selected-reward">{request.reward}p</div>
+        <div className="reward">{request.reward}p</div>
       </div>
     </div>
   );

@@ -86,7 +86,7 @@ const Header = () => {
               home
             </NavLink>
             <div id="points-display">
-              <p id="karma-points-amount">{karmaPoints}p</p>
+              <p id="karma-points-amount">{karmaPoints} p</p>
             </div>
             <div id="small_links">
               <NavLink

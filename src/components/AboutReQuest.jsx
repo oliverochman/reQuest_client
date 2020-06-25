@@ -38,7 +38,7 @@ export const SelectedRequest = (props) => {
       <div id="description-wrapper">
         <p id="selected-description">{props.selectedRequest.description}</p>
       </div>
-      <div id="selected-reward">{props.selectedRequest.reward}p</div>
+      <div className="reward">{props.selectedRequest.reward}p</div>
       {!props.showMessageForm && (
         !props.disableButton ? (
         <Button
