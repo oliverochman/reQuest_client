@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import MyListComponent from "./MyListComponent";
 import { Button } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
+import { persistLogin } from "../modules/auth";
+
 
 const MyRequestsPage = (props) => {
   const mySelectedRequest = useSelector(
@@ -15,6 +17,10 @@ const MyRequestsPage = (props) => {
   );
 
   const page = props.match.params.page
+  const dispatch = useDispatch();
+  useLayoutEffect(() => {
+    persistLogin(dispatch);
+  }, []);
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
@@ -22,7 +28,9 @@ const MyRequestsPage = (props) => {
 
   const activeMenuItem = (menuItem) => {
     if (menuItem === selectedStatus) {
-      return { backgroundColor: "#88a65e", color: "whitesmoke" };
+      return "activeMenuItem"
+    } else {
+      return "inactiveMenuItem"
     }
   };
 
@@ -38,21 +46,21 @@ const MyRequestsPage = (props) => {
               <div id="menu">
                 <div
                   id="pending-link"
-                  style={activeMenuItem("pending")}
+                  className={activeMenuItem("pending")}
                   onClick={() => showMyRequests("pending")}
                 >
                   pending
                 </div>
                 <div
                   id="active-link"
-                  style={activeMenuItem("active")}
+                  className={activeMenuItem("active")}
                   onClick={() => showMyRequests("active")}
                 >
                   active
                 </div>
                 <div
                   id="completed-link"
-                  style={activeMenuItem("completed")}
+                  className={activeMenuItem("completed")}
                   onClick={() => showMyRequests("completed")}
                 >
                   completed
@@ -63,10 +71,10 @@ const MyRequestsPage = (props) => {
               <Button id='create-request'>Create a <br/> new reQuest</Button>
             </Link>
           </div>
-          <div id="middle-left-component" style={{ marginLeft: "30px" }}>
+          <div id="middle-left-component">
             <MyListComponent selectedStatus={selectedStatus} page={page} />
           </div>
-          <div id="middle-right-component" style={{ marginLeft: "30px" }}>
+          <div id="middle-right-component">
             {mySelectedRequest && page === "requests" && (
               <Offers
                 request={mySelectedRequest}

@@ -20,7 +20,7 @@ describe("User can offer help", () => {
 
   describe("successfully", () => {
     it("when message is added and sent, success message is shown", () => {
-      cy.get("#offerMessage")
+      cy.get("#message-text")
         .should("be.visible")
         .type(
           "Im so handy. I have been handy my whole carreer. I can do anything with silver tejp. Ready when you have time. // MacGyver"
@@ -34,7 +34,7 @@ describe("User can offer help", () => {
   describe("unsucessfully ", () => {
     it("if no message is added, informational popup is shown when trying to send", () => {
       cy.get("button#message-send-btn").click();
-      cy.get("#offerMessage").then(($message) => {
+      cy.get("#message-text").then(($message) => {
         expect($message[0].validationMessage).to.eq(
           "Please fill out this field."
         );
