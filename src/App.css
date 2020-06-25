@@ -24,9 +24,9 @@ span {
 }
 
 #page-container {
-  margin-top: 200px;
+  margin-top: calc(150px + 3.5vh);
   display: flex;
-  padding: 0px 50px;
+  padding: 0px 6vw;
   width: 100vw;
   position: absolute;
 }
@@ -157,7 +157,7 @@ span {
 
 #welcome-and-logout {
   position: absolute;
-  top: 130px;
+  top: calc(100px + 3vh);
   right: 0;
   display: flex;
   justify-content: flex-end;
@@ -245,6 +245,14 @@ textarea {
 
 /* HOME PAGE - BROWSE REQUESTS */
 
+#categories-container {
+  margin-top: 30px;
+  margin-right: 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #categories {
   font-family: "Lora", serif;
   font-size: 24px;
@@ -256,7 +264,7 @@ textarea {
   padding: 20px;
   border-radius: 5px;
   border: 1px solid #f4c315;
-  margin-right: 50px;
+  margin-top: 40px;
 }
 
 #categories .item:hover {
@@ -270,29 +278,22 @@ textarea {
 
 #browse-title {
   text-align: center;
-  margin-left: 10px;
   text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
 }
 
 #qcards {
-  margin-right: -20px;
-}
-
-#list-wrapper {
   overflow: auto;
-  height: calc(90vh - 178px);
+  max-height: calc(85vh - 178px);
 }
 
 #specific-component {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: #eee;
   width: 300px !important;
   max-width: 300px !important;
   border: 3px #7cac5a solid;
-  padding: 10px 10px 70px;
-  margin-left: 30px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-left: 4vw;
   height: fit-content;
   max-height: calc(85vh - 178px);
   position: relative;
@@ -312,7 +313,6 @@ textarea {
   margin-bottom: 0px;
   font-size: x-large;
   text-align: center;
- 
 }
 
 #about-byline {
@@ -328,15 +328,7 @@ textarea {
 
 #about-request {
   font-size: 110%;
-  overflow: auto;
-  height: 100%;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
   cursor: all-scroll;
-}
-
-#about-request::-webkit-scrollbar {
-  display: none; /* Chrome */
 }
 
 #about-request h3 {
@@ -345,13 +337,19 @@ textarea {
 
 .description-wrapper {
   overflow: auto;
-  height: 100%;
+  height: fit-content;
+  max-height: 62vh;
   font-size: 80%;
 }
 
 #selected-request {
+  max-height: 65vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 130%;
   color: #606060;
+  padding-bottom: 85px;
 }
 
 #selected-requester {
@@ -392,7 +390,7 @@ textarea {
 
 .reward {
   position: relative;
-  margin-top: 5px;
+  margin: 5px -2px;
   left: 87%;
   text-align: right;
   width: fit-content;
@@ -474,34 +472,38 @@ textarea {
 
 #middle-left-component {
   width: 300px;
-  margin-left: 40px;
+  margin-left: 4vw;
   max-height: 60vh;
   overflow: auto;
 }
 
 #middle-right-component {
-  margin-left: 40px;
+  width: fit-content;
+  margin-left: 4vw;
 }
 
 #my-list {
   width: 250px;
-  margin-left: 20px;
+  margin-left: 3vw;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
+  width: 35vw;
+}
+
+  #offers .item {
+  cursor: pointer;
+  margin: 5px 0px;
 }
 
 #offers h3 {
   text-align: center;
   background-color: #7cac5a;
   color: whitesmoke;
-  padding: 5px 10px;
-}
-
-#offers > div {
-  margin-bottom: 30px;
+  padding: 8px 60px;
+  width: fit-content;
 }
 
 #message, 

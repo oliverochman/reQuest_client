@@ -34,6 +34,7 @@ const BrowseRequests = () => {
   return (
     <>
       <div id="page-container">
+        <div id="categories-container">
         <h2 id="browse-title">Categories</h2>
         <List
           id="categories"
@@ -60,6 +61,7 @@ const BrowseRequests = () => {
             Others
           </List.Item>
         </List>
+        </div>
         <div
           style={{
             display: "flex",

@@ -43,22 +43,29 @@ const Offers = ({ request, selectedStatus }) => {
   };
 
   const replyOfferMessage = async (e) => {
-    const message = e.target.replyMessage.value
-    const resp = await replyToConversation(
-      acceptedHelperOffer.id,
-      message
-    );
-    resp && acceptedHelperOffer.conversation.messages.push({me: true, content: message}) && triggerMessagesUpdate(resp)
+    const message = e.target.replyMessage.value;
+    const resp = await replyToConversation(acceptedHelperOffer.id, message);
+    resp &&
+      acceptedHelperOffer.conversation.messages.push({
+        me: true,
+        content: message,
+      }) &&
+      triggerMessagesUpdate(resp);
   };
 
-  const myOffers = request.offers.map((offer, index) => (
-    <OfferList
-      offer={offer}
-      requestStatus={request.status}
-      index={index}
-      onHelperClick={onHelperClick}
-    />
-  ));
+  const myOffers =
+    request.offers.filter((offer) => offer.status === "pending").length !== 0 ? (
+      request.offers.map((offer, index) => (
+        <OfferList
+          offer={offer}
+          requestStatus={request.status}
+          index={index}
+          onHelperClick={onHelperClick}
+        />
+      ))
+    ) : (
+      <p style={{position: "absolute", marginTop: "50px"}}>You have no pending offers on this reQuest</p>
+    );
 
   const acceptedHelperOffer = request.offers.filter(
     (offer) => offer.status === "accepted"
@@ -86,7 +93,7 @@ const Offers = ({ request, selectedStatus }) => {
           </List>
           <div
             style={{
-              marginLeft: "30px",
+              marginLeft: "4vw",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
