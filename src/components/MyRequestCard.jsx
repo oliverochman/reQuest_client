@@ -31,6 +31,7 @@ const MyRequestCard = ({ request, page }) => {
   return (
     <Card
       id={"request-" + req.id}
+      color="olive"
       onClick={() => {
         toggleActiveRequest();
       }}

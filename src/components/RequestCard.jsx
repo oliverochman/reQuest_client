@@ -1,22 +1,30 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const RequestCard = ({ request }) => {
   const dispatch = useDispatch();
+  const selectedRequest = useSelector(
+    (state) => state.requests.selectedRequest
+  );
   const onClickHandler = () => {
-    dispatch({
-      type: "SET_SELECTED_REQUEST",
-      payload: {
-        request: request,
-      },
-    });
+    if (selectedRequest && selectedRequest.id === request.id) {
+      dispatch({ type: "RESET_SELECTED_REQUEST" })
+    } else {
+      dispatch({
+        type: "SET_SELECTED_REQUEST",
+        payload: {
+          request: request,
+        },
+      });
+    }
   };
 
   return (
     <>
       <Card
         style={{ margin: "10px" }}
+        color="olive"
         id={"request-" + request.id}
         onClick={onClickHandler}
       >
