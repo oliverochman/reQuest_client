@@ -63,9 +63,9 @@ describe("Users", () => {
       cy.get("#request-2").click();
       cy.wait(1000);
       cy.get("#request-description-1").should("not.be.visible");
-      cy.get(".helper-email-1").should("be.visible").click();
+      cy.get(".helper-email-1").should("be.visible");
       cy.get("#request-description-2").should("be.visible");
-      cy.get(".helper-email-2").should("be.visible").click();
+      cy.get(".helper-email-2").should("be.visible");
     });
   });
 });
