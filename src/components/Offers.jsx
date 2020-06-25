@@ -13,33 +13,36 @@ import {
 
 const Offers = ({ request, selectedStatus, page }) => {
   const dispatch = useDispatch();
-  // const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  // const [helperOffer, setHelperOffer] = useState({});
   const [, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
 
   const [showActiveOffer, setShowActiveOffer] = useState(false);
   const [activeOffer, setActiveOffer] = useState();
-  // const [showOffer, setShowOffer] = useState(false);
 
   useEffect(() => {
-    getAcceptedOffer();
+    getAcceptedOffer(request);
   }, []);
 
+  // useEffect(() => {
+  //   const s = showActiveOffer;
+  //   debugger;
+  // }, [showActiveOffer]);
+
   const getAcceptedOffer = (request) => {
-    if (request.status === "active" || request.status === "completed") {
+    if (selectedStatus === "active" || selectedStatus === "completed") {
       const offer = request.offers.filter(
         (offer) => offer.status === "accepted"
       )[0];
       setActiveOffer(offer);
       setShowActiveOffer(true);
+      // setCompletedMessage("");
     }
   };
   const onHelperClick = (e) => {
     e.preventDefault();
-    setActiveOffer({ ...request.offers[parseInt(e.target.id)] });
+    setActiveOffer(request.offers[parseInt(e.target.id)]);
     setShowActiveOffer(true);
   };
 
@@ -90,9 +93,9 @@ const Offers = ({ request, selectedStatus, page }) => {
       />
     ));
 
-  const acceptedHelperOffer = request.offers.filter(
-    (offer) => offer.status === "accepted"
-  )[0];
+  const acceptedHelperOffer =
+    selectedStatus === "active" &&
+    request.offers.filter((offer) => offer.status === "accepted")[0];
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>

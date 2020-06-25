@@ -73,6 +73,7 @@ const MyRequestsPage = (props) => {
               <Offers
                 request={mySelectedRequest}
                 selectedStatus={selectedStatus}
+                page={page}
               />
             )}
           </div>
