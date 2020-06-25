@@ -15,11 +15,9 @@ const MyRequestCard = ({ request, page }) => {
     if (myActiveRequest) {
       dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     } else {
-      page === "requests" ? (
-        updateRequest(request, dispatch)
-      ) : ( 
-        dispatch({type: "SET_MY_SELECTED_REQUEST", payload: { request }})
-      )
+      page === "requests"
+        ? updateRequest(request, dispatch)
+        : dispatch({ type: "SET_MY_SELECTED_REQUEST", payload: { request } });
     }
   };
   const description = myActiveRequest && (
@@ -38,8 +36,10 @@ const MyRequestCard = ({ request, page }) => {
     >
       <Card.Content>
         <Card.Header>{req.title}</Card.Header>
-        <Card.Meta className="reward">{req.reward} p</Card.Meta>
-        {description}
+        <Card.Content>
+          <Card.Meta className="reward">{req.reward} p</Card.Meta>
+          <div className="description-wrapper">{description}</div>
+        </Card.Content>
       </Card.Content>
     </Card>
   );

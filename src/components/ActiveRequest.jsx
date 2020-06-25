@@ -7,7 +7,7 @@ const ActiveRequest = ({ request }) => {
       <h2 id="selected-title">{request.title}</h2>
       <span id="selected-requester">{request.requester}</span>
       <Divider />
-      <div id="description-wrapper">
+      <div className="description-wrapper">
         <p id="selected-description">{request.description}</p>
       </div>
       <div className="reward">{request.reward}p</div>

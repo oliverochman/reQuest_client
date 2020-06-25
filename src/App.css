@@ -49,16 +49,15 @@ span {
   background-color: #fafafa !important;
   height: initial;
   margin: 10px;
-  padding-bottom: 8px !important;
 }
 
 .ui.card .description {
+  margin-top: 5px;
   max-height: 40vh;
-  overflow: auto;
+  color: #606060;
 }
 
 .ui.card .header {
-  max-width: 80%;
   color: #606060;
 }
 
@@ -94,7 +93,7 @@ span {
 #yellow_divider {
   position: absolute;
   left: 100px;
-  bottom: -23.5px;
+  bottom: -23px;
   height: 4.5px;
   width: 6000px;
   background-color: #f4c315;
@@ -105,7 +104,7 @@ span {
 #green_divider {
   position: absolute;
   left: -50px;
-  bottom: -23.5px;
+  bottom: -23px;
   height: 4px;
   width: 6000px;
   background-color: #7cac5a;
@@ -203,13 +202,17 @@ span {
   align-items: center;
 }
 
+#newRequest-form {
+  padding-bottom: 40px;
+}
+
 #submit-btn {
   background-color: #f4c315;
   border: 1px solid #ffde67;
   color: whitesmoke;
   font-family: "Lora", serif;
   border-radius: 5px;
-  margin: 5px;
+  margin: 10px 5px 0px;
   width: 100px !important;
   letter-spacing: 0.1em;
   text-align: center;
@@ -340,7 +343,7 @@ textarea {
   color: #7cac5a;
 }
 
-#description-wrapper {
+.description-wrapper {
   overflow: auto;
   height: 100%;
   font-size: 80%;
@@ -388,9 +391,11 @@ textarea {
 }
 
 .reward {
-  position: absolute;
-  right: 6px;
-  top: 6px;
+  position: relative;
+  margin-top: 5px;
+  left: 87%;
+  text-align: right;
+  width: fit-content;
   height: fit-content;
   background-color: #f4c315;
   border: 6px solid transparent;
@@ -468,6 +473,7 @@ textarea {
 }
 
 #middle-left-component {
+  width: 300px;
   margin-left: 40px;
   max-height: 60vh;
   overflow: auto;
@@ -485,9 +491,13 @@ textarea {
 #offers {
   display: flex;
   flex-direction: column;
+}
+
+#offers h3 {
+  text-align: center;
   background-color: #7cac5a;
-  padding: 5px 10px;
   color: whitesmoke;
+  padding: 5px 10px;
 }
 
 #offers > div {
