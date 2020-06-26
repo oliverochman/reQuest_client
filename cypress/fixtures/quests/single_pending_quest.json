@@ -1,0 +1,30 @@
+{
+  "quest": {
+    "id": 287,
+    "title": "I will need help with this 1",
+    "description": "Need a hand with tyres 1",
+    "email": "requester@mail.com",
+    "reward": 100,
+    "status": "pending",
+    "offer": {
+      "id": 23,
+      "status": "pending",
+      "conversation": {
+        "messages": [
+          {
+            "content": "Hi! I can help you with this // helper",
+            "me": true
+          },
+          {
+            "content": "Hi! nice, when can you come // requester",
+            "me": false
+          },
+          {
+            "content": "Today is fine // helper",
+            "me": true
+          }
+        ]
+      }
+    }
+  }
+}
