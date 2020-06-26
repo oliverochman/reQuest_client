@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MyListComponent from "./MyListComponent";
 import { Button } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
 
@@ -14,10 +14,13 @@ const MyRequestsPage = (props) => {
     (state) => state.authentication.authenticated
   );
 
+  const dispatch = useDispatch()
+
   const page = props.match.params.page;
 
   const showMyRequests = (status) => {
     setSelectedStatus(status);
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
   };
 
   const activeMenuItem = (menuItem) => {
