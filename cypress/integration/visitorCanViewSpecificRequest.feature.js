@@ -34,7 +34,7 @@ describe("Can view details of a specific request", () => {
           "contain",
           "Need a hand with tyres"
         );
-        cy.get("#selected-reward").should("contain", "90");
+        cy.get(".reward").should("contain", "90");
         cy.get("#selected-requester").should("contain", "someone1@email.com");
         cy.get("button").contains("contact").click()
       });

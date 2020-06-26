@@ -34,7 +34,7 @@ const MyListComponent = ({ selectedStatus, page }) => {
     (request) => request.status === selectedStatus
   );
 
-  const cards = requestsFilteredByStatus.map((request) => (
+  const cards = requestsFilteredByStatus.map((request) => ( 
     <MyRequestCard key={request.id} request={request} page={page} />
   ));
 

@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { AboutReQuest, SelectedRequest } from "./AboutReQuest";
 import { CreateOffer } from "./CreateOffer";
 
-const SpecificRequest = () => {
+const SpecificRequest = (props) => {
   const selectedRequest = useSelector(
     (state) => state.requests.selectedRequest
   );
-  const [message, setMessage] = useState("");
   const user = useSelector((state) => state.authentication.uid);
-  const [showMessageForm, setShowMessageForm] = useState(false);
-  const onContactHandler = () => setShowMessageForm(true);
-  const dispatch = useDispatch();
+  const onContactHandler = () => props.setShowMessageForm(true);
 
   const createOffer = async (e) => {
     e.preventDefault();
@@ -25,12 +22,8 @@ const SpecificRequest = () => {
       },
       { headers: createHeaders() }
     );
-    setMessage(response.data.message);
-    setShowMessageForm(false);
-    dispatch({
-      type: "SET_SELECTED_REQUEST",
-      payload: { request: { ...selectedRequest, offerable: null } },
-    });
+    props.setMessage(response.data.message);
+    props.setShowMessageForm(false);
   };
 
   const render = () => {
@@ -55,14 +48,17 @@ const SpecificRequest = () => {
           statusMessage = "You have already offered to help with this request";
       }
       return (
-        <div id="message-component">
+        <div id="specific-component">
           <SelectedRequest
             onContactHandler={onContactHandler}
             selectedRequest={selectedRequest}
             statusMessage={statusMessage}
             disableButton={disableButton}
-            showMessageForm={showMessageForm}
+            showMessageForm={props.showMessageForm}
+            message={props.message}
           />
+          {props.showMessageForm && <CreateOffer createOffer={createOffer} />}
+          {props.message !== "" && <p id="message"> {props.message}</p>}
         </div>
       );
     } else {
@@ -74,13 +70,7 @@ const SpecificRequest = () => {
     }
   };
 
-  return (
-    <>
-      {render()}
-      {showMessageForm && <CreateOffer createOffer={createOffer} />}
-      {message !== "" && <p id="message"> {message}</p>}
-    </>
-  );
+  return render();
 };
 
 export default SpecificRequest;

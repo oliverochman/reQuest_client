@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
+import { Button, Card, Form, TextArea, Icon } from "semantic-ui-react";
 import ChatBubbles from "./ChatBubbles";
 
 const OfferMessage = (props) => {
@@ -58,65 +58,57 @@ const OfferMessage = (props) => {
   );
 
   return (
-    <List divided relaxed id="offers">
-      <Card.Group>
-        <Card>
-          <Card.Content>
-            <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
-            <Card.Content
-              style={{
-                height: "35vh",
-                overflow: "auto",
-                color: "#444",
-                paddingTop: "10px",
-              }}
-            >
-              <ChatBubbles messages={props.helperOffer.conversation.messages} />
-            </Card.Content>
-            {replyStatus && (
-              <Card.Content style={{ paddingBottom: 0 }}>
-                <Card.Meta
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  your message:
-                  <Icon
-                    id="close-messages"
-                    name="close"
-                    onClick={() => setReplyStatus(false)}
-                    style={{ padding: "3px", cursor: "pointer" }}
-                  />
-                </Card.Meta>
-                <Form
-                  id="send-message-form"
-                  onSubmit={(e) => {
-                    e.target.replyMessage.value !== "" &&
-                      props.replyOfferMessage(e) &&
-                      e.target.reset();
-                  }}
-                  style={{ padding: 0 }}
-                >
-                  <TextArea
-                    id="replyMessage"
-                    name="replyMessage"
-                    placeholder="Write..."
-                    style={{
-                      maxWidth: "100%",
-                      height: "70px",
-                      marginTop: "10px",
-                    }}
-                  />
-                </Form>
-              </Card.Content>
-            )}
+    <>
+      <Card id="conversation" style={{ height: "60vh", width: "400px" }}>
+        <Card.Content>
+          <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
+          <Card.Content
+            style={{
+              height: "37vh",
+              color: "#444",
+              paddingTop: "10px",
+            }}
+          >
+            <ChatBubbles messages={props.helperOffer.conversation.messages} />
           </Card.Content>
-          {showActivityButtons}
-        </Card>
-      </Card.Group>
+          {replyStatus && (
+            <Card.Content style={{ paddingBottom: 0, marginTop: "10px" }}>
+              <Card.Meta
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                your message:
+                <Icon
+                  id="close-messages"
+                  name="close"
+                  onClick={() => setReplyStatus(false)}
+                  style={{ margin: "3px 17px", cursor: "pointer" }}
+                />
+              </Card.Meta>
+              <Form
+                id="send-message-form"
+                onSubmit={(e) => {
+                  e.target.replyMessage.value !== "" &&
+                    props.replyOfferMessage(e) &&
+                    e.target.reset();
+                }}
+                style={{ padding: 0 }}
+              >
+                <TextArea
+                  id="message-text"
+                  name="replyMessage"
+                  placeholder="Write..."
+                />
+              </Form>
+            </Card.Content>
+          )}
+        </Card.Content>
+        {showActivityButtons}
+      </Card>
       <p style={{ color: "black" }} id="completed-message">
         {props.completedMessage}
         {props.error}
       </p>
-    </List>
+    </>
   );
 };
 

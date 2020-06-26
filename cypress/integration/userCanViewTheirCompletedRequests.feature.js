@@ -24,7 +24,7 @@ describe("User can view their completed reQuests", () => {
     cy.get("#request-7").click();
     cy.wait(1000);
     cy.get("#request-description-7").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .content > .meta").should(
       "contain",
       "pauline@mail.com"
     );
@@ -35,7 +35,7 @@ describe("User can view their completed reQuests", () => {
     cy.get("#completed-link").click();
     cy.get("#request-8").click();
     cy.get("#request-description-8").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .content > .meta").should(
       "contain",
       "offerer666@mail.com"
     );
@@ -54,11 +54,11 @@ describe("User can view their completed reQuests", () => {
     cy.get("#completed-link").click();
     cy.get("#request-8").click();
     cy.get("#request-description-8").should("be.visible");
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation >.content > .meta").should(
       "contain",
       "offerer666@mail.com"
     );
-    cy.get("#offers > .cards > .ui > .content > .meta").should(
+    cy.get("#conversation > .content > .meta").should(
       "not.contain",
       "anotherhelper@mail.com"
     );

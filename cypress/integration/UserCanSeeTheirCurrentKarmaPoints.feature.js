@@ -17,7 +17,7 @@ describe("User can see their current karma points", () => {
   });
   it("should display users current karma points in header", () => {
     cy.get("#points-display").should("exist");
-    cy.get("#karma-points-amount").should("contain", "100p");
+    cy.get("#karma-points-amount").should("contain", "100 p");
   });
   it("should display a reduced amount after creating a request", () => {
     cy.get("#create-request-link").click();
@@ -27,6 +27,6 @@ describe("User can see their current karma points", () => {
     cy.get("#category").click();
     cy.get("#category > .visible > :nth-child(2)").click();
     cy.get("#submit-btn").contains("Submit").click();
-    cy.get("#karma-points-amount").should("contain", "50p");
+    cy.get("#karma-points-amount").should("contain", "50 p");
   });
 });

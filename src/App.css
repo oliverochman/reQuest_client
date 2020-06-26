@@ -3,7 +3,7 @@
 
 body,
 html {
-  background-color: #bac1bf !important;
+  background-color: #bfcab1 !important;
   z-index: -2;
   overflow: hidden;
 }
@@ -24,9 +24,9 @@ span {
 }
 
 #page-container {
-  margin-top: 200px;
+  margin-top: calc(150px + 3.5vh);
   display: flex;
-  padding: 0px 50px;
+  padding: 0px 5vw;
   width: 100vw;
   position: absolute;
 }
@@ -34,31 +34,33 @@ span {
 #page-container h2 {
   position: absolute;
   margin-top: -30px;
-  color: #88a65e;
+  color: #7cac5a;
   font-size: 185%;
   text-align: center;
 }
 
-#qcard {
-  overflow: hidden;
-}
-#categories{
-  font-family: "Lora", serif;
-  font-size: 24px;
-  color: white;
-  background-color: #88a65e;
+.ui.cards {
+  width: 80%;
   height: fit-content;
-  text-align: center;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 5px;
+  margin: 0px !important;
 }
-#categories a {
-    color: white;
+
+.ui.card {
+  background-color: #fafafa !important;
+  height: initial;
+  margin: 10px !important;
 }
-.active {
-  color: #e8b704;
+
+.ui.card .description {
+  margin-top: 5px;
+  max-height: 40vh;
+  color: #606060;
 }
+
+.ui.card .header {
+  color: #606060 !important;
+}
+
 /* HEADER */
 #header {
   position: absolute;
@@ -66,49 +68,55 @@ span {
   width: 100%;
   height: 100px;
   font-family: "Lora", serif !important;
-  background: #e6e6e6;
+  background: linear-gradient(#456034, #355024);
+  box-shadow: -2px 0px 5px #444;
 }
 
 #logo {
   position: absolute;
   left: 50px;
-  bottom: 20px;
+  bottom: 23px;
   font-size: 56px;
   z-index: 2;
 }
 
 #hfirst {
-  color: #88a65e;
+  color: #7cac5a;
+  text-shadow: 1px -1px 0 rgb(160, 220, 76);
 }
 
 #hsecond {
-  color: #e8b704;
+  color: #f4c315;
+  text-shadow: 1px -1px 0 #ffec7e;
 }
 
 #yellow_divider {
   position: absolute;
   left: 100px;
   bottom: -23px;
-  height: 5px;
+  height: 4.5px;
   width: 6000px;
-  background-color: #e8b704;
+  background-color: #f4c315;
+  box-shadow: 0 -1.8px 0 #ffde67;
+  z-index: 2;
 }
 
 #green_divider {
   position: absolute;
   left: -50px;
-  bottom: -30px;
-  height: 10px;
+  bottom: -23px;
+  height: 4px;
   width: 6000px;
-  background-color: #88a65e;
+  background-color: #7cac5a;
   z-index: -1;
+  box-shadow: 1px -1px 0 rgb(143, 199, 65);
 }
 
 /* NAVBAR */
 #links {
   position: absolute;
   right: 30px;
-  top: 70px;
+  top: 67px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -118,19 +126,28 @@ span {
 #small_links a {
   padding: 10px 20px;
   border-radius: 5px;
-  color: #e8b704;
+  color: #f4c315;
   font-size: 20px;
 }
 
-#small_links a:hover {
-  background-color: #e8b70444;
-  color: whitesmoke;
+.inactiveTab:hover {
+  opacity: 0.8 !important;
+}
+
+.activeTab {
+  position: relative;
+  background-color: #f4c315; 
+  box-shadow: 2px -1px 0 #ffde67;
+  color: #355720 !important;
+  text-shadow: 0px 0px 0 #fff;
+  z-index: 10;
 }
 
 #myrequest-home-link {
   margin-top: -10px;
-  color: #e8b704;
+  color: #f4c315;
   font-size: 35px;
+  text-shadow: 0.7px -0px 0 #ffde67;
 }
 
 #myrequest-home-link:hover {
@@ -140,7 +157,7 @@ span {
 
 #welcome-and-logout {
   position: absolute;
-  top: 130px;
+  top: calc(100px + 3vh);
   right: 0;
   display: flex;
   justify-content: flex-end;
@@ -155,12 +172,13 @@ span {
 #points-display {
   height: 50px;
   width: 50px;
-  background-color: #e8b704;
+  background-color: #f4c315;
   border-radius: 50%;
+  box-shadow: 2px 0px 0 #ffde67;
   margin: -30px 0;
 }
 #karma-points-amount {
-  color: white;
+  color: #355720;
   text-align: center;
   line-height: 50px;
   font-family: "Lora", serif;
@@ -172,7 +190,8 @@ span {
   width: 25vw !important;
   border-radius: 4%;
   text-align: center;
-  background-color: #88a65e;
+  background-color: #7cac5a;
+  border: 1px solid #f4c315;
 }
 
 #login-form,
@@ -183,12 +202,17 @@ span {
   align-items: center;
 }
 
+#newRequest-form {
+  padding-bottom: 40px;
+}
+
 #submit-btn {
-  background-color: #e8b704;
-  color: white;
+  background-color: #f4c315;
+  border: 1px solid #ffde67;
+  color: whitesmoke;
   font-family: "Lora", serif;
   border-radius: 5px;
-  margin: 5px;
+  margin: 10px 5px 0px;
   width: 100px !important;
   letter-spacing: 0.1em;
   text-align: center;
@@ -199,9 +223,9 @@ input,
 textarea {
   font-family: "Lora", serif;
   border-radius: 5px;
-  border-color: #88a65e;
+  border-color: #7cac5a;
   background-color: #e6e6e6;
-  color: #88a65e;
+  color: #7cac5a;
   margin-bottom: 10px;
   width: 20vw !important;
 }
@@ -212,93 +236,149 @@ textarea {
 
 #signup {
   height: fit-content;
-  color: white;
+  color: whitesmoke;
 }
 
 #signup:hover {
-  color: #e8b704;
-}
-
-#message {
-  color: rgb(230, 230, 230);
+  color: #f4c315;
 }
 
 /* HOME PAGE - BROWSE REQUESTS */
 
-#list-wrapper {
-  overflow: auto;
-  height: calc(90vh - 178px);
+#categories-container {
+  margin-top: 30px;
+  margin-right: 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#qcards > * {
-  height: "initial";
+#categories {
+  font-family: "Lora", serif;
+  font-size: 24px;
+  color: whitesmoke;
+  background-color: #7cac5a;
+  height: fit-content;
+  text-align: center;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #f4c315;
+  margin-top: 40px;
+}
+
+#categories .item:hover {
+  opacity: 0.75;
+}
+
+.active {
+  color: #f4c315;
+  text-shadow: 1px 0px 0 #ffec7e;
+}
+
+#browse-title {
+  text-align: center;
+  text-shadow: 1px -0.5px 0 rgb(160, 220, 76);
+}
+
+#qcards {
+  overflow: auto;
+  max-height: calc(85vh - 178px);
+}
+
+#distance {
+  color: #7cac5a;
 }
 
 #specific-component {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
-  padding: 4px;
-  height: calc(85vh - 178px);
+  background-color: #eee;
+  width: 300px !important;
+  max-width: 300px !important;
+  border: 3px #7cac5a solid;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-left: 4vw;
+  height: fit-content;
+  max-height: calc(95vh - 100px);
   position: relative;
+  box-shadow: 1px 1px 3px #44444444;
 }
-#message-component {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
-  padding: 4px;
-  height: calc(55vh - 178px);
-  position: relative;
+
+#message-text {
+  max-width: 100%;
+  height: 70px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 90%;
+  color: #606060;
 }
-#message-component-send {
-  background-color: lightgray;
-  border: 3px #88a65e solid;
-  padding: 4px;
-  height: calc(60vh - 178px);
-  position: relative;
+
+#about-title {
+  margin-bottom: 0px;
+  font-size: x-large;
+  text-align: center;
+}
+
+#about-byline {
+  margin-top: 0px;
+  text-align: center;
+}
+
+#about-body {
+  text-align: justify;
+  color: #333;
+  padding: 10px;
 }
 
 #about-request {
   font-size: 110%;
-  overflow: auto;
-  height: 100%;
-  overflow: auto;
+  cursor: all-scroll;
 }
 
 #about-request h3 {
-  color: #88a65e;
+  color: #7cac5a;
 }
 
-#description-wrapper {
+.description-wrapper {
   overflow: auto;
-  height: calc((75vh - 178px) / 2);
+  height: fit-content;
+  max-height: 62vh;
   font-size: 80%;
 }
 
-#selected-request,
-#message-container {
+#selected-request {
+  max-height: 65vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 130%;
   color: #606060;
-  padding: 7px;
+  padding-bottom: 85px;
 }
 
-#offerMessage {
-  font-size: 90%;
-  color: #606060;
-  padding: 10px;
+#selected-requester {
+  margin-top: 5px;
 }
-#send-message-form {
-  padding: 10px;
-  padding-top: 7px;
+
+#selected-description {
+  margin-bottom: 5px;
 }
+
 #contact-button,
 #disabled-contact-button,
 #message-send-btn {
   position: absolute;
   bottom: 15px;
-  right: 15px;
-  color: white;
-  background-color: #88a65e;
+  right: 10px;
+  color: whitesmoke;
+  background-color: #7cac5a;
   font-weight: 700;
   font-size: 100%;
+}
+
+#message-send-btn {
+  bottom: -45px;
+  right: 0px;
 }
 
 #disabled-contact-button {
@@ -306,17 +386,17 @@ textarea {
 }
 
 #selected-title,
-#createOffer-label {
+.createOffer-label {
+  max-width: 230px;
   font-weight: 700;
+  color: #606060 !important;
 }
 
-#selected-reward {
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  background-color: #e8b704;
-  border: 6px solid transparent;
-  color: white;
+.reward {
+  margin: 5px -2px;
+  padding: 4px 7px;
+  background-color: #f4c315;
+  color: white !important;
   font-weight: 700;
 }
 
@@ -333,25 +413,33 @@ textarea {
 #vertical-line {
   height: 100%;
   width: 5px;
-  background-color: #88a65e;
+  background-color: #7cac5a;
 }
 
 #create-request {
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
   font-family: "Lora", serif;
-  color: white;
+  color: whitesmoke;
   font-weight: 700;
   padding: 18px;
   font-size: 150%;
-  border: 1px solid #e8b704;
-  }
-  #create-request:hover {
-  color: #e8b704;
-  }
+  border: 1px solid #f4c315;
+}
+
+#create-request:hover {
+  color: #f4c315;
+}
 
 #no-requests-message {
-  color: white;
+  color: whitesmoke;
+  font-size: 1vw; 
+  width: 100%;
+}
+
+.activeMenuItem {
+  background-color: #7cac5a !important;
+  color: whitesmoke !important;
 }
 
 #pending-link,
@@ -360,10 +448,10 @@ textarea {
   font-family: "Lora", serif;
   font-size: larger;
   text-align: center;
-  color: #88a65e;
+  color: #7cac5a;
   margin: 0 -4px;
   width: 170px;
-  padding: 10px 20px 10px 50px;
+  padding: 10px 15px 10px 20px;
   background-color: transparent;
   cursor: pointer;
 }
@@ -381,23 +469,58 @@ textarea {
   justify-content: space-between;
 }
 
+#middle-left-component {
+  width: 300px;
+  margin-left: 4vw;
+  max-height: 60vh;
+  overflow: auto;
+}
+
+#middle-right-component {
+  width: fit-content;
+  margin-left: 4vw;
+}
+
 #my-list {
   width: 250px;
-  margin-left: 20px;
+  margin-left: 3vw;
 }
 
 #offers {
   display: flex;
   flex-direction: column;
-  color: #88a65e;
+  width: 35vw;
 }
 
-#offers > div {
-  margin-bottom: 30px;
+  #offers .item {
+  cursor: pointer;
+  margin: 5px 0px;
+}
+
+#offers h3 {
+  text-align: center;
+  background-color: #7cac5a;
+  color: whitesmoke;
+  padding: 8px 60px;
+  width: fit-content;
+}
+
+#message, 
+#completed-message {
+  margin-top: 15px;
+  text-align: center;
+  font-size: larger;
+  color: whitesmoke !important;
+  font-family: "Lora", serif;
+}
+
+#message {
+  color: #7cac5a !important;
+  margin-bottom: -50px;
 }
 
 #quest-completed,
 #quest-reply {
-  color: white;
-  background-color: #88a65e;
+  color: whitesmoke;
+  background-color: #7cac5a;
 }

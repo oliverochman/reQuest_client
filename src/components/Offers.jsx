@@ -77,14 +77,21 @@ const Offers = ({ request, selectedStatus, page }) => {
       triggerMessagesUpdate(!messagesUpdate);
   };
 
-  const myOffer = request.offers.map((offer, index) => (
-    <OfferList
-      offer={offer}
-      requestStatus={request.status}
-      index={index}
-      onHelperClick={onHelperClick}
-    />
-  ));
+  const myOffers =
+    request.offers.filter((offer) => offer.status === "pending").length !== 0 ? (
+      request.offers.map((offer, index) => (
+        <OfferList
+          offer={offer}
+          requestStatus={request.status}
+          index={index}
+          onHelperClick={onHelperClick}
+        />
+
+      ))
+    ) : (
+      <p style={{ position: "absolute", marginTop: "50px" }}>You have no pending offers on this reQuest</p>
+    );
+
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
@@ -92,11 +99,11 @@ const Offers = ({ request, selectedStatus, page }) => {
         <>
           <List divided relaxed id="offers">
             <h3>Offers</h3>
-            {myOffer}
+            {myOffers}
           </List>
           <div
             style={{
-              marginLeft: "30px",
+              marginLeft: "4vw",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",

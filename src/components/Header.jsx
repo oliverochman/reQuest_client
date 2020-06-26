@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { auth } from "../modules/auth";
 import { Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import getKarma from '../modules/getKarma'
 
 const Header = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const karmaPoints = useSelector((state) => state.karma.karma);
-  const [activeTab, setActiveTab] = useState("profile");
+  const [activeTab, setActiveTab] = useState("requests");
   const activePage = useSelector((state) => state.pages.activePage);
   const uid = useSelector((state) => state.authentication.uid);
   const authenticated = useSelector(
@@ -45,15 +45,21 @@ const Header = () => {
 
   const activeMenuItem = (menuItem) => {
     if (menuItem === activeTab) {
-      return { backgroundColor: "#e8b704", color: "whitesmoke" };
+      return "activeTab"
+    } else {
+      return "inactiveTab"
     }
   };
 
   return (
     <div id="header">
       <div id="logo">
+        <Link to="/"
+          onClick={() => setActivePage("home")}
+        >
         <span id="hfirst">re</span>
         <span id="hsecond">Quest</span>
+        </Link>
         <div id="yellow_divider"></div>
         <div id="green_divider"></div>
       </div>
@@ -61,8 +67,11 @@ const Header = () => {
         {activePage === "home" && (
           <NavLink
             id="myrequest-home-link"
-            to={authenticated ? "/myrequest" : "/login"}
-            onClick={authenticated && (() => setActivePage("myrequest"))}
+            to={authenticated ? "/myrequest/requests" : "/login"}
+            onClick={authenticated && (() => {
+              setActivePage("myrequest")
+              setActiveTab("requests")            
+            })}
           >
             my reQuest
           </NavLink>
@@ -77,21 +86,13 @@ const Header = () => {
               home
             </NavLink>
             <div id="points-display">
-              <p id="karma-points-amount">{karmaPoints}p</p>
+              <p id="karma-points-amount">{karmaPoints} p</p>
             </div>
             <div id="small_links">
               <NavLink
-                id="profile-link"
-                to="/myrequest/profile"
-                style={activeMenuItem("profile")}
-                onClick={() => setActiveTab("profile")}
-              >
-                profile
-              </NavLink>
-              <NavLink
                 id="quests-link"
                 to="/myrequest/quests"
-                style={activeMenuItem("quests")}
+                className={activeMenuItem("quests")}
                 onClick={() => setActiveTab("quests")}
               >
                 Quests
@@ -99,7 +100,7 @@ const Header = () => {
               <NavLink
                 id="requests-link"
                 to="/myrequest/requests"
-                style={activeMenuItem("requests")}
+                className={activeMenuItem("requests")}
                 onClick={() => setActiveTab("requests")}
               >
                 reQuests

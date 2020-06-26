@@ -3,7 +3,7 @@ import { Form, Input, Container, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 import createHeaders from "../modules/headers";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import getKarma from "../modules/getKarma";
 import categoryList from "../modules/category";
 
@@ -11,6 +11,7 @@ const NewRequest = () => {
   const [message, setMessage] = useState("");
   const category = categoryList();
   const dispatch = useDispatch();
+  const history = useHistory();
   const latitude = useSelector((state) => state.coords.latitude);
   const longitude = useSelector((state) => state.coords.longitude);
   const authenticated = useSelector(
@@ -41,7 +42,8 @@ const NewRequest = () => {
       setMessage(response.data.message);
       setTimeout(() => {
         setMessage("");
-      }, 3000);
+        history.push("/myrequest/requests");
+      }, 1000);
     } catch (error) {
       setMessage(error.response.data.message);
     }

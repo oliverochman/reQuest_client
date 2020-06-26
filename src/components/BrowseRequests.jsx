@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Grid, List } from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 import AllRequests from "./AllRequests";
 import SpecificRequest from "./SpecificRequest";
 import { useDispatch } from "react-redux";
 
 const BrowseRequests = () => {
   const [selectedTab, setSelectedTab] = useState("all");
+  const [showMessageForm, setShowMessageForm] = useState(false);
+  const [message, setMessage] = useState("");
+
   const dispatch = useDispatch();
   const onItemClickHandler = (e) => {
     setSelectedTab(e.target.id);
@@ -14,6 +17,9 @@ const BrowseRequests = () => {
       payload: {
         activeCategory: e.target.id,
       },
+    });
+    dispatch({
+      type: "RESET_SELECTED_REQUEST",
     });
   };
 
@@ -28,8 +34,14 @@ const BrowseRequests = () => {
   return (
     <>
       <div id="page-container">
+        <div id="categories-container">
         <h2 id="browse-title">Categories</h2>
-        <List id="categories" onClick={(e) => onItemClickHandler(e)}>
+        <List
+          id="categories"
+          onClick={(e) => onItemClickHandler(e)}
+          divided
+          inverted
+        >
           <List.Item id="all" className={activeTab("all")}>
             All
           </List.Item>
@@ -52,15 +64,26 @@ const BrowseRequests = () => {
             Others
           </List.Item>
         </List>
-        <Grid>
-          <Grid.Column width={2}></Grid.Column>
-          <Grid.Column width={9} id="list-wrapper">
-            <AllRequests />
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <SpecificRequest />
-          </Grid.Column>
-        </Grid>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <AllRequests
+            setShowMessageForm={setShowMessageForm}
+            setMessage={setMessage}
+          />
+          <SpecificRequest
+            showMessageForm={showMessageForm}
+            setShowMessageForm={setShowMessageForm}
+            message={message}
+            setMessage={setMessage}
+          />
+        </div>
       </div>
     </>
   );
