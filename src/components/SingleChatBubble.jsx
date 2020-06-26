@@ -12,10 +12,13 @@ class SingleChatBubble extends React.Component {
         {`
           .my-bubble {
 	          position: relative;
-	          background: #fff4a1;
+	          background: #ffeeb0;
             border-radius: .4em;
             padding: 10px;
             margin-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            word-wrap: break-word;
           }
           .my-bubble:after {
             content: '';
@@ -25,17 +28,19 @@ class SingleChatBubble extends React.Component {
             width: 0;
             height: 0;
             border: 15px solid transparent;
-            border-right-color: #fff4a1;
+            border-right-color: #ffeeb0;
 	          border-left: 0;
             border-left: 0;
             margin-bottom: -13px;
           }
           .your-bubble {
 	          position: relative;
-	          background: #b9d4bd;
+	          background: #b9d490;
             border-radius: .4em;
             padding: 10px;
             margin-bottom: 20px;
+            margin-right: 20px;
+            word-wrap: break-word;
           }
           .your-bubble:after {
             content: '';
@@ -45,7 +50,7 @@ class SingleChatBubble extends React.Component {
             width: 0;
             height: 0;
             border: 15px solid transparent;
-            border-top-color: #b9d4bd;
+            border-top-color: #b9d490;
             border-bottom: 0;
             border-left: 0;
             margin-bottom: -13px;
