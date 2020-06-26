@@ -32,11 +32,8 @@ export const markRequestCompleted = async (mySelectedRequestId) => {
 export const replyToConversation = async (offerId, message) => {
   try {
     await axios.post(
-      `/messages`,
-      {
-        offer_id: offerId,
-        content: message,
-      },
+      `/offers/${offerId}/messages`,
+      { content: message },
       { headers: createHeaders() }
     );
     return true;
