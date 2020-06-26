@@ -3,7 +3,7 @@ import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
 
-import updateMyRequest from "../modules/updateMyRequest";
+import { updateMyRequest } from "../modules/updateMyRequest";
 import { useDispatch } from "react-redux";
 import {
   updateOffer,
@@ -24,17 +24,27 @@ const Offers = ({ request, selectedStatus, page }) => {
     getAcceptedOffer(request);
   }, [request]);
 
+
+  const showOffer = (offer) => {
+    setActiveOffer(offer);
+    setShowActiveOffer(true);
+    setCompletedMessage("");
+    setError("");
+  }
+  
   const getAcceptedOffer = (request) => {
-    if (selectedStatus === "active" || selectedStatus === "completed") {
+    if (selectedStatus === "active" || selectedStatus === "completed" && page === "requests") {
       const offer = request.offers.filter(
         (offer) => offer.status === "accepted"
       )[0];
-      setActiveOffer(offer);
-      setShowActiveOffer(true);
-      setCompletedMessage("");
-      setError("");
+
+      showOffer(offer)
+    } else if (page === "quests") {
+      showOffer(request.offer)
     }
   };
+
+
   const onHelperClick = (e) => {
     e.preventDefault();
     setActiveOffer(request.offers[parseInt(e.target.id)]);
@@ -95,7 +105,7 @@ const Offers = ({ request, selectedStatus, page }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      {selectedStatus === "pending" && (
+      {selectedStatus === "pending" && page === "requests" && (
         <>
           <List divided relaxed id="offers">
             <h3>Offers</h3>
@@ -113,6 +123,9 @@ const Offers = ({ request, selectedStatus, page }) => {
           </div>
         </>
       )}
+      {
+        
+      }
       {showActiveOffer && (
         <OfferMessage
           helperOffer={activeOffer}
