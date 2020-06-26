@@ -16,7 +16,7 @@ const Offers = ({ request, selectedStatus, page }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [messagesUpdate, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [showActiveOffer, setShowActiveOffer] = useState(false);
   const [activeOffer, setActiveOffer] = useState();
 
@@ -32,6 +32,7 @@ const Offers = ({ request, selectedStatus, page }) => {
       setActiveOffer(offer);
       setShowActiveOffer(true);
       setCompletedMessage("");
+      setError("");
     }
   };
   const onHelperClick = (e) => {
@@ -51,17 +52,17 @@ const Offers = ({ request, selectedStatus, page }) => {
 
   const completeRequest = async () => {
     const response = await markRequestCompleted(request.id);
-    if (!response.status === 200) {
+    if (response.status === 200) {
       setCompletedMessage(response.data.message);
       dispatch({
         type: "FETCH_MY_REQUESTS",
         payload: { getMyRequests: true },
       });
-      setError(false);
+      setError("");
       setShowActiveOffer(false);
     } else {
-      setCompletedMessage(response.data.message);
-      setError(true);
+      setCompletedMessage("");
+      setError(response.response.data.message);
     }
   };
 
@@ -123,6 +124,9 @@ const Offers = ({ request, selectedStatus, page }) => {
           page={page}
         />
       )}
+      <p style={{ color: "black" }} id="completed-message">
+        {completedMessage}
+      </p>
     </div>
   );
 };

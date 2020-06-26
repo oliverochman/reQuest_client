@@ -44,7 +44,7 @@ describe("User can", () => {
     });
   });
 
-  describe.only("successfully decline a help offer by clicking 'Decline'", () => {
+  describe("successfully decline a help offer by clicking 'Decline'", () => {
     beforeEach(() => {
       cy.StubRequestPendingOffer();
       cy.login();
