@@ -12,9 +12,8 @@ const MyRequestCard = ({ request, page }) => {
   const dispatch = useDispatch();
 
   const toggleActiveRequest = async () => {
-    if (myActiveRequest) {
-      dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
-    } else {
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
+    if (!myActiveRequest) {
       page === "requests"
         ? updateRequest(request, dispatch)
         : dispatch({ type: "SET_MY_SELECTED_REQUEST", payload: { request } });
