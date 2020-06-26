@@ -16,14 +16,12 @@ const MyRequestsPage = (props) => {
     (state) => state.authentication.authenticated
   );
 
-  const page = props.match.params.page
-  const dispatch = useDispatch();
-  useLayoutEffect(() => {
-    persistLogin(dispatch);
-  }, []);
+  const page = props.match.params.page;
 
+  const dispatch = useDispatch();
   const showMyRequests = (status) => {
     setSelectedStatus(status);
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
   };
 
   const activeMenuItem = (menuItem) => {
@@ -68,7 +66,9 @@ const MyRequestsPage = (props) => {
               </div>
             </div>
             <Link to="/myrequest/newrequest" id="create-request-link">
-              <Button id='create-request'>Create a <br/> new reQuest</Button>
+              <Button id="create-request">
+                Create a <br /> new reQuest
+              </Button>
             </Link>
           </div>
           <div id="middle-left-component">
@@ -79,6 +79,7 @@ const MyRequestsPage = (props) => {
               <Offers
                 request={mySelectedRequest}
                 selectedStatus={selectedStatus}
+                page={page}
               />
             )}
           </div>

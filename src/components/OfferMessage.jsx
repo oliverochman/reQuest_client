@@ -32,7 +32,7 @@ const OfferMessage = (props) => {
         )}
         {props.selectedStatus === "active" && (
           <div className="ui two buttons">
-            {(!props.completedMessage || props.error) && (
+            {(!props.completedMessage || props.error !== "") && (
               <Button id="quest-completed" onClick={props.completeRequest}>
                 Quest Completed
               </Button>
@@ -106,6 +106,7 @@ const OfferMessage = (props) => {
       </Card>
       <p style={{ color: "black" }} id="completed-message">
         {props.completedMessage}
+        {props.error}
       </p>
     </>
   );

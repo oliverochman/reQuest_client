@@ -71,7 +71,7 @@ describe("User can view their active reQuests", () => {
     );
     cy.get(".your-bubble").should(
       "contain",
-      "I can help you with this, and I'm probably the first to offer my help"
+      "I can copy the fixtures, I'm fast"
     );
   })
 

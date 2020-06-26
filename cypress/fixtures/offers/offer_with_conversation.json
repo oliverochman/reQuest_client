@@ -35,7 +35,7 @@
       {
         "id": 2,
         "email": "betterHelper@mail.com",
-        "status": "accepted",
+        "status": "pending",
         "conversation": {
           "id": 1,
           "messages": [

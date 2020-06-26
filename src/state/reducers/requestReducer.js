@@ -27,6 +27,11 @@ const requestReducer = (state = initialState, action) => {
         ...state,
         mySelectedRequest: false,
       };
+    case "FETCH_MY_REQUESTS":
+      return {
+        ...state,
+        getMyRequests: action.payload.getMyRequests,
+      };
     default:
       return state;
   }
