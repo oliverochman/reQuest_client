@@ -112,7 +112,7 @@ describe("User can reply to requester", () => {
       })
 
       it("view messages", () => {
-        cy.get(".my-bubble").last().should("contain", "Settled // requester")
+        cy.get(".your-bubble").last().should("contain", "Settled // requester")
       });
 
       it("send a reply", () => {
@@ -146,7 +146,7 @@ describe("User can reply to requester", () => {
       })
 
       it("view messages", () => {
-        cy.get(".my-bubble").last().should("contain", "It was valuable // requester")
+        cy.get(".your-bubble").last().should("contain", "It was valuable // requester")
       });
 
       it("send a reply", () => {
