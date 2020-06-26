@@ -22,7 +22,7 @@ const Offers = ({ request, selectedStatus, page }) => {
 
   useEffect(() => {
     getAcceptedOffer(request);
-  }, []);
+  }, [request]);
 
   const getAcceptedOffer = (request) => {
     if (selectedStatus === "active" || selectedStatus === "completed") {
@@ -68,29 +68,23 @@ const Offers = ({ request, selectedStatus, page }) => {
 
   const replyOfferMessage = async (e) => {
     const message = e.target.replyMessage.value;
-    const resp = await replyToConversation(acceptedHelperOffer.id, message);
+    const resp = await replyToConversation(activeOffer.id, message);
     resp &&
-      acceptedHelperOffer.conversation.messages.push({
+      activeOffer.conversation.messages.push({
         me: true,
         content: message,
       }) &&
-      triggerMessagesUpdate(resp);
+      triggerMessagesUpdate(!messagesUpdate);
   };
 
-  const myOffer =
-    request.offers &&
-    request.offers.map((offer, index) => (
-      <OfferList
-        offer={offer}
-        requestStatus={request.status}
-        index={index}
-        onHelperClick={onHelperClick}
-      />
-    ));
-
-  const acceptedHelperOffer =
-    selectedStatus === "active" &&
-    request.offers.filter((offer) => offer.status === "accepted")[0];
+  const myOffer = request.offers.map((offer, index) => (
+    <OfferList
+      offer={offer}
+      requestStatus={request.status}
+      index={index}
+      onHelperClick={onHelperClick}
+    />
+  ));
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>

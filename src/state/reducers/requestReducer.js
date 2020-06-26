@@ -27,6 +27,11 @@ const requestReducer = (state = initialState, action) => {
           ...state,
           getMyRequests: action.payload.getMyRequests
         };
+      case "RESET_OFFER":
+        return {
+          ...state,
+          getMyRequests: action.payload.getMyRequests
+        };
     default:
       return state;
   }
