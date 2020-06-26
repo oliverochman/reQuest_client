@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MyListComponent from "./MyListComponent";
 import { Button } from "semantic-ui-react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
 
@@ -14,10 +14,12 @@ const MyRequestsPage = (props) => {
     (state) => state.authentication.authenticated
   );
 
-  const page = props.match.params.page
+  const page = props.match.params.page;
 
+  const dispatch = useDispatch();
   const showMyRequests = (status) => {
     setSelectedStatus(status);
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
   };
 
   const activeMenuItem = (menuItem) => {
@@ -60,7 +62,9 @@ const MyRequestsPage = (props) => {
               </div>
             </div>
             <Link to="/myrequest/newrequest" id="create-request-link">
-              <Button id='create-request'>Create a <br/> new reQuest</Button>
+              <Button id="create-request">
+                Create a <br /> new reQuest
+              </Button>
             </Link>
           </div>
           <div id="middle-left-component" style={{ marginLeft: "30px" }}>
@@ -71,6 +75,7 @@ const MyRequestsPage = (props) => {
               <Offers
                 request={mySelectedRequest}
                 selectedStatus={selectedStatus}
+                page={page}
               />
             )}
           </div>

@@ -12,16 +12,14 @@ const MyRequestCard = ({ request, page }) => {
   const dispatch = useDispatch();
 
   const toggleActiveRequest = async () => {
-    if (myActiveRequest) {
-      dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
-    } else {
-      page === "requests" ? (
-        updateRequest(request, dispatch)
-      ) : ( 
-        dispatch({type: "SET_MY_SELECTED_REQUEST", payload: { request }})
-      )
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
+    if (!myActiveRequest) {
+      page === "requests"
+        ? updateRequest(request, dispatch)
+        : dispatch({ type: "SET_MY_SELECTED_REQUEST", payload: { request } });
     }
   };
+
   const description = myActiveRequest && (
     <Card.Description id={"request-description-" + req.id}>
       {req.description}

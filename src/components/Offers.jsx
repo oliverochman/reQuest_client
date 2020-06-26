@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { List } from "semantic-ui-react";
 import OfferMessage from "./OfferMessage";
 import OfferList from "./OfferList";
@@ -11,50 +11,73 @@ import {
   replyToConversation,
 } from "../modules/messaging";
 
-const Offers = ({ request, selectedStatus }) => {
+const Offers = ({ request, selectedStatus, page }) => {
   const dispatch = useDispatch();
-  const [showHelperMessage, setShowHelperMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  const [helperOffer, setHelperOffer] = useState({});
   const [messagesUpdate, triggerMessagesUpdate] = useState({});
   const [completedMessage, setCompletedMessage] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
+  const [showActiveOffer, setShowActiveOffer] = useState(false);
+  const [activeOffer, setActiveOffer] = useState();
 
+  useEffect(() => {
+    getAcceptedOffer(request);
+  }, [request]);
+
+  const getAcceptedOffer = (request) => {
+    if (selectedStatus === "active" || selectedStatus === "completed") {
+      const offer = request.offers.filter(
+        (offer) => offer.status === "accepted"
+      )[0];
+      setActiveOffer(offer);
+      setShowActiveOffer(true);
+      setCompletedMessage("");
+      setError("");
+    }
+  };
   const onHelperClick = (e) => {
-    setShowHelperMessage(true);
-    setHelperOffer({ ...request.offers[parseInt(e.target.id)] });
+    e.preventDefault();
+    setActiveOffer(request.offers[parseInt(e.target.id)]);
+    setShowActiveOffer(true);
+    setCompletedMessage("");
   };
 
-  const onClickActivity = async (e) => {
-    const response = await updateOffer(e.target.id, helperOffer.id);
+  const updateOfferStatus = async (e) => {
+    const response = await updateOffer(e.target.id, activeOffer.id);
     setStatusMessage(response.data.message);
     await updateMyRequest(request, dispatch);
-    setShowHelperMessage(false);
+    setShowActiveOffer(false);
+    dispatch({ type: "FETCH_MY_REQUESTS", payload: { getMyRequests: true } });
   };
 
   const completeRequest = async () => {
     const response = await markRequestCompleted(request.id);
-    if (!response.isAxiosError) {
+    if (response.status === 200) {
       setCompletedMessage(response.data.message);
-      setError(false);
+      dispatch({
+        type: "FETCH_MY_REQUESTS",
+        payload: { getMyRequests: true },
+      });
+      setError("");
+      setShowActiveOffer(false);
     } else {
-      setCompletedMessage(response.response.data.message);
-      setError(true);
+      setCompletedMessage("");
+      setError(response.response.data.message);
     }
   };
 
   const replyOfferMessage = async (e) => {
     const message = e.target.replyMessage.value;
-    const resp = await replyToConversation(acceptedHelperOffer.id, message);
+    const resp = await replyToConversation(activeOffer.id, message);
     resp &&
-      acceptedHelperOffer.conversation.messages.push({
+      activeOffer.conversation.messages.push({
         me: true,
         content: message,
       }) &&
-      triggerMessagesUpdate(resp);
+      triggerMessagesUpdate(!messagesUpdate);
   };
 
-  const myOffers = request.offers.map((offer, index) => (
+  const myOffer = request.offers.map((offer, index) => (
     <OfferList
       offer={offer}
       requestStatus={request.status}
@@ -63,29 +86,13 @@ const Offers = ({ request, selectedStatus }) => {
     />
   ));
 
-  const acceptedHelperOffer = request.offers.filter(
-    (offer) => offer.status === "accepted"
-  )[0];
-
-  const myOffersActiveComp = (selectedStatus === "active" ||
-    selectedStatus === "completed") && (
-    <OfferMessage
-      helperOffer={acceptedHelperOffer}
-      selectedStatus={selectedStatus}
-      completeRequest={completeRequest}
-      replyOfferMessage={replyOfferMessage}
-      completedMessage={completedMessage}
-      error={error}
-    />
-  );
-
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       {selectedStatus === "pending" && (
         <>
           <List divided relaxed id="offers">
             <h3>Offers</h3>
-            {myOffers}
+            {myOffer}
           </List>
           <div
             style={{
@@ -95,18 +102,25 @@ const Offers = ({ request, selectedStatus }) => {
               justifyContent: "space-between",
             }}
           >
-            {showHelperMessage && (
-              <OfferMessage
-                helperOffer={helperOffer}
-                onClickActivity={onClickActivity}
-                selectedStatus={selectedStatus}
-              />
-            )}
             <p id="status-message">{statusMessage}</p>
           </div>
         </>
       )}
-      {myOffersActiveComp}
+      {showActiveOffer && (
+        <OfferMessage
+          helperOffer={activeOffer}
+          onClickActivity={updateOfferStatus}
+          completeRequest={completeRequest}
+          replyOfferMessage={replyOfferMessage}
+          completedMessage={completedMessage}
+          error={error}
+          selectedStatus={selectedStatus}
+          page={page}
+        />
+      )}
+      <p style={{ color: "black" }} id="completed-message">
+        {completedMessage}
+      </p>
     </div>
   );
 };
