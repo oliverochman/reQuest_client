@@ -33,13 +33,13 @@ const Offers = ({ request, selectedStatus, page }) => {
   }
   
   const getAcceptedOffer = (request) => {
-    if (selectedStatus === "active" || selectedStatus === "completed" && page === "requests") {
+    if ((selectedStatus === "active" || selectedStatus === "completed") && page === "requests") {
       const offer = request.offers.filter(
         (offer) => offer.status === "accepted"
       )[0];
-
       showOffer(offer)
     } else if (page === "quests") {
+      request.offer.email = request.email
       showOffer(request.offer)
     }
   };
@@ -87,7 +87,8 @@ const Offers = ({ request, selectedStatus, page }) => {
       triggerMessagesUpdate(!messagesUpdate);
   };
 
-  const myOffers =
+  const myOffers = 
+    request.offers &&
     request.offers.filter((offer) => offer.status === "pending").length !== 0 ? (
       request.offers.map((offer, index) => (
         <OfferList
@@ -123,9 +124,6 @@ const Offers = ({ request, selectedStatus, page }) => {
           </div>
         </>
       )}
-      {
-        
-      }
       {showActiveOffer && (
         <OfferMessage
           helperOffer={activeOffer}
