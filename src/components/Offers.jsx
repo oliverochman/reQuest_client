@@ -14,7 +14,7 @@ import {
 const Offers = ({ request, selectedStatus, page }) => {
   const dispatch = useDispatch();
   const [statusMessage, setStatusMessage] = useState("");
-  const [messagesUpdate, triggerMessagesUpdate] = useState({});
+  const [messagesUpdate, triggerMessagesUpdate] = useState(false);
   const [completedMessage, setCompletedMessage] = useState("");
   const [error, setError] = useState(false);
   const [showActiveOffer, setShowActiveOffer] = useState(false);
@@ -67,13 +67,13 @@ const Offers = ({ request, selectedStatus, page }) => {
 
   const replyOfferMessage = async (e) => {
     const message = e.target.replyMessage.value;
-    const resp = await replyToConversation(acceptedHelperOffer.id, message);
+    const resp = await replyToConversation(activeOffer.id, message);
     resp &&
-      acceptedHelperOffer.conversation.messages.push({
+    activeOffer.conversation.messages.push({
         me: true,
         content: message,
       }) &&
-      triggerMessagesUpdate(resp);
+    triggerMessagesUpdate(!messagesUpdate);
   };
 
   const myOffer =
@@ -86,10 +86,6 @@ const Offers = ({ request, selectedStatus, page }) => {
         onHelperClick={onHelperClick}
       />
     ));
-
-  const acceptedHelperOffer =
-    selectedStatus === "active" &&
-    request.offers.filter((offer) => offer.status === "accepted")[0];
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
