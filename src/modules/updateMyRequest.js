@@ -16,6 +16,7 @@ const updateMyRequest = async (request, dispatch) => {
 const updateMyQuest = async (quest, dispatch) => {
   try {
     const response = await getSingleQuest(quest.id);
+    debugger;
     response &&
       dispatch({
         type: "SET_MY_SELECTED_REQUEST",
