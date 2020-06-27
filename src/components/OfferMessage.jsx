@@ -66,7 +66,7 @@ const OfferMessage = (props) => {
   return (
     <>
       <Card id="conversation" style={{ height: "60vh", width: "400px" }}>
-        <Card.Content style={{maxHeight: "92%"}}>
+        <Card.Content style={{ maxHeight: "92%" }}>
           <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
           <Card.Content
             style={{
@@ -108,7 +108,7 @@ const OfferMessage = (props) => {
             </Card.Content>
           )}
         </Card.Content>
-        {props.page === "request" ? toggleActivityButtons : toggleInputField}
+        {props.page === "requests" ? toggleActivityButtons : toggleInputField}
       </Card>
       <p style={{ color: "black" }} id="completed-message">
         {props.completedMessage}
