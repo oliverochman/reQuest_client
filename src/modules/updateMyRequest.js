@@ -1,6 +1,6 @@
-import { getSingleRequest } from "./getRequests";
+import { getSingleRequest, getSingleQuest } from "./getRequests";
 
-const updateRequest = async (request, dispatch) => {
+const updateMyRequest = async (request, dispatch) => {
   try {
     const response = await getSingleRequest(request.id);
     response &&
@@ -13,4 +13,20 @@ const updateRequest = async (request, dispatch) => {
   }
 };
 
-export default updateRequest;
+const updateMyQuest = async (quest, dispatch) => {
+  try {
+    const response = await getSingleQuest(quest.id);
+    debugger;
+    response &&
+      dispatch({
+        type: "SET_MY_SELECTED_REQUEST",
+        payload: { request: response.data.quest },
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+export { updateMyRequest, updateMyQuest }

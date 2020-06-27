@@ -49,8 +49,6 @@ Cypress.Commands.add("login", () => {
 
   cy.visit("/login", stubLocation({ latitude: 57.71, longitude: 11.97 }));
   cy.get("#login-form").within(() => {
-    cy.get("#email").type("user@mail.com");
-    cy.get("#password").type("password");
     cy.get("#submit-btn").contains("Submit").click();
   });
 });

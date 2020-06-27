@@ -43,6 +43,11 @@ const Header = () => {
     getKarma(dispatch);
   };
 
+  const setActiveMenuItem = (tab) => {
+    dispatch({ type: "RESET_MY_SELECTED_REQUEST" })
+    setActiveTab(tab)
+  }
+
   const activeMenuItem = (menuItem) => {
     if (menuItem === activeTab) {
       return "activeTab"
@@ -70,7 +75,7 @@ const Header = () => {
             to={authenticated ? "/myrequest/requests" : "/login"}
             onClick={authenticated && (() => {
               setActivePage("myrequest")
-              setActiveTab("requests")            
+              setActiveMenuItem("requests")            
             })}
           >
             my reQuest
@@ -93,7 +98,7 @@ const Header = () => {
                 id="quests-link"
                 to="/myrequest/quests"
                 className={activeMenuItem("quests")}
-                onClick={() => setActiveTab("quests")}
+                onClick={() => setActiveMenuItem("quests")}
               >
                 Quests
               </NavLink>
@@ -101,7 +106,7 @@ const Header = () => {
                 id="requests-link"
                 to="/myrequest/requests"
                 className={activeMenuItem("requests")}
-                onClick={() => setActiveTab("requests")}
+                onClick={() => setActiveMenuItem("requests")}
               >
                 reQuests
               </NavLink>

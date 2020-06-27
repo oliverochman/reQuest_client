@@ -5,7 +5,26 @@ import ChatBubbles from "./ChatBubbles";
 const OfferMessage = (props) => {
   const [replyStatus, setReplyStatus] = useState(false);
 
-  const showActivityButtons = (
+  const toggleInputField = (
+    <>
+      {replyStatus ? (
+        <Button
+          id="send-chat-message"
+          form="send-message-form"
+          type="submit"
+          color="yellow"
+        >
+          Send
+        </Button>
+      ) : (
+        <Button id="quest-reply" onClick={() => setReplyStatus(true)}>
+          Reply
+        </Button>
+      )}
+    </>
+  );
+
+  const toggleActivityButtons = (
     <Card.Content extra>
       <>
         {props.selectedStatus === "pending" && (
@@ -37,20 +56,7 @@ const OfferMessage = (props) => {
                 Quest Completed
               </Button>
             )}
-            {replyStatus ? (
-              <Button
-                id="send-chat-message"
-                form="send-message-form"
-                type="submit"
-                color="yellow"
-              >
-                Send
-              </Button>
-            ) : (
-              <Button id="quest-reply" onClick={() => setReplyStatus(true)}>
-                Reply
-              </Button>
-            )}
+            {toggleInputField}
           </div>
         )}
       </>
@@ -60,13 +66,13 @@ const OfferMessage = (props) => {
   return (
     <>
       <Card id="conversation" style={{ height: "60vh", width: "400px" }}>
-        <Card.Content>
+        <Card.Content style={{ maxHeight: "92%" }}>
           <Card.Meta>Conversation with: {props.helperOffer.email}</Card.Meta>
           <Card.Content
             style={{
-              height: "37vh",
+              height: replyStatus ? "32vh" : "100%",
               color: "#444",
-              paddingTop: "10px",
+              padding: "10px 0px",
             }}
           >
             <ChatBubbles messages={props.helperOffer.conversation.messages} />
@@ -102,7 +108,7 @@ const OfferMessage = (props) => {
             </Card.Content>
           )}
         </Card.Content>
-        {showActivityButtons}
+        {props.page === "requests" ? toggleActivityButtons : toggleInputField}
       </Card>
       <p style={{ color: "black" }} id="completed-message">
         {props.completedMessage}

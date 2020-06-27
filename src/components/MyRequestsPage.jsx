@@ -4,7 +4,6 @@ import { Button } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import Offers from "./Offers";
 import { Link, Redirect } from "react-router-dom";
-import { persistLogin } from "../modules/auth";
 
 
 const MyRequestsPage = (props) => {
@@ -75,7 +74,7 @@ const MyRequestsPage = (props) => {
             <MyListComponent selectedStatus={selectedStatus} page={page} />
           </div>
           <div id="middle-right-component">
-            {mySelectedRequest && page === "requests" && (
+            {mySelectedRequest && (
               <Offers
                 request={mySelectedRequest}
                 selectedStatus={selectedStatus}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Label } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import updateRequest from "../modules/updateMyRequest";
+import { updateMyRequest, updateMyQuest } from "../modules/updateMyRequest";
 
 const MyRequestCard = ({ request, page }) => {
   const activeRequest = useSelector(
@@ -11,12 +11,13 @@ const MyRequestCard = ({ request, page }) => {
   const req = myActiveRequest ? activeRequest : request;
   const dispatch = useDispatch();
 
-  const toggleActiveRequest = async () => {
+  const toggleActiveCard = async () => {
     dispatch({ type: "RESET_MY_SELECTED_REQUEST" });
     if (!myActiveRequest) {
+      debugger;
       page === "requests"
-        ? updateRequest(request, dispatch)
-        : dispatch({ type: "SET_MY_SELECTED_REQUEST", payload: { request } });
+        ? updateMyRequest(request, dispatch)
+        : updateMyQuest(request, dispatch)
     }
   };
 
@@ -31,7 +32,7 @@ const MyRequestCard = ({ request, page }) => {
       id={"request-" + req.id}
       color="olive"
       onClick={() => {
-        toggleActiveRequest();
+        toggleActiveCard();
       }}
     >
       <Card.Content>

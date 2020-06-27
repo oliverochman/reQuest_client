@@ -2,9 +2,9 @@ describe("User can see a list of all quests", () => {
   beforeEach(() => {
     cy.stubMain();
     cy.login();
-    cy.wait(1500)
+    cy.wait(1500);
     cy.get("#myrequest-home-link").click();
-    cy.wait(1500)
+    cy.wait(1500);
   });
 
   describe("when there is something to show", () => {
@@ -14,6 +14,13 @@ describe("User can see a list of all quests", () => {
         url: "http://localhost:3000/api/my_request/quests",
         response: "fixture:quests/list_of_user_quests.json",
       });
+
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/my_request/quests/285",
+        response: "fixture:quests/single_completed_quest.json",
+      });
+
       cy.get("#quests-link").click();
     });
 
@@ -41,15 +48,11 @@ describe("User can see a list of all quests", () => {
       cy.get("#my-list").should("not.contain", "I will need help with this 1");
     });
 
-    it("user can se the description of requests", () => {
+    it("user can see the description of requests", () => {
       cy.get("#completed-link").click();
+      cy.get("#request-description-285").should("not.exist");
       cy.get("#request-285").click();
       cy.get("#request-description-285").should("be.visible");
-      cy.get("#request-284").click();
-      cy.get("#request-description-284").should("exist");
-      cy.wait(1000);
-      cy.get("#request-284").click();
-      cy.get("#request-description-284").should("not.exist");
     });
   });
 
